@@ -95,6 +95,20 @@ class Edge(models.Model):
 
     subject = property(get_subject, set_subject)
 
+    def linked_object(self):
+        return u"<a href='%(url)s'>%(text)s</a>" % {
+            'url': self.object.url(),
+            'text': self.object.name,
+        }
+    linked_object.allow_tags = True
+
+    def linked_subject(self):
+        return u"<a href='%(url)s'>%(text)s</a>" % {
+            'url': self.subject.url(),
+            'text': self.subject.name,
+        }
+    linked_subject.allow_tags = True
+
     def url(self):
         return reverse('edge', kwargs={'slug': self.slug})
 
