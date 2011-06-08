@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h1>{{subject.name}} (in context {{story}})</h1>
+{% block page_title %}{{ subject.name }}{% endblock %}
 
+{% block content %}
+<h1>{{subject.name}}{% if story %} (in context {{story}}){% endif %}</h1>
+
+<ol>
 {% if story_prev %}
-<a rel='prev' href='{{story_prev.url}}?story={{story.slug}}'>Prev</a>
+<li><a rel='prev' href='{{story_prev.url}}?story={{story.slug}}'>Previous: {{ story_prev.name }}</a></li>
 {% endif %}
 
 {% if story_next %}
-<a rel='next' href='{{story_next.url}}?story={{story.slug}}'>Next</a>
+<li><a rel='next' href='{{story_next.url}}?story={{story.slug}}'>Next: {{ story_next.name }}</a></li>
 {% endif %}
+</ol>
 
 {{subject.text|linebreaks}}
 
