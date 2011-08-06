@@ -1,5 +1,5 @@
 from django.views.generic.base import TemplateView 
-from core.models import Person
+from core.models import Person, Concept, Event, Object
 from django.shortcuts import get_object_or_404
 
 class PersonView(TemplateView):
