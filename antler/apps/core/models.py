@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.query import QuerySet
+from django.core.urlresolvers import reverse
 
 class Edge(models.Model):
     """
@@ -168,6 +169,10 @@ class Person(Node):
     death_date = models.DateField(null=True, blank=True)
     death_date_fuzziness = models.FloatField(null=True, blank=True, help_text="The uncertainty of the date in years. i.e. '1' is +/- 1 year")
 
+    def url(self):
+        return reverse('person', kwargs={'pk': self.pk})
+
+
 class Event(Node):
     """
     A thing that happened at a given point in time.
@@ -176,19 +181,26 @@ class Event(Node):
     date = models.DateField(null=True, blank=True)
     date_fuzziness = models.FloatField(null=True, blank=True, help_text="The uncertainty of the date in years. i.e. '1' is +/- 1 year")
 
+    def url(self):
+        return reverse('event', kwargs={'pk': self.pk})
+
 
 class Concept(Node):
     """
     A concept that was developed or discovered, e.g. punch cards, communism
     """
-    pass
+
+    def url(self):
+        return reverse('concept', kwargs={'pk': self.pk})
 
 
 class Object(Node):
     """
     A physical thing which arose from a concept, e.g. the Jacquard Loom
     """
-    pass
+
+    def url(self):
+        return reverse('object', kwargs={'pk': self.pk})
 
 
 class Story(models.Model):
