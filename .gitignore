@@ -2,3 +2,5 @@
 ENV
 *.pyc
 *.swp
+.project
+.pydevproject
