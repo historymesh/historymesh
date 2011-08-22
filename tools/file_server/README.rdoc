@@ -1,0 +1,9 @@
+= FileServer
+
+It serves a single file and lets you grab chunks of it.
+
+    bundle install
+    # edit config.ru with path to file
+    rackup -s thin -p 8000
+    curl http://localhost:8000/?offset=13&length=37
+
