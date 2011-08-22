@@ -20,4 +20,3 @@ get '/wiki/:name' do
   @html = Wikitext::Parser.new.parse(text)
   erb :article
 end
-

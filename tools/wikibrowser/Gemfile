@@ -5,4 +5,3 @@ gem "pg"
 gem "sinatra"
 gem "thin"
 gem "wikitext"
-

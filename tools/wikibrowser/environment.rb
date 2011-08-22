@@ -13,4 +13,3 @@ ActiveRecord::Base.establish_connection(
 
 root = File.dirname(__FILE__)
 require root + '/models/article'
-
