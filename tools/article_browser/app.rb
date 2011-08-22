@@ -1,4 +1,4 @@
-require File.expand_path('../env', __FILE__)
+require File.expand_path('../environment', __FILE__)
 require 'sinatra'
 require 'net/http'
 require 'uri'
