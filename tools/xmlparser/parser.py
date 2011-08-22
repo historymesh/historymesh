@@ -14,7 +14,7 @@ title_regex = re.compile(r"\<title\>([^\<]+)\</title\>")
 link_regex = re.compile(r"\[\[([^\]]+)\]\]")
 start_pattern = '<text xml:space="preserve">'
 end_pattern = '</text>'
-number_of_articles = 30500000.0
+number_of_articles = 10500000.0
 
 
 def main(filename, output_filename):
