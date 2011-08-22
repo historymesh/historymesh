@@ -1,11 +1,11 @@
 Hello!
 
-<form method='post' action='<%= "/wiki/#{@name}/star" %>'>
+<form method='post' action='<%= "/star/#{@article.id}" %>'>
   <button type='submit'>Star</button>
 </form>
 
 <%= @html %>
 
-<form method='post' action='<%= "/wiki/#{@name}/star" %>'>
+<form method='post' action='<%= "/star/#{@article.id}" %>'>
   <button type='submit'>Star</button>
 </form>

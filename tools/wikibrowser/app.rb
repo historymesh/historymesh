@@ -18,10 +18,11 @@ get '/wiki/:name' do
   text.gsub!(/\{\{[^\}]*\}\}/, '')
 
   @html = Wikitext::Parser.new.parse(text)
-  @name = params[:name]
   erb :article
 end
 
-post '/wiki/:name/star' do
-  #TODO: Mark this article as starred
+post '/star/:id' do
+  article = Article.find(params[:id])
+  article.update_attributes(:star => true)
+  redirect to("/wiki/#{article.name}")
 end
