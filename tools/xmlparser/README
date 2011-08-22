@@ -1,0 +1,7 @@
+parser.py is used to process a wikipedia dump into a tsv file containing:
+ - page title
+ - start offset (bytes) of content
+ - length of content (bytes)
+ - | separated list of titles of links in the content
+
+extract_wikitext.py scans through dump for a title

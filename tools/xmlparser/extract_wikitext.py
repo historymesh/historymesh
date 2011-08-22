@@ -3,6 +3,12 @@
 import sys
 
 def main(main_file, index_file, title):
+    """
+    :param main_file: wikipedia dump (uncompressed)
+    :param index_file: index produced by parser.py
+    :param title: Exact page name to look for (case sensitive)
+
+    """
 
     # First, scan through the index file looking for the line
     print >>sys.stderr, "Scanning index file..."
