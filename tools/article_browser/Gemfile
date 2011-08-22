@@ -3,7 +3,6 @@ source "http://gems.fort/"
 gem "activerecord"
 gem "pg"
 gem "sinatra"
-gem "nokogiri"
 gem "thin"
 gem "wikitext"
 

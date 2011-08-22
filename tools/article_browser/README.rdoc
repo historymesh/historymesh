@@ -1,0 +1,8 @@
+= Wikipedia
+
+Easily browse stuff we've pilfered from Wikipedia. Edit <tt>environment.rb</tt>
+to point to the content and database servers. Make sure you have an instance of
+<tt>file_server</tt> running somewhere.
+
+    bundle install
+    rackup -s thin

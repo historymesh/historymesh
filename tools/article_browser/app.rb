@@ -2,22 +2,22 @@ require File.expand_path('../environment', __FILE__)
 require 'sinatra'
 require 'net/http'
 require 'uri'
-require 'nokogiri'
 require 'wikitext'
-
-FILE_HOST = 'http://localhost:8000/'
 
 get '/' do
   Article.count.to_s
 end
 
-get '/articles/:id' do
-  article = Article.find(params[:id])
-  uri     = URI.parse("#{FILE_HOST}?offset=#{article.offset}&length=#{article.length}")
-  xml     = Net::HTTP.get_response(uri).body
-  text    = Nokogiri::XML(xml).search('text').first.text
-  html    = Wikitext::Parser.parse(text)
+get '/wiki/:name' do
+  name     = params[:name].gsub(/^(.)/) { $1.upcase }
+  @article = Article.find_by_name(name)
+  uri      = URI.parse("#{FILE_HOST}?offset=#{@article.offset}&length=#{@article.length}")
+  text     = Net::HTTP.get_response(uri).body
 
-  html
+  text.force_encoding('UTF-8') if text.respond_to?(:force_encoding) # ugh
+  text.gsub!(/\{\{[^\}]*\}\}/, '')
+
+  @html = Wikitext::Parser.new.parse(text)
+  erb :article
 end
 
