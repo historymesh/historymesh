@@ -15,76 +15,29 @@ link_regex = re.compile(r"\[\[([^\]]+)\]\]")
 start_pattern = '<text xml:space="preserve">'
 end_pattern = '</text>'
 number_of_articles = 30500000.0
-max_threads = 400
-max_threads_waiting = 10000
 
 
-class ConnectionPool(Pool):
-    def create(self):
-        return psycopg2.connect(
-            host = "10.0.0.61",
-            user = "fort",
-            database = "fort",
-            password = "fort",
-        )
+def main(filename, output_filename):
 
-
-def main(filename):
-
-    connpool = ConnectionPool()
-    with connpool.item() as connection:
-        cursor = connection.cursor()
-        cursor.execute("TRUNCATE articles, links;")
-        cursor.execute("ALTER SEQUENCE articles_id_seq RESTART 1;")
-        cursor.execute("COMMIT")
-
-    pool = GreenPool(max_threads)
     start_time = time.time()
 
-    for i, (title, start, length, text) in enumerate(parse(filename)):
-        pool.spawn(
-            save_to_db,
-            connpool,
-            i,
-            start_time,
-            title,
-            start,
-            length,
-            set(extract_links(text)),
-        )
-        while pool.waiting() > max_threads_waiting:
-            eventlet.sleep(0.01)
-            
-
-def save_to_db(connpool, i, start_time, title, start, length, links):
-    with connpool.item() as connection:
-        cursor = connection.cursor()
-        cursor.execute("BEGIN")
-        # Insert
-        if i:
-            time_per_page = (time.time() - start_time) / i
-            print "%6.2f%% - %6.2fh - %s" % (
-                i / number_of_articles,
-                (time_per_page * (number_of_articles - i)) / 3600.0,
+    with open(output_filename, "w") as fh:
+        for i, (title, start, length, text) in enumerate(parse(filename)):
+            # Do a time estimate
+            if i % 1000 == 1:
+                time_per_page = (time.time() - start_time) / i
+                print "%6.2f%% - %6.2fh - %s" % (
+                    (i / number_of_articles) * 100,
+                    (time_per_page * (number_of_articles - i)) / 3600.0,
+                    title,
+                )
+            # Output the line
+            fh.write("%s\t%i\t%i\t%s\n" % (
                 title,
-            )
-        cursor.execute(
-            'INSERT INTO articles (name, "offset", "length") VALUES (%s, %s, %s)',
-            [title, start, length],
-        )
-        # Get the links and their IDs
-        if links:
-            link_params = []
-            for link in links:
-                link_params.extend([title, link])
-            cursor.execute(
-                "INSERT INTO links (\"from\", \"to\") VALUES %s" % (
-                    ", ".join("(%s, %s)" for link in links)
-                ),
-                link_params,
-            )
-        cursor.execute("COMMIT")
-
+                start,
+                length,
+                "|".join(set(extract_links(text))),
+            ))
 
 
 def parse(filename):
@@ -157,4 +110,4 @@ def extract_links(text):
         yield link_text
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2])
