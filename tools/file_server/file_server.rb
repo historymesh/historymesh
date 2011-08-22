@@ -8,10 +8,13 @@ class FileServer
     offset  = request.params['offset'].to_i
     length  = request.params['length'].to_i
 
-    file = File.open(@path, 'r')
-    file.seek(offset)
-    text = file.read(length) || ''
-    
+
+    text = ""
+    File.open(@path, 'r') do |file|
+      file.seek(offset)
+      text = file.read(length) || ''
+    end
+
     text.force_encoding('UTF-8') if text.respond_to?(:force_encoding)
 
     [200, {'Content-Type' => 'text/plain'}, [text]]

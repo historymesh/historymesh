@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/file_server'
 
-path = 'README.rdoc'
+path = ENV['DATAFILE'] || 'README.rdoc'
 run FileServer.new(path)
 
