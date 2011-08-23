@@ -1,14 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title><%= @article.name %> | Wikipedia</title>
-  </head>
-  <body>
 
-    <h1><%= @article.name %></h1>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title><%= @title %> | Weaver</title>
+  <meta name="robots" content="all">
+  <link rel="stylesheet" href="/base.css" media="screen">
+</head>
 
-    <%= @html %>
+<body>
+  <%= yield %>
+</body>
 
-  </body>
 </html>
