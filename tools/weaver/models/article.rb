@@ -1,16 +1,31 @@
-class Article < ActiveRecord::Base
-  def self.search(name)
-    name = name.gsub(/^(.)/) { $1.upcase }.gsub('_', ' ')
-    find_by_name(name)
+class Article
+  attr_reader :name
+
+  def initialize(params)
+    @name = params[:name].gsub(/^(.)/) { $1.upcase }.gsub('_', ' ')
   end
 
   def html
-    uri  = URI.parse("#{FILE_HOST}?offset=#{offset}&length=#{length}")
-    text = Net::HTTP.get_response(uri).body
-
-    text.force_encoding('UTF-8') if text.respond_to?(:force_encoding) # ugh
-    text.gsub!(/\{\{[^\}]*\}\}/, '')
-
+    text = data['text'].gsub!(/\{\{[^\}]*\}\}/, '')
     Wikitext::Parser.new.parse(text)
   end
+
+  def inlinks
+    data['inlinks']
+  end
+
+  def outlinks
+    data['outlinks']
+  end
+
+private
+
+  def data
+    return @data if defined?(@data)
+
+    uri   = URI.parse("http://#{CONTENT_HOST}/?title=#{CGI.escape @name}")
+    json  = Net::HTTP.get_response(uri).body
+    @data = JSON.parse(json)
+  end
 end
+

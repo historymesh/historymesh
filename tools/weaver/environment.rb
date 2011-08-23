@@ -1,15 +1,12 @@
-require 'active_record'
+require 'cgi'
+require 'json'
+require 'net/http'
+require 'uri'
+require 'wikitext'
 
-# Server where you can get chunks of the big Wikipedia dump
-FILE_HOST = 'http://psql.fort:9292/'
-
-# Database server articles and links
-ActiveRecord::Base.establish_connection(
-  :adapter  => 'postgresql',
-  :host     => 'psql.fort',
-  :username => 'fort',
-  :password => 'fort',
-  :database => 'fort')
+# Server to get Wikipedia article data
+CONTENT_HOST = '10.0.0.53:5001'
 
 root = File.dirname(__FILE__)
 require root + '/models/article'
+
