@@ -30,7 +30,9 @@ private
     return @data if defined?(@data)
 
     uri   = URI.parse("http://#{CONTENT_HOST}/?title=#{CGI.escape @name}")
+puts uri
     json  = Net::HTTP.get_response(uri).body
+puts json
     @data = JSON.parse(json)
   end
 end
