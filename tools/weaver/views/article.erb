@@ -6,10 +6,12 @@
       <% @article.inlinks.each do |title| %>
         <li>
           <a href="/wiki/<%= URI.escape title %>"><%= title %></a>
+          <!--
           <ul>
             <li><a href="#">Influenced</a></li>
             <li><a href="#">Influenced By</a></li>
           </ul>
+          -->
         </li>
       <% end %>
     </ul>
@@ -20,10 +22,12 @@
       <% @article.outlinks.each do |title| %>
         <li>
           <a href="/wiki/<%= URI.escape title %>"><%= title %></a>
+          <!--
           <ul>
             <li><a href="#">Influenced</a></li>
             <li><a href="#">Influenced By</a></li>
           </ul>
+          -->
         </li>
       <% end %>
     </ul>
@@ -48,7 +52,7 @@
         $("a.save").each( function (link) {
           if ($(link).attr('href').match(articleName)) {
             link.setAttribute('class', 'saved');
-            link.innerText('Saved');
+            link.innerText('Saved!');
           }
         });
       }
@@ -62,8 +66,8 @@
   $('a.save').live('click', function() {
     var slug = $(this).attr('href').replace(/^.*\/wiki\/(.*)$/, '$1'),
         name = decodeURIComponent(slug);
+        article = new Weaver.Article(name);
 
-    var article = new Weaver.Article(name);
     article.save();
 
     findSaved();

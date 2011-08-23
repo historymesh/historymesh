@@ -51,7 +51,7 @@ $.extend(Weaver.Storage.prototype, {
 
   getSavedArticle: function(name, callback, context) {
     var articleJSON = localStorage.getItem('article:' + name);
-    if (!articleJSON) return callback(false);
+    if (!articleJSON) return callback.call(context, false);
 
     var articleData = JSON.parse(articleJSON),
         article = new Weaver.Article(articleData.name, articleData.type);
