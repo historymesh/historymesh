@@ -17,6 +17,8 @@ get '/wiki/:name' do
   text.force_encoding('UTF-8') if text.respond_to?(:force_encoding) # ugh
   text.gsub!(/\{\{[^\}]*\}\}/, '')
 
+  @title = @article.name
   @html = Wikitext::Parser.new.parse(text)
   erb :article
 end
+
