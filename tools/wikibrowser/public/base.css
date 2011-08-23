@@ -1,0 +1,92 @@
+																		/* -- Base HTML -- */
+body {
+	padding: 0 5%;
+}
+a:link {
+	color: #06A;
+	text-decoration: none;
+}
+	a:hover {
+		color: #06F;
+	}
+body {
+	font: 14px Helvetica, arial, sans-serif;
+	color: #333;
+	background: #fff;
+}
+h1 {
+	text-align: center;
+	font-size: 28px;
+	position: absolute;
+	margin: 50px 25% 0 25%;
+	width: 40%;
+}
+h2 {
+	font-size: 14px;
+	padding-lefT: 50px;
+}
+hr {
+	clear: both;
+}
+ul, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+ul {
+	margin-bottom: 10%;
+}
+li {
+	margin-bottom: 5px;
+	line-height: 1.5;
+	padding-left: 50px;
+	position: relative;
+}
+li ul, li ul li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+li ul {
+	display: block;
+	float: right;
+	width: 50px;
+	height: 22px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+li ul a {
+	display: none;
+}
+li:hover ul a {
+	display: block;
+	opacity: 0.8;
+	width: 25px;
+	height: 22px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-indent: -9999px;
+	background: url(buttons.png) no-repeat 7px 3px;
+}
+li ul li:last-child {
+	left: 26px;
+}
+li ul li:last-child a {
+	background-position: -18px 3px;
+}
+li ul li a:hover, li ul li a:focus {
+	opacity: 1;
+}
+
+
+.in, .out {
+	width: 25%;
+}
+.in {
+	float: left;
+}
+.out {
+	float: right;
+}
