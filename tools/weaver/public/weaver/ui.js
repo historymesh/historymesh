@@ -17,6 +17,8 @@ var findSaved = function () {
   });
 };
 
+findSaved();
+
 var urlToArticle = function (uri) {
   var slug = uri.replace(/^.*\/wiki\/(.*)$/, '$1'),
       name = decodeURIComponent(slug),
