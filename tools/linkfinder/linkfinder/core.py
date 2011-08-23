@@ -63,3 +63,17 @@ def frontpage():
     response = make_response(json.dumps(result))
     response.headers['Content-Type'] = 'application/json'
     return response
+
+@app.route('/search')
+def search():
+    args = request.args
+    title = args.get('title')
+    results = docs.field('t').text(title)[:1000]
+
+    result = dict(
+        articles = [idunesc(r.data['id'][0]) for r in results],
+    )
+
+    response = make_response(json.dumps(result))
+    response.headers['Content-Type'] = 'application/json'
+    return response
