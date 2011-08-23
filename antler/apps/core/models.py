@@ -34,6 +34,8 @@ class Edge(models.Model):
         model = self._model_from_type_string(self.object_type)
         return model.objects.get(pk=self.object_id)
 
+    object = property(get_object, set_object)
+
     def set_subject(self, subject):
         self.subject_type = self._type_string_from_model(subject)
         self.subject_id = subject.pk
@@ -41,6 +43,8 @@ class Edge(models.Model):
     def get_subject(self):
         model = self._model_from_type_string(self.subject_type)
         return model.objects.get(pk=self.subject_id)
+
+    subject = property(get_subject, set_subject)
 
 
 class EdgeObjectQuerySet(QuerySet):
@@ -127,6 +131,9 @@ class Node(models.Model, EdgesMixin):
     """
     Abstract superclass for Nodes in our graph.
     """
+
+    name = models.CharField(max_length=1024, unique=True)
+    text = models.TextField(blank=True)
 
     class Meta:
         abstract = True

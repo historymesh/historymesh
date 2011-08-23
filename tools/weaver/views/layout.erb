@@ -8,19 +8,24 @@
   <link rel="stylesheet" href="/base.css" media="screen">
   <script type="text/javascript" src="/jquery-1.6.2.min.js"></script>
   <script type="text/javascript" src="/weaver.js"></script>
+  <script type="text/javascript" src="/weaver/storage.js"></script>
+  <script type="text/javascript" src="/weaver/article.js"></script>
+  <script type="text/javascript" src="/weaver/ui.js"></script>
 </head>
 
 <body>
 
   <header>
-    <div class="section">
+    <section>
       <nav>
         <ul>
-          <li><a href="/faves">Faves</a></li>
+          <li><a href="/stories/new">New story</a></li>
+          <li><a href="/saved">Saved</a></li>
+          <li><a href="/stories/">Stories</a></li>
         </ul>
       </nav>
-      <h1>Weaver</h1>
-    </div>
+      <h1><a href="/wiki/Jacquard_loom">Weaver</a></h1>
+    </section>
   </header>
 
   <%= yield %>

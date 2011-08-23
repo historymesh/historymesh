@@ -1,7 +1,7 @@
-require 'cgi'
 require 'json'
 require 'net/http'
 require 'uri'
+require 'wikicloth'
 require 'wikitext'
 
 # Server to get Wikipedia article data

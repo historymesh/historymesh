@@ -1,0 +1,13 @@
+<h2>Stories</h2>
+
+<div class="stories">
+  <ul></ul>
+</div>
+
+<script type="text/javascript">
+  var target = $('.stories ul');
+
+  Weaver.Article.findStories( function (story) {
+    target.append('<li>' + Weaver.linkFor(story) + '</li>');
+  });
+</script>
