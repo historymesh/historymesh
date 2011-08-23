@@ -70,8 +70,8 @@ def main(main_file, index_file):
             if len(row) != 4:
                 print ('\nBad row: %d' % i)
                 continue
-            (id, start, offset, targets) = row
-            doc = {'id': idesc(id), 's': int(start), 'o': int(offset)}
+            (id, start, size, targets) = row
+            doc = {'id': idesc(id), 's': int(start), 'o': int(size)}
             links = []
             for target in targets.split('|'):
                 links.append(idesc(target))
