@@ -61,43 +61,6 @@ li {
 	line-height: 1.5;
 	position: relative;
 }
-li ul, li ul li {
-	margin: 0;
-	padding: 0;
-	display: inline;
-}
-li ul {
-	display: block;
-	float: right;
-	width: 50px;
-	height: 22px;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-li ul a {
-	display: none;
-}
-li:hover ul a {
-	display: block;
-	opacity: 0.8;
-	width: 25px;
-	height: 22px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	text-indent: -9999px;
-	background: url(buttons.png) no-repeat 6px 2px;
-}
-li ul li:last-child {
-	left: 26px;
-}
-li ul li:last-child a {
-	background-position: -20px 2px;
-}
-li ul li a:hover, li ul li a:focus {
-	opacity: 1;
-}
 
 .influenced, .influenced-by {
 	font-weight: bold;
@@ -157,18 +120,18 @@ legend li:last-child:before {
 }
 
 
-.header {
-}
-
-
 header {
 	color: #fff;
 	background: #600;
 	height: 50px;
 	width: 100%;
+	position: relative;
+	z-index: 1;
 	overflow: hidden;
 	border-bottom: solid 1px #400;
 	-webkit-box-shadow: rgba(68, 0, 0, 0.5) 0 2px 8px;
+	-moz-box-shadow: rgba(68, 0, 0, 0.5) 0 2px 8px;
+	box-shadow: rgba(68, 0, 0, 0.5) 0 2px 8px;
 }
 	header section {
 		padding: 0 50px;
@@ -209,6 +172,8 @@ header a, header a:link {
 	padding: 0 5%;
 	height: 200px;
 	overflow: auto;
+	position: relative;
+	z-index: 2;
 
 	color: #352b23;
 	background-color: #f3ece9;
