@@ -1,119 +1,18 @@
 Weaver = {
+
   linkFor: function(article) {
     if (!article.link) {
       article = new Weaver.Article(article.name, article.type);
     }
     return article.link();
-  }
-};
-
-Weaver.Storage = function() {};
-$.extend(Weaver.Storage.prototype, {
-
-  saveArticle: function(article) {
-    var list = this._getSaved();
-    if (list.indexOf(article.name) < 0) list.push(article.name);
-
-    localStorage.setItem('saved', JSON.stringify(list));
-    localStorage.setItem('article:' + article.name, JSON.stringify(article));
   },
 
-  deleteArticle: function (article) {
-    var list = this._getSavedArticles();
-
-    var loc = list.indexOf(article.name);
-
-    if (loc >= 0) {
-      list = list.slice(0, loc).concat(list.slice(loc + 1, list.length));
-      localStorage.setItem('saved', JSON.stringify(list));
-    }
-
-    localStorage.removeItem('article:' + article.name);
-  },
-
-  getSavedArticles: function(callback, context) {
-    var articles = this._getSaved().map(function(name) {
-      return JSON.parse(localStorage.getItem('article:' + name));
+  Saved: function(selector) {
+    storage.getSavedArticles(function(articles) {
+      $.each(articles, function(i, article) {
+        $(selector).append('<li>' + Weaver.linkFor(article) + '</li>');
+      });
     });
-    callback.call(context, articles);
-  },
-
-  getSavedArticle: function(name, callback, context) {
-    var articleJSON = localStorage.getItem('article:' + name);
-    if (!articleJSON) return callback.call(context, false);
-
-    var articleData = JSON.parse(articleJSON),
-        article = new Weaver.Article(articleData.name, articleData.type);
-
-    article.relationships = articleData.relationships;
-    article.text = articleData.text;
-
-    callback.call(context, article);
-  },
-
-  _getSaved: function() {
-    var saved = localStorage.getItem('saved'),
-        list  = (saved === null) ? [] : JSON.parse(saved);
-
-    return list;
   }
 
-});
-
-var storage = new Weaver.Storage();
-
-Weaver.Article = function(name, type) {
-  this.name = name;
-  this.type = type || 'unknown';
-  this.relationships = {};
-};
-
-Weaver.Article.find = function (name, callback) {
-  storage.getSavedArticle(name, callback)
-};
-
-Weaver.Article.findStories = function (callback) {
-  storage.getSavedArticles( function (articles) {
-    $.each(articles, function (i, article) {
-      if (article.type === "story") callback(article);
-    });
-  });
-}
-
-$.extend(Weaver.Article.prototype, {
-
-  setType: function (type) {
-    this.type = type;
-  },
-
-  addRelationship: function (relatedObj, type) {
-    if (!this.relationships[type]) this.relationships[type] = [];
-    this.relationships[type].push( relatedObj.name );
-    this.save();
-  },
-
-  save: function () {
-    storage.saveArticle(this);
-  },
-
-  delete: function () {
-    storage.deleteArticle(this);
-  },
-
-  link: function () {
-    var name = decodeURIComponent(this.name),
-        type = this.type,
-        href = (type === 'story' ? '/stories/' : '/wiki/') + encodeURIComponent(name);
-
-    return '<a href="' + href + '">' + name + '</a>';
-  },
-
-});
-
-Weaver.Saved = function(selector) {
-  storage.getSavedArticles(function(articles) {
-    $.each(articles, function(i, article) {
-      $(selector).append('<li>' + Weaver.linkFor(article) + '</li>');
-    });
-  });
 };
