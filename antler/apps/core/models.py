@@ -2,6 +2,12 @@ from django.db import models
 from django.db.models.query import QuerySet
 
 class Edge(models.Model):
+    """
+    Models a relationship between two other model instances.
+    In the form [subject] [verb] [object]
+    e.g. [Brunel] [invented] [tunneling shield]
+    """
+
     subject_type = models.CharField(max_length=255)
     subject_id = models.IntegerField()
     object_type = models.CharField(max_length=255)
@@ -38,6 +44,9 @@ class Edge(models.Model):
 
 
 class EdgeObjectQuerySet(QuerySet):
+    """
+    QuerySet subclass that allows you to easily follow edges to their object.
+    """
     def follow(self):
         to_load = {}
         for edge in self:
@@ -55,6 +64,9 @@ class EdgeObjectQuerySet(QuerySet):
 
 
 class EdgeSubjectQuerySet(QuerySet):
+    """
+    QuerySet subclass that allows you to easily follow edges to their subject.
+    """
     def follow(self):
         to_load = {}
         for edge in self:
@@ -73,6 +85,11 @@ class EdgeSubjectQuerySet(QuerySet):
 
 class EdgesMixin(object):
     def outgoing(self, verb=None):
+        """
+        Finds all edges for which self is the edge's subject.
+        Returns a EdgeObjectQuerySet. Calling follow() on the returned query
+        set will give a list of the edges' objects.
+        """
         queryset = Edge.objects.filter(
             subject_type=Edge._type_string_from_model(self),
             subject_id=self.pk,
@@ -87,6 +104,11 @@ class EdgesMixin(object):
         )
 
     def incoming(self, verb=None):
+        """
+        Finds all edges for which self is the edge's object.
+        Returns a EdgeSubjectQuerySet. Calling follow() on the returned query
+        set will give a list of the edges' subjects.
+        """
         queryset = Edge.objects.filter(
             object_type=Edge._type_string_from_model(self),
             object_id=self.pk,
@@ -102,6 +124,9 @@ class EdgesMixin(object):
 
 
 class Node(models.Model, EdgesMixin):
+    """
+    Abstract superclass for Nodes in our graph.
+    """
 
     class Meta:
         abstract = True
@@ -114,17 +139,29 @@ class Node(models.Model, EdgesMixin):
 
 
 class Person(Node):
+    """
+    A person.
+    """
     pass
 
 
 class Event(Node):
+    """
+    A thing that happened at a given point in time.
+    """
     pass
 
 
 class Concept(Node):
+    """
+    A concept that was developed or discovered, e.g. punch cards, communism
+    """
     pass
 
 
-class Object(models.Model, EdgesMixin):
+class Object(Node):
+    """
+    A physical thing which arose from a concept, e.g. the Jacquard Loom
+    """
     pass
 
