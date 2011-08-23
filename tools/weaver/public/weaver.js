@@ -11,14 +11,32 @@ $.extend(Weaver.Storage.prototype, {
     localStorage.setItem('article:' + article.name, JSON.stringify(article));
   },
 
+  deleteArticle: function (article) {
+    var list = this._getSavedArticles();
+
+    var loc = list.indexOf(article.name);
+
+    if (loc >= 0) {
+      list = list.slice(0, loc).concat(list.slice(loc + 1, list.length));
+      localStorage.setItem('saved', JSON.stringify(list));
+    }
+
+    localStorage.removeItem('article:' + article.name);
+  },
+
   getSavedArticles: function(callback, context) {
     callback.call(context, this._getSavedArticles());
   },
 
   getSavedArticle: function(name, callback) {
+    var articleJSON = localStorage.getItem('article:' + name);
+    if (!articleJSON) return callback(false);
+
     var articleData = JSON.parse(localStorage.getItem('article:' + name));
     
     var article = new Weaver.Article(articleData.name, articleData.type);
+    article.relationships = articleData.relationships;
+
     callback.call(article);
   },
 
@@ -37,6 +55,10 @@ Weaver.Article = function(name, type) {
   this.name = name;
   this.type = type || 'unknown';
   this.relationships = {};
+
+  this.find = function (name, callback) {
+    storage.getSavedArticle(name, callback)
+  };
 };
 
 $.extend(Weaver.Article.prototype, {
@@ -53,6 +75,10 @@ $.extend(Weaver.Article.prototype, {
 
   save: function () {
     storage.saveArticle(this);
+  },
+
+  delete: function () {
+    storage.deleteArticle(this);
   },
 
 });
