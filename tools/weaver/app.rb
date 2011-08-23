@@ -5,8 +5,12 @@ get '/' do
   Article.count.to_s
 end
 
+get '/wiki/:name.*' do
+  error 404
+end
+
 get '/wiki/:name' do
-  @article = Article.new(params)
+  @article = Article.find(params[:name])
   @title   = @article.name
   erb :article
 end

@@ -1,13 +1,19 @@
 class Article
   attr_reader :name
 
-  def initialize(params)
-    @name = params[:name].gsub(/^(.)/) { $1.upcase }.gsub('_', ' ')
+  def self.find(name)
+    @cache ||= {}
+    @cache[name] ||= new(name)
+  end
+
+  def initialize(name)
+    @name = name.gsub(/^(.)/) { $1.upcase }.gsub('_', ' ')
   end
 
   def html
-    text = data['text'].gsub!(/\{\{[^\}]*\}\}/, '')
-    WikiCloth::Parser.new(:data => text).to_html
+    return @html if defined?(@html)
+    text = data['text'].gsub(/\{\{[^\}]*\}\}/, '')
+    @html = WikiCloth::Parser.new(:data => text).to_html
   end
 
   def inlinks
