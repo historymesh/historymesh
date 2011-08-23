@@ -42,20 +42,22 @@
 </section>
 
 <script type="text/javascript">
+  var storage = new Weaver.Storage();
 
-  /* Find if the current article is saved. */
   var findSaved = function () {
-    var articleName = $("a.save").attr('href').replace(/^.*\/wiki\/(.*)$/, '$1');
-  
-    Weaver.Article.find( articleName, function (article) {
-      if (article) {
-        $("a.save").each( function (link) {
-          if ($(link).attr('href').match(articleName)) {
-            link.setAttribute('class', 'saved');
-            link.innerText('Saved!');
-          }
-        });
-      }
+    storage.getSavedArticles(function(articles) {
+      var names = articles.map(function(a) { return a.name });
+
+      $('a.save').each(function(i, link) {
+        var href = $(link).attr('href');
+
+        var slug = href.replace(/^.*\/wiki\/(.*)$/, '$1'),
+            name = decodeURIComponent(slug);
+
+        if (names.indexOf(name) < 0) return;
+
+        $(link).addClass('saved').html('Saved!');
+      });
     });
   };
 
