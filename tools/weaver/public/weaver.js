@@ -1,21 +1,10 @@
 Weaver = {
   linkFor: function(article) {
-    var name = decodeURIComponent(article.name),
-        type = article.type,
-        href = (type === 'story' ? '/stories/' : '/wiki/') + encodeURIComponent(name);
-
-    return '<a href="' + href + '">' + name + '</a>';
+    if (!article.link) {
+      article = new Weaver.Article(article.name, article.type);
+    }
+    return article.link();
   }
-};
-
-Weaver.Saved = function(selector) {
-  var storage = new Weaver.Storage();
-
-  storage.getSavedArticles(function(articles) {
-    $.each(articles, function(i, article) {
-      $(selector).append('<li>' + Weaver.linkFor(article) + '</li>');
-    });
-  });
 };
 
 Weaver.Storage = function() {};
@@ -77,12 +66,19 @@ Weaver.Article = function(name, type) {
   this.name = name;
   this.type = type || 'unknown';
   this.relationships = {};
-
 };
 
 Weaver.Article.find = function (name, callback) {
   storage.getSavedArticle(name, callback)
 };
+
+Weaver.Article.findStories = function (callback) {
+  storage.getSavedArticles( function (articles) {
+    $.each(articles, function (i, article) {
+      if (article.type === "story") callback(article);
+    });
+  });
+}
 
 $.extend(Weaver.Article.prototype, {
 
@@ -102,6 +98,22 @@ $.extend(Weaver.Article.prototype, {
 
   delete: function () {
     storage.deleteArticle(this);
-  }
+  },
+
+  link: function () {
+    var name = decodeURIComponent(this.name),
+        type = this.type,
+        href = (type === 'story' ? '/stories/' : '/wiki/') + encodeURIComponent(name);
+
+    return '<a href="' + href + '">' + name + '</a>';
+  },
+
 });
 
+Weaver.Saved = function(selector) {
+  storage.getSavedArticles(function(articles) {
+    $.each(articles, function(i, article) {
+      $(selector).append('<li>' + Weaver.linkFor(article) + '</li>');
+    });
+  });
+};
