@@ -1,6 +1,7 @@
 var storage = new Weaver.Storage();
 
 var findSaved = function () {
+console.log('findsaved getting called');
   storage.getSavedArticles(function(articles) {
     var names = articles.map(function(a) { return a.name });
 
@@ -23,7 +24,7 @@ var findSaved = function () {
   });
 };
 
-findSaved();
+$(document).ready( function () { findSaved(); } );
 
 var urlToArticle = function (uri) {
   var slug = uri.replace(/^.*\/wiki\/(.*)$/, '$1'),
