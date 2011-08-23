@@ -132,6 +132,8 @@ class Node(models.Model, EdgesMixin):
     Abstract superclass for Nodes in our graph.
     """
 
+    name = models.CharField(max_length=1024, unique=True)
+
     class Meta:
         abstract = True
 

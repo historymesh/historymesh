@@ -21,18 +21,21 @@ def main(filename, output_filename):
             # Do a time estimate
             if i % 1000 == 1:
                 time_per_page = (time.time() - start_time) / i
-                print "%6.2f%% - %6.2fh - %s" % (
+                sys.stderr.write("%6.2f%% - %6.2fh - %s\n" % (
                     (i / number_of_articles) * 100,
                     (time_per_page * (number_of_articles - i)) / 3600.0,
                     title,
-                )
+                ))
+                sys.stderr.flush()
             # Output the line
-            fh.write("%s\t%i\t%i\t%s\n" % (
+            fh.write("%s\t%i\t%i\t%s\t%s\n" % (
                 title,
                 start,
                 length,
+                "true" if is_redirect(text) else "false",
                 "|".join(set(extract_links(text))),
             ))
+        sys.stderr.write("\nDone in %6.2fh\n" % (time.time() - start_time))
 
 
 def parse(filename):
@@ -103,6 +106,9 @@ def extract_links(text):
             link_text = link_text[:hash_index]
         # Yield the valid link
         yield link_text
+
+def is_redirect(text):
+    return text.startswith("#REDIRECT")
 
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2])

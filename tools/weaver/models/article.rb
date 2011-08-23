@@ -29,10 +29,8 @@ private
   def data
     return @data if defined?(@data)
 
-    uri   = URI.parse("http://#{CONTENT_HOST}/?title=#{CGI.escape @name}")
-puts uri
+    uri   = URI.parse("http://#{CONTENT_HOST}/?title=#{URI.escape @name}")
     json  = Net::HTTP.get_response(uri).body
-puts json
     @data = JSON.parse(json)
   end
 end
