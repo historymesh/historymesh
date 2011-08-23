@@ -45,6 +45,8 @@ def main(main_file, index_file):
             's': {'store_field': 's', 'type': 'stored'},
             'o': {'store_field': 'o', 'type': 'stored'},
             'l': {'store_field': 'l', 'group': 'l', 'max_length': 30, 'too_long_action': 'hash', 'type': 'exact'},
+            'r': {'store_field': '', 'group': 'r', 'max_length': 30, 'too_long_action': 'hash', 'type': 'exact'},
+            't': {'store_field': '', 'group': 't', 'type': 'text', 'processor': 'stem_en'},
         },
 
         'patterns': [
@@ -67,11 +69,18 @@ def main(main_file, index_file):
                 ))
 
                 sys.stdout.flush()
-            if len(row) != 4:
+            if len(row) != 5:
                 print ('\nBad row: %d' % i)
                 continue
-            (id, start, size, targets) = row
+            (id, start, size, is_redirect, targets) = row
             doc = {'id': idesc(id), 's': int(start), 'o': int(size)}
+            doc['t'] = id
+            if is_redirect == 'true':
+                doc['r'] = 'R'
+            elif is_redirect == 'false':
+                pass
+            else:
+                assert False
             links = []
             for target in targets.split('|'):
                 links.append(idesc(target))

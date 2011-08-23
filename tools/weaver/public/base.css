@@ -63,6 +63,43 @@ li {
 }
 
 
+																		/* -- reusables -- */
+a.button, a.button:visited {
+	display: block;
+	font: normal 12px sans-serif;
+	text-shadow: rgba(0, 0, 0, 0.2) 0 1px 0;
+	padding: 5px 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: rgba(211, 127, 57, 0.8);
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(1, rgba(139,66,0,0.6)),
+	    color-stop(0, rgba(211,127,57,0.1))
+	);
+	background-image: -moz-linear-gradient(
+	    center top,
+	    rgba(139,66,0,0.6) 0%,
+	    rgba(211,127,57,0.1) 100%
+	);
+	background-image: linear-gradient(
+	    center top,
+	    rgba(139,66,0,0.6) 0%,
+	    rgba(211,127,57,0.1) 100%
+	);
+
+	-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
+}
+	a.button:hover, a.button:focus {
+		background-color: rgba(211, 127, 57, 1);
+	}
+
+
 																		/* -- links into / out from article -- */
 .in, .out {
 	width: 25%;
@@ -84,7 +121,7 @@ header {
 	height: 50px;
 	width: 100%;
 	position: relative;
-	z-index: 1;
+	z-index: 10;
 	overflow: hidden;
 	border-bottom: solid 1px #400;
 	-webkit-box-shadow: rgba(68, 0, 0, 0.5) 0 2px 8px;
@@ -154,10 +191,17 @@ header li a, header li a:link {
 	    rgba(242,236,234, 0.1) 100%
 	), url(bg.gif);
 }
+.finder h1 a.button, .finder h1 a.button:visited {
+	width: 50px;
+	margin: 0 auto;
+}
+
 
 
 																		/* -- Wikipedia article styling -- */
 .article-text {
+	position: relative;
+	z-index: 10;
 	background: #fff;
 	padding: 2% 5%;
 	line-height: 1.4;
