@@ -33,8 +33,8 @@ def main(main_file, index_file):
     """
 
     coll = restpose.Server().collection('wikilinks')
-    coll.delete()
-    coll.checkpoint().wait()
+    #coll.delete()
+    #coll.checkpoint().wait()
     articles = coll.doc_type('a')
     c = coll.config
     c['types']['a'] = {
@@ -72,8 +72,11 @@ def main(main_file, index_file):
                 continue
             (id, start, offset, targets) = row
             doc = {'id': idesc(id), 's': int(start), 'o': int(offset)}
+            links = []
             for target in targets.split('|'):
-                doc['l'] = idesc(target)
+                links.append(idesc(target))
+            if links:
+                doc['l'] = links
 
             while True:
                 try:
