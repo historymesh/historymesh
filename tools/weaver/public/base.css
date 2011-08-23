@@ -199,6 +199,7 @@ header li a, header li a:link {
 }
 .finder .saved {
 	font-weight: bold;
+	text-transform: uppercase;
 	padding-left: 18px;
 	background: url(floppy.png) no-repeat 0 1px;
 }
@@ -225,6 +226,7 @@ header li a, header li a:link {
 }
 .article-text .saved {
 	font-weight: bold;
+	text-transform: uppercase;
 	padding-left: 18px;
 	margin-left: 9px;
 	background: url(floppy.png) no-repeat 0 1px;
