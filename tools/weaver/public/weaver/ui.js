@@ -24,3 +24,6 @@ var urlToArticle = function (uri) {
 
   return article;
 }
+
+$('a').each( function(link) {
+});
