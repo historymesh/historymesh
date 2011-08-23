@@ -1,5 +1,5 @@
 																		/* -- Base HTML -- */
-a:link {
+a {
 	color: #8f4322;
 	text-decoration: none;
 }
@@ -27,9 +27,9 @@ h1 {
 	text-shadow: rgba(255,255,255,0.7) 0 1px 0;
 }
 	h1 a, h1 a:visited {
-		font-size: 14px;
-		display: block;
+		color: #fff;
 	}
+	
 h2 {
 	font-size: 14px;
 	font-style: italic;
@@ -62,27 +62,8 @@ li {
 	position: relative;
 }
 
-.influenced, .influenced-by {
-	font-weight: bold;
-}
-.influenced a:visited, .influenced-by a:visited {
-	color: #9e3a0e;
-}
-.influenced:before, .influenced-by:before {
-	content: " ";
-	display: inline-block;
-	vertical-align: baseline;
-	width: 17px;
-	height: 17px;
-	background: url(buttons.png) no-repeat -2px -23px;
-	position: relative;
-	top: 4px;
-	opacity: 0.5;
-}
-.influenced-by:before {
-	background-position: -20px -23px;
-}
 
+																		/* -- links into / out from article -- */
 .in, .out {
 	width: 25%;
 }
@@ -95,31 +76,8 @@ li {
 
 
 
-legend {
-	font-size: 12px;
-	color: #8b8580;
-	padding-top: 200px;
-	text-align: center;
-	margin: 50px 25% 0 25%;
-	width: 40%;
-}
-legend li {
-	display: inline-block;
-}
-legend li:before {
-	content: " ";
-	width: 17px;
-	height: 18px;
-	margin-right: 5px;
-	display: inline-block;
-	vertical-align: bottom;
-	background: url(buttons.png) no-repeat -2px -23px;
-}
-legend li:last-child:before {
-	background-position: -20px -23px;
-}
 
-
+																		/* -- main Weaver header -- */
 header {
 	color: #fff;
 	background: #600;
@@ -154,7 +112,7 @@ header nav {
 	padding-top: 15px;
 	font: 12px sans-serif;
 }
-header a, header a:link {
+header li a, header li a:link {
 	color: rgba(255,255,255,0.7);
 	background: rgba(68,0,0,0.5);
 	padding: 2px 12px;
@@ -163,11 +121,12 @@ header a, header a:link {
 	-moz-border-radius: 24px;
 	border-radius: 24px;
 }
-	header a:hover, header a:focus {
+	header li a:hover, header li a:focus {
 		color: rgba(255,255,255,1);
 	}
 
 
+																		/* -- article finder view -- */
 .finder {
 	padding: 0 5%;
 	height: 200px;
@@ -197,6 +156,7 @@ header a, header a:link {
 }
 
 
+																		/* -- Wikipedia article styling -- */
 .article-text {
 	background: #fff;
 	padding: 2% 5%;
@@ -209,11 +169,13 @@ header a, header a:link {
 	color: #069;
 	text-decoration: underline;
 }
-
 .article-text a:visited {
 	color: #609;
 }
 
+
+
+																		/* -- admin functions -- */
 .story .saved, .story .related {
   float: right;
   width: 200px;
