@@ -78,9 +78,10 @@ Weaver.Article = function(name, type) {
   this.type = type || 'unknown';
   this.relationships = {};
 
-  this.find = function (name, callback) {
-    storage.getSavedArticle(name, callback)
-  };
+};
+
+Weaver.Article.find = function (name, callback) {
+  storage.getSavedArticle(name, callback)
 };
 
 $.extend(Weaver.Article.prototype, {

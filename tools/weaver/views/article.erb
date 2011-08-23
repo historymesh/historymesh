@@ -47,7 +47,7 @@
   var findSaved = function () {
     var articleName = $("a.save").attr('href').replace(/^.*\/wiki\/(.*)$/, '$1');
   
-    Weaver.Article.find( function (context, article) {
+    Weaver.Article.find( article, function (context, article) {
       if (article) {
         $("a.save").each( function (link) {
           if ($(link).attr('href').match(articleName)) {
