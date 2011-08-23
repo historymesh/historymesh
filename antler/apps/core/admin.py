@@ -5,10 +5,8 @@ admin.site.register(
     Edge,
     list_display=[
         'id',
-        'subject_type',
-        'subject_id',
-        'object_type',
-        'object_id',
+        'subject',
+        'object',
         'verb',
     ],
     list_filter = [

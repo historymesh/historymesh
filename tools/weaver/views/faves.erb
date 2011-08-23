@@ -8,7 +8,7 @@
 <script type="text/javascript">
   var storage = new Weaver.Storage();
 
-  storage.getFaves(function(names) {
+  storage.getSavedArticles(function(names) {
     $.each(names, function(i, name) {
       $('ul').append('<li><a href="/wiki/' + name + '">' + name + '</a></li>');
     });
