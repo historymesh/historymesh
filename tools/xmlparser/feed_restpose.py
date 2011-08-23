@@ -57,7 +57,7 @@ def main(main_file, index_file):
 
     with open(index_file) as fh:
     	for i, line in enumerate(fh):
-            row = line.split('\t')
+            row = line.rstrip('\n').split('\t')
             if i % 27 == 1:
                 time_per_page = (time.time() - start_time) / i
                 sys.stdout.write("\rProcessed %d lines: %6.2f%% - %6.2fh" % (
