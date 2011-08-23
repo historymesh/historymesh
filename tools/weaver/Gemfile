@@ -3,5 +3,5 @@ source "http://gems.fort/"
 gem "json"
 gem "sinatra"
 gem "thin"
-gem "wikitext"
+gem "wikicloth"
 
