@@ -48,10 +48,9 @@
   <% end %>
 
   $('.saved li').live('click', function() {
-    var slug = $(this).find('a').attr('href').replace(/^.*\/wiki\/(.*)$/, '$1'),
-        name = decodeURIComponent(slug);
+    var article = urlToArticle($(this).find('a').attr('href'));
 
-    addRelated(name);
+    addRelated(article.name);
     return false;
   });
 

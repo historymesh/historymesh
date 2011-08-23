@@ -42,34 +42,10 @@
 </section>
 
 <script type="text/javascript">
-  var storage = new Weaver.Storage();
-
-  var findSaved = function () {
-    storage.getSavedArticles(function(articles) {
-      var names = articles.map(function(a) { return a.name });
-
-      $('a.save').each(function(i, link) {
-        var href = $(link).attr('href');
-
-        var slug = href.replace(/^.*\/wiki\/(.*)$/, '$1'),
-            name = decodeURIComponent(slug);
-
-        if (names.indexOf(name) < 0) return;
-
-        $(link).addClass('saved').html('Saved!');
-      });
-    });
-  };
-
-  // Do it once at startup.
-  findSaved();
 
   // Do it once we've saved the article.
   $('a.save').live('click', function() {
-    var slug = $(this).attr('href').replace(/^.*\/wiki\/(.*)$/, '$1'),
-        name = decodeURIComponent(slug);
-        article = new Weaver.Article(name);
-
+    var article = urlToArticle($(this).attr('href'));
     article.save();
 
     findSaved();
@@ -77,6 +53,7 @@
     return false;
   });
 
+  // Find any already-saved links once at startup.
+  findSaved();
 
 </script>
-
