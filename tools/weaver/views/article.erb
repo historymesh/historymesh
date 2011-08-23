@@ -1,11 +1,11 @@
 <div class="finder">
-  <h1><%= @article.name %> <a class="save" href="/wiki/<%= CGI.escape @article.name %>">Save</a></h1>
+  <h1><%= @article.name %> <a class="save" href="/wiki/<%= URI.escape @article.name %>">Save</a></h1>
   <nav class="in">
     <h2>Links In</h2>
     <ul>
       <% @article.inlinks.each do |title| %>
         <li>
-          <a href="/wiki/<%= CGI.escape title %>"><%= title %></a>
+          <a href="/wiki/<%= URI.escape title %>"><%= title %></a>
           <ul>
             <li><a href="#">Influenced</a></li>
             <li><a href="#">Influenced By</a></li>
@@ -19,7 +19,7 @@
     <ul>
       <% @article.outlinks.each do |title| %>
         <li>
-          <a href="/wiki/<%= CGI.escape title %>"><%= title %></a>
+          <a href="/wiki/<%= URI.escape title %>"><%= title %></a>
           <ul>
             <li><a href="#">Influenced</a></li>
             <li><a href="#">Influenced By</a></li>
@@ -33,9 +33,18 @@
 
 <hr class="hide">
 
-<div class="section article-text">
+<section class="article-text">
   <%= @article.html %>
-</div>
+</section>
 
-<script type="text/javascript">new Weaver.Article()</script>
+<script type="text/javascript">
+  $('a.save').live('click', function() {
+    var slug = $(this).attr('href').replace(/^.*\/wiki\/(.*)$/, '$1'),
+        name = decodeURIComponent(slug);
+
+    var article = new Weaver.Article(name);
+
+    return article.save();
+  });
+</script>
 

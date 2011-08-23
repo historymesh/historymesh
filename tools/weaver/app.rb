@@ -15,7 +15,19 @@ get '/wiki/:name' do
   erb :article
 end
 
-get '/faves' do
-  erb :faves
+get '/stories/new' do
+  @title = 'Create a story'
+  erb :story
+end
+
+get '/stories/:name' do
+  @title = params[:name]
+  @story = params[:name]
+  erb :story
+end
+
+get '/saved' do
+  @title = 'Saved articles'
+  erb :saved
 end
 
