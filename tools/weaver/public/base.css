@@ -99,6 +99,23 @@ a.button, a.button:visited {
 }
 	a.button:hover, a.button:focus {
 		background-color: rgba(211, 127, 57, 1);
+		background-image: -webkit-gradient(
+		    linear,
+		    left top,
+		    left bottom,
+		    color-stop(1, #e55a10),
+		    color-stop(0, #ffa429)
+		);
+		background-image: -moz-linear-gradient(
+		    center top,
+				#ffa429 0%,
+		    #e55a10 100%
+		);
+		background-image: linear-gradient(
+		    center top,
+				#ffa429 0%,
+		    #e55a10 100%
+		);
 	}
 
 
