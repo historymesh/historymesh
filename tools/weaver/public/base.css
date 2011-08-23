@@ -247,7 +247,7 @@ header a, header a:link {
 	color: #609;
 }
 
-.saved, .related {
+.story .saved, .story .related {
   float: right;
   width: 200px;
 }
