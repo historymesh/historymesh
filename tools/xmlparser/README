@@ -5,3 +5,5 @@ parser.py is used to process a wikipedia dump into a tsv file containing:
  - | separated list of titles of links in the content
 
 extract_wikitext.py scans through dump for a title
+
+feed_restpose.py indexes the link graph into restpose
