@@ -29,6 +29,10 @@ header nav a:link,
 header nav a:visited {
   color: #FFF;
 }
+.finder {
+  max-height: 300px;
+  overflow-y: scroll;
+}
 a:link {
 	color: #06A;
 	text-decoration: none;
@@ -134,3 +138,4 @@ li ul li a:hover, li ul li a:focus {
 .section h3 {
   font-size: 1.2em;
 }
+
