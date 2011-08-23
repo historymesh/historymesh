@@ -53,7 +53,7 @@ $.extend(Weaver.Article.prototype, {
   save: function () {
     storage.saveArticle(this);
     return false;
-  }
+  },
 
   toJSON: function () {
     return { name: this.name,
