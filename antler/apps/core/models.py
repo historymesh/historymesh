@@ -150,6 +150,6 @@ class Concept(Node):
     pass
 
 
-class Object(models.Model, EdgesMixin):
+class Object(Node):
     pass
 
