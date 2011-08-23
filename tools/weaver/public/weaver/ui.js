@@ -16,7 +16,7 @@ var findSaved = function () {
 
       $(link).addClass('saved')
 
-      if ($(link).html == 'Save') {
+      if ($(link).text() === 'Save') {
         $(link).html('Saved!');
       }
     });
