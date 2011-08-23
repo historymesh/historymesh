@@ -1,6 +1,37 @@
 																		/* -- Base HTML -- */
 body {
-	padding: 0 5%;
+  margin: 0;
+	padding: 0;
+}
+.section {
+  width: 800px;
+  margin: 0 auto;
+}
+header {
+  background: #06A;
+}
+header h1 {
+  position: relative;
+  color: #FFF;
+  margin: 0;
+  padding: 12px 0;
+  text-align: left;
+}
+header nav {
+  float: right;
+  margin: 16px 0 0;
+  padding: 0;
+}
+header nav li {
+  display: inline;
+}
+header nav a:link,
+header nav a:visited {
+  color: #FFF;
+}
+.finder {
+  max-height: 300px;
+  overflow-y: scroll;
 }
 a:link {
 	color: #06A;
@@ -20,6 +51,10 @@ h1 {
 	position: absolute;
 	margin: 50px 25% 0 25%;
 	width: 40%;
+}
+h1 a {
+  display: block;
+  font-size: 50%;
 }
 h2 {
 	font-size: 14px;
@@ -90,3 +125,17 @@ li ul li a:hover, li ul li a:focus {
 .out {
 	float: right;
 }
+.section * {
+  text-align: left;
+  padding-left: 0;
+}
+.section {
+  line-height: 1.5em;
+}
+.section h2 {
+  font-size: 1.8em;
+}
+.section h3 {
+  font-size: 1.2em;
+}
+

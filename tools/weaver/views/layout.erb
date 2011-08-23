@@ -6,10 +6,25 @@
   <title><%= @title %> | Weaver</title>
   <meta name="robots" content="all">
   <link rel="stylesheet" href="/base.css" media="screen">
+  <script type="text/javascript" src="/jquery-1.6.2.min.js"></script>
+  <script type="text/javascript" src="/weaver.js"></script>
 </head>
 
 <body>
+
+  <header>
+    <div class="section">
+      <nav>
+        <ul>
+          <li><a href="/faves">Faves</a></li>
+        </ul>
+      </nav>
+      <h1>Weaver</h1>
+    </div>
+  </header>
+
   <%= yield %>
+
 </body>
 
 </html>

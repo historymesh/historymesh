@@ -1,153 +1,31 @@
 <div class="finder">
-  <h1><%= @article.name %></h1>
+  <h1><%= @article.name %> <a class="star" href="/fave/<%= CGI.escape @article.name %>">Favourite</a></h1>
   <nav class="in">
     <h2>Links In</h2>
     <ul>
-      <li>
-        <a href="#">Lorem ipsum</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Dolor sit</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Amet consectiteur</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Lorem ipsum</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Dolor sit</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Amet consectiteur</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Lorem ipsum</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Dolor sit</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Amet consectiteur</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Lorem ipsum</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
+      <% @article.inlinks.each do |title| %>
+        <li>
+          <a href="/wiki/<%= CGI.escape title %>"><%= title %></a>
+          <ul>
+            <li><a href="#">Influenced</a></li>
+            <li><a href="#">Influenced By</a></li>
+          </ul>
+        </li>
+      <% end %>
     </ul>
   </nav>
   <nav class="out">
     <h2>Links Out</h2>
     <ul>
-      <li>
-        <a href="#">Lorem ipsum</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Dolor sit</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Amet consectiteur</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Lorem ipsum</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Dolor sit</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Amet consectiteur</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Lorem ipsum</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Dolor sit</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Amet consectiteur</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Lorem ipsum</a>
-        <ul>
-          <li><a href="#">Influenced</a></li>
-          <li><a href="#">Influenced By</a></li>
-        </ul>
-      </li>
+      <% @article.outlinks.each do |title| %>
+        <li>
+          <a href="/wiki/<%= CGI.escape title %>"><%= title %></a>
+          <ul>
+            <li><a href="#">Influenced</a></li>
+            <li><a href="#">Influenced By</a></li>
+          </ul>
+        </li>
+      <% end %>
     </ul>
   </nav>
 </div>
@@ -155,7 +33,9 @@
 
 <hr class="hide">
 
-<div class="article-text">
-  <%= @html %>
+<div class="section article-text">
+  <%= @article.html %>
 </div>
+
+<script type="text/javascript">new Weaver.Article()</script>
 
