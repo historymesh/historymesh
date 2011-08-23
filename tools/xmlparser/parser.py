@@ -3,15 +3,10 @@
 import re
 import sys
 import time
-import eventlet
-from eventlet.greenpool import GreenPool
-from eventlet.pools import Pool
-import psycopg2
-eventlet.monkey_patch()
 from lxml import etree
 
 title_regex = re.compile(r"\<title\>([^\<]+)\</title\>")
-link_regex = re.compile(r"\[\[([^\]]+)\]\]")
+link_regex = re.compile(r"\[\[([^\[\]\n]+)\]\]")
 start_pattern = '<text xml:space="preserve">'
 end_pattern = '</text>'
 number_of_articles = 10500000.0
