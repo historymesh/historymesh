@@ -36,10 +36,12 @@
 
   <% if @story %>
     var storage = new Weaver.Storage();
-    storage.getSavedArticle(<%= @story.inspect %>, function(article) {
-      $.each(article.relationships.actor, function(i, actorName) {
-        addRelated(actorName);
-      });
+    Weaver.Article.find(<%= @story.inspect %>, function(article) {
+      if (article.relationships.actor) {
+        $.each(article.relationships.actor, function(i, actorName) {
+          addRelated(actorName);
+        });
+      }
       nameField.val(article.name);
       textField.val(article.text);
     });
