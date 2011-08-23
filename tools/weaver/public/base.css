@@ -31,8 +31,10 @@ h1 {
 	}
 	
 h2 {
-	font-size: 14px;
+	font-size: 18px;
+	font-weight: normal;
 	font-style: italic;
+	text-shadow: rgba(255,255,255,0.7) 0 1px 0;
 }
 hr {
 	clear: both;
@@ -77,18 +79,18 @@ a.button, a.button:visited {
 	    linear,
 	    left top,
 	    left bottom,
-	    color-stop(1, rgba(139,66,0,0.6)),
-	    color-stop(0, rgba(211,127,57,0.1))
+	    color-stop(1, #c85f2b),
+	    color-stop(0, #de9f47)
 	);
 	background-image: -moz-linear-gradient(
 	    center top,
-	    rgba(139,66,0,0.6) 0%,
-	    rgba(211,127,57,0.1) 100%
+			#de9f47 0%,
+	    #c85f2b 100%
 	);
 	background-image: linear-gradient(
 	    center top,
-	    rgba(139,66,0,0.6) 0%,
-	    rgba(211,127,57,0.1) 100%
+			#de9f47 0%,
+	    #c85f2b 100%
 	);
 
 	-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
@@ -195,6 +197,11 @@ header li a, header li a:link {
 	width: 50px;
 	margin: 0 auto;
 }
+.finder .saved {
+	font-weight: bold;
+	padding-left: 18px;
+	background: url(floppy.png) no-repeat 0 1px;
+}
 
 
 
@@ -215,6 +222,12 @@ header li a, header li a:link {
 }
 .article-text a:visited {
 	color: #609;
+}
+.article-text .saved {
+	font-weight: bold;
+	padding-left: 18px;
+	margin-left: 9px;
+	background: url(floppy.png) no-repeat 0 1px;
 }
 
 
