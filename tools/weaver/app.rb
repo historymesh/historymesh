@@ -1,5 +1,6 @@
 require File.expand_path('../environment', __FILE__)
 require 'sinatra'
+require 'cgi'
 require 'net/http'
 require 'uri'
 require 'wikitext'
@@ -22,3 +23,6 @@ get '/wiki/:name' do
   erb :article
 end
 
+get '/faves' do
+  erb :faves
+end

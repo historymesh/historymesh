@@ -1,0 +1,16 @@
+<div class="section">
+  <h2>Favourites</h2>
+
+  <ul>
+  </ul>
+</div>
+
+<script type="text/javascript">
+  var storage = new Weaver.Storage();
+
+  storage.getFaves(function(names) {
+    $.each(names, function(i, name) {
+      $('ul').append('<li><a href="/wiki/' + name + '">' + name + '</a></li>');
+    });
+  });
+</script>
