@@ -37,5 +37,18 @@
   <%= @article.html %>
 </div>
 
-<script type="text/javascript">new Weaver.Article()</script>
+<script type="text/javascript">
+  var articleName = $("a.save").attr('href').replace(/^.*\/wiki\/(.*)$/, '$1');
+
+  Weaver.Article.find( function (context, article) {
+    if (article) {
+      $("a.save").each( function (link) {
+        if ($(link).attr('href').match(articleName)) {
+          link.setAttribute('class', 'saved');
+          link.innerText('Saved');
+        }
+      });
+    }
+  });
+</script>
 
