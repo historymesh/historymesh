@@ -66,7 +66,7 @@ li {
 
 
 																		/* -- reusables -- */
-a.button, a.button:visited {
+button, a.button, a.button:visited {
 	display: block;
 	font: normal 12px sans-serif;
 	text-shadow: rgba(0, 0, 0, 0.2) 0 1px 0;
@@ -74,6 +74,7 @@ a.button, a.button:visited {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+	color: #fff;
 	background-color: rgba(211, 127, 57, 0.8);
 	background-image: -webkit-gradient(
 	    linear,
@@ -92,12 +93,14 @@ a.button, a.button:visited {
 			#de9f47 0%,
 	    #c85f2b 100%
 	);
+	border: none;
+	cursor: pointer;
 
 	-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
 	-moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
 }
-	a.button:hover, a.button:focus {
+	button:hover, a.button:hover, a.button:focus {
 		background-color: rgba(211, 127, 57, 1);
 		background-image: -webkit-gradient(
 		    linear,
