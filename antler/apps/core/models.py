@@ -248,6 +248,9 @@ class Person(Node):
     A person.
     """
 
+    class Meta:
+        verbose_name_plural = "people"
+
     def url(self):
         return reverse('person', kwargs={'pk': self.pk})
 
@@ -298,6 +301,13 @@ class Story(models.Model):
     Breif description aobut the story for appearing on the homepage
     """
     text = models.TextField(blank=True)
+
+    def start(self):
+        story_edges = Edge.objects.filter(story=self)
+        subject_nodes = set(edge.subject for edge in story_edges)
+        object_nodes = set(edge.object for edge in story_edges)
+
+        return (subject_nodes - object_nodes).pop()
 
 class StoryContent(Node):
     """
