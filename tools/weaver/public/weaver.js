@@ -11,6 +11,19 @@ $.extend(Weaver.Storage.prototype, {
     localStorage.setItem('article:' + article.name, JSON.stringify(article));
   },
 
+  deleteArticle: function (article) {
+    var list = this._getSavedArticles();
+
+    var loc = list.indexOf(article.name);
+
+    if (loc >= 0) {
+      list = list.slice(0, loc).concat(list.slice(loc + 1, list.length));
+      localStorage.setItem('saved', JSON.stringify(list));
+    }
+
+    localStorage.removeItem('article:' + article.name);
+  },
+
   getSavedArticles: function(callback, context) {
     callback.call(context, this._getSavedArticles());
   },
@@ -37,6 +50,9 @@ Weaver.Article = function(name, type) {
   this.name = name;
   this.type = type || 'unknown';
   this.relationships = {};
+
+  this.find = function (name) {
+  };
 };
 
 $.extend(Weaver.Article.prototype, {
@@ -53,6 +69,10 @@ $.extend(Weaver.Article.prototype, {
 
   save: function () {
     storage.saveArticle(this);
+  },
+
+  delete: function () {
+    storage.deleteArticle(this);
   },
 
 });
