@@ -53,7 +53,6 @@ $.extend(Weaver.Article.prototype, {
 
   save: function () {
     storage.saveArticle(this);
-    return false;
   },
 
 });
@@ -62,5 +61,7 @@ $('a.save').live('click', function() {
   var name = $(this).attr('href').replace(/^.*\/wiki\/(.*)$/, '$1');
   var article = new Weaver.Article(name);
 
-  return article.save();
+  article.save();
+
+  return false;
 });
