@@ -133,6 +133,7 @@ class Node(models.Model, EdgesMixin):
     """
 
     name = models.CharField(max_length=1024, unique=True)
+    text = models.TextField(blank=True)
 
     class Meta:
         abstract = True
