@@ -1,5 +1,28 @@
 Weaver = {};
 
+Weaver.Storage = function() {};
+$.extend(Weaver.Storage.prototype, {
+
+  saveArticle: function(article) {
+    var list = this._getSavedArticles();
+    if (list.indexOf(article.name) < 0) list.push(article.name);
+    localStorage.setItem('saved', JSON.stringify(list));
+  },
+
+  getSavedArticles: function(callback, context) {
+    callback.call(context, this._getSavedArticles());
+  },
+
+  _getSavedArticles: function() {
+    var saved = localStorage.getItem('saved'),
+        list  = (saved === null) ? [] : JSON.parse(saved);
+
+    return list;
+  }
+});
+
+var storage = new Weaver.Storage();
+
 Weaver.Article = function(name, type) {
   this.name = name;
   this.type = type || 'unknown';
@@ -12,46 +35,20 @@ $.extend(Weaver.Article.prototype, {
   },
 
   addRelationship: function (relatedObj, type) {
+
     if (!this.relationships[type]) this.relationships[type] = [];
     this.relationships[type].push(relatedObj);
-  }
-});
-
-Weaver.Faves = function() {
-
-};
-
-Weaver.Storage = function() {};
-$.extend(Weaver.Storage.prototype, {
-
-  faveArticle: function(name) {
-    var list = this._getFaveList();
-    if (list.indexOf(name) < 0) list.push(name);
-    localStorage.setItem('faves', list.join('||'));
   },
 
-  getFaves: function(callback, context) {
-    callback.call(context, this._getFaveList());
-  },
-
-  _getFaveList: function() {
-    var faves = localStorage.getItem('faves'),
-        list  = (faves === null) ? [] : faves.split('||');
-
-    return list;
-  }
-});
-
-(function() {
-
-  var storage = new Weaver.Storage();
-
-  $('a.star').live('click', function() {
-    var name = $(this).attr('href').replace(/^.*\/fave\//g, '');
-    storage.faveArticle(name);
-
+  save: function () {
+    storage.saveArticle(this.name);
     return false;
-  });
+  }
+});
 
-})();
+$('a.save').live('click', function() {
+  var name = $(this).attr('href').replace(/^.*\/wiki/(.*)$/, '\1');
+  var article = new Weaver.Article(name);
 
+  return article.save();
+});
