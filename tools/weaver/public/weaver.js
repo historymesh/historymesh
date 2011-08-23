@@ -1,16 +1,21 @@
 Weaver = {};
 
-Weaver.Article = function() {
-  this._storage = new Weaver.Storage();
-  var self = this;
-
-  $('a.star').live('click', function() {
-    var name = $(this).attr('href').replace(/^.*\/fave\//g, '');
-    self._storage.faveArticle(name);
-
-    return false;
-  });
+Weaver.Article = function(name, type = 'unknown') {
+  this.name = name;
+  this.type = type;
+  this.relationships = {};
 };
+
+$.extend(Weaver.Article.prototype, {
+  setType: function (type) {
+    this.type = type;
+  };
+
+  addRelationship = function (relatedObj, type) {
+    if (!this.relationships[type]) this.relationships[type] = [];
+    this.relationships[type].push(relatedObj);
+  };
+});
 
 Weaver.Faves = function() {
 
@@ -36,3 +41,17 @@ $.extend(Weaver.Storage.prototype, {
     return list;
   }
 });
+
+function () {
+
+  var storage = new Weaver.Storage();
+
+  $('a.star').live('click', function() {
+    var name = $(this).attr('href').replace(/^.*\/fave\//g, '');
+    storage.faveArticle(name);
+  
+    return false;
+  });
+
+}();
+
