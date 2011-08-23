@@ -56,17 +56,19 @@ def main(main_file, index_file):
     start_time = time.time()
 
     with open(index_file) as fh:
-    	for i, row in enumerate(csv.reader(fh, dialect='excel-tab')):
+    	for i, line in enumerate(fh):
+            row = line.split('\t')
             if i % 27 == 1:
                 time_per_page = (time.time() - start_time) / i
-                sys.stdout.write("\rProcessed %d articles: %6.2f%% - %6.2fh" % (
+                sys.stdout.write("\rProcessed %d lines: %6.2f%% - %6.2fh" % (
                     i,
-                    (i / number_of_articles) * 100,
+                    (float(i) / number_of_articles) * 100,
                     (time_per_page * (number_of_articles - i)) / 3600.0,
                 ))
 
                 sys.stdout.flush()
             if len(row) != 4:
+                print ('\nBad row: %d' % i)
                 continue
             (id, start, offset, targets) = row
             doc = {'id': idesc(id), 's': int(start), 'o': int(offset)}
