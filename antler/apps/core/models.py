@@ -139,17 +139,29 @@ class Node(models.Model, EdgesMixin):
 
 
 class Person(Node):
+    """
+    A person.
+    """
     pass
 
 
 class Event(Node):
+    """
+    A thing that happened at a given point in time.
+    """
     pass
 
 
 class Concept(Node):
+    """
+    A concept that was developed or discovered, e.g. punch cards, communism
+    """
     pass
 
 
 class Object(Node):
+    """
+    A physical thing which arose from a concept, e.g. the Jacquard Loom
+    """
     pass
 
