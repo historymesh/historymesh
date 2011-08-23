@@ -40,13 +40,14 @@ Weaver.Article = function(name, type) {
 };
 
 $.extend(Weaver.Article.prototype, {
+
   setType: function (type) {
     this.type = type;
   },
 
   addRelationship: function (relatedObj, type) {
     if (!this.relationships[type]) this.relationships[type] = [];
-    this.relationships[type].push( { name: relatedObj.name, type: relatedObj.type } );
+    this.relationships[type].push( relatedObj.name );
     this.save();
   },
 
@@ -55,11 +56,6 @@ $.extend(Weaver.Article.prototype, {
     return false;
   },
 
-  toJSON: function () {
-    return { name: this.name,
-             type: this.type,
-             relationships: relationships };
-  }
 });
 
 $('a.save').live('click', function() {
