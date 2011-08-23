@@ -1,10 +1,28 @@
-Weaver = {};
+Weaver = {
+  linkFor: function(article) {
+    var name = decodeURIComponent(article.name),
+        type = article.type,
+        href = (type === 'story' ? '/stories/' : '/wiki/') + encodeURIComponent(name);
+
+    return '<a href="' + href + '">' + name + '</a>';
+  }
+};
+
+Weaver.Saved = function(selector) {
+  var storage = new Weaver.Storage();
+
+  storage.getSavedArticles(function(articles) {
+    $.each(articles, function(i, article) {
+      $(selector).append('<li>' + Weaver.linkFor(article) + '</li>');
+    });
+  });
+};
 
 Weaver.Storage = function() {};
 $.extend(Weaver.Storage.prototype, {
 
   saveArticle: function(article) {
-    var list = this._getSavedArticles();
+    var list = this._getSaved();
     if (list.indexOf(article.name) < 0) list.push(article.name);
 
     localStorage.setItem('saved', JSON.stringify(list));
@@ -25,22 +43,26 @@ $.extend(Weaver.Storage.prototype, {
   },
 
   getSavedArticles: function(callback, context) {
-    callback.call(context, this._getSavedArticles());
+    var articles = this._getSaved().map(function(name) {
+      return JSON.parse(localStorage.getItem('article:' + name));
+    });
+    callback.call(context, articles);
   },
 
-  getSavedArticle: function(name, callback) {
+  getSavedArticle: function(name, callback, context) {
     var articleJSON = localStorage.getItem('article:' + name);
-    if (!articleJSON) return callback(false);
+    if (!articleJSON) return callback.call(context, false);
 
-    var articleData = JSON.parse(localStorage.getItem('article:' + name));
-    
-    var article = new Weaver.Article(articleData.name, articleData.type);
+    var articleData = JSON.parse(articleJSON),
+        article = new Weaver.Article(articleData.name, articleData.type);
+
     article.relationships = articleData.relationships;
+    article.text = articleData.text;
 
-    callback.call(article);
+    callback.call(context, article);
   },
 
-  _getSavedArticles: function() {
+  _getSaved: function() {
     var saved = localStorage.getItem('saved'),
         list  = (saved === null) ? [] : JSON.parse(saved);
 
@@ -56,9 +78,10 @@ Weaver.Article = function(name, type) {
   this.type = type || 'unknown';
   this.relationships = {};
 
-  this.find = function (name, callback) {
-    storage.getSavedArticle(name, callback)
-  };
+};
+
+Weaver.Article.find = function (name, callback) {
+  storage.getSavedArticle(name, callback)
 };
 
 $.extend(Weaver.Article.prototype, {
@@ -79,15 +102,6 @@ $.extend(Weaver.Article.prototype, {
 
   delete: function () {
     storage.deleteArticle(this);
-  },
-
+  }
 });
 
-$('a.save').live('click', function() {
-  var name = $(this).attr('href').replace(/^.*\/wiki\/(.*)$/, '$1');
-  var article = new Weaver.Article(name);
-
-  article.save();
-
-  return false;
-});

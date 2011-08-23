@@ -1,0 +1,70 @@
+<section>
+  <h2>Create a story</h2>
+
+  <div class="saved">
+    <h3>Saved articles</h3>
+    <ul></ul>
+  </div>
+
+  <div class="related">
+    <h3>Related articles</h3>
+    <ul></ul>
+  </div>
+
+  <form method="post" action="/stories">
+    <label for="name">Name</label>
+    <input type="text" name="name"><br>
+    <label for="notes">Notes</label><br>
+    <textarea name="notes" id="notes" cols="80" rows="20"></textarea><br>
+    <input type="submit" value="Save">
+  </form>
+</section>
+
+<script type="text/javascript">
+  new Weaver.Saved('.saved ul');
+
+  var related   = [],
+      nameField = $('input[name=name]'),
+      textField = $('textarea');
+
+  var addRelated = function(name) {
+    if (related.indexOf(name) >= 0) return false;
+    related.push(name);
+    $('.related ul').append('<li>' + Weaver.linkFor({name: name}) + '</li>');
+    return true;
+  };
+
+  <% if @story %>
+    var storage = new Weaver.Storage();
+    storage.getSavedArticle(<%= @story.inspect %>, function(article) {
+      $.each(article.relationships.actor, function(i, actorName) {
+        addRelated(actorName);
+      });
+      nameField.val(article.name);
+      textField.val(article.text);
+    });
+  <% end %>
+
+  $('.saved li').live('click', function() {
+    var slug = $(this).find('a').attr('href').replace(/^.*\/wiki\/(.*)$/, '$1'),
+        name = decodeURIComponent(slug);
+
+    addRelated(name);
+    return false;
+  });
+
+  $('form').submit(function() {
+    var name  = nameField.val(),
+        text  = textField.val(),
+        story = new Weaver.Article(name, 'story');
+
+    $.each(related, function(i, name) {
+      story.addRelationship({name: name}, 'actor');
+    });
+
+    story.text = text;
+    story.save();
+
+    return false;
+  });
+</script>
