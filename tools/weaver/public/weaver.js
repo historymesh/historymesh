@@ -29,9 +29,14 @@ $.extend(Weaver.Storage.prototype, {
   },
 
   getSavedArticle: function(name, callback) {
+    var articleJSON = localStorage.getItem('article:' + name);
+    if (!articleJSON) return callback(false);
+
     var articleData = JSON.parse(localStorage.getItem('article:' + name));
     
     var article = new Weaver.Article(articleData.name, articleData.type);
+    article.relationships = articleData.relationships;
+
     callback.call(article);
   },
 
@@ -51,7 +56,8 @@ Weaver.Article = function(name, type) {
   this.type = type || 'unknown';
   this.relationships = {};
 
-  this.find = function (name) {
+  this.find = function (name, callback) {
+    storage.getSavedArticle(name, callback)
   };
 };
 
