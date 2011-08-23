@@ -33,5 +33,9 @@ var urlToArticle = function (uri) {
   return article;
 }
 
-$('a').each( function(link) {
+$('a.hovercat').live('hover', function(link) {
+  var hover = $("<div class='relPanel'>");
+  $(this).css('position', 'absolute');
+  $(this).css('top', '-10px');
+  $(this).css('left', '-10px');
 });

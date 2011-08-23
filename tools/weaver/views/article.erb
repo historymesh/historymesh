@@ -31,15 +31,18 @@
 
   // Do it once we've saved the article.
   $('a.save').live('click', function() {
+    if (!$(this).attr('href')) {
+      console.log("Not saving ", $(this));
+      return;
+    }
+    
     var article = urlToArticle($(this).attr('href'));
+    console.log("Saving ", article);
     article.save();
 
     findSaved();
 
     return false;
   });
-
-  // Find any already-saved links once at startup.
-  findSaved();
 
 </script>
