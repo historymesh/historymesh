@@ -158,25 +158,6 @@ legend li:last-child:before {
 
 
 .header {
-	color: #352b23;
-	background-color: #f3ece9;
-	background-image: -webkit-gradient(
-	    linear,
-	    left bottom,
-	    left top,
-	    color-stop(0, rgba(53,43,35, 0.1)),
-	    color-stop(1, rgba(242,236,234, 0.6))
-	), url(bg.gif);
-	background-image: -moz-linear-gradient(
-	    center bottom,
-	    rgba(53,43,35, 0.1) 0%,
-	    rgba(242,236,234, 0.1) 100%
-	), url(bg.gif);
-	background-image: linear-gradient(
-	    center bottom,
-	    rgba(53,43,35, 0.1) 0%,
-	    rgba(242,236,234, 0.1) 100%
-	), url(bg.gif);
 }
 
 
@@ -225,8 +206,29 @@ header a, header a:link {
 
 
 .finder {
+	padding: 0 5%;
 	height: 200px;
 	overflow: auto;
+
+	color: #352b23;
+	background-color: #f3ece9;
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, rgba(53,43,35, 0.1)),
+	    color-stop(1, rgba(242,236,234, 0.6))
+	), url(bg.gif);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgba(53,43,35, 0.1) 0%,
+	    rgba(242,236,234, 0.1) 100%
+	), url(bg.gif);
+	background-image: linear-gradient(
+	    center bottom,
+	    rgba(53,43,35, 0.1) 0%,
+	    rgba(242,236,234, 0.1) 100%
+	), url(bg.gif);
 }
 
 
