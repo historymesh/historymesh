@@ -15,6 +15,10 @@ get '/wiki/:name' do
   erb :article
 end
 
+get '/stories/' do
+  erb :stories
+end
+
 get '/stories/new' do
   @title = 'Create a story'
   erb :story
