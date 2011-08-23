@@ -35,7 +35,6 @@
   };
 
   <% if @story %>
-    var storage = new Weaver.Storage();
     Weaver.Article.find(<%= @story.inspect %>, function(article) {
       if (article.relationships.actor) {
         $.each(article.relationships.actor, function(i, actorName) {

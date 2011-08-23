@@ -6,12 +6,10 @@
       <% @article.inlinks.each do |title| %>
         <li>
           <a href="/wiki/<%= URI.escape title %>"><%= title %></a>
-          <!--
           <ul>
             <li><a href="#">Influenced</a></li>
             <li><a href="#">Influenced By</a></li>
           </ul>
-          -->
         </li>
       <% end %>
     </ul>
@@ -22,12 +20,10 @@
       <% @article.outlinks.each do |title| %>
         <li>
           <a href="/wiki/<%= URI.escape title %>"><%= title %></a>
-          <!--
           <ul>
             <li><a href="#">Influenced</a></li>
             <li><a href="#">Influenced By</a></li>
           </ul>
-          -->
         </li>
       <% end %>
     </ul>
