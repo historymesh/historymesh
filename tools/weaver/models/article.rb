@@ -14,6 +14,8 @@ class Article
     return @html if defined?(@html)
     text = data['text'].gsub(/\{\{[^\}]*\}\}/, '')
     @html = WikiCloth::Parser.new(:data => text).to_html
+  rescue
+    @html = Wikitext::Parser.new.parse(text)
   end
 
   def inlinks

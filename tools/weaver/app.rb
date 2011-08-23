@@ -5,7 +5,7 @@ get '/' do
   '<p style="font-size: 800%">In space, nobody knows you&rsquo;re a dog.</p>'
 end
 
-get '/wiki/:name.*' do
+get %r{\.(png|jpe?g|ico|gif|txt)$}i do
   error 404
 end
 

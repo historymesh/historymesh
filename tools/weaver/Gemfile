@@ -4,4 +4,5 @@ gem "json"
 gem "sinatra"
 gem "thin"
 gem "wikicloth"
+gem "wikitext"
 
