@@ -1,20 +1,20 @@
 Weaver = {};
 
-Weaver.Article = function(name, type = 'unknown') {
+Weaver.Article = function(name, type) {
   this.name = name;
-  this.type = type;
+  this.type = type || 'unknown';
   this.relationships = {};
 };
 
 $.extend(Weaver.Article.prototype, {
   setType: function (type) {
     this.type = type;
-  };
+  },
 
-  addRelationship = function (relatedObj, type) {
+  addRelationship: function (relatedObj, type) {
     if (!this.relationships[type]) this.relationships[type] = [];
     this.relationships[type].push(relatedObj);
-  };
+  }
 });
 
 Weaver.Faves = function() {
@@ -42,16 +42,16 @@ $.extend(Weaver.Storage.prototype, {
   }
 });
 
-function () {
+(function() {
 
   var storage = new Weaver.Storage();
 
   $('a.star').live('click', function() {
     var name = $(this).attr('href').replace(/^.*\/fave\//g, '');
     storage.faveArticle(name);
-  
+
     return false;
   });
 
-}();
+})();
 
