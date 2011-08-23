@@ -7,7 +7,7 @@ class Article
 
   def html
     text = data['text'].gsub!(/\{\{[^\}]*\}\}/, '')
-    Wikitext::Parser.new.parse(text)
+    WikiCloth::Parser.new(:data => text).to_html
   end
 
   def inlinks
