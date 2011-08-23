@@ -6,10 +6,10 @@ FILE_HOST = 'http://psql.fort:9292/'
 # Database server articles and links
 ActiveRecord::Base.establish_connection(
   :adapter  => 'postgresql',
-  :host     => '10.0.0.61',
+  :host     => 'psql.fort',
   :username => 'fort',
   :password => 'fort',
-  :database => 'fort2')
+  :database => 'fort')
 
 root = File.dirname(__FILE__)
 require root + '/models/article'
