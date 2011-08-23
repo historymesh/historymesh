@@ -2,7 +2,7 @@ require File.expand_path('../environment', __FILE__)
 require 'sinatra'
 
 get '/' do
-  Article.count.to_s
+  '<p style="font-size: 800%">In space, nobody knows you&rsquo;re a dog.</p>'
 end
 
 get '/wiki/:name.*' do
