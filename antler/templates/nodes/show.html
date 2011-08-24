@@ -4,11 +4,11 @@
 <h1>{{subject.name}} (in context {{story}})</h1>
 
 {% if story_prev %}
-<a href='{{story_prev.url}}?story={{story.slug}}'>Prev</a>
+<a rel='prev' href='{{story_prev.url}}?story={{story.slug}}'>Prev</a>
 {% endif %}
 
 {% if story_next %}
-<a href='{{story_next.url}}?story={{story.slug}}'>Next</a>
+<a rel='next' href='{{story_next.url}}?story={{story.slug}}'>Next</a>
 {% endif %}
 
 {{subject.text|linebreaks}}
