@@ -61,7 +61,6 @@
   {% for node in nodes %}
     nodes["{{ node|slugify }}"] = network.addNode({
       name: '{{ node.name }}',
-      color: '#f80',
       position: [
         {{ node.horizontal_position }},
         {{ node.position }}
@@ -70,7 +69,7 @@
   {% endfor %}
 
   {% for edge in edges %}
-    nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"]);
+    nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], '#6cf');
   {% endfor %}
 
   network.draw();

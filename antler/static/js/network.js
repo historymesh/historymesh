@@ -57,8 +57,8 @@ $.extend(Network.prototype, {
     return node;
   },
 
-  addEdge: function(fromNode, toNode) {
-    var edge = new Network.Edge(this, fromNode, toNode);
+  addEdge: function(fromNode, toNode, color) {
+    var edge = new Network.Edge(this, fromNode, toNode, color);
     edge.id = this._nextId();
     this._edges[edge.id] = edge;
     return edge;
@@ -163,10 +163,6 @@ Network.Node = function(network, data) {
   this._data    = data;
 };
 $.extend(Network.Node.prototype, {
-  getColor: function() {
-    return this._data.color;
-  },
-
   getPosition: function() {
     return this._normal || this._data.position;
   },
@@ -209,10 +205,9 @@ $.extend(Network.Node.prototype, {
 
   _renderCircle: function() {
     var paper  = this._network._paper,
-        data   = this._data,
         pos    = this._normal,
         radius = this._network.nodeRadius,
-        color  = data.color,
+        color  = this._color,
         circle = paper.circle(pos[0], pos[1], radius);
 
     circle.attr({
@@ -224,8 +219,9 @@ $.extend(Network.Node.prototype, {
     return circle;
   },
 
-  leadsTo: function(node) {
-    return this._network.addEdge(this, node);
+  leadsTo: function(node, color) {
+    this._color = color;
+    return this._network.addEdge(this, node, color);
   },
 
   preview: function() {
@@ -242,17 +238,18 @@ $.extend(Network.Node.prototype, {
   }
 });
 
-Network.Edge = function(network, fromNode, toNode) {
+Network.Edge = function(network, fromNode, toNode, color) {
   this._network = network;
   this._from    = fromNode;
   this._to      = toNode;
+  this._color   = color;
 };
 $.extend(Network.Edge.prototype, {
   draw: function() {
     if (this._path) return this._path;
 
     var paper   = this._network._paper,
-        color   = this._to.getColor(),
+        color   = this._color,
         fromPos = this._from.getPosition(),
         toPos   = this._to.getPosition(),
         width   = this._network.nodeRadius * 0.75,
