@@ -61,19 +61,24 @@
 
       var network = new Network('container');
 
-      var loom = network.addNode({
-        name:     'Jacquard Loom',
-        color:    '#f80',
-        position: [400, 270]
-      });
+      var internet = network.addNode({name: 'The Intarwebs', color: '#6cf', position: [550, 70]});
+      var nyan     = network.addNode({name: 'Nyan Cat',      color: '#6cf', position: [650, 70]});
 
-      var duck = network.addNode({
-        name:     'Robot duck',
-        color:    '#f80',
-        position: [550, 270]
-      });
+      var loom     = network.addNode({name: 'Jacquard Loom', color: '#f80', position: [400, 170]});
+      var duck     = network.addNode({name: 'Robot duck',    color: '#f80', position: [550, 170]});
+      var ada      = network.addNode({name: 'Ada Lovelace',  color: '#f80', position: [650, 170]});
+
+      var mine     = network.addNode({name: 'Minecraft',     color: '#3c6', position: [650, 270]});
+      var devfort  = network.addNode({name: '/dev/fort',     color: '#3c6', position: [800, 270]});
 
       loom.leadsTo(duck);
+      duck.leadsTo(ada);
+
+      duck.leadsTo(mine);
+      mine.leadsTo(devfort);
+
+      loom.leadsTo(internet);
+      internet.leadsTo(nyan);
 
       network.draw();
 

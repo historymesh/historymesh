@@ -111,27 +111,21 @@ $.extend(Network.Node.prototype, {
   draw: function() {
     if (this._circle) return this._circle;
 
-    var paper  = this._network._paper,
-        el     = this._network._container,
-        data   = this._data,
-        pos    = data.position,
-        radius = this._network.nodeRadius,
-        color  = data.color,
-        circle = paper.circle(pos[0], pos[1], radius),
-        self   = this;
+    this._preview = this._renderPreview();
+    return this._circle = this._renderCircle();
+  },
 
-    circle.attr({
-      'cursor':       'pointer',
-      'fill':         this._network.bgColor,
-      'stroke':       color,
-      'stroke-width': radius * 0.75
-    });
-
+  _renderPreview: function() {
     var preview = $('<div>' +
                       '<div class="node-preview">' +
                         '<h4>' + this._data.name + '</h4>' +
                       '</div>' +
                     '</div>');
+
+    var radius = this._network.nodeRadius,
+        pos    = this._data.position,
+        el     = this._network._container,
+        self   = this;
 
     preview.css({
       position:   'absolute',
@@ -147,8 +141,24 @@ $.extend(Network.Node.prototype, {
     preview.mouseover(function() { self.preview() });
     preview.click(function() { self.visit() });
 
-    this._preview = preview;
-    return this._circle = circle;
+    return preview;
+  },
+
+  _renderCircle: function() {
+    var paper  = this._network._paper,
+        data   = this._data,
+        pos    = data.position,
+        radius = this._network.nodeRadius,
+        color  = data.color,
+        circle = paper.circle(pos[0], pos[1], radius);
+
+    circle.attr({
+      'cursor':       'pointer',
+      'fill':         this._network.bgColor,
+      'stroke':       color,
+      'stroke-width': radius * 0.75
+    });
+    return circle;
   },
 
   leadsTo: function(node) {
