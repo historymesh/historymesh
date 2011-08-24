@@ -8,57 +8,90 @@
     {
         "pk": 1,
         "model": "core.person",
-        "fields": {"name": "A"}
+        "fields": {
+            "name": "A",
+            "timeline_date": "1900-01-01"
+        }
     },
     {
         "pk": 2,
         "model": "core.person",
-        "fields": {"name": "B"}
+        "fields": {
+            "name": "B",
+            "timeline_date": "1920-01-01"
+        }
     },
     {
         "pk": 3,
         "model": "core.person",
-        "fields": {"name": "C"}
+        "fields": {
+            "name": "C",
+            "timeline_date": "1940-01-01"
+        }
     },
     {
         "pk": 4,
         "model": "core.person",
-        "fields": {"name": "D"}
+        "fields": {
+            "name": "D",
+            "timeline_date": "1920-01-01"
+        }
     },
     {
         "pk": 5,
         "model": "core.person",
-        "fields": {"name": "E"}
+        "fields": {
+            "name": "E",
+            "timeline_date": "1940-01-01"
+        }
     },
     {
         "pk": 6,
         "model": "core.person",
-        "fields": {"name": "F"}
+        "fields": {
+            "name": "F",
+            "timeline_date": "1960-01-01"
+        }
     },
     {
         "pk": 7,
         "model": "core.person",
-        "fields": {"name": "G"}
+        "fields": {
+            "name": "G",
+            "timeline_date": "1980-01-01"
+        }
     },
     {
         "pk": 8,
         "model": "core.person",
-        "fields": {"name": "H"}
+        "fields": {
+            "name": "H",
+            "timeline_date": "1960-01-01"
+        }
     },
     {
         "pk": 9,
         "model": "core.person",
-        "fields": {"name": "I"}
+        "fields": {
+            "name": "I",
+            "timeline_date": "1980-01-01"
+        }
     },
     {
         "pk": 10,
         "model": "core.person",
-        "fields": {"name": "J"}
+        "fields": {
+            "name": "J",
+            "timeline_date": "2000-01-01"
+        }
     },
     {
         "pk": 11,
         "model": "core.person",
-        "fields": {"name": "K"}
+        "fields": {
+            "name": "K",
+            "timeline_date": "2000-01-01"
+        }
     },
 
     {
