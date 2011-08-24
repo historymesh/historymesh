@@ -56,7 +56,7 @@ $('a.relatable, section.article-text a.relatable').live('mouseenter', function()
   var thatSlug = urlToArticle($(this).attr('href')).name;
 
   relList.html('');
-  var relationships = [ 'invented', 'conceived', 'killed', 'preceded', 'befriended', 'married', 'dined_with', 'inspired', 'enabled', 'primary', 'secondary', 'described_by' ];
+  var relationships = [ 'invented', 'conceived', 'killed', 'preceded', 'befriended', 'married', 'parented', 'dined with', 'inspired', 'enabled', 'described' ];
   relationships.forEach(function (relation) {
     var relLink = $("<a class='relType'>" + relation + "</a>");
 
@@ -67,15 +67,13 @@ $('a.relatable, section.article-text a.relatable').live('mouseenter', function()
       relatedArticle.addRelationship(thisArticle, relation);
     });
 
-    relList.append($("<li>").append(relLink).append(" " + thisSlug));
-
     var reverseRelLink = $("<a class='relType'> was " + relation + " by</a>");
 
     reverseRelLink.click(function () {
       thisArticle.addRelationship(relatedArticle, relation);
     });
 
-    relList.append($("<li>").append(reverseRelLink).append(" " + thisSlug));
+    relList.append($("<li>").append(relLink).append(" / ").append(reverseRelLink).append(" " + thisSlug));
   });
 
   $(this).before(panelContainer);

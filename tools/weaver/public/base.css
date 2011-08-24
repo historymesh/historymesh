@@ -195,7 +195,8 @@ header li a, header li a:link {
 .finder {
 	padding: 0 5%;
 	height: 200px;
-	overflow: auto;
+	overflow: scroll;
+    overflow-y: show !important;
 	position: relative;
 	z-index: 2;
 
@@ -219,6 +220,7 @@ header li a, header li a:link {
 	    rgba(242,236,234, 0.1) 100%
 	), url(bg.gif);
 }
+
 .finder h1 a.button, .finder h1 a.button:visited {
 	width: 50px;
 	margin: 0 auto;
@@ -298,17 +300,17 @@ header li a, header li a:link {
   position: absolute;
   top: -8px;
   left: -8px;
-  width: 250px;
+  width: 350px;
   padding: 0;
   border: groove 2px rgba(128,128,72,0.8);
   margin: 0;
-  background-color: rgba(212,212,164,1);
+  background-color: rgba(210,196,187,1);
   background-image: -webkit-gradient(
     linear,
     left top,
     left bottom,
-    color-stop(0, rgba(248,248,96,1))),
-    color-stop(1, rgba(248,248,96,1))
+    color-stop(0, rgba(210,196,187,1))),
+    color-stop(1, rgba(210,196,187,1))),
   );
   background-image: -moz-linear-gradient(
     center top,
@@ -331,7 +333,7 @@ header li a, header li a:link {
 
 .relPanel div:first-child {
   padding: 6px 8px 8px 6px;
-  background-color: rgba(248,248,96,0.8);
+  background-color: rgba(237,229,224,1);
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
