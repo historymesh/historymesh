@@ -19,7 +19,7 @@
 <script type="text/javascript">
 
   var network = new Network('container', 800, 300);
-
+/*
   var nodes = {};
   {% for node in nodes %}
     nodes["{{ node|slugify }}"] = network.addNode({
@@ -35,6 +35,22 @@
   {% for edge in edges %}
     nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], "{% if edge.story.colour %}#{{edge.story.colour}}{% else %}#273924{% endif %}"{% if edge.verb == "secondary" %}, true{% endif %});
   {% endfor %}
+*/
+
+  var a = network.addNode({
+    name: 'A',
+    position: [100,100]
+  });
+  var b = network.addNode({
+    name: 'B',
+    position: [200,100]
+  });
+  //var c = network.addNode({
+  //  name: 'C',
+  //  position: [200,150]
+  //});
+  a.leadsTo(b, '#000');
+  //a.leadsTo(c, '#000');
 
   network.draw();
 
