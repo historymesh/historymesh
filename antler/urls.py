@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
-from core.views import importer, edge, nodes
+from django.conf import settings
+from core.views import importer, edge, nodes, layout
 
 admin.autodiscover()
 
@@ -13,4 +14,12 @@ urlpatterns = patterns('',
     url(r'^object/(?P<pk>\d+)/', nodes.ObjectView.as_view(), name="object"),
     url(r'^edge/(?P<pk>[0-9]+)/', edge.EdgeEdit.as_view()),
     url(r'^edge/create/', edge.EdgeCreate.as_view()),
+    url(r'^layout/', layout.layout_view),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('', 
+        (r'^static/(?P<path>.*)$', 
+            'django.views.static.serve',
+            {'document_root': settings.STATIC_ROOT}),
+    )
