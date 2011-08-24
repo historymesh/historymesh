@@ -1,10 +1,42 @@
 Network = function(container, width, height) {
+  var el = jQuery('#' + container);
+
   this._paper = Raphael(container, width, height);
   this._nodes = {};
   this._edges = {};
 
   this.bgColor    = '#fff';
   this.nodeRadius = 20;
+
+  var self   = this,
+      width  = el.width(),
+      height = el.height(),
+      wrap   = jQuery('<div></div>');
+
+  wrap.css({
+    position: 'relative',
+    width:    width + 'px',
+    height:   height + 'px',
+    overflow: 'hidden'
+  });
+  el.css({
+    position: 'absolute',
+    width:    width + 'px',
+    height:   height + 'px'
+  });
+  el.before(wrap);
+  wrap.append(el);
+
+  wrap.mousedown (function(e) { self.initDrag(e) });
+  wrap.mousemove (function(e) { self.moveDrag(e) });
+  wrap.mouseleave(function(e) { self.endDrag(e)  });
+  wrap.mouseup   (function(e) { self.endDrag(e)  });
+
+  this._wrapper = wrap;
+  this._container = el;
+
+  this._offsetLeft = 0;
+  this._offsetTop  = 0;
 };
 $.extend(Network.prototype, {
   addNode: function(data) {
@@ -25,6 +57,30 @@ $.extend(Network.prototype, {
     this._paper.clear();
     for (var id in this._edges) this._edges[id].draw();
     for (var id in this._nodes) this._nodes[id].draw();
+  },
+
+  initDrag: function(event) {
+    if (this._dragStart) return;
+    this._dragStart = {x: event.clientX, y: event.clientY};
+  },
+
+  moveDrag: function(event) {
+    var start = this._dragStart;
+    if (!start) return;
+
+    this._dragLeft = event.clientX - start.x;
+    this._dragTop  = event.clientY - start.y;
+    this._container.css({
+      left: (this._offsetLeft + this._dragLeft) + 'px',
+      top:  (this._offsetTop  + this._dragTop ) + 'px'
+    });
+  },
+
+  endDrag: function() {
+    if (!this._dragStart) return;
+    delete this._dragStart;
+    this._offsetLeft += this._dragLeft;
+    this._offsetTop  += this._dragTop;
   },
 
   _nextId: function() {
@@ -97,6 +153,8 @@ $.extend(Network.Edge.prototype, {
       'stroke':       color,
       'stroke-width': width
     });
+
+    return this._path = path;
   }
 });
 
