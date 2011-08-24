@@ -284,4 +284,7 @@ class Story(models.Model):
     """
 
     name = models.CharField(max_length=255, unique=True)
-
+    """
+    Breif description aobut the story for appearing on the homepage
+    """
+    text = models.TextField(blank=True)
