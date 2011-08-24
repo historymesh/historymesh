@@ -11,8 +11,8 @@ class NodeView(TemplateView):
     def get_template_names(self):
         return "nodes/%s.html" % self.model_name()
     
-    def get_context_data(self, pk):
-        instance = get_object_or_404(self.model, pk=pk)
+    def get_context_data(self, slug):
+        instance = get_object_or_404(self.model, slug=slug)
         
         return {
                 self.model_name():instance,

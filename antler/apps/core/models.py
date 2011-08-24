@@ -96,7 +96,7 @@ class Edge(models.Model):
     subject = property(get_subject, set_subject)
 
     def url(self):
-        return reverse('edge', kwargs={'pk': self.pk})
+        return reverse('edge', kwargs={'slug': self.slug})
 
 
 class EdgeObjectQuerySet(QuerySet):
@@ -289,7 +289,7 @@ class Person(Node):
         verbose_name_plural = "people"
 
     def url(self):
-        return reverse('person', kwargs={'pk': self.pk})
+        return reverse('person', kwargs={'slug': self.slug})
 
 
 class Event(Node):
@@ -298,7 +298,7 @@ class Event(Node):
     """
 
     def url(self):
-        return reverse('event', kwargs={'pk': self.pk})
+        return reverse('event', kwargs={'slug': self.slug})
 
 
 class Concept(Node):
@@ -307,7 +307,7 @@ class Concept(Node):
     """
 
     def url(self):
-        return reverse('concept', kwargs={'pk': self.pk})
+        return reverse('concept', kwargs={'slug': self.slug})
 
 
 class Object(Node):
@@ -316,7 +316,7 @@ class Object(Node):
     """
 
     def url(self):
-        return reverse('object', kwargs={'pk': self.pk})
+        return reverse('object', kwargs={'slug': self.slug})
 
 
 class ExternalLink(models.Model, EdgesMixin):
