@@ -1,3 +1,13 @@
+<span class="panelContainer">
+  <div class="relPanel">
+    <div class="linkHeader"></div>
+    <div class="panelBody">
+      <ul>
+      </ul>
+    </div>
+  </div>
+</span>
+
 <div class="finder">
   <h1><%= @article.name %> <a class="save button" href="/wiki/<%= URI.escape @article.name %>">Save</a></h1>
   <nav class="in">
@@ -5,7 +15,7 @@
     <ul>
       <% @article.inlinks.each do |title| %>
         <li>
-          <a href="/wiki/<%= URI.escape title %>"><%= title %></a>
+          <a class="relatable" href="/wiki/<%= URI.escape title %>"><%= title %></a>
         </li>
       <% end %>
     </ul>
@@ -15,9 +25,19 @@
     <ul>
       <% @article.outlinks.each do |title| %>
         <li>
-          <a href="/wiki/<%= URI.escape title %>"><%= title %></a>
+          <a class="relatable" href="/wiki/<%= URI.escape title %>"><%= title %></a>
         </li>
       <% end %>
+    </ul>
+  </nav>
+  <nav class="savedlinks">
+    <h2>Saved Links <input id="search" type="text"/></h2>
+    <ul id="saved-links">
+    </ul>
+  </nav>
+  <nav class="related">
+    <h2>Related Links</h2>
+    <ul id="related-links">
     </ul>
   </nav>
 </div>
@@ -28,6 +48,49 @@
 </section>
 
 <script type="text/javascript">
+
+  $(function () {
+    if (localStorage.storyMode) {
+      $('.finder').css('height', '100%');
+    }
+
+    $(".savedlinks #search").keyup(function () {
+      var val = $(this).val().toLowerCase();
+      if ($(this).val().length > 0) {
+        $(".savedlinks li").hide();
+        $(".savedlinks li").filter(function () {
+          return $(this).text().toLowerCase().match(val);
+        }).show();
+      } else {
+        $(".savedlinks li").show();
+      }
+    });
+  });
+
+  $(function () {
+          $('section.article-text a').each(function (i, link) {
+            $(link).addClass('relatable');
+          });
+
+    new Weaver.Saved('#saved-links');
+    $("#saved-links a").addClass('relatable');
+
+    Weaver.Article.find(urlToArticle(document.location.href).name, function (article) {
+      if (!article.relationships) return;
+
+      $.each(article.relationships, function (relType, relArticles) {
+        $.each(relArticles, function (i, relArticleName) {
+          Weaver.Article.find(relArticleName, function (relArticle) {
+          console.log(relArticle, relArticleName);
+            if (!relArticle) return;
+            $("#related-links").append("<li>" + relType + " <a class='relatable' href='" + relArticle.link() + "'>" + relArticle.name + "</a></li>");
+          });
+        });
+      });
+    });
+
+    findSaved();
+  });
 
   // Do it once we've saved the article.
   $('a.save').live('click', function() {

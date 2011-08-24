@@ -10,6 +10,16 @@ Weaver.Article.find = function (name, callback) {
   storage.getSavedArticle(name, callback)
 };
 
+Weaver.Article.findOrCreate = function (name, callback) {
+  Weaver.Article.find(name, function (article) {
+    if (!article) {
+      article = new Weaver.Article(name);
+    }
+
+    callback(article);
+  });
+};
+
 Weaver.Article.findStories = function (callback) {
   storage.getSavedArticles( function (articles) {
     $.each(articles, function (i, article) {
@@ -27,6 +37,8 @@ $.extend(Weaver.Article.prototype, {
   addRelationship: function (relatedObj, type) {
     if (!this.relationships[type]) this.relationships[type] = [];
     this.relationships[type].push( relatedObj.name );
+
+    Weaver.Article.findOrCreate(relatedObj.name, function (article) { article.save() });
     this.save();
   },
 
