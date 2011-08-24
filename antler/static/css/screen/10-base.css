@@ -1,0 +1,11 @@
+/* -*- Mode: CSS; tab-width: 4; indent-tabs-mode: nil; -*- */
+
+// using <b> ("stylistically offset from the normal prose without conveying
+// any extra importance”) for the off-left effect of text useful for screen
+// readers, but not to be displayed as CSS gives the context
+b {
+    direction:              ltr;
+    position:               absolute;
+    left:                   -9999px;
+    width:                  500px;
+}

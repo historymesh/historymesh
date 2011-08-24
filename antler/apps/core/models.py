@@ -94,6 +94,27 @@ class EdgeObjectQuerySet(QuerySet):
 
         return loaded
 
+    def by_verb(self):
+        """
+        From a query set of edges, get all of the edges' objects grouped by
+        the edges' verbs.
+        """
+        to_load = {}
+        for edge in self:
+            to_load.setdefault(edge.object_type, [])
+            to_load[edge.object_type].append((edge.verb, edge.object_id, ))
+
+        loaded = {}
+        for type_string in to_load:
+            model = Edge._model_from_type_string(type_string)
+            pks = [pk for verb, pk in to_load[type_string]]
+            instances = model.objects.in_bulk(pks)
+            for verb, pk in to_load[type_string]:
+                loaded.setdefault(verb, [])
+                loaded[verb].append(instances[pk])
+
+        return loaded
+
 
 class EdgeSubjectQuerySet(QuerySet):
     """
@@ -111,6 +132,27 @@ class EdgeSubjectQuerySet(QuerySet):
             model = Edge._model_from_type_string(type_string)
             instances = model.objects.in_bulk(to_load[type_string]).values()
             loaded.extend(instances)
+
+        return loaded
+
+    def by_verb(self):
+        """
+        From a query set of edges, get all of the edges' subject grouped by
+        the edges' verbs.
+        """
+        to_load = {}
+        for edge in self:
+            to_load.setdefault(edge.subject_type, [])
+            to_load[edge.subject_type].append((edge.verb, edge.subject_id, ))
+
+        loaded = {}
+        for type_string in to_load:
+            model = Edge._model_from_type_string(type_string)
+            pks = [pk for verb, pk in to_load[type_string]]
+            instances = model.objects.in_bulk(pks)
+            for verb, pk in to_load[type_string]:
+                loaded.setdefault(verb, [])
+                loaded[verb].append(instances[pk])
 
         return loaded
 

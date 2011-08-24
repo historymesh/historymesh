@@ -2,46 +2,36 @@ from django.views.generic.base import TemplateView
 from core.models import Person, Concept, Event, Object
 from django.shortcuts import get_object_or_404
 
-class PersonView(TemplateView):
 
-    template_name = "nodes/person.html"
-
-    def get_context_data(self, pk):
-        person = get_object_or_404(Person, pk=pk)
-        return {
-                "person":person,
-               }
-        
-        
-class EventView(TemplateView):
+class NodeView(TemplateView):
     
-    template_name = "nodes/event.html"
+    def model_name(self):
+        return self.model._meta.object_name.lower()
+    
+    def get_template_names(self):
+        return "nodes/%s.html" % self.model_name()
     
     def get_context_data(self, pk):
-        event = get_object_or_404(Event, pk=pk)
-        return {
-                "event":event,
-               }
-
+        instance = get_object_or_404(self.model, pk=pk)
         
-class ConceptView(TemplateView):
-    
-    template_name = "nodes/concept.html"
-    
-    def get_context_data(self, pk):
-        concept = get_object_or_404(Concept, pk=pk)
         return {
-                "concept":concept,
+                self.model_name():instance,
+                "incoming":instance.incoming().by_verb(),
+                "outgoing":instance.outgoing().by_verb(),
                }
 
 
-class ObjectView(TemplateView):
-    
-    template_name = "nodes/object.html"
-    
-    def get_context_data(self, pk):
-        object = get_object_or_404(Object, pk=pk)
-        return {
-                "object":object,
-               }
+class PersonView(NodeView):
+    model = Person
+
         
+class EventView(NodeView):
+    model = Event
+
+        
+class ConceptView(NodeView):
+    model = Concept
+
+
+class ObjectView(NodeView):
+    model = Object    
