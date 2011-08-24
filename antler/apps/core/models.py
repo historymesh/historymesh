@@ -1,6 +1,22 @@
 from django.db import models
 from django.db.models.query import QuerySet
 from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
+from django.db.models.signals import pre_save
+
+def generate_slug_as_needed(sender, instance, **kwargs):
+    """
+    Set the slug based on the name for a given instance if it has
+    both a slug and a name field.
+    """
+    try:
+        if instance.name and instance.slug == '':
+            instance.slug = slugify(instance.name)
+    except AttributeError:
+        pass
+
+pre_save.connect(generate_slug_as_needed)
+
 
 class Edge(models.Model):
     """
@@ -235,6 +251,7 @@ class Node(models.Model, EdgesMixin):
     hidden_in_map = False
 
     name = models.CharField(max_length=1024, unique=True)
+    slug = models.SlugField(max_length=1024, unique=True, default='')
     text = models.TextField(blank=True)
 
     timeline_date = models.IntegerField(blank=True, null=True, help_text="Years since 0AD")
@@ -348,6 +365,7 @@ class Story(models.Model):
     """
 
     name = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, default='')
     text = models.TextField(blank=True, help_text="Brief description about the story for appearing on the homepage")
     colour = models.CharField(max_length=8, help_text="Colour as a hexdecimal string with no #, e.g. '0932f5'", blank=True)
 
