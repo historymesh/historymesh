@@ -3,18 +3,28 @@
         "pk": 1,
         "model": "core.person",
         "fields": {
+            "name": "Babbage"
         }
     },
     {
         "pk": 1,
         "model": "core.concept",
         "fields": {
+            "name": "Computers"
         }
     },
     {
         "pk": 2,
         "model": "core.concept",
         "fields": {
+            "name": "Punch cards"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "core.concept",
+        "fields" : {
+            "name": "Jam"
         }
     },
     {
@@ -37,6 +47,17 @@
             "object_type": "core.concept",
             "object_id": 2,
             "verb": "inspired"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 1,
+            "object_type": "core.concept",
+            "object_id": 2,
+            "verb": "invented"
         }
     }
 ]
