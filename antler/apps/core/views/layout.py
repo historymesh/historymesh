@@ -1,4 +1,5 @@
 import pprint
+import random
 from cStringIO import StringIO
 from collections import deque
 from django.http import HttpResponse
@@ -14,7 +15,7 @@ class LayoutView(TemplateView):
         engine.lay_out()
         return {
             "strings": engine.strings,
-            "nodes": engine.nodes,
+            "nodes": engine.annotated_nodes(),
         }
 
 
@@ -27,7 +28,7 @@ class LayoutImage(View):
 
     def transform(self, node):
         x = (node.timeline_date - self.start_date) / float(self.end_date - self.start_date) * self.width
-        y = (self.height / 2) + (self.engine.node_position(node) * 100)
+        y = (self.height / 2) + (self.engine.node_position(node) * 1)
         return x, y
 
     def get(self, request):
@@ -67,6 +68,18 @@ class NodeLayoutEngine(object):
     Lays out nodes in a rough time-like order.
     """
 
+    iterations = 100
+
+    repulsion_factor = 10
+    repulsion_min_distance = 0.1
+    repulsion_max_distance = 25
+
+    attraction_factor = 0.45
+    attraction_min_distance = 35
+    attraction_max_distance = 100
+
+    slowdown_factor = 1
+
     def lay_out(self):
         # First, fetch a list of all the nodes
         self.load_nodes()
@@ -102,8 +115,8 @@ class NodeLayoutEngine(object):
         successor; that node is included as the end of the string,
         and the successors form the start of new strings.
         """
-        # Strings. Stored by first node.
-        self.strings = {}
+        # Strings.
+        self.strings = set()
         # Queue-based string processor
         queue = deque()
         edges = list(Edge.objects.filter(story__isnull=False))
@@ -148,57 +161,117 @@ class NodeLayoutEngine(object):
                         self.do_if_shown(queue.append, edge.object)
                     break
             # Save the string
-            self.strings[string[0]] = string
+            self.strings.add(String(string))
 
     def position_strings(self):
         """
         Goes through the strings and lays them out along the
         non-time axis.
         """
-        # Start with only the earliest-starting string
-        sorted_strings = deque(sorted(
-            map(deque, self.strings.values()),
-            key = lambda string: string[0].timeline_date,
-        ))
-        # First pass: work out all dates for the ends of the strings
-        string_dates = [
-            (
-                string[0].timeline_date,
-                string[-1].timeline_date,
-                string[0],
-            )
-            for string in sorted_strings
-        ]
-        # Second pass: work out the horizontal positions
-        self.maximum_offset = 0
-        self.positions = {}
-        for node in self.nodes:
-            # Work out which strings are around at this point
-            visible_strings = [
-                start_node
-                for start, end, start_node in string_dates
-                if (
-                    start <= node.timeline_date and
-                    end >= node.timeline_date
-                )
-            ]
-            # Work out its string
-            for start_node, string in self.strings.items():
-                if node in string:
-                    break
-            # Save that position
-            self.positions[node] = visible_strings.index(start_node) - (
-                (len(visible_strings)-1) / 2.0
-            )
-            self.maximum_offset = max(
-                self.maximum_offset,
-                abs(self.positions[node]),
-            )
+        for i in range(self.iterations):
+            forces = {}
+            # First pass: calculate forces
+            for string in self.strings:
+                forces[string] = 0
+                # First, find all other strings that overlap us
+                overlapping_strings = [
+                    other_string
+                    for other_string in self.strings
+                    if (
+                        string != other_string and 
+                        string.overlaps(other_string)
+                    )
+                ]
+                # Then, work out the repulsion for each
+                for other_string in overlapping_strings:
+                    if string.position < other_string.position:
+                        direction = 1
+                    else:
+                        direction = -1
+                    sub_force = (
+                        self.calculate_repulsion(string, other_string) -
+                        self.calculate_attraction(string, other_string)
+                    ) * direction 
+                    forces[string] += sub_force
+            # Work out slowdown/friction multiplier
+            slowdown = (1 / (i+1)) * self.slowdown_factor
+            # Second pass: USE THE FORCE
+            moved = sum(map(abs, forces.values())) * slowdown
+            print "Iteration %i: Moved %s, %s" % (i, moved, slowdown)
+            for string in self.strings:
+                string.position += forces[string] * slowdown 
+                
+    def calculate_repulsion(self, string, other):
+        distance = abs(string.position - other.position)
+        distance = max(
+            min(
+                distance,
+                self.repulsion_max_distance
+            ),
+            self.repulsion_min_distance,
+        )
+        return (distance ** -0.5) * self.repulsion_factor
+
+    def calculate_attraction(self, string, other):
+        distance = abs(string.position - other.position)
+        distance = max(
+            min(
+                distance,
+                self.attraction_max_distance
+            ),
+            self.attraction_min_distance,
+        )
+        distance -= self.attraction_min_distance
+        return (distance ** 2) * self.attraction_factor
 
     def node_position(self, node):
-        return self.positions[node]
+        for string in self.strings:
+            if node in string:
+                return string.position
+
+    def annotated_nodes(self):
+        for node in self.nodes:
+            node.position = self.node_position(node)
+            yield node
         
     def visible_edges(self):
         for edge_set in self.edges_by_subject.values():
             for edge in edge_set:
                 yield edge
+
+
+class String(object):
+
+    def __init__(self, nodes):
+        assert nodes, "Strings must contain at least one node"
+        self.nodes = tuple(
+            sorted(nodes, key=lambda node: node.timeline_date)
+        )
+        gen = random.Random(x=hash(self.nodes))
+        self.position = gen.random()
+    
+    @property
+    def start(self):
+        return self.nodes[0].timeline_date
+    
+    @property
+    def end(self):
+        return self.nodes[-1].timeline_date
+
+    def __eq__(self, other):
+        return self.nodes == other.nodes
+    
+    def __hash__(self):
+        return hash(self.nodes)
+
+    def __contains__(self, item):
+        return item in self.nodes
+    
+    def overlaps(self, other):
+        return (
+            not (self.start > other.end + 0.5) and
+            not (other.start > self.end + 0.5)
+        )
+
+    def __repr__(self):
+        return "<String: %r>" % repr(self.nodes)
