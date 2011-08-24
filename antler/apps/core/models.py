@@ -162,9 +162,25 @@ class Node(models.Model, EdgesMixin):
             self.pk,
         )
 
-    @property
+    def readable_name(self):
+        return "%s (%s)" % (
+            self.name,
+            self._meta.object_name,
+        )
+
+    @classmethod
     def all_child_classes(self):
         return [Person, Event, Concept, Object]
+
+    @property
+    def select_tuple(self):
+        return (
+            "%s:%d" % (
+                Edge._type_string_from_model(self),
+                self.pk,
+            ),
+            self.readable_name()
+        )
 
 
 class Person(Node):
