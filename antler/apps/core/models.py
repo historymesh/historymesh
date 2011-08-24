@@ -8,11 +8,24 @@ class Edge(models.Model):
     e.g. [Brunel] [invented] [tunneling shield]
     """
 
+    VERBS = [
+        "invented",
+        "conceived",
+        "killed",
+        "preceded",
+        "befriended",
+        "married",
+        "dined_with",
+        "inspired",
+        "enabled",
+    ]
+
     subject_type = models.CharField(max_length=255)
     subject_id = models.IntegerField()
     object_type = models.CharField(max_length=255)
     object_id = models.IntegerField()
-    verb = models.CharField(max_length=255)
+    verb = models.CharField(max_length=255, choices=[(x,x) for x in VERBS])
+    story = models.ForeignKey("Story", blank=True, null=True, related_name="edges")
 
     @classmethod
     def _type_string_from_model(self, instance):
@@ -149,14 +162,19 @@ class Person(Node):
     """
     A person.
     """
-    pass
 
+    birth_date = models.DateField(null=True, blank=True)
+    birth_date_fuzziness = models.FloatField(null=True, blank=True, help_text="The uncertainty of the date in years. i.e. '1' is +/- 1 year")
+    death_date = models.DateField(null=True, blank=True)
+    death_date_fuzziness = models.FloatField(null=True, blank=True, help_text="The uncertainty of the date in years. i.e. '1' is +/- 1 year")
 
 class Event(Node):
     """
     A thing that happened at a given point in time.
     """
-    pass
+
+    date = models.DateField(null=True, blank=True)
+    date_fuzziness = models.FloatField(null=True, blank=True, help_text="The uncertainty of the date in years. i.e. '1' is +/- 1 year")
 
 
 class Concept(Node):
@@ -171,4 +189,12 @@ class Object(Node):
     A physical thing which arose from a concept, e.g. the Jacquard Loom
     """
     pass
+
+
+class Story(models.Model):
+    """
+    A story is a collection of edges describing a directed narrative
+    """
+
+    name = models.CharField(max_length=255, unique=True)
 
