@@ -18,21 +18,24 @@
         "pk": 1,
         "model": "core.person",
         "fields": {
-            "name": "Charles Babbage"
+            "name": "Charles Babbage",
+            "timeline_date": 1800
         }
     },
     {
         "pk": 2,
         "model": "core.person",
         "fields": {
-            "name": "Ada Lovelace"
+            "name": "Ada Lovelace",
+            "timeline_date": 1810
         }
     },
     {
         "pk": 3,
         "model": "core.person",
         "fields": {
-            "name": "Steve Jobs"
+            "name": "Steve Jobs",
+            "timeline_date": 1984
         }
     },
 
@@ -40,14 +43,16 @@
         "pk": 1,
         "model": "core.object",
         "fields": {
-            "name": "Jacquard Loom"
+            "name": "Jacquard Loom",
+            "timeline_date": 1700
         }
     },
     {
         "pk": 2,
         "model": "core.object",
         "fields": {
-            "name": "Difference engine"
+            "name": "Difference engine",
+            "timeline_date": 1820
         }
     },
 
