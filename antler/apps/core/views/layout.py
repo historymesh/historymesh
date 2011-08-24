@@ -24,6 +24,7 @@ class NodeLayoutEngine(object):
         # First, fetch a list of all the nodes
         self.load_nodes()
         self.construct_strings()
+        self.position_strings()
         # Return the layout
         return self.strings
 
@@ -89,6 +90,7 @@ class NodeLayoutEngine(object):
                     if not node.hidden_in_map:
                         if len(edges_by_object.get(node, [])) != 1:
                             queue.append(node)
+                            break
                         else:
                             string.append(node)
                 # If there's none, stop here.
@@ -102,9 +104,22 @@ class NodeLayoutEngine(object):
             # Save the string
             self.strings[string[0]] = string
 
-    def decide_eras(self):
+    def position_strings(self):
         """
-        Goes down the list of nodes and decides what historical
-        eras to use for grouping.
+        Goes through the strings and lays them out along the
+        non-time axis.
         """
+        # Start with only the earliest-starting string
+        future_strings = deque(sorted(
+            list(self.strings.values()),
+            key = lambda string: string[0].timeline_date,
+        ))
+        active_strings = [future_strings.popleft()]
+        # First pass: march through the data, storing what strings
+        # are in each one
+        start_date = datetime.
+        while active_strings:
+            # Pop the lowest
+            pass
+
         
