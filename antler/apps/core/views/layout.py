@@ -9,7 +9,12 @@ class LayoutView(TemplateView):
     template_name = "layout_test.html"
 
     def get_context_data(self):
-        return {"strings": NodeLayoutEngine().lay_out()}
+        engine = NodeLayoutEngine()
+        engine.lay_out()
+        return {
+            "strings": engine.strings,
+            "nodes": engine.nodes,
+        }
 
 
 class NodeLayoutEngine(object):
@@ -25,8 +30,6 @@ class NodeLayoutEngine(object):
         self.load_nodes()
         self.construct_strings()
         self.position_strings()
-        # Return the layout
-        return self.strings
 
     def do_if_shown(self, function, node):
         """
@@ -110,16 +113,36 @@ class NodeLayoutEngine(object):
         non-time axis.
         """
         # Start with only the earliest-starting string
-        future_strings = deque(sorted(
-            list(self.strings.values()),
+        sorted_strings = deque(sorted(
+            map(deque, self.strings.values()),
             key = lambda string: string[0].timeline_date,
         ))
-        active_strings = [future_strings.popleft()]
-        # First pass: march through the data, storing what strings
-        # are in each one
-        start_date = datetime.
-        while active_strings:
-            # Pop the lowest
-            pass
-
+        # First pass: work out all dates for the ends of the strings
+        string_dates = [
+            (
+                string[0].timeline_date,
+                string[-1].timeline_date,
+                string[0],
+            )
+            for string in sorted_strings
+        ]
+        # Second pass: work out the horizontal positions
+        for node in self.nodes:
+            # Work out which strings are around at this point
+            visible_strings = [
+                start_node
+                for start, end, start_node in string_dates
+                if (
+                    start <= node.timeline_date and
+                    end >= node.timeline_date
+                )
+            ]
+            # Work out its string
+            for start_node, string in self.strings.items():
+                if node in string:
+                    break
+            # Save that position
+            node.position = visible_strings.index(start_node) - (
+                (len(visible_strings)-1) / 2.0
+            )
         
