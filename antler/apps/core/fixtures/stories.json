@@ -1,0 +1,104 @@
+[
+    {
+        "pk": 1,
+        "model": "core.story",
+        "fields": {
+            "name": "Awesome people"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "core.story",
+        "fields": {
+            "name": "Looms to computers"
+        }
+    },
+
+    {
+        "pk": 1,
+        "model": "core.person",
+        "fields": {
+            "name": "Charles Babbage"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "core.person",
+        "fields": {
+            "name": "Ada Lovelace"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "core.person",
+        "fields": {
+            "name": "Steve Jobs"
+        }
+    },
+
+    {
+        "pk": 1,
+        "model": "core.object",
+        "fields": {
+            "name": "Jacquard Loom"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "core.object",
+        "fields": {
+            "name": "Difference engine"
+        }
+    },
+
+    {
+        "pk": 1,
+        "model": "core.edge",
+        "fields": {
+            "verb": "primary",
+            "story": 1,
+            "subject_type": "core.person",
+            "subject_id": 1,
+            "object_type": "core.person",
+            "object_id": 2
+        }
+    },
+    {
+        "pk": 2,
+        "model": "core.edge",
+        "fields": {
+            "verb": "primary",
+            "story": 1,
+            "subject_type": "core.person",
+            "subject_id": 2,
+            "object_type": "core.person",
+            "object_id": 3
+        }
+    },
+
+    {
+        "pk": 3,
+        "model": "core.edge",
+        "fields": {
+            "verb": "primary",
+            "story": 2,
+            "subject_type": "core.object",
+            "subject_id": 1,
+            "object_type": "core.person",
+            "object_id": 2
+        }
+    },
+    {
+        "pk": 4,
+        "model": "core.edge",
+        "fields": {
+            "verb": "primary",
+            "story": 2,
+            "subject_type": "core.person",
+            "subject_id": 2,
+            "object_type": "core.object",
+            "object_id": 2
+        }
+    }
+]
+
