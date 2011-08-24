@@ -2,6 +2,7 @@ import json
 from django.core.management.base import BaseCommand, CommandError
 from optparse import make_option
 from core.models import Object, Person, Event, Concept, Edge
+from core.views.importer import import_from_json
 
 class Command(BaseCommand):
     help = """
