@@ -38,6 +38,7 @@ $.extend(Weaver.Storage.prototype, {
 
     article.relationships = articleData.relationships;
     article.text = articleData.text;
+    article.storyLine = articleData.storyLine;
 
     callback.call(context, article);
   },
