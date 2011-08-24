@@ -222,6 +222,8 @@ class Node(models.Model, EdgesMixin):
     Abstract superclass for Nodes in our graph.
     """
 
+    hidden_in_map = False
+
     name = models.CharField(max_length=1024, unique=True)
     text = models.TextField(blank=True)
 
@@ -315,4 +317,5 @@ class StoryContent(Node):
     """
     Extra info about a node relating to a story, for instance "Brunnel in Automota"
     """
-    pass
+    
+    hidden_in_map = True

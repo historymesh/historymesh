@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body-class %}homepage{% endblock %}
+
+{% block content %}
+
+<ul>
+  {% for start, string in strings.items %}
+    <li>{{ start }}: {{ string }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

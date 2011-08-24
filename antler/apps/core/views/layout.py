@@ -1,12 +1,15 @@
 import pprint
 from collections import deque
 from django.http import HttpResponse
+from django.views.generic import TemplateView
 from core.models import Edge, Node
 
+class LayoutView(TemplateView):
 
-def layout_view(request):
-    nodes = NodeLayoutEngine().lay_out()
-    return HttpResponse(("%r" % (nodes,)).replace("<", "&lt;"))
+    template_name = "layout_test.html"
+
+    def get_context_data(self):
+        return {"strings": NodeLayoutEngine().lay_out()}
 
 
 class NodeLayoutEngine(object):
@@ -22,7 +25,14 @@ class NodeLayoutEngine(object):
         self.load_nodes()
         self.construct_strings()
         # Return the layout
-        return self.nodes, self.strings
+        return self.strings
+
+    def do_if_shown(self, function, node):
+        """
+        Runs the function with node as argument if node is visible on the map
+        """
+        if not node.hidden_in_map:
+            function(node)
 
     def load_nodes(self):
         """
@@ -31,8 +41,8 @@ class NodeLayoutEngine(object):
         # Fetch all of the nodes into a list (partially sorted)
         self.nodes = set()
         for edge in Edge.objects.filter(story__isnull=False):
-            self.nodes.add(edge.subject)
-            self.nodes.add(edge.object)
+            self.do_if_shown(self.nodes.add, edge.subject)
+            self.do_if_shown(self.nodes.add, edge.object)
         # Sort them
         self.nodes = sorted(self.nodes, key=lambda node: node.timeline_date)
 
@@ -51,10 +61,18 @@ class NodeLayoutEngine(object):
         queue = deque()
         edges = list(Edge.objects.filter(story__isnull=False))
         edges_by_subject = {}
+        edges_by_object = {}
         for edge in edges:
-            edges_by_subject.setdefault(edge.subject, []).append(edge)
+            self.do_if_shown(
+                lambda node: edges_by_subject.setdefault(node, []).append(edge),
+                edge.subject,
+            )
+            self.do_if_shown(
+                lambda node: edges_by_object.setdefault(node, []).append(edge),
+                edge.object,
+            )
         # Start with all nodes with no incoming edges
-        for node in set(self.nodes) - set(edge.object for edge in edges):
+        for node in set(self.nodes) - set(edges_by_object):
             queue.append(node)
         # Process!
         while queue:
@@ -62,17 +80,24 @@ class NodeLayoutEngine(object):
             # Start a new string, follow it till it splits
             string = [node]
             while True:
-                # If there's one outgoing edge, continue the string
-                if len(edges_by_subject[node]) == 1:
+                # If there's one outgoing edge and the node at the
+                # end of the edge only has one incoming edge,
+                # continue the string
+                outgoing_edges = edges_by_subject.get(node, [])
+                if len(outgoing_edges) == 1:
                     node = edges_by_subject[node][0].object
-                    string.append(node)
+                    if not node.hidden_in_map:
+                        if len(edges_by_object.get(node, [])) != 1:
+                            queue.append(node)
+                        else:
+                            string.append(node)
                 # If there's none, stop here.
-                elif len(edges_by_subject[node]) == 0:
+                elif len(outgoing_edges) == 0:
                     break
                 # If there's 2 or more, add them to the queue
                 else:
-                    for other_node in edges_by_subject[node]:
-                        queue.append(other_node)
+                    for edge in outgoing_edges:
+                        self.do_if_shown(queue.append, edge.object)
                     break
             # Save the string
             self.strings[string[0]] = string
