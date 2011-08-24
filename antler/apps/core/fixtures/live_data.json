@@ -1,0 +1,1641 @@
+[
+    {
+        "pk": 3, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 19, 
+            "object_type": "core.person", 
+            "object_id": 7, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 7, 
+            "object_type": "core.object", 
+            "object_id": 23, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 23, 
+            "object_type": "core.object", 
+            "object_id": 22, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 22, 
+            "object_type": "core.person", 
+            "object_id": 24, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 24, 
+            "object_type": "core.object", 
+            "object_id": 1, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 1, 
+            "object_type": "core.object", 
+            "object_id": 15, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 15, 
+            "object_type": "core.object", 
+            "object_id": 17, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 17, 
+            "object_type": "core.person", 
+            "object_id": 6, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 6, 
+            "object_type": "core.object", 
+            "object_id": 39, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 39, 
+            "object_type": "core.person", 
+            "object_id": 5, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 5, 
+            "object_type": "core.person", 
+            "object_id": 29, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 20, 
+            "object_type": "core.object", 
+            "object_id": 26, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 26, 
+            "object_type": "core.object", 
+            "object_id": 22, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 33, 
+            "object_type": "core.object", 
+            "object_id": 40, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 40, 
+            "object_type": "core.object", 
+            "object_id": 2, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 2, 
+            "object_type": "core.object", 
+            "object_id": 29, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 29, 
+            "object_type": "core.person", 
+            "object_id": 26, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 33, 
+            "object_type": "core.object", 
+            "object_id": 31, 
+            "verb": "secondary"
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 31, 
+            "object_type": "core.object", 
+            "object_id": 36, 
+            "verb": "secondary"
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 13, 
+            "object_type": "core.object", 
+            "object_id": 16, 
+            "verb": "preceded"
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 21, 
+            "object_type": "core.object", 
+            "object_id": 41, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 32, 
+            "object_type": "core.object", 
+            "object_id": 30, 
+            "verb": "conceived"
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 41, 
+            "object_type": "core.object", 
+            "object_id": 42, 
+            "verb": "enabled"
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 30, 
+            "object_type": "core.event", 
+            "object_id": 15, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 5, 
+            "subject_type": "core.event", 
+            "subject_id": 19, 
+            "object_type": "core.event", 
+            "object_id": 14, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 5, 
+            "subject_type": "core.event", 
+            "subject_id": 14, 
+            "object_type": "core.object", 
+            "object_id": 27, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 5, 
+            "subject_type": "core.object", 
+            "subject_id": 27, 
+            "object_type": "core.object", 
+            "object_id": 43, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 5, 
+            "subject_type": "core.object", 
+            "subject_id": 43, 
+            "object_type": "core.object", 
+            "object_id": 32, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 5, 
+            "subject_type": "core.object", 
+            "subject_id": 32, 
+            "object_type": "core.event", 
+            "object_id": 8, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 5, 
+            "subject_type": "core.event", 
+            "subject_id": 8, 
+            "object_type": "core.event", 
+            "object_id": 5, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 41, 
+            "object_type": "core.event", 
+            "object_id": 1, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 1, 
+            "object_type": "core.object", 
+            "object_id": 30, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 29, 
+            "object_type": "core.object", 
+            "object_id": 34, 
+            "verb": "secondary"
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 34, 
+            "object_type": "core.object", 
+            "object_id": 35, 
+            "verb": "secondary"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 22, 
+            "object_type": "core.person", 
+            "object_id": 11, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.person", 
+            "subject_id": 11, 
+            "object_type": "core.object", 
+            "object_id": 33, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "9th Century", 
+            "name": "Ban\u016b M\u016bs\u0101", 
+            "text": "", 
+            "slug": "banu-musa", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ban\u016b%20M\u016bs\u0101", 
+            "timeline_date": 850
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "1771-1858", 
+            "name": "Robert Owen", 
+            "text": "", 
+            "slug": "robert-owen", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Robert+Owen", 
+            "timeline_date": 1819
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "1st Century", 
+            "name": "Hero of Alexandria", 
+            "text": "", 
+            "slug": "hero-of-alexandria", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Hero+of+Alexandria", 
+            "timeline_date": 150
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "12th Century", 
+            "name": "Al-Jazari", 
+            "text": "", 
+            "slug": "al-jazari", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Al-Jazari", 
+            "timeline_date": 1200
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "11-12th Century", 
+            "name": "Su Song", 
+            "text": "", 
+            "slug": "su-song", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Su+Song", 
+            "timeline_date": 1100
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "16th Century", 
+            "name": "Taqi al-Din", 
+            "text": "", 
+            "slug": "taqi-al-din", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Taqi%20al-Din%20Muhammad%20ibn%20Ma'ruf", 
+            "timeline_date": 1550
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Basile Bouchon", 
+            "text": "", 
+            "slug": "basile-bouchon", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Basile+Bouchon", 
+            "timeline_date": 1725
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "17th Century", 
+            "name": "George Bruce", 
+            "text": "", 
+            "slug": "george-bruce", 
+            "reference_url": "http://10.0.0.56:9292/wiki/George+Bruce+of+Carnock", 
+            "timeline_date": 1600
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Jacques de Vaucanson", 
+            "text": "", 
+            "slug": "jacques-de-vaucanson", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Jacques+de+Vaucanson", 
+            "timeline_date": 1740
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "James Watt", 
+            "text": "", 
+            "slug": "james-watt", 
+            "reference_url": "http://10.0.0.56:9292/wiki/James+Watt", 
+            "timeline_date": 1770
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Richard Arkwright", 
+            "text": "", 
+            "slug": "richard-arkwright", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Richard+Arkwright", 
+            "timeline_date": 1771
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Richard Trevithick", 
+            "text": "", 
+            "slug": "richard-trevithick", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Richard+Trevithick", 
+            "timeline_date": 1800
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Thomas Newcomen", 
+            "text": "", 
+            "slug": "thomas-newcomen", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Thomas+Newcomen", 
+            "timeline_date": 1712
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "17th Century", 
+            "name": "Thomas Savery", 
+            "text": "", 
+            "slug": "thomas-savery", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Thomas+Savery", 
+            "timeline_date": 1698
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "20th Century", 
+            "name": "Alan Turing", 
+            "text": "", 
+            "slug": "alan-turing", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Alan+Turing", 
+            "timeline_date": 1940
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "20th Century", 
+            "name": "Albert Einstein", 
+            "text": "", 
+            "slug": "albert-einstein", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Albert+Einstein", 
+            "timeline_date": 1910
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "21st Century", 
+            "name": "Cabaret Mechanical Theatre", 
+            "text": "", 
+            "slug": "cabaret-mechanical-theatre", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Cabaret+Mechanical+Theatre", 
+            "timeline_date": 2000
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Charles Babbage", 
+            "text": "", 
+            "slug": "charles-babbage", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Charles+Babbage", 
+            "timeline_date": 1840
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Joseph Marie Jacquard", 
+            "text": "", 
+            "slug": "joseph-marie-jacquard", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Joseph+Marie+Jacquard", 
+            "timeline_date": 1801
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "Early 20th Century", 
+            "name": "Herman Hollerith", 
+            "text": "Cofounded IBM\r\n\r\nCame R/W up with datastorage", 
+            "slug": "herman-hollerith", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Herman+Hollerith", 
+            "timeline_date": 1920
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "20th Century", 
+            "name": "Joe Jones", 
+            "text": "", 
+            "slug": "joe-jones", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Joe+Jones+(Fluxus+artist)", 
+            "timeline_date": 1970
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "John Joseph Merlin", 
+            "text": "", 
+            "slug": "john-joseph-merlin", 
+            "reference_url": "http://10.0.0.56:9292/wiki/John+Joseph+Merlin", 
+            "timeline_date": 1760
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "John Lombe", 
+            "text": "", 
+            "slug": "john-lombe", 
+            "reference_url": "http://10.0.0.56:9292/wiki/John+Lombe", 
+            "timeline_date": 1721
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Lord Byron", 
+            "text": "", 
+            "slug": "lord-byron", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Lord+Byron", 
+            "timeline_date": 1800
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Matthew Boulton", 
+            "text": "", 
+            "slug": "matthew-boulton", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Matthew+Boulton", 
+            "timeline_date": 1761
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Nagai Nagayoshi", 
+            "text": "", 
+            "slug": "nagai-nagayoshi", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Nagai+Nagayoshi", 
+            "timeline_date": 1893
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Robert Peel", 
+            "text": "", 
+            "slug": "robert-peel", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Robert+Peel", 
+            "timeline_date": 1844
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "3rd Century BC", 
+            "name": "Theophrastus", 
+            "text": "\"On Stones\" (talks about coal)", 
+            "slug": "theophrastus", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Theophrastus", 
+            "timeline_date": -300
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "3rd Century BC", 
+            "name": "Philo of Byzantium", 
+            "text": "He made/talked about a water wheel", 
+            "slug": "philo-of-byzantium", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Philo+of+Byzantium", 
+            "timeline_date": -200
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Edmund Cartwright", 
+            "text": "Inventor of the power loom.\r\n\r\n\r\nThe power loom reduced demand for skilled handweavers, initially causing reduced wages and unemployment. Protests followed its introduction. For example, in 1816 two thousand rioting Calton weavers tried to destroy power loom mills and stoned the workers\r\n\r\n\r\nThe power loom also opened up opportunities for women mill workers.<ref></ref> A darker side of the power loom's impact was the growth of employment of children in power loom mills\r\n\r\nhttp://10.0.0.56:9292/wiki/Roberts%20Loom \u2014 Roberts Loom was a reliable power loom, viable to replace hand looms and (1830) marked the point where power looms overtook hand looms in deployment in UK", 
+            "slug": "edmund-cartwright", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Edmund+Cartwright", 
+            "timeline_date": 1785
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "20th Century", 
+            "name": "W. Edwards Deming", 
+            "text": "Statistical quality control. Heavy influence on Japanese industry.", 
+            "slug": "w-edwards-deming", 
+            "reference_url": "http://10.0.0.56:9292/wiki/W.+Edwards+Deming", 
+            "timeline_date": 1950
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Mary Wollstonecraft", 
+            "text": "", 
+            "slug": "mary-wollstonecraft", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Mary+Wollstonecraft", 
+            "timeline_date": 1780
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Ada Lovelace", 
+            "text": "", 
+            "slug": "ada-lovelace", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ada+Lovelace", 
+            "timeline_date": 1837
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Henri Maillardet", 
+            "text": "", 
+            "slug": "henri-maillardet", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Henri+Maillardet", 
+            "timeline_date": 1805
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "Early 19th Century", 
+            "name": "Canut revolts", 
+            "text": "", 
+            "slug": "canut-revolts", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Canut_revolts", 
+            "timeline_date": 1825
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1842", 
+            "name": "1842 General Strike", 
+            "text": "", 
+            "slug": "1842-general-strike", 
+            "reference_url": "http://10.0.0.56:9292/wiki/1842_General_Strike", 
+            "timeline_date": 1842
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1349", 
+            "name": "Ordinance of Labourers", 
+            "text": "", 
+            "slug": "ordinance-of-labourers", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ordinance%20of%20Labourers", 
+            "timeline_date": 1349
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1315 - 1317", 
+            "name": "Great Famine of 1315\u20131317", 
+            "text": "", 
+            "slug": "great-famine-of-13151317", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Great%20Famine%20of%201315%E2%80%931317", 
+            "timeline_date": 1315
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1984 - 1985", 
+            "name": "UK miners' strike (1984\u20131985)", 
+            "text": "", 
+            "slug": "uk-miners-strike-19841985", 
+            "reference_url": "http://10.0.0.56:9292/wiki/UK%20miners'%20strike%20(1984%E2%80%931985)", 
+            "timeline_date": 1984
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1926", 
+            "name": "1926 United Kingdom general strike", 
+            "text": "", 
+            "slug": "1926-united-kingdom-general-strike", 
+            "reference_url": "http://10.0.0.56:9292/wiki/1926%20United%20Kingdom%20general%20strike", 
+            "timeline_date": 1926
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Luddite", 
+            "text": "", 
+            "slug": "luddite", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Luddite", 
+            "timeline_date": 1800
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1381", 
+            "name": "Peasants' Revolt", 
+            "text": "", 
+            "slug": "peasants-revolt", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Peasants'%20Revolt", 
+            "timeline_date": 1381
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1891", 
+            "name": "Rerum Novarum", 
+            "text": "", 
+            "slug": "rerum-novarum", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Rerum%20Novarum", 
+            "timeline_date": 1891
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1838 - 1850", 
+            "name": "Chartism", 
+            "text": "", 
+            "slug": "chartism", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Chartism", 
+            "timeline_date": 1845
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1791", 
+            "name": "Le Chapelier Law", 
+            "text": "", 
+            "slug": "le-chapelier-law", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Le%20Chapelier%20Law", 
+            "timeline_date": 1791
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1973 - 1974", 
+            "name": "1974 Miners' Dispute", 
+            "text": "", 
+            "slug": "1974-miners-dispute", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Three-Day%20Week", 
+            "timeline_date": 1974
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1832", 
+            "name": "Tolpuddle Martyrs", 
+            "text": "", 
+            "slug": "tolpuddle-martyrs", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Tolpuddle%20Martyrs", 
+            "timeline_date": 1832
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1306", 
+            "name": "Ban on Coal Burning in London", 
+            "text": "But only while Parliament is in session", 
+            "slug": "ban-on-coal-burning-in-london", 
+            "reference_url": "http://10.0.0.56:9292/wiki/1306", 
+            "timeline_date": 1306
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "War of Currents", 
+            "text": "AC vs DC", 
+            "slug": "war-of-currents", 
+            "reference_url": "http://10.0.0.56:9292/wiki/War+of+Currents", 
+            "timeline_date": 1896
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1921", 
+            "name": "Rossum's Universal Robots", 
+            "text": "", 
+            "slug": "rossums-universal-robots", 
+            "reference_url": "http://10.0.0.56:9292/wiki/R.U.R._(Rossum's_Universal_Robots)", 
+            "timeline_date": 1921
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1819", 
+            "name": "Cotton Mills and Factories Act", 
+            "text": "No Children under 9", 
+            "slug": "cotton-mills-and-factories-act", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Factory+Acts#Cotton_Mills_etc_Act_1819", 
+            "timeline_date": 1819
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1818", 
+            "name": "Publication of Frankenstein", 
+            "text": "Monster + Robot = Aweseome", 
+            "slug": "publication-of-frankenstein", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Frankenstein", 
+            "timeline_date": 1818
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "From 3rd Century BC", 
+            "name": "Early coal mining", 
+            "text": "Something something Theophrastus\r\n\r\nRoman surface mining powering smelting\r\n\r\nNo use during romano-brithish period\r\n\r\nRe-emergance by 1200", 
+            "slug": "early-coal-mining", 
+            "reference_url": "", 
+            "timeline_date": -300
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1768", 
+            "name": "Water frame", 
+            "text": "", 
+            "slug": "water-frame", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Water%20frame", 
+            "timeline_date": 1768
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1774", 
+            "name": "Cromford Mill", 
+            "text": "", 
+            "slug": "cromford-mill", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Derwent%20Valley%20Mills", 
+            "timeline_date": 1774
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1766", 
+            "name": "Soho Manufactory", 
+            "text": "", 
+            "slug": "soho-manufactory", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Soho%20Manufactory", 
+            "timeline_date": 1766
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1721", 
+            "name": "The Lombe Silk Mill", 
+            "text": "", 
+            "slug": "the-lombe-silk-mill", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Derby%20Industrial%20Museum", 
+            "timeline_date": 1721
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1104", 
+            "name": "The Venetian Arsenal", 
+            "text": "", 
+            "slug": "the-venetian-arsenal", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Venetian%20Arsenal", 
+            "timeline_date": 1104
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1893", 
+            "name": "Methamphetamine", 
+            "text": "", 
+            "slug": "methamphetamine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Methamphetamine", 
+            "timeline_date": 1893
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1070", 
+            "name": "Ephedrine", 
+            "text": "", 
+            "slug": "ephedrine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ephedrine", 
+            "timeline_date": 1070
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1206", 
+            "name": "Elephant Clock", 
+            "text": "A modern full-size working reproduction can be found as a centrepiece in the Ibn Battuta Mall, a shopping mall in Dubai, United Arab Emirates. Another working reproduction can be seen outside the Mus\u00e9e d'Horlogerie du Locle, Ch\u00e2teau des Monts, in Le Locle, Switzerland.", 
+            "slug": "elephant-clock", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Elephant%20clock", 
+            "timeline_date": 1206
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1768-74", 
+            "name": "Jacquet-Droz automata", 
+            "text": "the musician, the draughtsman and the writer. The dolls are still functional, and can be seen at the Mus\u00e9e d'Art et d'Histoire of Neuch\u00e2tel, in Switzerland. They are considered to be among the remote ancestors of modern computers.\r\n", 
+            "slug": "jacquet-droz-automata", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Jaquet-Droz%20automata", 
+            "timeline_date": 1768
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "12th Century", 
+            "name": "Crankshaft", 
+            "text": "The first known use of a crankshaft in a chain pump was in one of AL-JAZARI's (1136\u20131206) saqiya machines", 
+            "slug": "crankshaft", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Crankshaft", 
+            "timeline_date": 1180
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "The Silver Swan", 
+            "text": "The Silver Swan is an automaton dating from the 18th Century and is housed in the Bowes Museum, Barnard Castle, Teesdale, County Durham, England.\r\n", 
+            "slug": "the-silver-swan", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Silver%20Swan%20(automaton)", 
+            "timeline_date": 1773
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "16th Century", 
+            "name": "Artificio de Juanelo", 
+            "text": "", 
+            "slug": "artificio-de-juanelo", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Artificio%20de%20Juanelo", 
+            "timeline_date": 1568
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1000BC", 
+            "name": "Chinese Android", 
+            "text": "", 
+            "slug": "chinese-android", 
+            "reference_url": "http://10.0.0.56:9292/wiki/King+Mu+of+Zhou", 
+            "timeline_date": -1000
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "", 
+            "name": "Fairground organ", 
+            "text": "", 
+            "slug": "fairground-organ", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Fairground+organ", 
+            "timeline_date": null
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "c. 1764", 
+            "name": "Spinning Jenny", 
+            "text": "", 
+            "slug": "spinning-jenny", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Spinning+jenny", 
+            "timeline_date": 1764
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1739", 
+            "name": "The Digesting Duck", 
+            "text": "A mechanical duck, created by Jacques de Vaucanson, which gave the impression of eating kernels of grain, digesting and then defecating them. Vaucanson hoped that it would be possible to create a future automaton that actually performed these actions rather than the sleight of hand he used.\r\n\r\nYou can see a replica of the duck in the Museum of Automatons in Grenoble, France.", 
+            "slug": "the-digesting-duck", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Digesting+Duck", 
+            "timeline_date": 1739
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "2400BC", 
+            "name": "Abacus", 
+            "text": "", 
+            "slug": "abacus", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Abacus", 
+            "timeline_date": -2400
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1st Century BC", 
+            "name": "Aeolipile", 
+            "text": "", 
+            "slug": "aeolipile", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Aeolipile", 
+            "timeline_date": -50
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "9th Century", 
+            "name": "Automatic Flute Player", 
+            "text": "", 
+            "slug": "automatic-flute-player", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Book%20of%20Ingenious%20Devices", 
+            "timeline_date": 850
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "3rd Century BC", 
+            "name": "Water-powered Puppet Theatre", 
+            "text": "", 
+            "slug": "water-powered-puppet-theatre", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ma+Jun", 
+            "timeline_date": 240
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1094", 
+            "name": "Su Song's Astronomical Clock Tower", 
+            "text": "", 
+            "slug": "su-songs-astronomical-clock-tower", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Su+Song", 
+            "timeline_date": 1094
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "Middle Ages", 
+            "name": "Chequered Cloths", 
+            "text": "", 
+            "slug": "chequered-cloths", 
+            "reference_url": "", 
+            "timeline_date": 1300
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "2nd Century BC", 
+            "name": "Antikythera mechanism", 
+            "text": "", 
+            "slug": "antikythera-mechanism", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Antikythera%20mechanism", 
+            "timeline_date": -100
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1092", 
+            "name": "Chain drive", 
+            "text": "Celestial Lader by Su Song\r\n\r\n1770 Vaucanson", 
+            "slug": "chain-drive", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Chain%20drive", 
+            "timeline_date": 1092
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1733", 
+            "name": "Flying shuttle", 
+            "text": "", 
+            "slug": "flying-shuttle", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Flying+shuttle", 
+            "timeline_date": 1733
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1884", 
+            "name": "Steam turbine", 
+            "text": "", 
+            "slug": "steam-turbine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Steam+turbine", 
+            "timeline_date": 1884
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Piano roll", 
+            "text": "", 
+            "slug": "piano-roll", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Piano+roll", 
+            "timeline_date": 1896
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1864", 
+            "name": "Tower Colliery", 
+            "text": "", 
+            "slug": "tower-colliery", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Tower+Colliery", 
+            "timeline_date": 1864
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1725", 
+            "name": "Punch bands", 
+            "text": "", 
+            "slug": "punch-bands", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Basile+Bouchon", 
+            "timeline_date": 1725
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1948", 
+            "name": "Curta calculator", 
+            "text": "", 
+            "slug": "curta-calculator", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Curta_calculator", 
+            "timeline_date": 1948
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1961", 
+            "name": "ANITA", 
+            "text": "The first electronic calculator", 
+            "slug": "anita", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Sumlock%20ANITA%20calculator", 
+            "timeline_date": 1961
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1950's", 
+            "name": "NC machine tools", 
+            "text": "", 
+            "slug": "nc-machine-tools", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Numerical+control", 
+            "timeline_date": 1950
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1620's", 
+            "name": "Slide rule", 
+            "text": "", 
+            "slug": "slide-rule", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Slide+rule", 
+            "timeline_date": 1620
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1779", 
+            "name": "Spinning Mule", 
+            "text": "The 1790 mule required main force, meaning:\r\n\r\nHome spinning was the occupation of women and girls, but the strength needed to operate a mule, caused it to be the activity of men. Hand loom weaving however, had been a man's occupation but in the mill it could and was done by girls and women\r\n\r\nMule spinners were the leaders in unionism within the cotton industry\r\n\r\nLater developments including Roberts' Loom (1830), an automatic version.", 
+            "slug": "spinning-mule", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Spinning%20mule", 
+            "timeline_date": 1779
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "18th\u201319th Century", 
+            "name": "Cotton factories", 
+            "text": "Large-scale non-mechanized factories bringing together workers and specialised equipment. Rise of UK cotton industry. Enabled by development of power loom & steam engine.", 
+            "slug": "cotton-factories", 
+            "reference_url": "http://10.0.0.56:9292/wiki/cotton%20mill", 
+            "timeline_date": 1771
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1801", 
+            "name": "The Jacquard Loom", 
+            "text": "", 
+            "slug": "the-jacquard-loom", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Jacquard%2Bloom", 
+            "timeline_date": 1801
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1838", 
+            "name": "Jacquard Portrait", 
+            "text": "Portrait of Jacuqard woven on 24000 cards on a Jacuqard Loom\r\n\r\nMeasures 20x14 inches\r\n\r\n(from the book)", 
+            "slug": "jacquard-portrait", 
+            "reference_url": "", 
+            "timeline_date": 1838
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1837", 
+            "name": "Analytical engine", 
+            "text": "", 
+            "slug": "analytical-engine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Analytical+engine", 
+            "timeline_date": 1837
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1740", 
+            "name": "Punch cards", 
+            "text": "", 
+            "slug": "punch-cards", 
+            "reference_url": "http://10.0.0.56:9292/wiki/punched+card", 
+            "timeline_date": 1740
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Steam engine", 
+            "text": "Savery, Newcommen, Watt and Trevithnick", 
+            "slug": "steam-engine", 
+            "reference_url": "", 
+            "timeline_date": 1770
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1784", 
+            "name": "Power loom", 
+            "text": "Invented by Cartwright of the power loom.\r\n\r\n\r\nThe power loom reduced demand for skilled handweavers, initially causing reduced wages and unemployment. Protests followed its introduction. For example, in 1816 two thousand rioting Calton weavers tried to destroy power loom mills and stoned the workers\r\n\r\n\r\nThe power loom also opened up opportunities for women mill workers.<ref></ref> A darker side of the power loom's impact was the growth of employment of children in power loom mills\r\n\r\nhttp://10.0.0.56:9292/wiki/Roberts%20Loom \u2014 Roberts Loom was a reliable power loom, viable to replace hand looms and (1830) marked the point where power looms overtook hand looms in deployment in UK", 
+            "slug": "power-loom", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Power+loom", 
+            "timeline_date": 1784
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "Early 17th Century", 
+            "name": "Upper Hurst mining rig", 
+            "text": "During C17 wooden bracing using branches", 
+            "slug": "upper-hurst-mining-rig", 
+            "reference_url": "http://10.0.0.56:9292/wiki/George+Bruce+of+Carnock", 
+            "timeline_date": 1617
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "By 1750", 
+            "name": "Brick-lines mine shafts", 
+            "text": "", 
+            "slug": "brick-lines-mine-shafts", 
+            "reference_url": "", 
+            "timeline_date": 1750
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "core.story", 
+        "fields": {
+            "text": "", 
+            "colour": "", 
+            "featured": true, 
+            "name": "Automatons", 
+            "slug": "automatons"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "core.story", 
+        "fields": {
+            "text": "", 
+            "colour": "", 
+            "featured": true, 
+            "name": "Computing", 
+            "slug": "computing"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "core.story", 
+        "fields": {
+            "text": "", 
+            "colour": "", 
+            "featured": true, 
+            "name": "Textiles", 
+            "slug": "textiles"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "core.story", 
+        "fields": {
+            "text": "", 
+            "colour": "", 
+            "featured": true, 
+            "name": "Power", 
+            "slug": "power"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "core.story", 
+        "fields": {
+            "text": "", 
+            "colour": "", 
+            "featured": true, 
+            "name": "Coal mining", 
+            "slug": "coal-mining"
+        }
+    }
+]
