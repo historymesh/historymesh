@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<ul>
+{% for edge in edges %}
+        <li><a href="{{edge.url}}">{{edge.get_subject.name}} {{edge.verb}} {{edge.get_object.name}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -21,6 +21,7 @@ class Edge(models.Model):
         "enabled",
         "primary",
         "secondary",
+        "described_by", # For linking to StoryContent nodes
     ]
 
     subject_type = models.CharField(max_length=255)
@@ -73,6 +74,9 @@ class Edge(models.Model):
         return model.objects.get(pk=self.subject_id)
 
     subject = property(get_subject, set_subject)
+
+    def url(self):
+        return reverse('edge', kwargs={'pk': self.pk})
 
 
 class EdgeObjectQuerySet(QuerySet):
@@ -196,6 +200,22 @@ class EdgesMixin(object):
             setup=True,
         )
 
+    def readable_name(self):
+        return "%s (%s)" % (
+            self.name,
+            self._meta.object_name,
+        )
+
+    @property
+    def select_tuple(self):
+        return (
+            "%s:%d" % (
+                Edge._type_string_from_model(self),
+                self.pk,
+            ),
+            self.readable_name()
+        )
+
 
 class Node(models.Model, EdgesMixin):
     """
@@ -218,31 +238,18 @@ class Node(models.Model, EdgesMixin):
             self.pk,
         )
 
-    def readable_name(self):
-        return "%s (%s)" % (
-            self.name,
-            self._meta.object_name,
-        )
-
     @classmethod
     def all_child_classes(self):
-        return [Person, Event, Concept, Object]
-
-    @property
-    def select_tuple(self):
-        return (
-            "%s:%d" % (
-                Edge._type_string_from_model(self),
-                self.pk,
-            ),
-            self.readable_name()
-        )
+        return [Person, Event, Concept, Object, ExternalLink]
 
 
 class Person(Node):
     """
     A person.
     """
+
+    class Meta:
+        verbose_name_plural = "people"
 
     def url(self):
         return reverse('person', kwargs={'pk': self.pk})
@@ -275,6 +282,14 @@ class Object(Node):
         return reverse('object', kwargs={'pk': self.pk})
 
 
+class ExternalLink(models.Model, EdgesMixin):
+    """
+    A link to an external site.
+    """
+    name = models.CharField(max_length=1024, unique=True)
+    url = models.URLField(max_length=255, verify_exists=False)
+
+
 class Story(models.Model):
     """
     A story is a collection of edges describing a directed narrative
@@ -282,3 +297,20 @@ class Story(models.Model):
 
     name = models.CharField(max_length=255, unique=True)
 
+    """
+    Breif description aobut the story for appearing on the homepage
+    """
+    text = models.TextField(blank=True)
+
+    def start(self):
+        story_edges = Edge.objects.filter(story=self)
+        subject_nodes = set(edge.subject for edge in story_edges)
+        object_nodes = set(edge.object for edge in story_edges)
+
+        return (subject_nodes - object_nodes).pop()
+
+class StoryContent(Node):
+    """
+    Extra info about a node relating to a story, for instance "Brunnel in Automota"
+    """
+    pass

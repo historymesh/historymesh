@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body-class %}homepage{% endblock %}
+
+{% block content %}
+
+  <ul id='stories'>
+  {% for story in stories %}
+    <li>
+      <h3><a href='#TODO'>{{story.name}}</a></h3>
+      {{story.text|linebreaks}}
+    </li>
+  {% endfor %}
+  </ul>
+  
+  <div id='timeline'>
+    Here be timeliney dragons
+  </div>
+
+{% endblock %}
