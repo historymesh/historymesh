@@ -20,16 +20,42 @@
       <nav>
         <ul>
           <li><a href="/stories/new">New story</a></li>
-          <li><a href="/saved">Saved</a></li>
           <li><a href="/stories/">Stories</a></li>
+          <li><a id="storyMode"></a></li>
         </ul>
       </nav>
-      <h1><a href="/wiki/Jacquard_loom">Weaver</a></h1>
+      <h1><a href="/wiki/Jacquard%20loom">Weaver</a></h1>
     </section>
   </header>
 
   <%= yield %>
 
 </body>
+
+<script type="text/javascript">
+$(function () {
+
+  if (localStorage.storyMode === 'true') {
+    $(".finder").css('height', '100%');
+    $("#storyMode").html("⬆");
+  } else {
+    $(".finder").css('height', '200px');
+    $("#storyMode").html("⬇");
+  }
+
+  $("#storyMode").click(function () {
+    if (localStorage.getItem('storyMode') === 'true') {
+      $(".finder").css('height', '200px');
+      $("#storyMode").html("⬇");
+      localStorage.setItem('storyMode', false);
+    } else {
+      $(".finder").css('height', '100%');
+      $("#storyMode").html("⬆");
+      localStorage.setItem('storyMode', 'true');
+    }
+  });
+
+});
+</script>
 
 </html>
