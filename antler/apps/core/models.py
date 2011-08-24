@@ -240,7 +240,7 @@ class Node(models.Model, EdgesMixin):
 
     @classmethod
     def all_child_classes(self):
-        return [Person, Event, Concept, Object, ExternalLink]
+        return [Person, Event, Concept, Object, ExternalLink, StoryContent]
 
 
 class Person(Node):

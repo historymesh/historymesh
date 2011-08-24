@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<h1>All edges currently within Antler</h1>
 <ul>
 {% for edge in edges %}
         <li><a href="{{edge.url}}">{{edge.get_subject.name}} {{edge.verb}} {{edge.get_object.name}}</a></li>

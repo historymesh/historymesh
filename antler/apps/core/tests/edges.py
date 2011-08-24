@@ -1,8 +1,8 @@
 from django.test import TestCase
-from core.models import Person, Concept
+from core.models import Person, Concept, Edge
 
 
-class EdgeTest(TestCase):
+class FollowingTest(TestCase):
     fixtures = [ 'edges' ]
 
     def test_outgoing_links(self):
@@ -60,3 +60,15 @@ class EdgeTest(TestCase):
         self.assertEqual({}, concept.incoming().by_verb())
         self.assertEqual({}, concept.outgoing().by_verb())
 
+class EdgeTest(TestCase):
+    fixtures = [ 'edges' ]
+
+    def test_type_string_generation(self):
+        person = Person.objects.get(pk=1)
+        self.assertEqual("core.person", Edge._type_string_from_model(person))
+
+        concept = Concept.objects.get(pk=1)
+        self.assertEqual("core.concept", Edge._type_string_from_model(concept))
+
+    def test_model_from_type_string(self):
+        self.assertEqual(Person, Edge._model_from_type_string("core.person"))
