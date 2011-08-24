@@ -42,7 +42,7 @@
       }
       .selected .node-preview h4 {
         opacity:        1;
-        top:            -50px;
+        top:            -36px;
       }
     </style>
 {% endblock %}
@@ -55,7 +55,7 @@
 
 <script type="text/javascript">
 
-  var network = new Network('container');
+  var network = new Network('container', 1200, 400);
 
   var nodes = {};
   {% for node in nodes %}
@@ -63,8 +63,8 @@
       name: '{{ node.name }}',
       color: '#f80',
       position: [
-        ({{ node.horizontal_position }} + 2) * 6,
-        ({{ node.position }} + 100) * 1.5
+        {{ node.horizontal_position }} * 90,
+        {{ node.position }}
     ]
     });
   {% endfor %}
