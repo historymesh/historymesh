@@ -1,17 +1,24 @@
 from django.test import TestCase
-from core.models import Person, Concept, Edge
+from core.models import Person, Concept, Edge, Object, Event
 
 
 class FollowingTest(TestCase):
     fixtures = [ 'edges' ]
-
+    
+    maxDiff = None
+    
     def test_outgoing_links(self):
         person = Person.objects.get(pk=1)
         inventions = person.outgoing("invented").follow()
 
         self.assertEqual(
             inventions,
-            Concept.objects.in_bulk([1,2]).values(),
+            [
+                    Concept.objects.get(pk=1),
+                    Concept.objects.get(pk=2),
+                    Object.objects.get(pk=1),
+                    Object.objects.get(pk=2),
+            ],
         )
 
     def test_incoming_links(self):
@@ -30,9 +37,14 @@ class FollowingTest(TestCase):
         self.assertEqual(
             links,
             {
+                'dined_with': [
+                    Person.objects.get(pk=2),
+               ],
                 'invented': [
                     Concept.objects.get(pk=1),
                     Concept.objects.get(pk=2),
+                    Object.objects.get(pk=1),
+                    Object.objects.get(pk=2),
                 ],
             },
         )
