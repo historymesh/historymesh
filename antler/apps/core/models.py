@@ -235,10 +235,19 @@ class EdgesMixin(object):
         )
 
     def stories(self):
+        """
+        Returns all the stories that have primary edges into or out of
+        the current node. The stories' current nodes will be set to this
+        node so you can use next and previous on them 
+        (see Story.set_current_node)
+        """
         queryset = self.incoming() | self.outgoing()
         queryset = queryset.filter(verb__in=['primary', 'secondary'])
         story_ids = queryset.distinct().values_list('story', flat=True)
-        return Story.objects.in_bulk(list(story_ids)).values()
+        stories = Story.objects.in_bulk(list(story_ids)).values()
+        for story in stories:
+            story.set_current_node(self)
+        return stories
 
     def readable_name(self):
         return "%s: %s" % (
@@ -414,6 +423,39 @@ class Story(models.Model):
         subject_nodes = set(edge.subject for edge in story_edges)
         object_nodes = set(edge.object for edge in story_edges)
         return (subject_nodes - object_nodes).pop()
+
+    def set_current_node(self, node):
+        """
+        Sets the current nodes so that the next and preivous functions make
+        sense.
+        """
+        self.current_node = node
+
+    def next(self):
+        """
+        Returns the next node in this story's primary thread, call
+        set_current_node so that this makes sense.
+        """
+        try:
+            nodes = self.current_node.outgoing('primary').filter(story=self).follow()
+        except AttributeError:
+            return
+
+        if len(nodes) > 0:
+            return nodes[0]
+
+    def previous(self):
+        """
+        Returns the previous node in this story's primary thread, call
+        set_current_node first so that this make sense.
+        """
+        try:
+            nodes = self.current_node.incoming('primary').filter(story=self).follow()
+        except AttributeError:
+            return
+
+        if len(nodes) > 0:
+            return nodes[0]
 
     def __unicode__(self):
         return self.name

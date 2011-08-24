@@ -1,17 +1,17 @@
 {% extends "base.html" %}{% load markup %}
 
-{% block page_title %}{{ subject.name }}{% endblock %}
+{% block page_title %}{{ subject.name }}{% if story %} {{ story.slug }}{% endif %}{% endblock %}
 
 {% block content %}
 <h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}</h1>
 
 <ol>
-{% if story_prev %}
-<li><a rel='prev' href='{{story_prev.url}}?story={{story.slug}}'>Previous: {{ story_prev.name }}</a></li>
+{% if story and story.prev %}
+<li><a rel='prev' href='{{story.prev.url}}?story={{story.slug}}'>Previous: {{ story.prev.name }}</a></li>
 {% endif %}
 
-{% if story_next %}
-<li><a rel='next' href='{{story_next.url}}?story={{story.slug}}'>Next: {{ story_next.name }}</a></li>
+{% if story and story.next %}
+<li><a rel='next' href='{{story.next.url}}?story={{story.slug}}'>Next: {{ story.next.name }}</a></li>
 {% endif %}
 </ol>
 
@@ -47,6 +47,18 @@
 {% if subject.reference_url %}
 <a href='{{ subject.reference_url }}'>Read on Weaver</a>
 {% endif %}
+<hr>
+
+<h2>Other stories</h2>
+{% for other_story in subject.stories %}
+{% if other_story != story %}
+    <h3>{{other_story.name}}</h3>
+    <ol>
+    {% if other_story.next %}<li>Next: <a href='{{other_story.next.url}}'>{{other_story.next.name}}</a></li>{% endif %}
+    {% if other_story.previous %}<li>Previous: <a href='{{other_story.previous.url}}'>{{other_story.previous.name}}</a></li>{% endif %}
+    </ol>
+{% endif %}
+{% endfor %}
 
 {% include "nodes/links.html" %}
 {% endblock %}

@@ -15,6 +15,7 @@ class NodeView(TemplateView):
         try:
             story_slug = self.request.GET.get('story')
             story = Story.objects.get(slug=story_slug)
+            story.set_current_node(instance)
         except Story.DoesNotExist:
             story = None
 
@@ -22,11 +23,13 @@ class NodeView(TemplateView):
         current_story_content = story_content.filter(story=story).follow()
         other_story_content = story_content.exclude(story=story).follow()
 
-        story_next = instance.outgoing('primary').filter(story=story).follow()
+        outgoing_primary = instance.outgoing('primary')
+        story_next = outgoing_primary.filter(story=story).follow()
         if len(story_next) > 0:
             story_next = story_next[0]
 
-        story_prev = instance.incoming('primary').filter(story=story).follow()
+        incoming_primary = instance.incoming('primary')
+        story_prev = incoming_primary.filter(story=story).follow()
         if len(story_prev) > 0:
             story_prev = story_prev[0]
 
@@ -37,8 +40,6 @@ class NodeView(TemplateView):
             "story": story,
             "other_story_content": other_story_content,
             "current_story_content": current_story_content,
-            "story_next": story_next,
-            "story_prev": story_prev,
         }
 
 
