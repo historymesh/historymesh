@@ -19,6 +19,8 @@ class Edge(models.Model):
         "dined_with",
         "inspired",
         "enabled",
+        "primary",
+        "secondary",
     ]
 
     subject_type = models.CharField(max_length=255)
@@ -27,6 +29,18 @@ class Edge(models.Model):
     object_id = models.IntegerField()
     verb = models.CharField(max_length=255, choices=[(x,x) for x in VERBS])
     story = models.ForeignKey("Story", blank=True, null=True, related_name="edges")
+
+    class Meta:
+        unique_together = [
+            (
+                "subject_type",
+                "subject_id",
+                "object_type",
+                "object_id",
+                "verb",
+                "story",
+            ),
+        ]
 
     @classmethod
     def _type_string_from_model(self, instance):
