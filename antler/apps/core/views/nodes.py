@@ -19,10 +19,6 @@ class NodeView(TemplateView):
         except Story.DoesNotExist:
             story = None
 
-        story_content = instance.outgoing('described_by')
-        current_story_content = story_content.filter(story=story).follow()
-        other_story_content = story_content.exclude(story=story).follow()
-
         outgoing_primary = instance.outgoing('primary')
         story_next = outgoing_primary.filter(story=story).follow()
         if len(story_next) > 0:
@@ -38,8 +34,6 @@ class NodeView(TemplateView):
             "incoming": instance.incoming().by_verb(),
             "outgoing": instance.outgoing().by_verb(),
             "story": story,
-            "other_story_content": other_story_content,
-            "current_story_content": current_story_content,
         }
 
 
