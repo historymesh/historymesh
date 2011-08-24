@@ -220,7 +220,8 @@ $.extend(Network.Node.prototype, {
   },
 
   leadsTo: function(node, color) {
-    this._color = color;
+    this._color = this._color || color;
+    node._color = color;
     return this._network.addEdge(this, node, color);
   },
 
