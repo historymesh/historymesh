@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Edge, Person, Concept, Object, Event
+from core.models import Edge, Person, Concept, Object, Event, ExternalLink
 
 admin.site.register(
     Edge,
@@ -24,4 +24,6 @@ admin.site.register(Person, NodeAdmin)
 admin.site.register(Concept, NodeAdmin)
 admin.site.register(Object, NodeAdmin)
 admin.site.register(Event, NodeAdmin)
+
+admin.site.register(ExternalLink)
 
