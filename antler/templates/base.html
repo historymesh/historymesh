@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset='UTF-8'>
+  <title>{% block page_title %}</title>
+
+  {% block full-head-css %}
+    <link rel="stylesheet" charset="utf-8" type="text/css" 
+          media="screen" href="{% static "css/screen.css" %}">
+  {% block head-css %}{% endblock %}
+  {% endblock %}
+
+  {% comment %}
+  <link rel='shortcut icon' href='{% static "img/favicon.png" %}'>
+  <link rel="apple-touch-icon" href="{% static 'img/touch.png' %}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/touch-ipad.png' %}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/touch-retina.png' %}">
+  {% endcomment %}
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  {% block full-head-js %}
+  {% block head-js %}{% endblock %}
+  {% endblock %}
+  {% block head-meta %}
+  {% endblock %}
+</head>
+<body class='{% block body-class %}{% endblock %}'>
+
+  {% block content %}{% endblock %}
+
+</body>
+</html>
