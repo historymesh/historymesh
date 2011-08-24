@@ -66,7 +66,7 @@ li {
 
 
 																		/* -- reusables -- */
-a.button, a.button:visited {
+button, a.button, a.button:visited {
 	display: block;
 	font: normal 12px sans-serif;
 	text-shadow: rgba(0, 0, 0, 0.2) 0 1px 0;
@@ -74,6 +74,7 @@ a.button, a.button:visited {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+	color: #fff;
 	background-color: rgba(211, 127, 57, 0.8);
 	background-image: -webkit-gradient(
 	    linear,
@@ -92,12 +93,14 @@ a.button, a.button:visited {
 			#de9f47 0%,
 	    #c85f2b 100%
 	);
+	border: none;
+	cursor: pointer;
 
 	-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
 	-moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
 }
-	a.button:hover, a.button:focus {
+	button:hover, a.button:hover, a.button:focus {
 		background-color: rgba(211, 127, 57, 1);
 		background-image: -webkit-gradient(
 		    linear,
@@ -129,7 +132,9 @@ a.button, a.button:visited {
 .out {
 	float: right;
 }
-
+.in ul li:nth-child(10000) {
+	font-size: 28px;
+}
 
 
 
@@ -213,6 +218,29 @@ header li a, header li a:link {
 .finder h1 a.button, .finder h1 a.button:visited {
 	width: 50px;
 	margin: 0 auto;
+	padding: 5px 10px;
+	background-image: none;
+	text-transform: none;
+	font-weight: normal;
+
+	background-color: rgba(211, 127, 57, 0.8);
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(1, #c85f2b),
+	    color-stop(0, #de9f47)
+	);
+	background-image: -moz-linear-gradient(
+	    center top,
+			#de9f47 0%,
+	    #c85f2b 100%
+	);
+	background-image: linear-gradient(
+	    center top,
+			#de9f47 0%,
+	    #c85f2b 100%
+	);
 }
 .finder .saved {
 	font-weight: bold;
@@ -220,7 +248,9 @@ header li a, header li a:link {
 	padding-left: 18px;
 	background: url(floppy.png) no-repeat 0 1px;
 }
-
+.finder h1 a.saved, .finder h1 a.saved:visited {
+	background: #600;
+}
 
 
 																		/* -- Wikipedia article styling -- */
@@ -246,7 +276,9 @@ header li a, header li a:link {
 	text-transform: uppercase;
 	padding-left: 18px;
 	margin-left: 9px;
-	background: url(floppy.png) no-repeat 0 1px;
+	background-image: url(floppy.png);
+	background-repeat: no-repeat;
+	background-position: 0 1px;
 }
 
 
