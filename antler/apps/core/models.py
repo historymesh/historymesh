@@ -153,10 +153,15 @@ class Node(models.Model, EdgesMixin):
         abstract = True
 
     def __unicode__(self):
-        return "%s:%d" % (
+        return "%s (%s:%d)" % (
+            self.name,
             self._meta.object_name,
             self.pk,
         )
+
+    @property
+    def all_child_classes(self):
+        return [Person, Event, Concept, Object]
 
 
 class Person(Node):
