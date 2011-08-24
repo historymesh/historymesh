@@ -83,7 +83,7 @@
           Weaver.Article.find(relArticleName, function (relArticle) {
           console.log(relArticle, relArticleName);
             if (!relArticle) return;
-            $("#related-links").append("<li>" + relType + " <a class='relatable' href='" + relArticle.link() + "'>" + relArticle.name + "</a></li>");
+            $("#related-links").append("<li>" + relType + " " + relArticle.link(true) + "</li>");
           });
         });
       });

@@ -50,12 +50,16 @@ $.extend(Weaver.Article.prototype, {
     storage.deleteArticle(this);
   },
 
-  link: function () {
+  link: function (relatable) {
     var name = decodeURIComponent(this.name),
         type = this.type,
         href = (type === 'story' ? '/stories/' : '/wiki/') + encodeURIComponent(name);
 
-    return '<a href="' + href + '">' + name + '</a>';
+    if (relatable) {
+      relatable = 'class="relatable"'
+    }
+
+    return '<a ' + relatable + ' href="' + href + '">' + name + '</a>';
   },
 
 });
