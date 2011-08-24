@@ -9,7 +9,7 @@
   <ul id='stories'>
   {% for story in stories %}
     <li>
-      <h3><a href='{{story.start.url}}'>{{story.name}}</a></h3>
+      <h3><a href='{{story.start.url}}?story={{story.slug}}'>{{story.name}}</a></h3>
       {{story.text|linebreaks}}
     </li>
   {% endfor %}
