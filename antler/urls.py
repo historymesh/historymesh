@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^object/(?P<pk>\d+)/', nodes.ObjectView.as_view(), name="object"),
     url(r'^edge/(?P<pk>[0-9]+)/', edge.EdgeEdit.as_view()),
     url(r'^edge/create/', edge.EdgeCreate.as_view()),
-    url(r'^layout/', layout.layout_view),
+#    url(r'^layout/', layout.layout_view),
 )
 
 if settings.DEBUG:
