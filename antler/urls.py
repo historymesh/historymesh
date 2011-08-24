@@ -2,10 +2,12 @@ from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from core.views import importer, edge, nodes, layout
+from homepage.views import HomepageView
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^$', HomepageView.as_view(), name='homepage'),
     url(r'^import/', importer.ImportView.as_view(), name="import"),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^person/(?P<pk>\d+)/$', nodes.PersonView.as_view(), name="person"),
