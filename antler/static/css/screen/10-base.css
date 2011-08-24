@@ -102,7 +102,7 @@ fieldset {
 
 h1 {
 	font-size: 2.6em;
-	margin: 0.5em 0 1em 0;
+	margin: 0 0 1em 0;
 	line-height: 1.2;
 	color: #777;
 }
@@ -164,7 +164,7 @@ header {
 
 /*! verbatim */
 header {
-	background: rgba(187,187,187,0.7);
+	background: rgba(187,187,187,0.85);
 }	
 /* -- */
 
@@ -209,6 +209,7 @@ header nav {
 header input {
 	float: right;
 	width: 14em;
+	padding: 2px 0;
 	border: 1px solid #ccc;
 }
 
@@ -271,21 +272,26 @@ article {
 		height: 44px;
 		padding: 0;
 		margin: 0;
-		background-color: #000;
-		background-image: url(/static/img/arrow-nav.png);
-		text-indent: -9999px;
-		text-decoration: none;
 		float: left;
 	}
-	.prev-next li.next {
-		background-position: -48px 0;
+	.prev-next li.prev {
+		width: 36px;
+	}
+	.prev-next li.next a, .prev-next li.next a:focus {
+		background-position: -44px 0;
 	}
 	.prev-next li a, .prev-next li a:visited {
 		display: block;
 		width: 40px;
 		height: 44px;
+		background-image: url(/static/img/arrow-nav.png);
+		text-indent: -9999px;
+		text-decoration: none;
 	}
-
+	.prev-next li a:hover, .prev-next li a:focus {
+		background-color: #666;
+	}
+	
 figure {
 	display: block;
 }
@@ -347,10 +353,19 @@ figcaption {
 }
 
 .storynav {
-	overflow: auto;
-	border-bottom: 1px solid #ccc;
+	overflow: hidden;
+	border: solid 1px #ccc;
+	padding: 7px 0;
 }
-
+/*! verbatim */
+	/* Norm, add border-width */
+.storynav {
+	border-width: 1px 0;
+}
+/* -- */
+.storynav h3 {
+	margin: 0;
+}
 .storynav li {
 	width:46%;
 	float: left;

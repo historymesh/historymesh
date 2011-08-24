@@ -61,16 +61,15 @@
   {% for node in nodes %}
     nodes["{{ node|slugify }}"] = network.addNode({
       name: '{{ node.name }}',
-      color: '#f80',
       position: [
-        {{ node.horizontal_position }} * 90,
+        {{ node.horizontal_position }},
         {{ node.position }}
     ]
     });
   {% endfor %}
 
   {% for edge in edges %}
-    nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"]);
+    nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], '#6cf');
   {% endfor %}
 
   network.draw();
@@ -89,8 +88,9 @@
 <h2>Positions</h2>
 <ul>
     {% for node in nodes %}
-        <li>{{ node }}: {{ node.timeline_date }}, {{ node.position }}</li>
+        <li>{{ node }}: {{ node.horizontal_position }}, {{ node.position }}</li>
     {% endfor %}
 </ul>
 
 {% endblock content %}
+
