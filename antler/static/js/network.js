@@ -5,8 +5,11 @@ Network = function(container, width, height) {
   this._nodes = {};
   this._edges = {};
 
-  this.bgColor    = '#fff';
-  this.nodeRadius = 10;
+  this.bgColor      = '#fff';
+  this.pathWidth    = 8;
+  this.nodeRadius   = 0.9 * this.pathWidth;
+  this.nodeStroke   = 0.5 * this.pathWidth;
+  this.cornerRadius = 16;
 
   var self   = this,
       width  = el.width(),
@@ -156,7 +159,7 @@ $.extend(Network.Node.prototype, {
       'cursor':       'pointer',
       'fill':         this._network.bgColor,
       'stroke':       color,
-      'stroke-width': radius * 0.75
+      'stroke-width': this._network.nodeStroke
     });
     return circle;
   },
@@ -193,11 +196,44 @@ $.extend(Network.Edge.prototype, {
         fromPos = this._from.getPosition(),
         toPos   = this._to.getPosition(),
         width   = this._network.nodeRadius * 0.75,
-        path    = paper.path('M' + fromPos[0] + ' ' + fromPos[1] + 'L' + toPos[0] + ' ' + toPos[1]);
+
+        angle   = Math.PI / 4,
+        cornerR = this._network.cornerRadius,
+        chop    = cornerR * Math.tan(angle / 2),
+        chopX   = chop * Math.sin(angle),
+        chopY   = chop * Math.cos(angle),
+
+        vector  = {x: toPos[0] - fromPos[0], y: toPos[1] - fromPos[1]},
+        diffX   = Math.abs(vector.x),
+        diffY   = Math.abs(vector.y),
+        signX   = (vector.x < 0) ? -1 : 1,
+        signY   = (vector.y < 0) ? -1 : 1,
+
+        corner, alpha, beta, gamma, sweep;
+
+    if (diffX > diffY) {
+      corner = [fromPos[0] + diffY * signX , toPos[1]];
+      alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
+      beta   = [corner[0] + chop * signX, corner[1]];
+      sweep  = (signX === signY) ? '0' : '1';
+    } else {
+      corner = [toPos[0] , fromPos[1] + diffX * signY];
+      alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
+      beta   = [corner[0], corner[1] + chop * signY];
+      sweep  = (signX !== signY) ? '0' : '1';
+    }
+
+    var pathString = 'M' + fromPos[0] + ' ' + fromPos[1] +
+                     'L' + alpha[0]   + ' ' + alpha[1]   +
+                     'A' + cornerR    + ',' + cornerR + ' 0 0,' + sweep + ' ' +
+                           beta[0]    + ' ' + beta[1]    +
+                     'L' + toPos[0]   + ' ' + toPos[1];
+
+    var path = paper.path(pathString);
 
     path.attr({
       'stroke':       color,
-      'stroke-width': width
+      'stroke-width': this._network.pathWidth
     });
 
     return this._path = path;

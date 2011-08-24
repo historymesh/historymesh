@@ -73,11 +73,11 @@ class NodeLayoutEngine(object):
     Lays out nodes in a rough time-like order.
     """
 
-    iterations = 3
+    iterations = 1000
 
     repulsion_factor = 0.5 # Range 0..1
     repulsion_min_distance = 3
-    repulsion_max_distance = 25
+    repulsion_max_distance = 50
 
     attraction_factor = 0 # Range 0..1
     attraction_min_distance = 35
@@ -297,12 +297,17 @@ class NodeLayoutEngine(object):
                 for other_edge in self.string_edges:
                     if other_edge == edge:
                         continue
-                    if not other_edge.overlaps(edge.start, edge.end):
+                    if not other_edge.overlaps(edge):
                         continue
                     if edge.crosses(other_edge):
                         print "Pushing to fix crossover of %s %s" % (
                             edge, other_edge)
                         self.push_to_resolve_crossing(forces, edge, other_edge)
+
+                for string in self.strings:
+                    if edge.crosses(string):
+                        print "String crossing"
+                        self.push_to_resolve_crossing(forces, edge, string)
 
             # Third pass: USE THE FORCE
             moved = sum(map(abs, forces.values()))
@@ -336,7 +341,6 @@ class NodeLayoutEngine(object):
             else:
                 forces[edge.right] = -push
                 forces[other_edge.right] = push
-
 
     def set_forces_to_flip(self, forces, edge):
         """Set the forces on the strings at each end of an edge to push towards
@@ -400,7 +404,7 @@ class String(object):
         self.nodes = tuple(
             sorted(nodes, key=lambda node: node.timeline_date)
         )
-        gen = random.Random(x=hash(self.nodes) + 2)
+        gen = random.Random(x=hash(self.nodes) + 1)
         self.position = gen.random() * 70
     
     @property
@@ -410,6 +414,22 @@ class String(object):
     @property
     def end(self):
         return self.last.timeline_date
+
+    @property
+    def start_position(self):
+        return self.position
+
+    @property
+    def end_position(self):
+        return self.position
+
+    @property
+    def left(self):
+        return self
+
+    @property
+    def right(self):
+        return self
 
     @property
     def first(self):
@@ -435,7 +455,7 @@ class String(object):
         )
 
     def __repr__(self):
-        return "<String: %s %r>" % repr(self.position, self.nodes)
+        return "<String: %s %r>" % (self.position, self.nodes)
 
 
 class StringEdge(object):
@@ -450,7 +470,7 @@ class StringEdge(object):
     def start(self):
         """ The start date of the edge. """
         return self.left.end
-    
+
     @property
     def end(self):
         """ The end date of the edge. """
@@ -464,51 +484,40 @@ class StringEdge(object):
     def end_position(self):
         return self.right.position
 
-    @property
-    def start_date(self):
-        return self.left.end
-
-    @property
-    def gradient(self):
-        if self.start_date == self.end_date:
-            return 1000000
-        return (
-                float(self.end_position - self.start_position) /
-                (self.end_date - self.start_date)
-        )
-
-    @property
-    def end_date(self):
-        return self.right.start
-
     def __eq__(self, other):
         return self.left == other.left and self.right == other.right
     
     def __hash__(self):
         return hash((self.left, self.right))
 
-    def overlaps(self, start, end):
+    def overlaps(self, other):
         """Return true iff the edge overlaps or nearly overlaps with the time range given."""
         return (
-            not (self.start >= end) and
-            not (start >= self.end)
+            not (self.start >= other.end) and
+            not (other.start >= self.end)
         )
 
     def crosses(self, other):
         """Check if the edge crosses other.
 
-        Return true if the edge would cross the other edge if they had the
-        same start and end points.
+        Returns None if the edge doesn't cross the other edge.
+
+        Returns 
 
         """
-        if self.left == other.left or self.right == other.right:
-            # If the strings at an end are the same, it can't be a crossover.
-            return
         if self.end == self.start or other.end == other.start:
-            # Any degenerate strings where start == end can't be crossovers.
+            # Any degenerate edges where start == end can't be crossovers.
+            return
+        if (
+            self.start_position == other.start_position or
+            self.end_position == other.end_position
+        ):
+            # If both edges start or end at the same height, can't be a
+            # crossover.
             return
 
-        print "Checking crossover of %s and %s" % (self, other)
+
+        #print "Checking crossover of %s and %s" % (self, other)
 
         a0 = self.start_position
         a1 = self.end_position
@@ -522,13 +531,13 @@ class StringEdge(object):
         if overlap_start >= overlap_end:
             return False
 
-        print "OVERLAP from %d to %d ((%f, %f)-(%f, %f) and (%f, %f)-(%f, %f))" % (
-            overlap_start, overlap_end,
-            self.start, a0,
-            self.end, a1,
-            other.start, b0,
-            other.end, b1,
-        )
+        #print "OVERLAP from %d to %d ((%f, %f)-(%f, %f) and (%f, %f)-(%f, %f))" % (
+        #    overlap_start, overlap_end,
+        #    self.start, a0,
+        #    self.end, a1,
+        #    other.start, b0,
+        #    other.end, b1,
+        #)
 
         a_start = a0 + a_grad * (overlap_start - self.start)
         b_start = b0 + b_grad * (overlap_start - other.start)
@@ -536,14 +545,15 @@ class StringEdge(object):
         a_end = a0 + a_grad * (overlap_end - self.start)
         b_end = b0 + b_grad * (overlap_end - other.start)
 
-        print "a_start: %f, a_end: %f, b_start: %f, b_end: %f" % (
-            a_start, a_end, b_start, b_end,
-        )
+        #print "a_start: %f, a_end: %f, b_start: %f, b_end: %f" % (
+        #    a_start, a_end, b_start, b_end,
+        #)
 
-        print (
+        if (
             (a_start < b_start and a_end > b_end) or
             (a_start > b_start and a_end < b_end)
-        )
+        ):
+            print "Found crossover of %s and %s" % (self, other)
         return (
             (a_start < b_start and a_end > b_end) or
             (a_start > b_start and a_end < b_end)
@@ -551,8 +561,8 @@ class StringEdge(object):
 
     def __repr__(self):
         return "<StringEdge: %s %s %s %s>" % (
-                                              self.start_date,
+                                              self.start,
                                               self.start_position,
-                                              self.end_date,
+                                              self.end,
                                               self.end_position,
                                              )

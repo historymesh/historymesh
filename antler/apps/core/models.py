@@ -251,7 +251,7 @@ class Node(models.Model, EdgesMixin):
     hidden_in_map = False
 
     name = models.CharField(max_length=1024, unique=True)
-    slug = models.SlugField(max_length=1024, unique=True, default='')
+    slug = models.SlugField(max_length=1024, unique=True, default='', blank=True)
     text = models.TextField(blank=True)
 
     timeline_date = models.IntegerField(blank=True, null=True, help_text="Years since 0AD")

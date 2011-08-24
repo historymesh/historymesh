@@ -1,5 +1,5 @@
 from django.views.generic.base import TemplateView 
-from core.models import Person, Concept, Event, Object
+from core.models import Person, Concept, Event, Object, Story
 from django.shortcuts import get_object_or_404
 
 
@@ -14,11 +14,31 @@ class NodeView(TemplateView):
     def get_context_data(self, slug):
         instance = get_object_or_404(self.model, slug=slug)
         
+        story_slug = self.request.GET.get('story')
+        story = Story.objects.get(slug=story_slug)
+
+        story_content = instance.outgoing('described_by')
+        current_story_content = story_content.filter(story=story).follow()
+        other_story_content = story_content.exclude(story=story).follow()
+
+        story_next = instance.outgoing('primary').filter(story=story).follow()
+        if len(story_next) > 0:
+            story_next = story_next[0]
+
+        story_prev = instance.incoming('primary').filter(story=story).follow()
+        if len(story_prev) > 0:
+            story_prev = story_prev[0]
+
         return {
-                self.model_name():instance,
-                "incoming":instance.incoming().by_verb(),
-                "outgoing":instance.outgoing().by_verb(),
-               }
+            self.model_name(): instance,
+            "incoming": instance.incoming().by_verb(),
+            "outgoing": instance.outgoing().by_verb(),
+            "story": story,
+            "other_story_content": other_story_content,
+            "current_story_content": current_story_content,
+            "story_next": story_next,
+            "story_prev": story_prev,
+        }
 
 
 class PersonView(NodeView):

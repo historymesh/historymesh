@@ -1,8 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{person.name}}</h1>
+<h1>{{person.name}} (in context {{story}})</h1>
+
+{% if story_prev %}
+<a href='{{story_prev.url}}?story={{story.slug}}'>Prev</a>
+{% endif %}
+
+{% if story_next %}
+<a href='{{story_next.url}}?story={{story.slug}}'>Next</a>
+{% endif %}
+
 <div class="person_text">{{person.text|linebreaks}}</div>
+
+{% if current_story_content %}
+  <h2>Current story content</h2>
+  <ul>
+  {% for content in current_story_content %}
+    <li>{{content.text|linebreaks}}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+{% if other_story_content %}
+  <h2>Other story content</h2>
+  <ul>
+  {% for content in other_story_content %}
+    <li>{{content.text|linebreaks}}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
 
 {% include "nodes/links.html" %}
 {% endblock %}
