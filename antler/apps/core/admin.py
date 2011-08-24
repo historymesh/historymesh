@@ -16,8 +16,12 @@ admin.site.register(
     ],
 )
 
-admin.site.register(Person)
-admin.site.register(Concept)
-admin.site.register(Object)
-admin.site.register(Event)
+class NodeAdmin(admin.ModelAdmin):
+    list_display = ["name", "timeline_date", "display_date"]
+    list_editable = ["timeline_date", "display_date"]
+
+admin.site.register(Person, NodeAdmin)
+admin.site.register(Concept, NodeAdmin)
+admin.site.register(Object, NodeAdmin)
+admin.site.register(Event, NodeAdmin)
 

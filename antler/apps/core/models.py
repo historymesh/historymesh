@@ -149,6 +149,9 @@ class Node(models.Model, EdgesMixin):
     name = models.CharField(max_length=1024, unique=True)
     text = models.TextField(blank=True)
 
+    timeline_date = models.DateField(blank=True, null=True)
+    display_date = models.CharField(max_length=255, blank=True)
+
     class Meta:
         abstract = True
 
@@ -169,11 +172,6 @@ class Person(Node):
     A person.
     """
 
-    birth_date = models.DateField(null=True, blank=True)
-    birth_date_fuzziness = models.FloatField(null=True, blank=True, help_text="The uncertainty of the date in years. i.e. '1' is +/- 1 year")
-    death_date = models.DateField(null=True, blank=True)
-    death_date_fuzziness = models.FloatField(null=True, blank=True, help_text="The uncertainty of the date in years. i.e. '1' is +/- 1 year")
-
     def url(self):
         return reverse('person', kwargs={'pk': self.pk})
 
@@ -182,9 +180,6 @@ class Event(Node):
     """
     A thing that happened at a given point in time.
     """
-
-    date = models.DateField(null=True, blank=True)
-    date_fuzziness = models.FloatField(null=True, blank=True, help_text="The uncertainty of the date in years. i.e. '1' is +/- 1 year")
 
     def url(self):
         return reverse('event', kwargs={'pk': self.pk})
