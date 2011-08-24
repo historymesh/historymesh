@@ -306,8 +306,10 @@ class Story(models.Model):
         story_edges = Edge.objects.filter(story=self)
         subject_nodes = set(edge.subject for edge in story_edges)
         object_nodes = set(edge.object for edge in story_edges)
-
         return (subject_nodes - object_nodes).pop()
+
+    def __unicode__(self):
+        return self.name
 
 class StoryContent(Node):
     """

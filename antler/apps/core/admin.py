@@ -5,9 +5,10 @@ admin.site.register(
     Edge,
     list_display=[
         'id',
+        'story',
         'subject',
-        'object',
         'verb',
+        'object',
     ],
     list_filter = [
         'subject_type',
