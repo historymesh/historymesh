@@ -1,0 +1,19 @@
+<h2>Outgoing links</h2>
+{% for verb, links in outgoing.items %}
+    <h3>{{verb}}</h3>
+    <ul>
+    {% for link in links %}
+        <li><a href="{{link.url}}">{{link.name}}</a></li>
+    {% endfor %}
+    </ul>
+{% endfor %}
+
+<h2>Incoming links</h2>
+{% for verb, links in incoming.items %}
+    <h3>{{verb}}</h3>
+    <ul>
+    {% for link in links %}
+        <li><a href="{{link.url}}">{{link.name}}</a></li>
+    {% endfor %}
+    </ul>
+{% endfor %}

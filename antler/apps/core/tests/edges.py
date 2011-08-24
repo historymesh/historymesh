@@ -11,7 +11,7 @@ class EdgeTest(TestCase):
 
         self.assertEqual(
             inventions,
-            [ Concept.objects.get(pk=1) ],
+            Concept.objects.in_bulk([1,2]).values(),
         )
 
     def test_incoming_links(self):
@@ -22,3 +22,41 @@ class EdgeTest(TestCase):
             inspirations,
             [ Concept.objects.get(pk=1) ],
         )
+
+    def test_grouped_outgoing_links(self):
+        person = Person.objects.get(pk=1)
+        links = person.outgoing().by_verb()
+
+        self.assertEqual(
+            links,
+            {
+                'invented': [
+                    Concept.objects.get(pk=1),
+                    Concept.objects.get(pk=2),
+                ],
+            },
+        )
+
+    def test_grouped_incoming_links(self):
+        concept = Concept.objects.get(pk=2)
+        links = concept.incoming().by_verb()
+
+        self.assertEqual(
+            links,
+            {
+                'inspired': [
+                    Concept.objects.get(pk=1),
+                ],
+                'invented': [
+                    Person.objects.get(pk=1),
+                ],
+            },
+        )
+
+    def test_nothing(self):
+        concept = Concept.objects.get(pk=3)
+        self.assertEqual([], concept.incoming().follow())
+        self.assertEqual([], concept.outgoing().follow())
+        self.assertEqual({}, concept.incoming().by_verb())
+        self.assertEqual({}, concept.outgoing().by_verb())
+

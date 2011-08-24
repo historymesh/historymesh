@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.query import QuerySet
+from django.core.urlresolvers import reverse
 
 class Edge(models.Model):
     """
@@ -8,11 +9,39 @@ class Edge(models.Model):
     e.g. [Brunel] [invented] [tunneling shield]
     """
 
+    VERBS = [
+        "invented",
+        "conceived",
+        "killed",
+        "preceded",
+        "befriended",
+        "married",
+        "dined_with",
+        "inspired",
+        "enabled",
+        "primary",
+        "secondary",
+        "described_by", # For linking to StoryContent nodes
+    ]
+
     subject_type = models.CharField(max_length=255)
     subject_id = models.IntegerField()
     object_type = models.CharField(max_length=255)
     object_id = models.IntegerField()
-    verb = models.CharField(max_length=255)
+    verb = models.CharField(max_length=255, choices=[(x,x) for x in VERBS])
+    story = models.ForeignKey("Story", blank=True, null=True, related_name="edges")
+
+    class Meta:
+        unique_together = [
+            (
+                "subject_type",
+                "subject_id",
+                "object_type",
+                "object_id",
+                "verb",
+                "story",
+            ),
+        ]
 
     @classmethod
     def _type_string_from_model(self, instance):
@@ -46,6 +75,9 @@ class Edge(models.Model):
 
     subject = property(get_subject, set_subject)
 
+    def url(self):
+        return reverse('edge', kwargs={'pk': self.pk})
+
 
 class EdgeObjectQuerySet(QuerySet):
     """
@@ -66,6 +98,27 @@ class EdgeObjectQuerySet(QuerySet):
 
         return loaded
 
+    def by_verb(self):
+        """
+        From a query set of edges, get all of the edges' objects grouped by
+        the edges' verbs.
+        """
+        to_load = {}
+        for edge in self:
+            to_load.setdefault(edge.object_type, [])
+            to_load[edge.object_type].append((edge.verb, edge.object_id, ))
+
+        loaded = {}
+        for type_string in to_load:
+            model = Edge._model_from_type_string(type_string)
+            pks = [pk for verb, pk in to_load[type_string]]
+            instances = model.objects.in_bulk(pks)
+            for verb, pk in to_load[type_string]:
+                loaded.setdefault(verb, [])
+                loaded[verb].append(instances[pk])
+
+        return loaded
+
 
 class EdgeSubjectQuerySet(QuerySet):
     """
@@ -83,6 +136,27 @@ class EdgeSubjectQuerySet(QuerySet):
             model = Edge._model_from_type_string(type_string)
             instances = model.objects.in_bulk(to_load[type_string]).values()
             loaded.extend(instances)
+
+        return loaded
+
+    def by_verb(self):
+        """
+        From a query set of edges, get all of the edges' subject grouped by
+        the edges' verbs.
+        """
+        to_load = {}
+        for edge in self:
+            to_load.setdefault(edge.subject_type, [])
+            to_load[edge.subject_type].append((edge.verb, edge.subject_id, ))
+
+        loaded = {}
+        for type_string in to_load:
+            model = Edge._model_from_type_string(type_string)
+            pks = [pk for verb, pk in to_load[type_string]]
+            instances = model.objects.in_bulk(pks)
+            for verb, pk in to_load[type_string]:
+                loaded.setdefault(verb, [])
+                loaded[verb].append(instances[pk])
 
         return loaded
 
@@ -126,6 +200,22 @@ class EdgesMixin(object):
             setup=True,
         )
 
+    def readable_name(self):
+        return "%s (%s)" % (
+            self.name,
+            self._meta.object_name,
+        )
+
+    @property
+    def select_tuple(self):
+        return (
+            "%s:%d" % (
+                Edge._type_string_from_model(self),
+                self.pk,
+            ),
+            self.readable_name()
+        )
+
 
 class Node(models.Model, EdgesMixin):
     """
@@ -135,40 +225,92 @@ class Node(models.Model, EdgesMixin):
     name = models.CharField(max_length=1024, unique=True)
     text = models.TextField(blank=True)
 
+    timeline_date = models.DateField(blank=True, null=True)
+    display_date = models.CharField(max_length=255, blank=True)
+
     class Meta:
         abstract = True
 
     def __unicode__(self):
-        return "%s:%d" % (
+        return "%s (%s:%d)" % (
+            self.name,
             self._meta.object_name,
             self.pk,
         )
+
+    @classmethod
+    def all_child_classes(self):
+        return [Person, Event, Concept, Object, ExternalLink]
 
 
 class Person(Node):
     """
     A person.
     """
-    pass
+
+    class Meta:
+        verbose_name_plural = "people"
+
+    def url(self):
+        return reverse('person', kwargs={'pk': self.pk})
 
 
 class Event(Node):
     """
     A thing that happened at a given point in time.
     """
-    pass
+
+    def url(self):
+        return reverse('event', kwargs={'pk': self.pk})
 
 
 class Concept(Node):
     """
     A concept that was developed or discovered, e.g. punch cards, communism
     """
-    pass
+
+    def url(self):
+        return reverse('concept', kwargs={'pk': self.pk})
 
 
 class Object(Node):
     """
     A physical thing which arose from a concept, e.g. the Jacquard Loom
     """
-    pass
 
+    def url(self):
+        return reverse('object', kwargs={'pk': self.pk})
+
+
+class ExternalLink(models.Model, EdgesMixin):
+    """
+    A link to an external site.
+    """
+    name = models.CharField(max_length=1024, unique=True)
+    url = models.URLField(max_length=255, verify_exists=False)
+
+
+class Story(models.Model):
+    """
+    A story is a collection of edges describing a directed narrative
+    """
+
+    name = models.CharField(max_length=255, unique=True)
+
+    """
+    Breif description aobut the story for appearing on the homepage
+    """
+    text = models.TextField(blank=True)
+
+    def start(self):
+        story_edges = Edge.objects.filter(story=self)
+        subject_nodes = set(edge.subject for edge in story_edges)
+        object_nodes = set(edge.object for edge in story_edges)
+
+        return (subject_nodes - object_nodes).pop()
+
+class StoryContent(Node):
+    """
+    Extra info about a node relating to a story, for instance "Brunnel in Automota"
+    """
+    pass

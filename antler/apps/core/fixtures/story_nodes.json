@@ -1,6 +1,14 @@
 [
     {
         "pk": 1,
+        "model": "core.story",
+        "fields": {
+            "name": "Automota",
+            "text": "Something\n\nSomething else"
+        }
+    },
+    {
+        "pk": 1,
         "model": "core.person",
         "fields": {
             "name": "Babbage"
@@ -35,7 +43,8 @@
             "subject_id": 1,
             "object_type": "core.concept",
             "object_id": 1,
-            "verb": "invented"
+            "verb": "invented",
+            "story": 1
         }
     },
     {
@@ -46,7 +55,8 @@
             "subject_id": 1,
             "object_type": "core.concept",
             "object_id": 2,
-            "verb": "inspired"
+            "verb": "inspired",
+            "story": 1
         }
     },
     {
@@ -57,7 +67,28 @@
             "subject_id": 1,
             "object_type": "core.concept",
             "object_id": 2,
-            "verb": "invented"
+            "verb": "invented",
+            "story": 1
+        }
+    },
+    {
+        "pk": 1,
+        "model": "core.storycontent",
+        "fields": {
+            "name": "Babbage in Automota",
+            "text": "Babbage was a GOD. Damn hell ass GOD!"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "core.edge",
+        "fields": {
+            "verb": "described_by",
+            "subject_type": "core.person",
+            "subject_id": 1,
+            "object_type": "core.storycontent",
+            "object_id": 1,
+            "story": 1
         }
     }
 ]

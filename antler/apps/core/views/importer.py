@@ -32,7 +32,7 @@ def import_from_json(data, clean=False, verbose=False):
 
     # If we're cleaning, clean.
     if clean:
-        for model in [Object, Person, Event, Concept, Edge]:
+        for model in Node.all_child_classes + [Edge]:
             model.objects.all().delete()
 
     # First pass: insert the things into the database
