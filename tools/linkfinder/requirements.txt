@@ -1,0 +1,2 @@
+flask
+restpose>=0.7.2
