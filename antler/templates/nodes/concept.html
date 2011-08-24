@@ -1,4 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h1>{{concept.name}}</h1>
 <div class="concept_text">{{concept.text|linebreaks}}</div>
 
 {% include "nodes/links.html" %}
+{% endblock %}
