@@ -21,8 +21,18 @@ class SpecialChoices(forms.ChoiceField):
 
 class EdgeForm(forms.Form):
 
-
     subject = SpecialChoices()
     verb = forms.ChoiceField(choices=[(x,x) for x in Edge.VERBS])
     object = SpecialChoices()
+
+    def clean_subject(self):
+        return self._get_object_for_select_string(self.cleaned_data['subject'])
+
+    def clean_object(self):
+        return self._get_object_for_select_string(self.cleaned_data['object'])
+        
+    def _get_object_for_select_string(self, select_string):
+        subject_string, pk = select_string.split(":")
+        subject_model = Edge._model_from_type_string(subject_string)
+        return subject_model.objects.get(pk=pk)
     

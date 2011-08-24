@@ -60,6 +60,9 @@ class Edge(models.Model):
 
     subject = property(get_subject, set_subject)
 
+    def url(self):
+        return reverse('edge', kwargs={'pk': self.pk})
+
 
 class EdgeObjectQuerySet(QuerySet):
     """
