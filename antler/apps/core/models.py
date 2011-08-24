@@ -227,7 +227,7 @@ class Node(models.Model, EdgesMixin):
     name = models.CharField(max_length=1024, unique=True)
     text = models.TextField(blank=True)
 
-    timeline_date = models.DateField(blank=True, null=True)
+    timeline_date = models.IntegerField(blank=True, null=True, help_text="Years since 0AD")
     display_date = models.CharField(max_length=255, blank=True)
 
     class Meta:
