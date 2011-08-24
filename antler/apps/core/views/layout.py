@@ -1,3 +1,4 @@
+import math
 import pprint
 import random
 from cStringIO import StringIO
@@ -68,17 +69,21 @@ class NodeLayoutEngine(object):
     Lays out nodes in a rough time-like order.
     """
 
-    iterations = 100
+    iterations = 3
 
-    repulsion_factor = 10
-    repulsion_min_distance = 0.1
+    repulsion_factor = 2
+    repulsion_min_distance = 3
     repulsion_max_distance = 25
 
-    attraction_factor = 0.45
+    attraction_factor = 0
     attraction_min_distance = 35
     attraction_max_distance = 100
 
     slowdown_factor = 1
+
+    vertical_separation = 30
+
+    angle_factor = 0.0
 
     def lay_out(self):
         # First, fetch a list of all the nodes
@@ -162,6 +167,18 @@ class NodeLayoutEngine(object):
                     break
             # Save the string
             self.strings.add(String(string))
+        # Second phase: assign neighbouring strings
+        for string in self.strings:
+            string.left_strings = []
+            string.right_strings = []
+            for other_string in self.strings:
+                for edge in self.edges_by_object.get(string.first, []):
+                    if edge.subject in other_string:
+                        string.left_strings.append(other_string)
+                for edge in self.edges_by_subject.get(string.last, []):
+                    if edge.object in other_string:
+                        string.right_strings.append(other_string)
+            print string, string.left_strings, string.right_strings
 
     def position_strings(self):
         """
@@ -173,6 +190,7 @@ class NodeLayoutEngine(object):
             # First pass: calculate forces
             for string in self.strings:
                 forces[string] = 0
+            for string in self.strings:
                 # First, find all other strings that overlap us
                 overlapping_strings = [
                     other_string
@@ -193,8 +211,62 @@ class NodeLayoutEngine(object):
                         self.calculate_attraction(string, other_string)
                     ) * direction 
                     forces[string] += sub_force
+                # Now, run the angle solver
+                number_left_strings = len(string.left_strings)
+                number_right_strings = len(string.right_strings)
+                if number_left_strings > 1:
+                    delta = (
+                        self.vertical_separation *
+                        0.5 *
+                        math.tan(
+                            math.pi / (float(number_left_strings * 2))
+                        )
+                    )
+                    left_strings = sorted(
+                        string.left_strings,
+                        key = lambda string: string.position,
+                    )
+                    for j, other_string in enumerate(left_strings):
+                        number_deltas = (
+                            (j * 2) -
+                            (number_left_strings - 1)
+                        )
+                        target_position = (
+                            string.position +
+                            (delta * number_deltas)
+                        )
+                        offset = target_position - other_string.position
+                        forces[other_string] += (
+                           offset * self.angle_factor * (i**0.5)
+                        )
+                if number_right_strings > 1:
+                    delta = (
+                        self.vertical_separation *
+                        0.5 *
+                        math.tan(
+                            math.pi / (float(number_right_strings * 2))
+                        )
+                    )
+                    right_strings = sorted(
+                        string.right_strings,
+                        key = lambda string: string.position,
+                    )
+                    for j, other_string in enumerate(right_strings):
+                        number_deltas = (
+                            (j * 2) -
+                            (number_right_strings - 1)
+                        )
+                        target_position = (
+                            string.position +
+                            (delta * number_deltas)
+                        )
+                        offset = target_position - other_string.position
+                        forces[other_string] -= (
+                           offset * self.angle_factor * (i**0.5)
+                        )
+
             # Work out slowdown/friction multiplier
-            slowdown = (1 / (i+1)) * self.slowdown_factor
+            slowdown = (1 - (1.0/self.iterations) * i)
             # Second pass: USE THE FORCE
             moved = sum(map(abs, forces.values())) * slowdown
             print "Iteration %i: Moved %s, %s" % (i, moved, slowdown)
@@ -203,14 +275,16 @@ class NodeLayoutEngine(object):
                 
     def calculate_repulsion(self, string, other):
         distance = abs(string.position - other.position)
-        distance = max(
+        distance = float(max(
             min(
                 distance,
                 self.repulsion_max_distance
             ),
             self.repulsion_min_distance,
-        )
-        return (distance ** -0.5) * self.repulsion_factor
+        ))
+        return ((
+            self.repulsion_max_distance / distance
+        ) - 1) * self.repulsion_factor
 
     def calculate_attraction(self, string, other):
         distance = abs(string.position - other.position)
@@ -248,15 +322,23 @@ class String(object):
             sorted(nodes, key=lambda node: node.timeline_date)
         )
         gen = random.Random(x=hash(self.nodes))
-        self.position = gen.random()
+        self.position = gen.random() * 70
     
     @property
     def start(self):
-        return self.nodes[0].timeline_date
+        return self.first.timeline_date
     
     @property
     def end(self):
-        return self.nodes[-1].timeline_date
+        return self.last.timeline_date
+
+    @property
+    def first(self):
+        return self.nodes[0]
+    
+    @property
+    def last(self):
+        return self.nodes[-1]
 
     def __eq__(self, other):
         return self.nodes == other.nodes
