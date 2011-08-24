@@ -1,9 +1,9 @@
 Network = function(container, width, height) {
   var el = $('#' + container);
 
-  this._paper = Raphael(container, width, height);
-  this._nodes = {};
-  this._edges = {};
+  this._viewport = {width: width, height: height};
+  this._bounding = {n: null, s: null, e: null, w: null};
+  this._portrait = (width < height);
 
   this.bgColor      = '#fff';
   this.pathWidth    = 8;
@@ -12,8 +12,6 @@ Network = function(container, width, height) {
   this.cornerRadius = 16;
 
   var self   = this,
-      width  = el.width(),
-      height = el.height(),
       wrap   = $('<div></div>');
 
   wrap.css({
@@ -24,8 +22,8 @@ Network = function(container, width, height) {
   });
   el.css({
     position: 'absolute',
-    width:    width + 'px',
-    height:   height + 'px'
+    width:    '10000px',
+    height:   '10000px'
   });
   el.before(wrap);
   wrap.append(el);
@@ -40,12 +38,23 @@ Network = function(container, width, height) {
 
   this._offsetLeft = 0;
   this._offsetTop  = 0;
+
+  this._paper = Raphael(container);
+  this._nodes = {};
+  this._edges = {};
 };
 $.extend(Network.prototype, {
   addNode: function(data) {
     var node = new Network.Node(this, data);
     node.id = this._nextId();
     this._nodes[node.id] = node;
+
+    var box = this._bounding, pos = data.position;
+    box.n = Math.min(box.n === null ?  Infinity : box.n, pos[1]);
+    box.s = Math.max(box.s === null ? -Infinity : box.s, pos[1]);
+    box.e = Math.max(box.e === null ? -Infinity : box.e, pos[0]);
+    box.w = Math.min(box.w === null ?  Infinity : box.w, pos[0]);
+
     return node;
   },
 
@@ -58,8 +67,51 @@ $.extend(Network.prototype, {
 
   draw: function() {
     this._paper.clear();
+    this._normalize();
+    this._center();
     for (var id in this._edges) this._edges[id].draw();
     for (var id in this._nodes) this._nodes[id].draw();
+  },
+
+  _normalize: function() {
+    var box       = this._bounding,
+        view      = this._viewport,
+        boxWidth  = box.e - box.w,
+        boxHeight = box.s - box.n,
+        factor    = this._portrait ? view.width / boxWidth : view.height / boxHeight,
+        f         = 0.8 * factor,
+        padding   = this._portrait ? (0.1 * view.width) : (0.1 * view.height),
+        node;
+
+    for (var id in this._nodes) {
+      node = this._nodes[id];
+      node._normal = [
+        padding + f * (node.getPosition()[0] - box.w),
+        padding + f * (node.getPosition()[1] - box.n)
+      ];
+    }
+    this._bounding = {
+      n:  padding,
+      s:  padding + f * (box.s - box.n),
+      e:  padding + f * (box.e - box.w),
+      w:  padding
+    };
+  },
+
+  _center: function() {
+    var box       = this._bounding,
+        view      = this._viewport,
+        boxWidth  = box.e - box.w,
+        boxHeight = box.s - box.n;
+
+    if (boxWidth > view.width) {
+      this._offsetLeft = -(boxWidth - view.width) / 2;
+      this._container.css({left: this._offsetLeft + 'px'});
+    }
+    if (boxHeight > view.height) {
+      this._offsetTop = -(boxHeight - view.height) / 2;
+      this._container.css({top: this._offsetTop + 'px'});
+    }
   },
 
   initDrag: function(event) {
@@ -73,10 +125,11 @@ $.extend(Network.prototype, {
 
     this._dragLeft = event.clientX - start.x;
     this._dragTop  = event.clientY - start.y;
-    this._container.css({
-      left: (this._offsetLeft + this._dragLeft) + 'px',
-      top:  (this._offsetTop  + this._dragTop ) + 'px'
-    });
+
+    if (this._portrait)
+      this._container.css({top: (this._offsetTop  + this._dragTop ) + 'px'});
+    else
+      this._container.css({left: (this._offsetLeft + this._dragLeft) + 'px'});
   },
 
   endDrag: function() {
@@ -108,7 +161,7 @@ $.extend(Network.Node.prototype, {
   },
 
   getPosition: function() {
-    return this._data.position;
+    return this._normal || this._data.position;
   },
 
   draw: function() {
@@ -126,7 +179,7 @@ $.extend(Network.Node.prototype, {
                     '</div>');
 
     var radius = this._network.nodeRadius,
-        pos    = this._data.position,
+        pos    = this._normal,
         el     = this._network._container,
         self   = this;
 
@@ -150,7 +203,7 @@ $.extend(Network.Node.prototype, {
   _renderCircle: function() {
     var paper  = this._network._paper,
         data   = this._data,
-        pos    = data.position,
+        pos    = this._normal,
         radius = this._network.nodeRadius,
         color  = data.color,
         circle = paper.circle(pos[0], pos[1], radius);
