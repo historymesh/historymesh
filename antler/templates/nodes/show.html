@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{person.name}} (in context {{story}})</h1>
+<h1>{{subject.name}} (in context {{story}})</h1>
 
 {% if story_prev %}
 <a href='{{story_prev.url}}?story={{story.slug}}'>Prev</a>
@@ -11,7 +11,7 @@
 <a href='{{story_next.url}}?story={{story.slug}}'>Next</a>
 {% endif %}
 
-<div class="person_text">{{person.text|linebreaks}}</div>
+{{subject.text|linebreaks}}
 
 {% if current_story_content %}
   <h2>Current story content</h2>
