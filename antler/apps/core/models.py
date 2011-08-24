@@ -21,6 +21,7 @@ class Edge(models.Model):
         "enabled",
         "primary",
         "secondary",
+        "described_by", # For linking to StoryContent nodes
     ]
 
     subject_type = models.CharField(max_length=255)
@@ -298,3 +299,8 @@ class Story(models.Model):
     """
     text = models.TextField(blank=True)
 
+class StoryContent(Node):
+    """
+    Extra info about a node relating to a story, for instance "Brunnel in Automota"
+    """
+    pass
