@@ -38,6 +38,7 @@ class Edge(models.Model):
         "inspired",
         "enabled",
         "depicted",
+        "affected",
         "owned",
         "primary",
         "secondary",

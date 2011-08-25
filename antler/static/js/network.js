@@ -88,19 +88,16 @@ $.extend(Network.prototype, {
   _normalize: function() {
     var box        = this._bounding,
         view       = this._viewport,
-        boxWidth   = (box.e - box.w) || this.minSize,
-        boxHeight  = (box.s - box.n) || this.minSize,
+        boxWidth   = (box.e - box.w) < this.minSize ? this.minSize : (box.e - box.w),
+        boxHeight  = (box.s - box.n) < this.minSize ? this.minSize : (box.s - box.n),
         viewAspect = view.width / view.height,
         boxAspect  = boxWidth / boxHeight,
-        vertical   = boxAspect < viewAspect,
-        factor     = vertical ? view.width / boxWidth : view.height / boxHeight,
-        f          = 0.8 * factor,
-        padding    = vertical ? (0.1 * view.width) : (0.1 * view.height),
+        vertical   = (this.vertical === undefined) ? (boxAspect < viewAspect) : this.vertical,
+        padding    = this.padding || (vertical ? (0.1 * view.width) : (0.1 * view.height)),
+        factor     = vertical ? (view.width - 2*padding) / boxWidth : (view.height - 2*padding) / boxHeight,
+
         node,
         scale;
-
-    if ("forceVertical" in this)
-      vertical = this.forceVertical;
 
     this._vertical = vertical;
     this._padding  = padding;
@@ -108,8 +105,8 @@ $.extend(Network.prototype, {
     for (var id in this._nodes) {
       node = this._nodes[id];
       node._normal = [
-        padding + f * (node.getPosition()[0] - box.w),
-        padding + f * (node.getPosition()[1] - box.n)
+        padding + factor * (node.getPosition()[0] - box.w),
+        padding + factor * (node.getPosition()[1] - box.n)
       ];
     }
     for (var id in this._scales) {
@@ -117,16 +114,16 @@ $.extend(Network.prototype, {
       if (vertical) {
         scale._normal = [
           0,
-          padding + f * (scale.getPosition()[1] - box.n),
+          padding + factor * (scale.getPosition()[1] - box.n),
           this.canvasSize,
-          padding + f * (scale.getPosition()[1] - box.n)
+          padding + factor * (scale.getPosition()[1] - box.n)
         ];
       }
       else {
         scale._normal = [
-          padding + f * (scale.getPosition()[0] - box.w),
+          padding + factor * (scale.getPosition()[0] - box.w),
           0,
-          padding + f * (scale.getPosition()[0] - box.w),
+          padding + factor * (scale.getPosition()[0] - box.w),
           this.canvasSize
         ];
       }
@@ -134,8 +131,8 @@ $.extend(Network.prototype, {
 
     this._bounding = {
       n:  padding,
-      s:  padding + f * (box.s - box.n),
-      e:  padding + f * (box.e - box.w),
+      s:  padding + factor * (box.s - box.n),
+      e:  padding + factor * (box.e - box.w),
       w:  padding
     };
   },
