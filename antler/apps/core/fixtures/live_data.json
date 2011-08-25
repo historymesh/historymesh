@@ -240,18 +240,6 @@
         }
     }, 
     {
-        "pk": 26, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.object", 
-            "subject_id": 21, 
-            "object_type": "core.object", 
-            "object_id": 41, 
-            "verb": "primary"
-        }
-    }, 
-    {
         "pk": 28, 
         "model": "core.edge", 
         "fields": {
@@ -284,90 +272,6 @@
             "subject_id": 30, 
             "object_type": "core.event", 
             "object_id": 15, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 31, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 5, 
-            "subject_type": "core.event", 
-            "subject_id": 19, 
-            "object_type": "core.event", 
-            "object_id": 14, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 32, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 5, 
-            "subject_type": "core.event", 
-            "subject_id": 14, 
-            "object_type": "core.object", 
-            "object_id": 27, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 33, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 5, 
-            "subject_type": "core.object", 
-            "subject_id": 27, 
-            "object_type": "core.object", 
-            "object_id": 43, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 34, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 5, 
-            "subject_type": "core.object", 
-            "subject_id": 43, 
-            "object_type": "core.object", 
-            "object_id": 32, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 35, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 5, 
-            "subject_type": "core.object", 
-            "subject_id": 32, 
-            "object_type": "core.event", 
-            "object_id": 8, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 36, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 5, 
-            "subject_type": "core.event", 
-            "subject_id": 8, 
-            "object_type": "core.event", 
-            "object_id": 5, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 27, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.object", 
-            "subject_id": 41, 
-            "object_type": "core.event", 
-            "object_id": 1, 
             "verb": "primary"
         }
     }, 
@@ -420,6 +324,138 @@
         }
     }, 
     {
+        "pk": 40, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 21, 
+            "object_type": "core.person", 
+            "object_id": 7, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 19, 
+            "object_type": "core.object", 
+            "object_id": 21, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.person", 
+            "subject_id": 7, 
+            "object_type": "core.event", 
+            "object_id": 14, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 14, 
+            "object_type": "core.object", 
+            "object_id": 27, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 27, 
+            "object_type": "core.object", 
+            "object_id": 43, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 41, 
+            "object_type": "core.object", 
+            "object_id": 32, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 32, 
+            "object_type": "core.event", 
+            "object_id": 1, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 15, 
+            "object_type": "core.event", 
+            "object_id": 8, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 8, 
+            "object_type": "core.event", 
+            "object_id": 5, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 43, 
+            "object_type": "core.object", 
+            "object_id": 41, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 31, 
+            "object_type": "core.object", 
+            "object_id": 22, 
+            "verb": "invented"
+        }
+    }, 
+    {
         "pk": 17, 
         "model": "core.edge", 
         "fields": {
@@ -427,8 +463,104 @@
             "subject_type": "core.person", 
             "subject_id": 11, 
             "object_type": "core.object", 
+            "object_id": 25, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 25, 
+            "object_type": "core.object", 
+            "object_id": 37, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 37, 
+            "object_type": "core.object", 
             "object_id": 33, 
             "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 16, 
+            "object_type": "core.object", 
+            "object_id": 41, 
+            "verb": "enabled"
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 7, 
+            "object_type": "core.object", 
+            "object_id": 38, 
+            "verb": "preceded"
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 8, 
+            "object_type": "core.object", 
+            "object_id": 38, 
+            "verb": "preceded"
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 9, 
+            "object_type": "core.object", 
+            "object_id": 38, 
+            "verb": "preceded"
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 10, 
+            "object_type": "core.object", 
+            "object_id": 38, 
+            "verb": "preceded"
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.person", 
+            "subject_id": 11, 
+            "object_type": "core.storycontent", 
+            "object_id": 1, 
+            "verb": "described_by"
         }
     }, 
     {
@@ -453,30 +585,6 @@
             "slug": "robert-owen", 
             "reference_url": "http://10.0.0.56:9292/wiki/Robert+Owen", 
             "timeline_date": 1819
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "1st Century", 
-            "name": "Hero of Alexandria", 
-            "text": "", 
-            "slug": "hero-of-alexandria", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Hero+of+Alexandria", 
-            "timeline_date": 150
-        }
-    }, 
-    {
-        "pk": 24, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "12th Century", 
-            "name": "Al-Jazari", 
-            "text": "", 
-            "slug": "al-jazari", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Al-Jazari", 
-            "timeline_date": 1200
         }
     }, 
     {
@@ -624,18 +732,6 @@
         }
     }, 
     {
-        "pk": 29, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "21st Century", 
-            "name": "Cabaret Mechanical Theatre", 
-            "text": "", 
-            "slug": "cabaret-mechanical-theatre", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Cabaret+Mechanical+Theatre", 
-            "timeline_date": 2000
-        }
-    }, 
-    {
         "pk": 30, 
         "model": "core.person", 
         "fields": {
@@ -669,18 +765,6 @@
             "slug": "herman-hollerith", 
             "reference_url": "http://10.0.0.56:9292/wiki/Herman+Hollerith", 
             "timeline_date": 1920
-        }
-    }, 
-    {
-        "pk": 5, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "20th Century", 
-            "name": "Joe Jones", 
-            "text": "", 
-            "slug": "joe-jones", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Joe+Jones+(Fluxus+artist)", 
-            "timeline_date": 1970
         }
     }, 
     {
@@ -828,15 +912,63 @@
         }
     }, 
     {
+        "pk": 24, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "12th Century", 
+            "name": "Al-Jazari", 
+            "text": "Ab\u016b al-'Iz Ibn Ism\u0101'\u012bl ibn al-Raz\u0101z al-Jazar\u012b (1136-1206) was a prominent Muslim polymath: a scholar, inventor, mechanical engineer, craftsman, artist, mathematician and astronomer from Al-Jazira, Mesopotamia, who lived during the Islamic Golden Age (Middle Ages). He is best known for writing the Kit\u00e1b f\u00ed ma'rifat al-hiyal al-handasiyya (Book of Knowledge of Ingenious Mechanical Devices) in 1206, where he described fifty mechanical devices along with instructions on how to construct them.", 
+            "slug": "al-jazari", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Al-Jazari", 
+            "timeline_date": 1200
+        }
+    }, 
+    {
         "pk": 6, 
         "model": "core.person", 
         "fields": {
             "display_date": "18th Century", 
             "name": "Henri Maillardet", 
-            "text": "", 
+            "text": "Henri Maillardet (1745-?) was a Swiss mechanician of the 18th century who worked in London producing clocks and other mechanisms.\r\n\r\nIn 1805 Henri Maillardet built spring-activated automaton that draws pictures and writes verses in both French and English. The motions of the hand are produced by a series of cams located on shafts in the base of the automaton, which produces the necessary movement to complete seven sketches and the text. It is believed that this automaton has the largest cam-based memory of any automaton of the era.\r\n\r\nWhen first presented to the Franklin Institute in Philadelphia in 1928, the automaton was of unknown origin. Once restored to working order, the automaton itself provided the answer when it penned the words \"written by the automaton of Maillardet\".", 
             "slug": "henri-maillardet", 
             "reference_url": "http://10.0.0.56:9292/wiki/Henri+Maillardet", 
             "timeline_date": 1805
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "20th Century", 
+            "name": "Joe Jones", 
+            "text": "Joe Jones (1934 New York City - 1993 Wiesbaden) was an avant-garde musician associated with Fluxus especially known for his creation of rhythmic music machines. He first started experimenting with mechanical instruments in 1962, creating objects like musical boats, solar music umbrellas and a pedaled vehicle that pulled handmade instruments on wheels. Later, he worked with John Lennon and Yoko Ono in the 1970s, ", 
+            "slug": "joe-jones", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Joe+Jones+(Fluxus+artist)", 
+            "timeline_date": 1970
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "21st Century", 
+            "name": "Cabaret Mechanical Theatre", 
+            "text": "Cabaret Mechanical Theatre is an organisation that mounts exhibitions around the world of contemporary automata by a collective of artists based in the United Kingdom.", 
+            "slug": "cabaret-mechanical-theatre", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Cabaret+Mechanical+Theatre", 
+            "timeline_date": 2000
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "1st Century", 
+            "name": "Hero of Alexandria", 
+            "text": "Hero of Alexandria was a Greek mathematician who also created devices that depended on water, air and steam power. He is considered the greatest experimenter of antiquity, and his work on programmable automata presages the modern discipline of cybernetics.", 
+            "slug": "hero-of-alexandria", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Hero+of+Alexandria", 
+            "timeline_date": 150
         }
     }, 
     {
@@ -909,18 +1041,6 @@
             "slug": "1926-united-kingdom-general-strike", 
             "reference_url": "http://10.0.0.56:9292/wiki/1926%20United%20Kingdom%20general%20strike", 
             "timeline_date": 1926
-        }
-    }, 
-    {
-        "pk": 9, 
-        "model": "core.event", 
-        "fields": {
-            "display_date": "19th Century", 
-            "name": "Luddite", 
-            "text": "", 
-            "slug": "luddite", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Luddite", 
-            "timeline_date": 1800
         }
     }, 
     {
@@ -1068,6 +1188,18 @@
         }
     }, 
     {
+        "pk": 9, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Luddite riots", 
+            "text": "", 
+            "slug": "luddite-riots", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Luddite", 
+            "timeline_date": 1800
+        }
+    }, 
+    {
         "pk": 5, 
         "model": "core.object", 
         "fields": {
@@ -1212,18 +1344,6 @@
         }
     }, 
     {
-        "pk": 19, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1000BC", 
-            "name": "Chinese Android", 
-            "text": "", 
-            "slug": "chinese-android", 
-            "reference_url": "http://10.0.0.56:9292/wiki/King+Mu+of+Zhou", 
-            "timeline_date": -1000
-        }
-    }, 
-    {
         "pk": 3, 
         "model": "core.object", 
         "fields": {
@@ -1269,42 +1389,6 @@
             "slug": "abacus", 
             "reference_url": "http://10.0.0.56:9292/wiki/Abacus", 
             "timeline_date": -2400
-        }
-    }, 
-    {
-        "pk": 21, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1st Century BC", 
-            "name": "Aeolipile", 
-            "text": "", 
-            "slug": "aeolipile", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Aeolipile", 
-            "timeline_date": -50
-        }
-    }, 
-    {
-        "pk": 22, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "9th Century", 
-            "name": "Automatic Flute Player", 
-            "text": "", 
-            "slug": "automatic-flute-player", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Book%20of%20Ingenious%20Devices", 
-            "timeline_date": 850
-        }
-    }, 
-    {
-        "pk": 23, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "3rd Century BC", 
-            "name": "Water-powered Puppet Theatre", 
-            "text": "", 
-            "slug": "water-powered-puppet-theatre", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Ma+Jun", 
-            "timeline_date": 240
         }
     }, 
     {
@@ -1576,11 +1660,59 @@
         "model": "core.object", 
         "fields": {
             "display_date": "By 1750", 
-            "name": "Brick-lines mine shafts", 
+            "name": "Brick-lined mine shafts", 
             "text": "", 
-            "slug": "brick-lines-mine-shafts", 
+            "slug": "brick-lined-mine-shafts", 
             "reference_url": "", 
             "timeline_date": 1750
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "9th Century", 
+            "name": "Automatic Flute Player", 
+            "text": "The Banu Musa invented an \"automatic flute player\" which appears to have been the first programmable machine. The flute sounds were produced through hot steam and the user could adjust the device to various patterns so that they could get various sounds from it.", 
+            "slug": "automatic-flute-player", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Book%20of%20Ingenious%20Devices", 
+            "timeline_date": 850
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1000BC", 
+            "name": "Chinese Android", 
+            "text": "bq. The king stared at the figure in astonishment. It walked with rapid strides, moving its head up and down, so that anyone would have taken it for a live human being. The artificer touched its chin, and it began singing, perfectly in tune. He touched its hand, and it began posturing, keeping perfect time...As the performance was drawing to an end, the robot winked its eye and made advances to the ladies in attendance, whereupon the king became incensed and would have had Yen Shih [Yan] executed on the spot had not the latter, in mortal fear, instantly taken the robot to pieces to let him see what it really was. And, indeed, it turned out to be only a construction of leather, wood, glue and lacquer, variously coloured white, black, red and blue. Examining it closely, the king found all the internal organs complete\u2014liver, gall, heart, lungs, spleen, kidneys, stomach and intestines; and over these again, muscles, bones and limbs with their joints, skin, teeth and hair, all of them artificial...The king tried the effect of taking away the heart, and found that the mouth could no longer speak; he took away the liver and the eyes could no longer see; he took away the kidneys and the legs lost their power of locomotion. The king was delighted.", 
+            "slug": "chinese-android", 
+            "reference_url": "http://10.0.0.56:9292/wiki/King+Mu+of+Zhou", 
+            "timeline_date": -1000
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "3rd Century BC", 
+            "name": "Water-powered Puppet Theatre", 
+            "text": "For the Emperor Ming of Wei, Ma Jun once invented an intricate hydraulic-powered, mechanical-operated puppet theatre (much more complex than the mechanical puppet set discovered by Liu Bang, first Emperor of the Han Dynasty, when he observed the state-absorbed items taken from the old treasury of the deceased Qin Shi Huang). His puppet theatre is similar to that of a Greek model invented by Heron of Alexandria, the difference being that the latter used instead a rotating cylindrical cogwheel with ropes and pulleys to operate his mechanical theatre.", 
+            "slug": "water-powered-puppet-theatre", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ma+Jun", 
+            "timeline_date": 240
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1st Century BC", 
+            "name": "Aeolipile", 
+            "text": "An aeolipile, also known as a Hero engine, is a rocket style jet engine which spins when heated. In the first century AD, Hero of Alexandria described the device, and many sources give him the credit for its invention. The name \u2013 derived from the Greek words \"aeolos\" and \"pila\" \u2013 translates to \"the ball of Aeolus\"; Aeolus being the Greek god of the wind.\r\n\r\nThe aeolipile consists of a vessel, usually a \"simple\" solid of revolution, such as a sphere or a cylinder, arranged to rotate on its axis, having oppositely bent or curved nozzles projecting from it (tipjets). When the vessel is pressurized with steam, steam is expelled through the nozzles, which generates thrust due to the rocket principle<ref>Aeolipile<!-- Bot generated title --></ref> as a consequence of the 2nd and 3rd of Newton's laws of motion. When the nozzles, pointing in different directions, produce forces along different lines of action perpendicular to the axis of the bearings, the thrusts combine to result in a rotational moment (mechanical couple), or torque, causing the vessel to spin about its axis. Aerodynamic drag and frictional forces in the bearings build up quickly with increasing rotational speed (rpm) and consume the accelerating torque, eventually canceling it and achieving a steady state speed.\r\n\r\nTypically, and as Hero described the device, the water is heated in a simple boiler which forms part of a stand for the rotating vessel. Where this is the case the boiler is connected to the rotating chamber by a pair of pipes that also serve as the pivots for the chamber. Alternatively the rotating chamber may itself serve as the boiler, and this arrangement greatly simplifies the pivot/bearing arrangements, as they then do not need to pass steam. This can be seen in the illustration of a classroom model to the right.\r\n", 
+            "slug": "aeolipile", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Aeolipile", 
+            "timeline_date": -50
         }
     }, 
     {
@@ -1588,7 +1720,7 @@
         "model": "core.story", 
         "fields": {
             "text": "", 
-            "colour": "", 
+            "colour": "e03c31", 
             "featured": true, 
             "name": "Automatons", 
             "slug": "automatons"
@@ -1599,21 +1731,10 @@
         "model": "core.story", 
         "fields": {
             "text": "", 
-            "colour": "", 
+            "colour": "1945ec", 
             "featured": true, 
             "name": "Computing", 
             "slug": "computing"
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "core.story", 
-        "fields": {
-            "text": "", 
-            "colour": "", 
-            "featured": true, 
-            "name": "Textiles", 
-            "slug": "textiles"
         }
     }, 
     {
@@ -1621,21 +1742,28 @@
         "model": "core.story", 
         "fields": {
             "text": "", 
-            "colour": "", 
+            "colour": "f5b133", 
             "featured": true, 
             "name": "Power", 
             "slug": "power"
         }
     }, 
     {
-        "pk": 5, 
+        "pk": 6, 
         "model": "core.story", 
         "fields": {
             "text": "", 
-            "colour": "", 
+            "colour": "309e1d", 
             "featured": true, 
-            "name": "Coal mining", 
-            "slug": "coal-mining"
+            "name": "Textiles", 
+            "slug": "textiles"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Su Song did some computing using water and the power of awesome."
         }
     }
 ]

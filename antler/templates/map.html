@@ -1,0 +1,23 @@
+{% extends 'base.html' %}{% load markup %}
+
+{% block page_title %}Overview{% endblock %}
+{% block body-class %}view-map{% endblock %}
+
+{% block view_toggle %}
+		<nav>
+			<ul>
+				<li><a href="/object/jacquard-loom">Story</a></li>
+				<li class="current"><a href="/map">Map</a></li>
+			</ul>
+		</nav>
+{% endblock %}
+
+{% block content %}
+
+	<div class="map">
+		<img src="/static/img/temp-homepage.png" style="width: 100%">
+	</div>
+
+	{% include "nodes/_node_content.html" %}
+
+{% endblock %}

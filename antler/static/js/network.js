@@ -176,7 +176,8 @@ $.extend(Network.Node.prototype, {
 
   _renderPreview: function() {
     var preview = $('<div>' +
-                      '<div class="node-preview">' +
+                      '<a class="node-preview" href="' +
+                       this._data.url + '">' +
                         '<h4>' + this._data.name + '</h4>' +
                       '</div>' +
                     '</div>');
@@ -193,12 +194,12 @@ $.extend(Network.Node.prototype, {
       width:      radius + 'px',
       height:     radius + 'px',
       textAlign:  'center',
-      display:    'table'
+      display:    'table',
     });
     el.append(preview);
 
     preview.mouseover(function() { self.preview() });
-    preview.click(function() { self.visit() });
+    //preview.click(function() { self.visit() });
 
     return preview;
   },
@@ -214,7 +215,8 @@ $.extend(Network.Node.prototype, {
       'cursor':       'pointer',
       'fill':         this._network.bgColor,
       'stroke':       color,
-      'stroke-width': this._network.nodeStroke
+      'stroke-width': this._network.nodeStroke,
+      'href':         this._data.url
     });
     return circle;
   },
@@ -271,23 +273,30 @@ $.extend(Network.Edge.prototype, {
 
         corner, alpha, beta, gamma, sweep;
 
-    if (diffX > diffY) {
-      corner = [fromPos[0] + diffY * signX , toPos[1]];
-      alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
-      beta   = [corner[0] + chop * signX, corner[1]];
-      sweep  = (signX === signY) ? '0' : '1';
+    // If the line is very close to 45 degrees, just draw it
+    if (Math.abs(diffX - diffY) < 10) {
+      var pathString = 'M' + fromPos[0] + ' ' + fromPos[1] +
+                       'L' + toPos[0]   + ' ' + toPos[1];
     } else {
-      corner = [toPos[0] , fromPos[1] + diffX * signY];
-      alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
-      beta   = [corner[0], corner[1] + chop * signY];
-      sweep  = (signX !== signY) ? '0' : '1';
-    }
+      // Otherwise, do the nice line.
+      if (diffX > diffY) {
+        corner = [fromPos[0] + diffY * signX , toPos[1]];
+        alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
+        beta   = [corner[0] + chop * signX, corner[1]];
+        sweep  = (signX === signY) ? '0' : '1';
+      } else {
+        corner = [toPos[0] , fromPos[1] + diffX * signY];
+        alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
+        beta   = [corner[0], corner[1] + chop * signY];
+        sweep  = (signX !== signY) ? '0' : '1';
+      }
 
-    var pathString = 'M' + fromPos[0] + ' ' + fromPos[1] +
-                     'L' + alpha[0]   + ' ' + alpha[1]   +
-                     'A' + cornerR    + ',' + cornerR + ' 0 0,' + sweep + ' ' +
-                           beta[0]    + ' ' + beta[1]    +
-                     'L' + toPos[0]   + ' ' + toPos[1];
+      var pathString = 'M' + fromPos[0] + ' ' + fromPos[1] +
+                       'L' + alpha[0]   + ' ' + alpha[1]   +
+                       'A' + cornerR    + ',' + cornerR + ' 0 0,' + sweep + ' ' +
+                             beta[0]    + ' ' + beta[1]    +
+                       'L' + toPos[0]   + ' ' + toPos[1];
+    }
 
     var path = paper.path(pathString);
 

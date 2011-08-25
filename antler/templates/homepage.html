@@ -1,22 +1,68 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block body-class %}homepage{% endblock %}
+{% block pagetitle %}An awesome thing that we made{% endblock %}
+{% block body-class %}home overview{% endblock %}
 
 {% block content %}
 
-  <a href='/overview/'>Overview</a>
+<div class="home">
 
-  <ul id='stories'>
-  {% for story in stories %}
-    <li>
-      <h3><a href='{{story.start.url}}?story={{story.slug}}'>{{story.name}}</a></h3>
-      {{story.text|linebreaks}}
-    </li>
-  {% endfor %}
-  </ul>
-  
-  <div id='timeline'>
-    Here be timeliney dragons
-  </div>
+<!--
+	<h2>People</h2>
+	<ol>
+	{% for node in people %}
+	{% include "nodes/_node_in_list.html" %}
+	{% endfor %}
+	</ol>
+	
+	<h2>Objects</h2>
+	<ol>
+	{% for node in objects %}
+	{% include "nodes/_node_in_list.html" %}
+	{% endfor %}
+	</ol>
+	
+	<h2>Events</h2>
+	<ol>
+	{% for node in events %}
+	{% include "nodes/_node_in_list.html" %}
+	{% endfor %}
+	</ol>
+-->
+
+	<h2>Suggested Stories</h2>
+	<ul>
+	
+		<li>
+			<h3><a href="/object/the-jacquard-loom/">The Jacquard Loom</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
+		</li>
+
+		<li>
+			<h3><a href="/person/charles-babbage/">Charles Babbage</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
+		</li>
+
+		<li>
+			<h3><a href="/object/difference-engine/">Difference Engine</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
+		</li>
+
+		<li>
+			<h3><a href="/person/ada-lovelace/">Ada Lovelace</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
+		</li>
+
+	</dl>
+
+
+
+	<h2>Timeline Map View</h2>
+</div>
+
+	<div class="map">
+		<img src="/static/img/temp-homepage.png" style="width: 100%">
+	</div>
 
 {% endblock %}
+
