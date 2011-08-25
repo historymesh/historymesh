@@ -160,8 +160,14 @@ $.extend(Network.prototype, {
     this._updateCSSOffset();
   },
 
-  _updateCSSOffset: function() {
-    this._container.css({left: this._offsetLeft + 'px', top: this._offsetTop + 'px'});
+  _updateCSSOffset: function(animate) {
+    var params = this._vertical ? {top:  this._offsetTop  + 'px'}
+                                : {left: this._offsetLeft + 'px'};
+
+    if (animate)
+      this._container.stop().animate(params, 700);
+    else
+      this._container.css(params);
   },
 
   moveBy: function(left, top) {
@@ -170,7 +176,7 @@ $.extend(Network.prototype, {
     this._updateCSSOffset();
   },
 
-  snapToNode: function(node, position) {
+  snapToNode: function(node, position, animate) {
     var pos  = node.getPosition(),
         diff = [position[0] - pos[0], position[1] - pos[1]];
 
@@ -179,22 +185,11 @@ $.extend(Network.prototype, {
     else
       this._offsetLeft = diff[0];
 
-    this._updateCSSOffset();
+    this._updateCSSOffset(animate);
   },
 
   scrollToNode: function(node, position) {
-    var pos  = node.getPosition(),
-        diff = [position[0] - pos[0], position[1] - pos[1]];
-
-    if (this._vertical)
-      this._offsetTop = diff[1];
-    else
-      this._offsetLeft = diff[0];
-
-    this._container.stop().animate({
-      left: this._offsetLeft + 'px',
-      top:  this._offsetTop  + 'px'
-    }, 700);
+    return this.snapToNode(node, position, true);
   },
 
   initDrag: function(event) {
@@ -300,6 +295,7 @@ $.extend(Network.Node.prototype, {
   },
 
   leadsTo: function(node, color, secondary) {
+    if (!node) return;
     this._color = this._color || color;
     node._color = color;
     return this._network.addEdge(this, node, color, secondary );

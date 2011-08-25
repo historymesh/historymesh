@@ -85,7 +85,7 @@ jQuery(function($) {
     }());
 
     // Enhance the previous and next links to transition
-    $('a[rel=next], a[rel=prev], .node-preview a').live('click', function() {
+    $('a[rel=next], a[rel=prev]').live('click', function() {
         $(document).trigger('node:navigate', {url: $(this).attr('href')});
         return false;
     });

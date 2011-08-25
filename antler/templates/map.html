@@ -34,6 +34,10 @@
       var network = new Network('container', document.width, 400);
       {% include "map/_node_js.html" %}
       network.draw();
+
+      $(document).bind('node:navigate', function(e, data) {
+        window.location.href = data.url;
+      });
     </script>
 
 {% endblock %}
