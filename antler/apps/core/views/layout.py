@@ -73,7 +73,7 @@ class NodeLayoutEngine(object):
     Lays out nodes in a rough time-like order.
     """
 
-    iterations = 3
+    iterations = 1000
 
     repulsion_factor = 0.5 # Range 0..1
     repulsion_min_distance = 3
@@ -404,7 +404,7 @@ class String(object):
         self.nodes = tuple(
             sorted(nodes, key=lambda node: node.timeline_date)
         )
-        gen = random.Random(x=hash(self.nodes) + 2)
+        gen = random.Random(x=hash(self.nodes) + 1)
         self.position = gen.random() * 70
     
     @property
