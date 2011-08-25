@@ -3,7 +3,6 @@ Network = function(container, width, height) {
 
   this._viewport = {width: width, height: height};
   this._bounding = {n: null, s: null, e: null, w: null};
-  this._portrait = (width < height);
 
   this.bgColor      = '#fff';
   this.pathWidth    = 8;
@@ -74,14 +73,20 @@ $.extend(Network.prototype, {
   },
 
   _normalize: function() {
-    var box       = this._bounding,
-        view      = this._viewport,
-        boxWidth  = box.e - box.w,
-        boxHeight = box.s - box.n,
-        factor    = this._portrait ? view.width / boxWidth : view.height / boxHeight,
-        f         = 0.8 * factor,
-        padding   = this._portrait ? (0.1 * view.width) : (0.1 * view.height),
+    var box        = this._bounding,
+        view       = this._viewport,
+        boxWidth   = box.e - box.w,
+        boxHeight  = box.s - box.n,
+        viewAspect = view.width / view.height,
+        boxAspect  = boxWidth / boxHeight,
+        vertical   = boxAspect < viewAspect,
+        factor     = vertical ? view.width / boxWidth : view.height / boxHeight,
+        f          = 0.8 * factor,
+        padding    = vertical ? (0.1 * view.width) : (0.1 * view.height),
         node;
+
+    this._vertical = vertical;
+    this._padding  = padding;
 
     for (var id in this._nodes) {
       node = this._nodes[id];
@@ -102,15 +107,17 @@ $.extend(Network.prototype, {
     var box       = this._bounding,
         view      = this._viewport,
         boxWidth  = box.e - box.w,
-        boxHeight = box.s - box.n;
+        boxHeight = box.s - box.n,
+        padding   = 2 * this._padding;
 
-    if (boxWidth > view.width) {
-      this._offsetLeft = -(boxWidth - view.width) / 2;
-      this._container.css({left: this._offsetLeft + 'px'});
-    }
-    if (boxHeight > view.height) {
-      this._offsetTop = -(boxHeight - view.height) / 2;
+    console.log(boxWidth, view.width, padding);
+
+    if (this._vertical) {
+      this._offsetTop = (view.height - boxHeight - padding) / 2;
       this._container.css({top: this._offsetTop + 'px'});
+    } else {
+      this._offsetLeft = (view.width - boxWidth - padding) / 2;
+      this._container.css({left: this._offsetLeft + 'px'});
     }
   },
 
@@ -126,7 +133,7 @@ $.extend(Network.prototype, {
     this._dragLeft = event.clientX - start.x;
     this._dragTop  = event.clientY - start.y;
 
-    if (this._portrait)
+    if (this._vertical)
       this._container.css({top: (this._offsetTop  + this._dragTop ) + 'px'});
     else
       this._container.css({left: (this._offsetLeft + this._dragLeft) + 'px'});
