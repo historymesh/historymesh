@@ -57,8 +57,8 @@ $.extend(Network.prototype, {
     return node;
   },
 
-  addEdge: function(fromNode, toNode, color) {
-    var edge = new Network.Edge(this, fromNode, toNode, color);
+  addEdge: function(fromNode, toNode, color, secondary) {
+    var edge = new Network.Edge(this, fromNode, toNode, color, secondary);
     edge.id = this._nextId();
     this._edges[edge.id] = edge;
     return edge;
@@ -219,10 +219,10 @@ $.extend(Network.Node.prototype, {
     return circle;
   },
 
-  leadsTo: function(node, color) {
+  leadsTo: function(node, color, secondary) {
     this._color = this._color || color;
     node._color = color;
-    return this._network.addEdge(this, node, color);
+    return this._network.addEdge(this, node, color, secondary );
   },
 
   preview: function() {
@@ -239,11 +239,12 @@ $.extend(Network.Node.prototype, {
   }
 });
 
-Network.Edge = function(network, fromNode, toNode, color) {
+Network.Edge = function(network, fromNode, toNode, color, secondary) {
   this._network = network;
   this._from    = fromNode;
   this._to      = toNode;
   this._color   = color;
+  this._secondary = secondary;
 };
 $.extend(Network.Edge.prototype, {
   draw: function() {
@@ -293,6 +294,9 @@ $.extend(Network.Edge.prototype, {
       'stroke':       color,
       'stroke-width': this._network.pathWidth
     });
+
+    if (this._secondary)
+      path.attr('opacity', 0.4);
 
     return this._path = path;
   }
