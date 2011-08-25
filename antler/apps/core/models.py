@@ -254,7 +254,7 @@ class Node(models.Model, EdgesMixin):
 
     @classmethod
     def all_child_classes(self):
-        return [Person, Event, Concept, Object, ExternalLink, StoryContent]
+        return [Person, Event, Concept, Object, ExternalLink, StoryContent, Image]
     
     def get_absolute_url(self):
         try:
@@ -308,6 +308,28 @@ class ExternalLink(models.Model, EdgesMixin):
     """
     name = models.CharField(max_length=1024, unique=True)
     url = models.URLField(max_length=255, verify_exists=False)
+
+    def __unicode__(self):
+        return "%s (%s:%d)" % (
+            self.name,
+            self._meta.object_name,
+            self.pk,
+        )
+
+
+class Image(models.Model, EdgesMixin):
+    """
+    An image attached to one or more other nodes.
+    """
+    image = models.ImageField(upload_to="images/%Y-%m/")
+    caption = models.TextField(blank=True)
+
+    def __unicode__(self):
+        return "%s (%s:%s)" % (
+            self.image,
+            self._meta.object_name,
+            self.pk,
+        )
 
 
 class Story(models.Model):
