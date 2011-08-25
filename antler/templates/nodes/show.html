@@ -28,12 +28,23 @@
 	
 	<div class="tail"></div>
 
-	<ul class="prev-next">
-		<li class="prev bgc1"><a href="#">Previous Story</a></li>
-		<li class="next bgc1"><a href="#">Next Story</a></li>
-	</ul>
+{% if story %}
+	<ol class="prev-next">
+{% if story.prev %}
+<li class="prev bgc1"><a rel='prev' href="{{ story.prev.url }}">Previous: {{ story.prev.name }}</a></li>
+{% else %}
+<li class="prev bgc1">Previous</li>
+{% endif %}
+
+{% if story.next %}
+<li class="next bgc1"><a rel='next' href="{{ story.next.url }}">Next: {{ story.next.name }}</a></li>
+{% else %}
+<li class="next bgc1">Next</li>
+{% endif %}
+	</ol>
+{% endif %}
 		
-	<h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}  <span>({{subject.timeline_date}})</span></h1>
+	<h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}{% if subject.display_date %} <span>({{subject.display_date}})</span>{% endif %}</h1>
 
 	
 	<div class="body">
@@ -44,30 +55,60 @@
 		<figcaption>Close up view of comber board, harness, malls, weights, (Lingoes) and warp with 1040 ends</figcaption>
 	</figure>
 	
-	<p><strong>{{subject.name}}</strong> is a lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit. Quisque ultrices gravida pede. Mauris accumsan vulputate tellus. Phasellus condimentum bibendum dolor. Mauris sed ipsum. Phasellus in diam. Nam sapien ligula, consectetuer id, hendrerit in, cursus sed, leo. Nam tincidunt rhoncus urna. Aliquam id massa ut nibh bibendum imperdiet. Curabitur neque mauris, porta vel, lacinia quis, placerat ultrices, orci.</p>
+	{{ subject.text|textile }}
 
-<p>Read more about the <a href="">{{subject.name}} on Wikipedia</a></p>
+{% if user.is_staff %}
+<a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit in Admin</a>
+{% endif %}
 
+{% if story.story_content %}
+{{ story.story_content|textile }}
+{% endif %}
+
+{% if user.is_staff %}
+{% if story.story_content %}
+<a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
+{% else %}
+<a href="/admin/core/storycontent/add/?">Add Story Content</a>
+{% endif %}
+{% endif %}
+
+{% for other_story in subject.stories %}
+{% if other_story != story %}
+    <h3>{{other_story.name}}</h3>
+    {{other_story.story_content.text|linebreaks}}
+{% endif %}
+{% endfor %}
+
+{% if subject.reference_url %}
+<p>Read more about <a href="{{subject.reference_url">{{subject.name}} on Wikipedia</a></p>
+{% endif %}
 
 	</div>
 	
 	
 	
 	<div class="secondary">
-	<ul class="storynav">
+{% if story %}
+	<ol class="storynav">
+{% if story.prev %}
 		<li>
-			<h4>Previously in <span class="auto">Automation</span></h4>
-			<h3 class="thread auto">The Digesting Duck</h3>
+			<h4>Previously in <span class="auto">{{ story.name }}</span></h4>
+			<h3 class="thread auto"><a rel='prev' href='{{ story.prev.url }}'>{{ story.prev.name }}</a></h3>
 
 			<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum.</p> -->
 		</li>
-	
+{% endif %}
+{% if story.next %}
 		<li>
-			<h4>Next in <span class="auto">Automation</span></h4>
-			<h3 class="thread auto">The Revolving Stephen</h3>
-				<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum et, viverra a, odio. Sed semper. Praesent vulputate nibh eget nisi.</p> -->
+			<h4>Next in <span class="auto">{{ story.name }}</span></h4>
+			<h3 class="thread auto"><a rel='next' href='{{ story.next.url }}'>{{ story.next.name }}</a></h3>
+
+			<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum.</p> -->
 		</li>
-	</ul>
+{% endif %}
+	</ol>
+{% endif %}
 
-
+{% include "nodes/links.html" %}
 {% endblock %}
