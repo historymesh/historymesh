@@ -1,0 +1,87 @@
+{% if story %}
+	<ol class="prev-next">
+{% if story.previous %}
+<li class="prev bgc1"><a rel='prev' href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
+{% else %}
+<li class="prev bgc1">Previous</li>
+{% endif %}
+
+{% if story.next %}
+<li class="next bgc1"><a rel='next' href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
+{% else %}
+<li class="next bgc1">Next</li>
+{% endif %}
+	</ol>
+{% endif %}
+		
+	<h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}{% if subject.display_date %} <span>({{subject.display_date}})</span>{% endif %}</h1>
+
+	
+	<div class="body">
+	
+	<div class="main">
+	<figure class="portrait">
+		<img src="img/IMG_3052.JPG" alt="IMG_3052" class="fr" width="249" height="333" />
+		<figcaption>Close up view of comber board, harness, malls, weights, (Lingoes) and warp with 1040 ends</figcaption>
+	</figure>
+	
+	{{ subject.text|textile }}
+
+{% if user.is_staff %}
+<a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit Node</a>
+{% endif %}
+
+{% if story.story_content %}
+  <h2>Current story content</h2>
+  <ul>
+    <li>{{story.story_content.text|textile}}</li>
+  </ul>
+{% endif %}
+
+{% if user.is_staff and story %}
+{% if story.story_content %}
+<a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
+{% else %}
+<a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
+{% endif %}
+{% endif %}
+
+{% for other_story in subject.stories %}
+{% if other_story != story %}
+    <h3>{{other_story.name}}</h3>
+{% if other_story.story_content %}
+    {{other_story.story_content.text|textile}}
+{% if user.is_staff %}
+<a href="/admin/core/storycontent/{{ other_story.story_content.pk }}/">Edit Story Content</a>
+{% endif %}
+{% else %}
+{% if user.is_staff %}
+<a href="/admin/core/storycontent/add/?story={{ other_story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
+{% endif %}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% if subject.reference_url %}
+<p>Read more about <a href="{{subject.reference_url}}">{{subject.name}} on Wikipedia</a></p>
+{% endif %}
+
+	</div>
+	
+	
+	
+	<div class="secondary">
+{% for story in subject.stories %}
+	<ol class="storynav">
+{% if story.previous %}
+		<li>
+			<h4>Previously in <span class="auto">{{ story.name }}</span></h4>
+			<h3 class="thread auto"><a rel='prev' href='{{ story.previous.url }}?story={{ story.slug }}'>{{ story.previous.name }}</a></h3>
+
+			<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum.</p> -->
+		</li>
+{% endif %}
+{% if story.next %}
+		<li>
+			<h4>Next in <span class="auto">{{ story.name }}</span></h4>
+			<h3 class="thread auto"><a rel='next' href='{{ story.next.url }}?story={{ story.slug }}'>{{ story.next.name }}</a></h3>

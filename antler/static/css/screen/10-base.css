@@ -299,6 +299,9 @@ div.home {
 	.view-map .map img {
 		line-height: 1;
 	}
+.view-map article {
+	background: #fff;
+}
 
 
 
