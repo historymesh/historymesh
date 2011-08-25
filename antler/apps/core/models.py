@@ -113,8 +113,11 @@ class Edge(models.Model):
         }
     linked_subject.allow_tags = True
 
+    def get_absolute_url(self):
+        return self.url()
+
     def url(self):
-        return reverse('edge', kwargs={'slug': self.slug})
+        return self.subject.url()
 
 
 class EdgeObjectQuerySet(QuerySet):
