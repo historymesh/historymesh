@@ -164,7 +164,7 @@ header {
 
 /*! verbatim */
 header {
-	background: rgba(187,187,187,0.7);
+	background: rgba(187,187,187,0.85);
 }	
 /* -- */
 
@@ -341,10 +341,19 @@ figcaption {
 }
 
 .storynav {
-	overflow: auto;
-	border-bottom: 1px solid #ccc;
+	overflow: hidden;
+	border: solid 1px #ccc;
+	padding: 7px 0;
 }
-
+/*! verbatim */
+	/* Norm, add border-width */
+.storynav {
+	border-width: 1px 0;
+}
+/* -- */
+.storynav h3 {
+	margin: 0;
+}
 .storynav li {
 	width:46%;
 	float: left;
