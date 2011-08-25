@@ -14,10 +14,10 @@ readers, but not to be displayed as CSS gives the context
 */
 
 b {
-    direction:              ltr;
-    position:               absolute;
-    left:                   -9999px;
-    width:                  500px;
+    direction: ltr;
+    position: absolute;
+    left: -9999px;
+    width: 500px;
 }
 
 /* Defaults */
@@ -31,7 +31,7 @@ body {
 	font-family: NuvoMediumWOFF, "Lucida Grande", Calibri, Helvetica, Arial, sans-serif;
 	margin: 0;
 	line-height: 1.6;
-	font-size: .9em;
+	font-size: 0.9em;
 	-webkit-font-smoothing: antialiased;
 	color: #555;
 	background: #f1f1f1;
@@ -264,6 +264,17 @@ header input {
 }
 div.home {
 	padding-top: 4em;
+}
+.home h3 {
+	font-size: 1.2em;
+}
+.home ul {
+	width: 90%;
+}
+.home li {
+	width: 39%;
+	margin-left: 11%;
+	float: left;
 }
 
 

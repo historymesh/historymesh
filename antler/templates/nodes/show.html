@@ -2,6 +2,15 @@
 
 {% block page_title %}{{ subject.name }}{% if story %} {{ story.slug }}{% endif %}{% endblock %}
 
+{% block view_toggle %}
+		<nav>
+			<ul>
+				<li class="current"><a href="#">Story</a></li>
+				<li><a href="#">Map</a></li>
+			</ul>
+		</nav>
+{% endblock %}
+
 {% block content %}
 
 	<div class="map"></div>

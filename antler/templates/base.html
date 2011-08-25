@@ -35,12 +35,9 @@
 		<div class="site-name">
 			<a href="#">The Mothers of Invention</a>
 		</div>
-		<nav>
-			<ul>
-				<li class="current"><a href="#">Story</a></li>
-				<li><a href="#">Map</a></li>
-			</ul>
-		</nav>
+		{% block view_toggle %}
+	  {% endblock %}
+
 		<input type="search" placeholder="Search" />
   </header>
   {% endblock %}
