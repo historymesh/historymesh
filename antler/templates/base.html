@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset='UTF-8'>
+  <meta charset='utf-8'>
   <title>{% block page_title %}{% endblock %}</title>
 
   {% block full-head-css %}
@@ -31,12 +31,27 @@
 <body class='{% block body-class %}{% endblock %}'>
 
   {% block masthead %}
-  <div id='masthead'>
-    <h1>Wodge of Information</h1>
-  </div>
+  <header id="masthead">
+		<div class="site-name">
+			<a href="#">The Mothers of Invention</a>
+		</div>
+		<nav>
+			<ul>
+				<li class="current"><a href="#">Story</a></li>
+				<li><a href="#">Map</a></li>
+			</ul>
+		</nav>
+		<input type="search" placeholder="Search" />
+  </header>
   {% endblock %}
   
+	<article>
   {% block content %}{% endblock %}
+	<footer>
+		<p>&copy; A <a href="">dev/fort</a> production. Released under a <a href="">Creative Commons Licence</a></p>
+	</footer>
+
+	</article>
 
 </body>
 </html>

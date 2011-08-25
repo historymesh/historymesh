@@ -3,62 +3,59 @@
 {% block page_title %}{{ subject.name }}{% if story %} {{ story.slug }}{% endif %}{% endblock %}
 
 {% block content %}
-<h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}</h1>
 
-<ol>
-{% if story and story.prev %}
-<li><a rel='prev' href='{{story.prev.url}}?story={{story.slug}}'>Previous: {{ story.prev.name }}</a></li>
-{% endif %}
+	<div class="map"></div>
+	
+	<div class="tail"></div>
 
-{% if story and story.next %}
-<li><a rel='next' href='{{story.next.url}}?story={{story.slug}}'>Next: {{ story.next.name }}</a></li>
-{% endif %}
-</ol>
+	<ul class="prev-next">
+		<li class="prev bgc1"><a href="#">Previous Story</a></li>
+		<li class="next bgc1"><a href="#">Next Story</a></li>
+	</ul>
+		
+	<h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}  <span>({{subject.timeline_date}})</span></h1>
 
-{% if user.is_authenticated %}
-<a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit in Admin</a>
-{% if current_story_content %}
-<a href="/admin/core/storycontent/{{ current_story_content.pk }}/">Edit Story Content</a>
-{% else %}
-<a href="/admin/core/storycontent/add/?">Add Story Content</a>
-{% endif %}
-{% endif %}
+	
+	<div class="body">
+	
+	<div class="main">
+	<figure class="portrait">
+		<img src="img/IMG_3052.JPG" alt="IMG_3052" class="fr" width="249" height="333" />
+		<figcaption>Close up view of comber board, harness, malls, weights, (Lingoes) and warp with 1040 ends</figcaption>
+	</figure>
+	
+	<p><strong>{{subject.name}}</strong> is a lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit. Quisque ultrices gravida pede. Mauris accumsan vulputate tellus. Phasellus condimentum bibendum dolor. Mauris sed ipsum. Phasellus in diam. Nam sapien ligula, consectetuer id, hendrerit in, cursus sed, leo. Nam tincidunt rhoncus urna. Aliquam id massa ut nibh bibendum imperdiet. Curabitur neque mauris, porta vel, lacinia quis, placerat ultrices, orci.</p>
 
-{{subject.text|textile}}
+<p>Read more about the <a href="">{{subject.name}} on Wikipedia</a></p>
 
-{% if current_story_content %}
-  <h2>Current story content</h2>
-  <ul>
-  {% for content in current_story_content %}
-    <li>{{content.text|linebreaks}}</li>
-  {% endfor %}
-  </ul>
-{% endif %}
 
-{% if other_story_content %}
-  <h2>Other story content</h2>
-  <ul>
-  {% for content in other_story_content %}
-    <li>{{content.text|linebreaks}}</li>
-  {% endfor %}
-  </ul>
-{% endif %}
+	</div>
+	
+	
+	
+	<div class="secondary">
+	<ul class="storynav">
+		<li>
+			<h4>Previously in <span class="auto">Automation</span></h4>
+			<h3 class="thread auto">The Digesting Duck</h3>
 
-{% if subject.reference_url %}
-<a href='{{ subject.reference_url }}'>Read on Weaver</a>
-{% endif %}
-<hr>
+			<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum.</p> -->
+		</li>
+	
+		<li>
+			<h4>Next in <span class="auto">Automation</span></h4>
+			<h3 class="thread auto">The Revolving Stephen</h3>
+				<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum et, viverra a, odio. Sed semper. Praesent vulputate nibh eget nisi.</p> -->
+		</li>
+	</ul>
 
-<h2>Other stories</h2>
-{% for other_story in subject.stories %}
-{% if other_story != story %}
-    <h3>{{other_story.name}}</h3>
-    <ol>
-    {% if other_story.next %}<li>Next: <a href='{{other_story.next.url}}'>{{other_story.next.name}}</a></li>{% endif %}
-    {% if other_story.previous %}<li>Previous: <a href='{{other_story.previous.url}}'>{{other_story.previous.name}}</a></li>{% endif %}
-    </ol>
-{% endif %}
-{% endfor %}
 
-{% include "nodes/links.html" %}
+
+
+
+
+
+
+
+
 {% endblock %}
