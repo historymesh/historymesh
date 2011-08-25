@@ -86,7 +86,17 @@ class NodeLayoutEngine(object):
 
     vertical_separation = 30
 
-    angle_factor = 0.1
+    # How strong the push to get even angles should be; range 0..1
+    angle_factor = 0.5
+
+    # How strong a push to make to fix crossovers
+    crossover_factor = 0.5
+
+    # Minimum distance to use when calculating crossover pushes
+    crossover_min = 10
+
+    # Stop iterating if the total movement is less than this.
+    minimum_total_movement = 0.01
 
     def __init__(self, iterations=None):
         if iterations is not None:
@@ -175,6 +185,7 @@ class NodeLayoutEngine(object):
             # Save the string
             self.strings.add(String(string))
         # Second phase: assign neighbouring strings
+        self.string_edges = set()
         for string in self.strings:
             string.left_strings = []
             string.right_strings = []
@@ -182,10 +193,13 @@ class NodeLayoutEngine(object):
                 for edge in self.edges_by_object.get(string.first, []):
                     if edge.subject in other_string:
                         string.left_strings.append(other_string)
+                        self.string_edges.add(StringEdge(other_string, string))
                 for edge in self.edges_by_subject.get(string.last, []):
                     if edge.object in other_string:
                         string.right_strings.append(other_string)
-            print string, string.left_strings, string.right_strings
+                        self.string_edges.add(StringEdge(string, other_string))
+        #print string, string.left_strings, string.right_strings
+        #print self.string_edges
 
     def position_strings(self):
         """
@@ -193,6 +207,9 @@ class NodeLayoutEngine(object):
         non-time axis.
         """
         for i in range(self.iterations):
+            # Work out slowdown/friction multiplier
+            slowdown = (1 - (1.0/self.iterations) * i)
+
             forces = {}
             # First pass: calculate forces
             for string in self.strings:
@@ -217,7 +234,7 @@ class NodeLayoutEngine(object):
                         self.calculate_repulsion(string, other_string) -
                         self.calculate_attraction(string, other_string)
                     ) * direction 
-                    forces[string] += sub_force
+                    forces[string] += sub_force * slowdown
                 # Now, run the angle solver
                 number_left_strings = len(string.left_strings)
                 number_right_strings = len(string.right_strings)
@@ -244,7 +261,7 @@ class NodeLayoutEngine(object):
                         )
                         offset = target_position - other_string.position
                         forces[other_string] += (
-                           offset * self.angle_factor
+                           offset * self.angle_factor * slowdown
                         )
                 if number_right_strings > 1:
                     delta = (
@@ -269,16 +286,74 @@ class NodeLayoutEngine(object):
                         )
                         offset = target_position - other_string.position
                         forces[other_string] += (
-                           offset * self.angle_factor
+                           offset * self.angle_factor * slowdown
                         )
 
-            # Work out slowdown/friction multiplier
-            slowdown = (1 - (1.0/self.iterations) * i)
-            # Second pass: USE THE FORCE
-            moved = sum(map(abs, forces.values())) * slowdown
+            # Second pass: look for crossovers, and replace the force with
+            # something to help resolve the crossover.
+            for edge in self.string_edges:
+                # Look for crossovers on the left.
+                for other_edge in self.edges_between(edge.start, edge.end):
+                    if other_edge == edge:
+                        continue
+                    if edge.crosses(other_edge):
+                        print "Pushing to fix crossover of %s %s" % (
+                            edge, other_edge)
+                        self.push_to_resolve_crossing(forces, edge, other_edge)
+
+            # Third pass: USE THE FORCE
+            moved = sum(map(abs, forces.values()))
             print "Iteration %i: Moved %s, %s" % (i, moved, slowdown)
             for string in self.strings:
-                string.position += forces[string] * slowdown 
+                string.position += forces[string]
+            if moved < self.minimum_total_movement:
+                return
+
+    def edges_between(self, start, end):
+        """Get a list of all edges between the start and end position"""
+        for edge in self.string_edges:
+            if edge.overlaps(start, end):
+                yield edge
+
+    def push_to_resolve_crossing(self, forces, edge, other_edge):
+        left_diff = abs(other_edge.start_position - edge.start_position)
+        right_diff = abs(other_edge.end_position - edge.end_position)
+
+        if left_diff < right_diff:
+            # Push left hand strings to crossover
+            push = min(abs(edge.start_position - other_edge.start_position),
+                       self.crossover_min) * self.crossover_factor
+            if edge.start_position < other_edge.start_position:
+                forces[edge.left] = push
+                forces[other_edge.left] = -push
+            else:
+                forces[edge.left] = -push
+                forces[other_edge.left] = push
+        else:
+            # Push right hand strings to crossover
+            push = min(abs(edge.end_position - other_edge.end_position),
+                       self.crossover_min) * self.crossover_factor
+            if edge.end_position < other_edge.end_position:
+                forces[edge.right] = push
+                forces[other_edge.right] = -push
+            else:
+                forces[edge.right] = -push
+                forces[other_edge.right] = push
+
+
+    def set_forces_to_flip(self, forces, edge):
+        """Set the forces on the strings at each end of an edge to push towards
+        flipping the gradient of the edge.
+
+        """
+        diff = edge.end_position - edge.start_position
+        push = (min(abs(diff), self.crossover_min)) * self.crossover_factor
+        if diff < 0:
+            forces[edge.left] = -push
+            forces[edge.right] = +push
+        else:
+            forces[edge.left] = push
+            forces[edge.right] = -push
                 
     def calculate_repulsion(self, string, other):
         distance = abs(string.position - other.position)
@@ -363,4 +438,89 @@ class String(object):
         )
 
     def __repr__(self):
-        return "<String: %r>" % repr(self.nodes)
+        return "<String: %s %r>" % repr(self.position, self.nodes)
+
+
+class StringEdge(object):
+    """ An edge between two strings."""
+
+    def __init__(self, left, right):
+        """left and right are the strings on the left and right"""
+        self.left = left
+        self.right = right
+    
+    @property
+    def start(self):
+        """ The start date of the edge. """
+        return self.left.end
+    
+    @property
+    def end(self):
+        """ The end date of the edge. """
+        return self.right.start
+
+    @property
+    def start_position(self):
+        return self.left.position
+
+    @property
+    def end_position(self):
+        return self.right.position
+
+    @property
+    def start_date(self):
+        return self.left.end
+
+    @property
+    def gradient(self):
+        if self.start_date == self.end_date:
+            return 1000000
+        return (
+                float(self.end_position - self.start_position) /
+                (self.end_date - self.start_date)
+        )
+
+    @property
+    def end_date(self):
+        return self.right.start
+
+    def __eq__(self, other):
+        return self.left == other.left and self.right == other.right
+    
+    def __hash__(self):
+        return hash((self.left, self.right))
+
+    def overlaps(self, start, end):
+        """Return true iff the edge overlaps with the time range given."""
+        return (
+            not (self.start > end) and
+            not (start > self.end)
+        )
+
+    def crosses(self, other):
+        """Check if the edge crosses other.
+
+        If not, return 0.
+
+        If so, return True
+        Return true if the edge would cross the other edge if they had the
+        same start and end points.
+
+        """
+        a0 = self.start_position
+        a1 = self.end_position
+        b0 = other.start_position
+        b1 = other.end_position
+
+        return (
+            (a0 < b0 and a1 > b1) or
+            (a0 > b0 and a1 < b1)
+           )
+
+    def __repr__(self):
+        return "<StringEdge: %s %s %s %s>" % (
+                                              self.start_date,
+                                              self.start_position,
+                                              self.end_date,
+                                              self.end_position,
+                                             )
