@@ -299,7 +299,15 @@ class Node(BaseNode):
 
     @classmethod
     def all_child_classes(self):
-        return [Person, Event, Concept, Object, ExternalLink, StoryContent, Image]
+        return [
+            Person,
+            Event,
+            Concept,
+            Object,
+            ExternalLink,
+            StoryContent,
+            Image,
+        ]
     
     def get_absolute_url(self):
         try:
@@ -378,6 +386,9 @@ class Image(BaseNode):
     @property
     def name(self):
         return str(self.image)
+    
+    def url(self):
+        return self.image.url
 
     def __unicode__(self):
         return "%s (%s:%s)" % (
@@ -411,9 +422,22 @@ class Story(models.Model):
         verbose_name_plural = 'Stories'
 
 
-class StoryContent(Node):
+class StoryContent(BaseNode):
     """
     Extra info about a node relating to a story, for instance "Brunnel in Automota"
     """
     
     hidden_in_map = True
+
+    text = models.TextField(blank=True)
+
+    @property
+    def story(self):
+        return self.incoming("described_by").get(story__isnull=False).story
+
+    @property
+    def name(self):
+        return self.story.name
+    
+    def url(self):
+        return "/"

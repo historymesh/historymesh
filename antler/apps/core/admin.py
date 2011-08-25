@@ -1,6 +1,6 @@
 from django.contrib import admin
 from core.models import Edge, Person, Concept, Object, Event, StoryContent, ExternalLink, Story, Image
-from core.forms import EdgeAdminForm
+from core.forms import EdgeAdminForm, StoryContentAdminForm
 
 admin.site.register(
     Edge,
@@ -32,7 +32,11 @@ admin.site.register(Person, NodeAdmin)
 admin.site.register(Concept, NodeAdmin)
 admin.site.register(Object, NodeAdmin)
 admin.site.register(Event, NodeAdmin)
-admin.site.register(StoryContent, NodeAdmin)
+admin.site.register(
+    StoryContent,
+    list_display = ["story"],
+    form = StoryContentAdminForm,
+)
 
 admin.site.register(ExternalLink, list_display=["name", "url"])
 admin.site.register(Image, list_display=["id", "image", "caption"])

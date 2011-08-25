@@ -1,5 +1,5 @@
 from django import forms
-from core.models import Person, Edge, Node
+from core.models import Person, Edge, Node, StoryContent, Story
 
 class NodeList(object):
 
@@ -31,13 +31,6 @@ class SpecialChoices(forms.ChoiceField):
         return subject_model.objects.get(pk=pk)
 
     choices = property(_get_choices, _set_choices)
-
-
-class EdgeForm(forms.Form):
-
-    subject = SpecialChoices()
-    verb = forms.ChoiceField(choices=[(x,x) for x in Edge.VERBS])
-    object = SpecialChoices()
 
 
 class EdgeAdminForm(forms.ModelForm):
@@ -72,3 +65,36 @@ class EdgeAdminForm(forms.ModelForm):
             "object_type",
             "object_id",
         )
+
+
+class StoryContentAdminForm(forms.ModelForm):
+
+    subject = SpecialChoices()
+    story = forms.ModelChoiceField(Story.objects.all())
+
+    def __init__(self, *args, **kwargs):
+        super(StoryContentAdminForm, self).__init__(*args, **kwargs)
+        if self.instance:
+            print self.instance.incoming("described_by")
+            try:
+                story_edge = self.instance.incoming("described_by").get(story__isnull=False)
+            except Edge.DoesNotExist:
+                pass
+            else:
+                self.initial["story"] = story_edge.story.pk
+                self.initial["subject"] = story_edge.subject.select_tuple[0]
+
+    def save(self, commit=True):
+        instance = super(StoryContentAdminForm, self).save(commit)
+        self.save_m2m = self.save_m2m_real
+        return instance
+
+    def save_m2m_real(self):
+        edge = Edge(verb="described_by")
+        edge.subject = self.cleaned_data['subject']
+        edge.object = self.instance
+        edge.story = self.cleaned_data['story']
+        edge.save()
+
+    class Meta:
+        model = StoryContent
