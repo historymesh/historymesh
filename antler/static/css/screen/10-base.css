@@ -315,12 +315,12 @@ div.home {
 	width: 80px;
 	height: 80px;
 	position: absolute;
-	top: 0.5em;
+	top: 0.25em;
 	left: 0;
 }
 
 /*! verbatim */
-	/* pre-parser don't do border-width or generated content */
+	/* pre-parser don't do border-width */
 .home .map {
 	border-width: 1px 0;
 }
@@ -413,6 +413,9 @@ div.home {
 	ol.prev-next li.prev-disabled {
 		background: #eee url(/static/img/arrow-nav.png);
 	}
+	ol.prev-next li.next-disabled {
+		background: #eee url(/static/img/arrow-nav.png) -44px 0;
+	}
 
 
 
@@ -444,15 +447,20 @@ div.home {
 .storynav {
 	border-width: 1px 0;
 }
+	.storynav .tertiary {
+		border-top: solid 1px #ccc;
+		padding-top: 7px;
+		margin-top: 7px;
+	}
 /* -- */
 .storynav ol {
-    -cp-contain:            easy;
+	-cp-contain: easy;
 }
 .storynav h3 {
 	margin: 0;
 }
 .storynav li {
-	width:46%;
+	width: 46%;
 	float: left;
 	margin: 0 2% 0 0;
 }
