@@ -211,9 +211,9 @@ class EdgesMixin(object):
         return Story.objects.in_bulk(list(story_ids)).values()
 
     def readable_name(self):
-        return "%s (%s)" % (
-            self.name,
+        return "%s: %s" % (
             self._meta.object_name,
+            self.name,
         )
 
     @property
@@ -321,8 +321,13 @@ class Image(models.Model, EdgesMixin):
     """
     An image attached to one or more other nodes.
     """
+
     image = models.ImageField(upload_to="images/%Y-%m/")
     caption = models.TextField(blank=True)
+
+    @property
+    def name(self):
+        return str(self.image)
 
     def __unicode__(self):
         return "%s (%s:%s)" % (

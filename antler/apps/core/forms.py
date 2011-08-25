@@ -8,7 +8,10 @@ class NodeList(object):
         for model in Node.all_child_classes():
             for node_object in model.objects.all():
                 choices_to_return.append(node_object.select_tuple)
-        return iter(sorted(choices_to_return, key=lambda node:node[1]))
+        return iter(sorted(
+            choices_to_return,
+            key=lambda node: node[1],
+        ))
 
 
 class SpecialChoices(forms.ChoiceField):
