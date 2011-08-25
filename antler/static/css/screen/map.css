@@ -1,7 +1,7 @@
 .node-preview {
   display:         table-cell;
   vertical-align:  middle;
-  cursor:          pointer;
+  cursor:          default;
   text-decoration: none;
 }
 .node-preview h4 {
@@ -33,7 +33,12 @@
       -ms-transition: opacity 0.2s linear,
                       top     0.2s ease-out;
 }
+.node-preview a {
+  color:            #fff;
+  text-decoration:  none;
+}
 .selected .node-preview h4 {
   opacity:        1;
   top:            -36px;
 }
+

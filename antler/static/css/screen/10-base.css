@@ -454,9 +454,9 @@ body.about, body.error {
 
 
 
-/* =========================================== */
-/* ! Shared between Map and Nodes Page			   */
-/* =========================================== */
+/* ======================================================= */
+/* ! Common style shared between Map and Nodes Page			   */
+/* ======================================================= */
 .secondary {
 	margin: 1.5em 0;
 	clear: both;
@@ -479,6 +479,10 @@ h1 .meta {
 	clear: both;
 	padding-top: 2em;
 }
+	.body h2 {
+		font-size: 1.5em;
+		margin-bottom: 0.5em;
+	}
 .view-node article {
 	position: relative;
 	z-index: 1;
@@ -623,7 +627,8 @@ h1 .meta {
 		margin: 0;
 		float: left;
 	}
-	.storynav li.prev {
+	.storynav li.prev,
+	.storynav li.prev-disabled {
 		width: 36px;
 	}
 	.storynav li.next a, .storynav li.next a:focus {
@@ -644,7 +649,7 @@ h1 .meta {
 		background: #eee url(/static/img/arrow-nav.png);
 	}
 	.storynav ol li.next-disabled {
-		background: #eee url(/static/img/arrow-nav.png) -44px 0;
+		background: #eee url(/static/img/arrow-nav.png) -48px 0;
 	}
 	.storynav .story-line {
 		position: absolute;
@@ -706,6 +711,7 @@ noscript {
 /* -- */
 
 .view-node footer {
+	margin-top: 4em;
 	padding-left: 0;
 }
 

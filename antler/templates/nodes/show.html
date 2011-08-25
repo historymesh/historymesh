@@ -78,7 +78,7 @@
   	network.snapToNode( nodes['{{ subject|slugify }}'], markerPosition());
   })
 
-  $(document).bind('node:navigate', function(event, data) {
+  $(document).bind('node:transition', function(event, data) {
     network.scrollToNode(nodes[data.slug], markerPosition());
   });
 	</script>

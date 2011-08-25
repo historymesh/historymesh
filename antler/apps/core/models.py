@@ -3,6 +3,7 @@ from django.db.models.query import QuerySet
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 from django.db.models.signals import pre_save
+import urlparse
 
 def generate_slug_as_needed(sender, instance, **kwargs):
     """
@@ -344,6 +345,16 @@ class Node(BaseNode):
 
     def url(self):
         return reverse(self.named_url, kwargs={'slug': self.slug})
+
+    def reference_name(self):
+        if self.reference_url:
+            host = urlparse.urlsplit( self.reference_url ).netloc
+            if host.find('10.0.0.') >= 0:
+                return 'Weaver'     # in-fort links
+            if host.find('wikipedia.org') >= 0:
+                return 'Wikipedia'
+            else:
+                return host.replace('www.', '')
 
     def link_url(self):
         # just used in links; something that has no text and isn't

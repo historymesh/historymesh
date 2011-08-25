@@ -5,6 +5,7 @@ except ImportError:
 
 from django import http
 from django.http import Http404
+from django.template import RequestContext
 from django.db import models
 from django.views.generic.base import TemplateView, View
 from django.template.loader import render_to_string
@@ -273,7 +274,7 @@ class NodeJsonView(NodeView):
             "title": title,
             "html": render_to_string(
                 'nodes/_node_content.html',
-                self.get_context_data(slug),
+                RequestContext(request, self.get_context_data(slug)),
             )
         }
 

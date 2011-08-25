@@ -191,7 +191,7 @@ $.extend(Network.prototype, {
     else
       this._offsetLeft = diff[0];
 
-    this._container.animate({
+    this._container.stop().animate({
       left: this._offsetLeft + 'px',
       top:  this._offsetTop  + 'px'
     }, 700);
@@ -252,9 +252,8 @@ $.extend(Network.Node.prototype, {
 
   _renderPreview: function() {
     var preview = $('<div>' +
-                      '<a class="node-preview" href="' +
-                       this._data.url + '">' +
-                        '<h4>' + this._data.name + '</h4>' +
+                      '<div class="node-preview">' +
+                        '<h4><a href="' + this._data.url + '">' + this._data.name + '</a></h4>' +
                       '</div>' +
                     '</div>');
 
@@ -275,7 +274,6 @@ $.extend(Network.Node.prototype, {
     el.append(preview);
 
     preview.mouseover(function() { self.preview() });
-    //preview.click(function() { self.visit() });
 
     return preview;
   },
@@ -310,11 +308,6 @@ $.extend(Network.Node.prototype, {
 
   hide: function() {
     this._preview.removeClass('selected');
-  },
-
-  visit: function() {
-    // alert('Something something ' + this._data.name);
-    window.location.href = this._data.url;
   }
 });
 
