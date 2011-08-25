@@ -1,4 +1,11 @@
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
+from django import http
 from django.http import Http404
+from django.db import models
 from django.views.generic.base import TemplateView, View
 from core.models import Person, Concept, Event, Object, Story, Edge
 from django.shortcuts import HttpResponseRedirect as Redirect, get_object_or_404
@@ -136,6 +143,7 @@ class NodeIndexView(TemplateView):
             'objects': Object.objects.order_by('timeline_date'),
         }
 
+
 class RandomNodeView(View):
 
     def get(self, request):
@@ -148,3 +156,39 @@ class RandomNodeView(View):
 
         node = node_class.objects.order_by("?")[0]
         return Redirect( node.url() )
+
+
+class NodeJsonView(View):
+    def get(self, request, type, slug):
+        # Attempt to find the requested model instance
+        try:
+            model = models.get_model("core", type)
+            instance = get_object_or_404(model, slug=slug)
+            status_code = 200
+        except AttributeError:
+            status_code = 404
+
+        # Attempt to find the story
+        try:
+            story_slug = request.GET.get("story")
+            story = Story.objects.get(slug=story_slug)
+        except Story.DoesNotExist:
+            story = None
+
+        # Set up the payload
+        payload = {
+            "storySlug": story_slug,
+            "nodeType": type,
+            "nodeSlug": slug,
+            "html": '<div>test</div>',
+        }
+
+        # Return a JSON payload
+        response = http.HttpResponse(
+            json.dumps(payload),
+            mimetype="application/json",
+        )
+        response.status_code = status_code
+        return response
+
+
