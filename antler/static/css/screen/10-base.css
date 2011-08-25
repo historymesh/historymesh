@@ -102,7 +102,7 @@ fieldset {
 
 h1 {
 	font-size: 3em;
-	margin: 0 0 1em 0;
+	margin: 60px 0 1em 0;
 	line-height: 1.2;
 	color: #777;
 }
@@ -154,12 +154,36 @@ table {
 /* ! Layout   */
 /* ========== */
 
+header {
+	position: fixed;
+	z-index: 10;
+	left:0;
+	right: 0;
+	top:0;
+	line-height: 1;
+	padding: 6px;
+	background: #ddd;
+}
+
+header h2 {
+	font-size: 14px;
+	text-transform: uppercase;
+	float: left;
+	margin: 0;
+}
+
+header input {
+	float: right;
+	width: 14em;
+	border: 1px solid #ccc;
+}
+
 .timeline {
 	position: fixed;
 	z-index: 0;
 	left:0;
 	right: 0;
-	top:0;
+	top:90px;
 	bottom: 0;
 	font-size: 11px;
 	color: #aaa;
@@ -174,7 +198,7 @@ table {
 .tail {
 	position: fixed;
 	left: 380px;
-	top: 40px;
+	top: 100px;
 	width: 20px;
 	height: 30px;
 	background: url(../img/tail.png);
