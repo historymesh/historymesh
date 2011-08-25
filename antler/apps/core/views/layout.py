@@ -411,6 +411,7 @@ class NodeLayoutEngine(object):
     def annotated_nodes(self):
         for node in self.nodes:
             node.position = self.node_position(node)
+            node.horizontal_position = self.node_horizontal_position(node)
             yield node
         
     def visible_edges(self):
