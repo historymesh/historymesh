@@ -494,11 +494,21 @@ class StoryContent(BaseNode):
             return None
 
     @property
+    def subject(self):
+        try:
+            return self.incoming("described_by").get(story__isnull=False).subject
+        except Edge.DoesNotExist:
+            return None
+
+    @property
     def name(self):
         try:
             return self.story.name
         except AttributeError:
             return "Unknown"
+
+    def get_absolute_url(self):
+        return self.url()
     
     def url(self):
-        return "/"
+        return self.subject.url() + "?story=" + self.story.slug
