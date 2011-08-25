@@ -90,7 +90,7 @@ class NodeLayoutEngine(object):
     angle_factor = 0.5
 
     # How strong a push to make to fix crossovers
-    crossover_factor = 0.5
+    crossover_factor = 0.1
 
     # Minimum distance to use when calculating crossover pushes
     crossover_min = 10
@@ -493,8 +493,8 @@ class StringEdge(object):
     def overlaps(self, start, end):
         """Return true iff the edge overlaps with the time range given."""
         return (
-            not (self.start > end) and
-            not (start > self.end)
+            not (self.start >= end) and
+            not (start >= self.end)
         )
 
     def crosses(self, other):
