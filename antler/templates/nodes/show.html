@@ -70,11 +70,17 @@
 
   network.draw();
 
-  network.snapNode( nodes['{{ subject|slugify }}'], 200, $(".tail").offset().top - 30);
+  var markerPosition = function() { return [200, $(".tail").offset().top - 30] };
+
+  network.snapToNode( nodes['{{ subject|slugify }}'], markerPosition());
 
   $(window).resize(function() {
-  	network.snapNode( nodes['{{ subject|slugify }}'], 200, $(".tail").offset().top - 30);
+  	network.snapToNode( nodes['{{ subject|slugify }}'], markerPosition());
   })
+
+  $(document).bind('node:navigate', function(event, data) {
+    network.scrollToNode(nodes[data.slug], markerPosition());
+  });
 	</script>
 
 
@@ -85,3 +91,4 @@
 
 {% include "nodes/links.html" %}
 {% endblock %}
+

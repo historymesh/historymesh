@@ -1,5 +1,14 @@
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
+from django import http
 from django.http import Http404
+from django.db import models
 from django.views.generic.base import TemplateView, View
+from django.template.loader import render_to_string
+from django.template.defaultfilters import slugify
 from core.models import Person, Concept, Event, Object, Story, Edge
 from django.shortcuts import HttpResponseRedirect as Redirect, get_object_or_404
 import random
@@ -99,7 +108,11 @@ class NodeView(TemplateView):
                 other_node.position = self._calculate_position(before, after, other_node.timeline_date)
                 nodes.append(other_node)
             except:
-                pass
+                if nodes[-1].timeline_date <= other_node.timeline_date:
+                    other_node.position = nodes[-1].position + 2*self.node_separation
+                else:
+                    other_node.position = nodes[-1].position - self.node_separation
+                nodes.append(other_node)
 
         edges = edges.union(other_edges)
 
@@ -172,6 +185,7 @@ class NodeView(TemplateView):
             node = edge.object
             node.horizontal_position = -self.node_separation
             node.story = edge.story
+
             nodes.add(node)
             edges.add(edge)
         for edge in incoming:
@@ -211,6 +225,7 @@ class NodeIndexView(TemplateView):
             'objects': Object.objects.order_by('timeline_date'),
         }
 
+
 class RandomNodeView(View):
 
     def get(self, request):
@@ -223,3 +238,50 @@ class RandomNodeView(View):
 
         node = node_class.objects.order_by("?")[0]
         return Redirect( node.url() )
+
+
+class NodeJsonView(NodeView):
+    def get(self, request, type, slug):
+        # Attempt to find the requested model instance
+        try:
+            self.model = models.get_model("core", type)
+            instance = get_object_or_404(self.model, slug=slug)
+            status_code = 200
+        except AttributeError:
+            status_code = 404
+
+        # Attempt to find the story
+        try:
+            story_slug = request.GET.get("story")
+            story = Story.objects.get(slug=story_slug)
+        except Story.DoesNotExist:
+            story = None
+
+        title = instance.name
+        if story:
+            title = "%s in %s" % (
+                title,
+                story.name,
+            )
+
+        # Set up the payload
+        payload = {
+            "storySlug": story_slug,
+            "nodeType": type,
+            "nodeSlug": slug,
+            "objectId": slugify(instance),
+            "title": title,
+            "html": render_to_string(
+                'nodes/_node_content.html',
+                self.get_context_data(slug),
+            )
+        }
+
+        # Return a JSON payload
+        response = http.HttpResponse(
+            json.dumps(payload),
+            mimetype="application/json",
+        )
+        response.status_code = status_code
+        return response
+
