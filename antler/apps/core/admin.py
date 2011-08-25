@@ -24,11 +24,11 @@ class NodeAdmin(admin.ModelAdmin):
 class StoryAdmin(admin.ModelAdmin):
     list_display = ["name"]
 
-admin.site.register(Person, NodeAdmin)
-admin.site.register(Concept, NodeAdmin)
-admin.site.register(Object, NodeAdmin)
-admin.site.register(Event, NodeAdmin)
-admin.site.register(StoryContent, NodeAdmin)
+admin.site.register(Person, NodeAdmin, ordering=['name'])
+admin.site.register(Concept, NodeAdmin, ordering=['name'])
+admin.site.register(Object, NodeAdmin, ordering=['name'])
+admin.site.register(Event, NodeAdmin, ordering=['name'])
+admin.site.register(StoryContent, NodeAdmin, ordering=['name'])
 
 admin.site.register(ExternalLink)
 
