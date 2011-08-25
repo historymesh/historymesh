@@ -1,0 +1,15 @@
+      var nodes = {};
+      {% for node in nodes %}
+        nodes["{{ node|slugify }}"] = network.addNode({
+          name: '{{ node.name }}{% if node.display_date %} ({{ node.display_date }}){% endif %}',
+          url: '/map/?current_node={{ node.select_tuple.0 }}{% if story %}&story={{story}}{% endif %}',
+          position: [
+            {{ node.horizontal_position }},
+            {{ node.position }}
+        ]
+        });
+      {% endfor %}
+
+      {% for edge in edges %}
+        nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], "{% if edge.story.colour %}#{{edge.story.colour}}{% else %}#273924{% endif %}"{% if edge.verb == "secondary" %}, true{% endif %});
+      {% endfor %}

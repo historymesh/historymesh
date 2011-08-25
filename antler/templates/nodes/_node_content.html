@@ -1,5 +1,6 @@
 {% load markup %}
 {% if story %}
+  {% if not under_map %}
 	<div class="storynav">
 		<ol>
 			{% if story.previous %}
@@ -16,6 +17,7 @@
 		</ol>
 		{% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}
 	</div>
+  {% endif %}
 {% endif %}
 		
 	<h1>
@@ -41,22 +43,17 @@
 {% if user.is_staff %}
 <div class="admin">
 	<a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit Node</a>
+  {% if story.story_content %}
+    <span class="sep">|</span> <a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
+  {% else %}
+    <span class="sep">|</span> <a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
+  {% endif %}
 </div>
 {% endif %}
 
 {% if story.story_content or user.is_staff %}
   <h2>{{ story.name }}</h2>
   {{story.story_content.text|textile}}
-{% endif %}
-
-{% if user.is_staff and story %}
-<div class="admin">
-  {% if story.story_content %}
-    <a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
-  {% else %}
-    <a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
-  {% endif %}
-</div>
 {% endif %}
 
 {% for other_story in subject.stories %}
@@ -74,8 +71,7 @@
       {% else %}
         {% if user.is_staff %}
           <div class="admin">
-            <a href="/admin/core/storycontent/add/?story={{ other_story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story 
-          Content</a>
+            <a href="/admin/core/storycontent/add/?story={{ other_story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
           </div>
         {% endif %}
       {% endif %}

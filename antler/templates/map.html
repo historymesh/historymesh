@@ -6,8 +6,8 @@
 {% block view_toggle %}
   <nav>
     <ul>
-      {% if next %}
-      <li><a href="{{next}}{% if story %}?story={{story}}{% endif %}">Story</a></li>
+      {% if current_node %}
+      <li><a href="{{ current_node.url }}{% if story %}?story={{story}}{% endif %}">Story</a></li>
       {% endif %}
       <li class="current"><em>Map</em></li>
     </ul>
@@ -24,28 +24,16 @@
       <div id="container"></div>
     </div>
 
+    {% if current_node %}
+      {% with current_node as subject %}
+        {% include "nodes/_node_content.html" %}
+      {% endwith %}
+    {% endif %}
+
     <script type="text/javascript">
-
       var network = new Network('container', document.width, 400);
-
-      var nodes = {};
-      {% for node in nodes %}
-        nodes["{{ node|slugify }}"] = network.addNode({
-          name: '{{ node.name }}{% if node.display_date %} ({{ node.display_date }}){% endif %}',
-          url: '{{ node.url }}',
-          position: [
-            {{ node.horizontal_position }},
-            {{ node.position }}
-        ]
-        });
-      {% endfor %}
-
-      {% for edge in edges %}
-        nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], "{% if edge.story.colour %}#{{edge.story.colour}}{% else %}#273924{% endif %}"{% if edge.verb == "secondary" %}, true{% endif %});
-      {% endfor %}
-
+      {% include "map/_node_js.html" %}
       network.draw();
-
     </script>
 
 {% endblock %}

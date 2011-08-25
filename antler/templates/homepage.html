@@ -3,6 +3,10 @@
 {% block pagetitle %}An awesome thing that we made{% endblock %}
 {% block body-class %}home{% endblock %}
 
+{% block head-js %}
+    <script src="/static/js/network.js"></script>
+{% endblock %}
+
 {% block content %}
 
 <div class="home">
@@ -32,8 +36,14 @@
 
   <h2>Timeline Map View</h2>
   <div class="map">
-    <img src="/static/img/temp-homepage.png" style="width: 100%">
+    <div id="container"></div>
   </div>
+
+  <script type="text/javascript">
+    var network = new Network('container', document.width, 400);
+    {% include "map/_node_js.html" %}
+    network.draw();
+  </script>
 </div>
 
 {% endblock %}

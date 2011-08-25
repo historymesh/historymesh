@@ -39,7 +39,6 @@ body {
 /*! verbatim */
 body {
 	text-rendering: optimizeLegibility;
-/* 	-webkit-user-select: none; */
 }
 /* -- */
 a {
@@ -257,6 +256,10 @@ header input {
 	-cp-border-radius: 3px;
 	padding: 3px 8px 5px 65px;
 }
+.admin .sep {
+	margin: 0 5px;
+	color: #ccc;
+}
 /*! verbatim */
 	.admin {
 		-webkit-transition: -webkit-box-shadow 0.1s ease-out;
@@ -462,13 +465,15 @@ body.about, body.error {
 	-webkit-user-select: none;
 	cursor: move;
 }
-	.view-map .map img {
-		line-height: 1;
-	}
 .view-map article {
 	background: #fff;
 }
-
+.view-map .body {
+	padding: 0 2em 2em 2em;
+}
+.view-map h1 {
+	padding: 0.7em 0 0.7em 0.7em;
+}
 
 
 
@@ -478,8 +483,9 @@ body.about, body.error {
 .view-node .main {
 	overflow: auto;
 }
-.view-node .secondary {
+.secondary {
 	margin: 1.5em 0;
+	clear: both;
 }
 
 .view-node .map {
@@ -488,6 +494,7 @@ body.about, body.error {
   top: 45px;
   width: 400px;
   bottom: 0;
+	-webkit-user-select: none;
 }
 
 h1 .name {

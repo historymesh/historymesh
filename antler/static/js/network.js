@@ -9,7 +9,6 @@ Network = function(container, width, height) {
   this.nodeRadius   = 0.9 * this.pathWidth;
   this.nodeStroke   = 0.5 * this.pathWidth;
   this.cornerRadius = 16;
-  this.minSize      = 50;
 
   this.canvasSize = 10000;
 
@@ -81,23 +80,32 @@ $.extend(Network.prototype, {
     this._normalize();
     this._center();
     for (var id in this._scales) this._scales[id].draw();
-    for (var id in this._edges) this._edges[id].draw();
-    for (var id in this._nodes) this._nodes[id].draw();
+    for (var id in this._edges)  this._edges[id].draw();
+    for (var id in this._nodes)  this._nodes[id].draw();
   },
 
   _normalize: function() {
     var box        = this._bounding,
         view       = this._viewport,
-        boxWidth   = (box.e - box.w) < this.minSize ? this.minSize : (box.e - box.w),
-        boxHeight  = (box.s - box.n) < this.minSize ? this.minSize : (box.s - box.n),
+
+        boxWidth   = (box.e - box.w) || 1,
+        boxHeight  = (box.s - box.n) || 1,
+
         viewAspect = view.width / view.height,
         boxAspect  = boxWidth / boxHeight,
-        vertical   = (this.vertical === undefined) ? (boxAspect < viewAspect) : this.vertical,
-        padding    = this.padding || (vertical ? (0.1 * view.width) : (0.1 * view.height)),
-        factor     = vertical ? (view.width - 2*padding) / boxWidth : (view.height - 2*padding) / boxHeight,
 
-        node,
-        scale;
+        vertical   = (this.vertical === undefined) ? (boxAspect < viewAspect) : this.vertical,
+        padding    = vertical ? (0.1 * view.width) : (0.1 * view.height),
+
+        factor     = this.scaleFactor ||
+                     (vertical ? (view.width - 2*padding) / boxWidth
+                               : (view.height - 2*padding) / boxHeight
+                     ),
+
+        indentX    = Math.max(view.width  - 2*padding - factor*boxWidth,  0),
+        indentY    = Math.max(view.height - 2*padding - factor*boxHeight, 0),
+
+        node, scale;
 
     this._vertical = vertical;
     this._padding  = padding;
@@ -105,8 +113,8 @@ $.extend(Network.prototype, {
     for (var id in this._nodes) {
       node = this._nodes[id];
       node._normal = [
-        padding + factor * (node.getPosition()[0] - box.w),
-        padding + factor * (node.getPosition()[1] - box.n)
+        padding + indentX/2 + factor * (node.getPosition()[0] - box.w),
+        padding + indentY/2 + factor * (node.getPosition()[1] - box.n)
       ];
     }
     for (var id in this._scales) {
@@ -131,8 +139,8 @@ $.extend(Network.prototype, {
 
     this._bounding = {
       n:  padding,
-      s:  padding + factor * (box.s - box.n),
-      e:  padding + factor * (box.e - box.w),
+      s:  padding + factor * boxHeight,
+      e:  padding + factor * boxWidth,
       w:  padding
     };
   },
