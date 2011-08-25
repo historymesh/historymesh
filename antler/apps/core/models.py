@@ -34,7 +34,7 @@ class Edge(models.Model):
         "was parent to",
         "was described by",
         "was married to",
-        "dined_with",
+        "dined with",
         "inspired",
         "enabled",
         "depicted",
@@ -467,6 +467,10 @@ class Story(models.Model):
 
         if len(nodes) > 0:
             return nodes[0]
+        else:
+            nodes = self.current_node.outgoing('secondary').filter(story=self).follow()
+            if len(nodes) > 0:
+                return nodes[0]
 
     def previous(self):
         """
@@ -480,6 +484,10 @@ class Story(models.Model):
 
         if len(nodes) > 0:
             return nodes[0]
+        else:
+            nodes = self.current_node.incoming('secondary').filter(story=self).follow()
+            if len(nodes) > 0:
+                return nodes[0]
 
     def story_content(self):
         """

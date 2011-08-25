@@ -1,6 +1,6 @@
 {% load markup %}
 {% if story %}
-	<div class="prev-next">
+	<div class="storynav">
 		<ol>
 			{% if story.previous %}
 			<li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
@@ -32,7 +32,7 @@
 	
 	<div class="main">
 	<figure class="portrait">
-		<img src="img/IMG_3052.JPG" alt="IMG_3052" class="fr" width="249" height="333" />
+		<img src="/static/img/placeholder.png" alt="" class="fr" width="249" height="333">
 		<figcaption>Close up view of comber board, harness, malls, weights, (Lingoes) and warp with 1040 ends</figcaption>
 	</figure>
 
@@ -89,13 +89,13 @@
 
 	</div>
 	
-	
-	
-  {% if story %}
-  <div class="secondary storynav">
+	{% if subject.stories %}
+  <div class="secondary storynav-lg">
+    {% if story %}
     <ol>
     {% include "nodes/_full_story_nav.html" %}
     </ol>
+    {% endif %}
     {% for other_story in subject.stories %}
       {% if story != other_story %}
 				<div class="tertiary story-{{ other_story.slug }}">

@@ -3,11 +3,18 @@
 /* ====================== */
 
 /*! verbatim */
-	/* pre-parser don't do generated content */
-.story-automatons .story-name, .story-automatons .story-name a {color: #e03c31;}
-.story-computing .story-name, .story-computing .story-name a {color: #1945ec;}
-.story-power .story-name, .story-power .story-name a {color: #f5b133;}
-.story-textiles .story-name, .story-textiles .story-name a {color: #309e1d;}
+.story-automatons .story-name, .tertiary.story-automatons .story-name, .story-automatons .story-name a, 
+.tertiary.story-automatons .story-name a 
+	{color: #e03c31;}
+.story-computing .story-name, .tertiary.story-computing .story-name, .story-computing .story-name a, 
+.tertiary.story-computing .story-name a 
+	{color: #1945ec;}
+.story-power .story-name, .tertiary.story-power .story-name, .story-power .story-name a, 
+.tertiary.story-power .story-name a 
+	{color: #f5b133;}
+.story-textiles .story-name, .tertiary.story-textiles .story-name, 
+.story-textiles .story-name a, .tertiary.story-textiles .story-name a 
+	{color: #309e1d;}
 
 	.story-automatons .story-name a:hover, .story-automatons .story-name a:focus,
 	.story-computing .story-name a:hover, .story-computing .story-name a:focus,
@@ -16,8 +23,16 @@
 		text-decoration: underline;
 	}
 
-li.story-automatons h3:before, .story-automatons .prev-next li { background-color: #e03c31;}
-li.story-computing h3:before, .story-computing .prev-next li { background-color: #1945ec;}
-li.story-power h3:before, .story-power .prev-next li { background-color: #f5b133;}
-li.story-textiles h3:before, .story-textiles .prev-next li { background-color: #f5b133;}
+li.story-automatons h3:before, .story-automatons .storynav li, .story-automatons .storynav-lg a.arrow, 
+.storynav-lg .tertiary.story-automatons a.arrow 
+	{background-color: #e03c31;}
+li.story-computing h3:before, .story-computing .storynav li, .story-computing .storynav-lg a.arrow,
+.storynav-lg .tertiary.story-computing a.arrow 
+	{background-color: #1945ec;}
+li.story-power h3:before, .story-power .storynav li, .story-power .storynav-lg a.arrow,
+.storynav-lg .tertiary.story-power a.arrow 
+	{background-color: #f5b133;}
+li.story-textiles h3:before, .story-textiles .storynav li, .story-textiles .storynav-lg a.arrow,
+.storynav-lg .tertiary.story-textiles a.arrow 
+	{background-color: #f5b133;}
 /* -- */

@@ -3,6 +3,10 @@
 {% block pagetitle %}{{ subject.name }}{% if story %} in {{ story.slug }}{% endif %}{% endblock %}
 {% block body-class %}view-node story-{{ story.slug }}{% endblock %}
 
+{% block head-js %}
+  <script src="/static/js/network.js"></script>
+{% endblock %}
+
 {% block view_toggle %}
   <nav>
     <ul>
@@ -14,21 +18,69 @@
 
 {% block content %}
 
+	<noscript>
 	<ol class="timeline">
-		<li>BCE/CE</li>
-		<li>1000</li>
-		<li>1200</li>
-		<li>1600</li>
-		<li>1700</li>
-		<li>1800</li>
-		<li>1900</li>
+	{% for year,group in map.century_grouped_nodes.items %}
+		{% if group.nodes %}
+			<li>{{ group.label|default:year }}
+				<ul>
+				{% for node in group.nodes %}
+				  <li class='story'> <a href='{{node.url}}'>{{node.name}}</a>
+				  </li>
+				{% endfor %}
+				</ul>
+			</li>
+		{% endif %}
+	{% endfor %}
 	</ol>
+	</noscript>
 
-	<div class="map"></div>
-	
-	<div class="tail"></div>
 
-	{% include "nodes/_node_content.html" %}
+
+	<script>
+	document.write('<div class="map"><div id="container"></div><div class="tail"></div></div>');
+	var network = new Network('container', 400, 1000);
+	network.pathWidth = 12;
+	network.nodeRadius = 11;
+	network.nodeStroke = 6;
+	network.nodeLabelClass = 'map-node';
+	network.minSize = 750;
+	network.forceVertical = true;
+	var nodes = {};
+
+  {% for node in map.nodes %}
+    nodes["{{ node|slugify }}"] = network.addNode({
+      name: '{{ node.name }}',
+      url: '{{ node.url }}?story={{ story.slug }}',
+      position: [
+        {{ 100 }},
+        {{ node.position }}
+    ]
+    });
+  {% endfor %}
+
+  {% for edge in map.edges %}
+    nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], "{% if edge.story.colour %}#{{edge.story.colour}}{% else %}#273924{% endif %}"{% if edge.verb == "secondary" %}, true{% endif %});
+  {% endfor %}
+
+
+  {% for mark in map.marks %}
+	  network.addCentruryMark("{{mark.label}}", {{mark.position}}, {{mark.position}});
+  {% endfor %}
+
+  network.draw();
+
+  network.snapNode( nodes['{{ subject|slugify }}'], 200, $(".tail").offset().top - 30);
+
+  $(window).resize(function() {
+  	network.snapNode( nodes['{{ subject|slugify }}'], 200, $(".tail").offset().top - 30);
+  })
+	</script>
+
+
+  <div class='textual'>
+    {% include "nodes/_node_content.html" %}
+  </div>
 
 
 {% include "nodes/links.html" %}

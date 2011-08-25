@@ -8,7 +8,9 @@
   background:     #444;
   color:          #fff;
   display:        inline-block;
-  font:           10px FreeSans, Helvetica, Arial, sans-serif;
+	font: 					normal 12px NuvoMediumWOFF, "Lucida Grande", Calibri, Helvetica, Arial, sans-serif;
+	text-transform: none;
+	letter-spacing: 0;
   margin:         0 -40px;
   opacity:        0;
   padding:        6px;

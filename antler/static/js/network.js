@@ -11,6 +11,8 @@ Network = function(container, width, height) {
   this.cornerRadius = 16;
   this.minSize      = 50;
 
+  this.canvasSize = 10000;
+
   var self   = this,
       wrap   = $('<div></div>');
 
@@ -22,8 +24,8 @@ Network = function(container, width, height) {
   });
   el.css({
     position: 'absolute',
-    width:    '10000px',
-    height:   '10000px'
+    width:    this.canvasSize + 'px',
+    height:   this.canvasSize + 'px'
   });
   el.before(wrap);
   wrap.append(el);
@@ -42,6 +44,7 @@ Network = function(container, width, height) {
   this._paper = Raphael(container);
   this._nodes = {};
   this._edges = {};
+  this._scales = {};
 };
 $.extend(Network.prototype, {
   addNode: function(data) {
@@ -65,10 +68,19 @@ $.extend(Network.prototype, {
     return edge;
   },
 
+  // The point x,y defines a century mark we want. We will draw a horz/vertical line as appropriate
+  addCentruryMark: function(label, x, y) {
+    var scale = new Network.Scale(this, label, x, y);
+    scale.id = this._nextId();
+    this._scales[scale.id] = scale;
+    return scale;
+  },
+
   draw: function() {
     this._paper.clear();
     this._normalize();
     this._center();
+    for (var id in this._scales) this._scales[id].draw();
     for (var id in this._edges) this._edges[id].draw();
     for (var id in this._nodes) this._nodes[id].draw();
   },
@@ -84,7 +96,11 @@ $.extend(Network.prototype, {
         factor     = vertical ? view.width / boxWidth : view.height / boxHeight,
         f          = 0.8 * factor,
         padding    = vertical ? (0.1 * view.width) : (0.1 * view.height),
-        node;
+        node,
+        scale;
+
+    if ("forceVertical" in this)
+      vertical = this.forceVertical;
 
     this._vertical = vertical;
     this._padding  = padding;
@@ -96,6 +112,26 @@ $.extend(Network.prototype, {
         padding + f * (node.getPosition()[1] - box.n)
       ];
     }
+    for (var id in this._scales) {
+      scale = this._scales[id];
+      if (vertical) {
+        scale._normal = [
+          0,
+          padding + f * (scale.getPosition()[1] - box.n),
+          this.canvasSize,
+          padding + f * (scale.getPosition()[1] - box.n)
+        ];
+      }
+      else {
+        scale._normal = [
+          padding + f * (scale.getPosition()[0] - box.w),
+          0,
+          padding + f * (scale.getPosition()[0] - box.w),
+          this.canvasSize
+        ];
+      }
+    }
+
     this._bounding = {
       n:  padding,
       s:  padding + f * (box.s - box.n),
@@ -111,19 +147,34 @@ $.extend(Network.prototype, {
         boxHeight = box.s - box.n,
         padding   = 2 * this._padding;
 
-    if (this._vertical) {
+    if (this._vertical)
       this._offsetTop = (view.height - boxHeight - padding) / 2;
-      this._container.css({top: this._offsetTop + 'px'});
-    } else {
+    else
       this._offsetLeft = (view.width - boxWidth - padding) / 2;
-      this._container.css({left: this._offsetLeft + 'px'});
-    }
+
+    this._updateCSSOffset();
+  },
+
+  _updateCSSOffset: function() {
+    this._container.css({left: this._offsetLeft + 'px', top: this._offsetTop + 'px'});
   },
 
   moveBy: function(left, top) {
     this._offsetLeft += left;
     this._offsetTop  += top;
-    this._container.css({left: this._offsetLeft + 'px', top: this._offsetTop + 'px'});
+    this._updateCSSOffset();
+  },
+
+  snapNode: function(node, x, y) {
+    var pos  = node.getPosition(),
+        diff = [x - pos[0], y - pos[1]];
+
+    if (this._vertical)
+      this._offsetTop = diff[1];
+    else
+      this._offsetLeft = diff[0];
+
+    this._updateCSSOffset();
   },
 
   initDrag: function(event) {
@@ -317,3 +368,66 @@ $.extend(Network.Edge.prototype, {
   }
 });
 
+Network.Scale = function(network, label, x, y) {
+  this._network = network;
+  this._label = label;
+  this._position = [x,y];
+}
+$.extend(Network.Scale.prototype, {
+  getPosition: function() {
+    return this._normal || this._position;
+  },
+
+  draw: function() {
+    if (this._path) return this._path;
+
+    var paper   = this._network._paper,
+        color   = this._color;
+
+    var pathString = [
+      'M', this._normal[0], this._normal[1],
+      'L', this._normal[2], this._normal[3]
+    ].join(' ');
+
+    var path = paper.path(pathString);
+
+    path.attr({
+      'stroke':       '#e2e2e2',
+      'stroke-width': 1
+    });
+
+    // this._label = paper.text( this._normal[0] + 10, this._normal[1] - 10, this._label )
+    // this._label.attr({
+    //   'text-anchor': 'start',
+    //   'fill': '#aaa'
+    // });
+
+    this._label = this._renderLabel();
+
+    return this._path = path;
+  },
+
+  _renderLabel: function() {
+    var div = $('<div class="century-mark">' + this._label + '</div>');
+
+    var radius = this._network.nodeRadius,
+        pos    = this._normal,
+        el     = this._network._container,
+        self   = this;
+
+    div.css({
+      position:   'absolute',
+      left:       (pos[0] + 8) + 'px',
+      top:        (pos[1] - 18 ) + 'px',
+      textAlign:  'left',
+      color:      '#aaa',
+      fontSize:   '12px'
+    });
+    el.append(div);
+
+    //preview.click(function() { self.visit() });
+
+    return div;
+  }
+
+});

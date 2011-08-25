@@ -1,12 +1,23 @@
-		<li>
-{% if story.previous %}
-			<h4>Previously in <span class="story-name">{{ story.name }}</span></h4>
-			<h3 class="thread story-name"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">{{ story.previous.name }}</a></h3>
-{% endif %}
-		</li>
-		<li>
-{% if story.next %}
-			<h4>Next in <span class="story-name">{{ story.name }}</span></h4>
-			<h3 class="thread story-name"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">{{ story.next.name }}</a></h3>
-{% endif %}
-		</li>
+<li class="prev">
+	{% if story.previous %}
+	<a class="arrow" rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">&lsaquo;</a>
+	<dl>
+		<dt>Previously in <span class="story-name">{{ story.name }}</span></dt>
+		<dd class="thread story-name"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">{{ story.previous.name }}</a></dd>
+	</dl>
+	{% else %}
+	<div class="next-disabled"></div>
+	{% endif %}
+</li>
+	
+<li class="next">
+	{% if story.next %}
+	<a class="arrow" rel="next" href="{{ story.next.url }}?story={{ story.slug }}">&rsaquo;</a>
+	<dl>
+		<dt>Next in <span class="story-name">{{ story.name }}</span></dt>
+		<dd class="thread story-name"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">{{ story.next.name }}</a></dd>
+	</dl>
+	{% else %}
+	<div class="next-disabled"></div>
+	{% endif %}
+</li>

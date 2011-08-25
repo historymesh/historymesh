@@ -21,7 +21,7 @@ for project_name in $*; do
     # Thanks to some weirdness with restkit/restpose/something, nose needs to
     # be installed first
     echo "Picking nose"
-    pip install -E $env_name --use-mirrors --mirrors=http://pypi.fort/ nose
+    pip install -E $env_name -i http://pypi.fort/ nose
     echo "Installing requirements"
     pip install -E $env_name -i http://pypi.fort/ -r ${project_name}/requirements.txt
 done
