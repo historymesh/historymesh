@@ -175,12 +175,20 @@ class NodeJsonView(NodeView):
             story = Story.objects.get(slug=story_slug)
         except Story.DoesNotExist:
             story = None
-        
+
+        title = instance.name
+        if story:
+            title = "%s in %s" % (
+                title,
+                story.name,
+            )
+
         # Set up the payload
         payload = {
             "storySlug": story_slug,
             "nodeType": type,
             "nodeSlug": slug,
+            "title": title,
             "html": render_to_string(
                 'nodes/_node_content.html',
                 self.get_context_data(slug),

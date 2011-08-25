@@ -5,40 +5,6 @@ jQuery(function($) {
         return;
     }
 
-    // Builds a state object based on a URL
-    function parseURL(url) {
-        var urlParts,
-            matches,
-            state = {},
-            name;
-
-        urlParts = window.location.pathname.replace(/(^\/|\/$)/g, "").split("/");
-        state.nodeType = urlParts[0];
-        state.nodeSlug = urlParts[1];
-        matches = (/story=([^&]+)/).exec(window.location.search);
-        if(matches) {
-            state.storySlug = matches[1];
-        }
-
-        name = [
-            state.storySlug,
-            state.nodeType,
-            state.nodeSlug
-        ].join(':');
-
-        return [state, name, url];
-    }
-
-    // Takes a URL, derives state from it and passes that to replaceState
-    function replaceState(url) {
-        history.replaceState.apply(history, parseURL(url));
-    }
-
-    // Takes a URL, derives state from it and passes that to pushState
-    function pushState(url) {
-        history.pushState.apply(history, parseURL(url));
-    }
-
     // Responsible for transitioning the DOM from one state to another
     var transition = (function() {
         var outInProgress = false,
@@ -78,7 +44,8 @@ jQuery(function($) {
         return function(targetURL) {
             goOut();
             load(targetURL, function(data) {
-                pushState(targetURL);
+                $('title').html(data.title);
+                history.pushState({}, data.title, targetURL);
                 goIn(data);
             });
         };
@@ -110,7 +77,7 @@ jQuery(function($) {
     }());
 
     // Set some initial state
-    replaceState(window.location.href);
+    history.replaceState({}, window.title, window.location.href);
 
     // Enhance the previous and next links to transition
     $('a[rel=next], a[rel=prev]').live('click', function() {
