@@ -176,7 +176,8 @@ $.extend(Network.Node.prototype, {
 
   _renderPreview: function() {
     var preview = $('<div>' +
-                      '<div class="node-preview">' +
+                      '<a class="node-preview" href="' +
+                       this._data.url + '">' +
                         '<h4>' + this._data.name + '</h4>' +
                       '</div>' +
                     '</div>');
@@ -193,12 +194,12 @@ $.extend(Network.Node.prototype, {
       width:      radius + 'px',
       height:     radius + 'px',
       textAlign:  'center',
-      display:    'table'
+      display:    'table',
     });
     el.append(preview);
 
     preview.mouseover(function() { self.preview() });
-    preview.click(function() { self.visit() });
+    //preview.click(function() { self.visit() });
 
     return preview;
   },
@@ -214,7 +215,8 @@ $.extend(Network.Node.prototype, {
       'cursor':       'pointer',
       'fill':         this._network.bgColor,
       'stroke':       color,
-      'stroke-width': this._network.nodeStroke
+      'stroke-width': this._network.nodeStroke,
+      'href':         this._data.url
     });
     return circle;
   },
