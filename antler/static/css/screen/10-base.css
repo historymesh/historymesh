@@ -39,7 +39,6 @@ body {
 /*! verbatim */
 body {
 	text-rendering: optimizeLegibility;
-/* 	-webkit-user-select: none; */
 }
 /* -- */
 a {
@@ -478,13 +477,15 @@ body.about, body.error {
 	-webkit-user-select: none;
 	cursor: move;
 }
-	.view-map .map img {
-		line-height: 1;
-	}
 .view-map article {
 	background: #fff;
 }
-
+.view-map .body {
+	padding: 0 2em 2em 2em;
+}
+.view-map h1 {
+	padding: 0.7em 0 0 0.7em;
+}
 
 
 
@@ -504,6 +505,7 @@ body.about, body.error {
   top: 45px;
   width: 400px;
   bottom: 0;
+	-webkit-user-select: none;
 }
 
 h1 .name {

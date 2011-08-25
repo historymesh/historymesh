@@ -16,6 +16,8 @@ import random
 class NodeView(TemplateView):
     template_name = 'nodes/show.html'
 
+    node_separation = 45
+
     def model_name(self):
         return self.model._meta.object_name.lower()
 
@@ -47,11 +49,11 @@ class NodeView(TemplateView):
             "incoming": instance.incoming().by_verb(),
             "outgoing": instance.outgoing().by_verb(),
             "story": story,
-            "map": self._prepare_story_map(story)
+            "map": self._prepare_story_map(instance,story)
         }
 
-    def _prepare_story_map(self, story):
-        nodes,edges = self.story_node_map(story)
+    def _prepare_story_map(self, instance, story):
+        nodes,edges, secondary_nodes, secondary_edges = self.story_node_map(story)
 
         # Group the nodes by century(ish) for <noscript> output
         #
@@ -80,9 +82,7 @@ class NodeView(TemplateView):
 
                     if not len(group.get("nodes")):
                         marks.pop()
-                    since = keys[0] - last_node.timeline_date
-                    diff = node.timeline_date - last_node.timeline_date
-                    pos = last_node.position + (since / float(diff)) * node_separation
+                    pos = self._calculate_position(last_node, node, keys[0])
                     label = group.get("label")
                     if label == None:
                         label = keys[0]
@@ -92,10 +92,24 @@ class NodeView(TemplateView):
                     })
                 keys = keys[1:]
                 group = groups[keys[0]]
-            node.position = node_separation * i
+            node.position = self.node_separation * i
+            node.horizontal_position = 0
             group.get("nodes").append(node)
             last_node = node
             i += 1
+
+        other_nodes,other_edges = self.other_story_links(instance, story)
+
+        for other_node in other_nodes:
+            # We want to find the two nodes in the mainline on either side of other_node to work out its position
+            try:
+                before,after = self._get_bracketing_nodes(other_node, nodes)
+                other_node.position = self._calculate_position(before, after, other_node.timeline_date)
+                nodes.append(other_node)
+            except:
+                pass
+
+        edges = edges.union(other_edges)
 
         return {
             "nodes": nodes,
@@ -104,15 +118,76 @@ class NodeView(TemplateView):
             "century_grouped_nodes": groups,
         }
 
+    def _calculate_position(self, before, after, timeline_date):
+        since = timeline_date - before.timeline_date
+        diff = after.timeline_date - before.timeline_date
+        return before.position + (since / float(diff)) * self.node_separation
+
+
+    # TODO: hadle cases where target is outside the range in nodes
+    def _get_bracketing_nodes(self, target, nodes):
+        print "looking for %d" % target.timeline_date
+        prev = None
+        for node in nodes:
+            if not prev:
+                prev = node
+                continue
+            print "prev: %d, next, %d" % (prev.timeline_date, target.timeline_date)
+            if prev.timeline_date <= target.timeline_date and target.timeline_date <= node.timeline_date:
+                return prev,node
+            prev = node
+        raise "Couldn't find bracketing nodes"
+
     def story_node_map(self, story):
         nodes = set()
         edges = set()
-        for edge in Edge.objects.filter(story=story, verb__in=("primary", "secondary")):
-            nodes.add(edge.subject)
-            nodes.add(edge.object)
-            edges.add(edge)
+        secondary_nodes = set()
+        secondary_edges = set()
+        for edge in Edge.objects.filter(story=story, verb=("primary")):
+            if edge.verb == "primary":
+                node = edge.object
+                node.story = edge.story
+                nodes.add(node)
+
+                node = edge.subject
+                node.story = edge.story
+                nodes.add(node)
+
+                edges.add(edge)
+            else:
+                secondary_nodes.add(edge.subject)
+                secondary_nodes.add(edge.object)
+                secondary_edges.add(edge)
+
         # Sort them
         nodes = sorted(nodes, key=lambda node: node.timeline_date)
+        secondary_nodes = sorted(nodes, key=lambda node: node.timeline_date)
+        return nodes,edges,secondary_nodes,secondary_edges
+
+    def other_story_links(self, instance, story):
+        edges = set()
+        nodes = set()
+        type_str = Edge._type_string_from_model(instance)
+        outgoing = Edge.objects.filter(verb="primary", subject_id=instance.id, subject_type=type_str).exclude(story=story)
+        second_out = Edge.objects.filter(verb="secondary", subject_id=instance.id, subject_type=type_str, story=story)
+        incoming = Edge.objects.filter(verb="primary", object_id=instance.id, object_type=type_str).exclude(story=story)
+        second_in = Edge.objects.filter(verb="secondary", object_id=instance.id, object_type=type_str, story=story)
+
+        outgoing = outgoing or second_out
+        incoming = incoming or second_in
+
+        for edge in outgoing:
+            node = edge.object
+            node.horizontal_position = -self.node_separation
+            node.story = edge.story
+            nodes.add(node)
+            edges.add(edge)
+        for edge in incoming:
+            node = edge.subject
+            node.horizontal_position = self.node_separation
+            node.story = edge.story
+            nodes.add(node)
+            edges.add(edge)
         return nodes,edges
 
 

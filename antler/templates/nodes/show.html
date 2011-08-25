@@ -11,7 +11,7 @@
   <nav>
     <ul>
       <li class="current"><em>Story</em></li>
-      <li><a href="/map/?next={{subject.url}}{% if story %}&amp;story={{story.slug}}{% endif %}">Map</a></li>
+      <li><a href="/map/?current_node={{subject.select_tuple.0}}{% if story %}&amp;story={{story.slug}}{% endif %}">Map</a></li>
     </ul>
   </nav>
 {% endblock %}
@@ -44,18 +44,18 @@
 	network.nodeRadius = 11;
 	network.nodeStroke = 6;
 	network.nodeLabelClass = 'map-node';
-	network.minSize = 750;
-	network.forceVertical = true;
+	network.scaleFactor = 2;
+	network.vertical = true;
 	var nodes = {};
 
   {% for node in map.nodes %}
     nodes["{{ node|slugify }}"] = network.addNode({
       name: '{{ node.name }}',
-      url: '{{ node.url }}?story={{ story.slug }}',
+      url: '{{ node.url }}?story={{ node.story.slug }}',
       position: [
-        {{ 100 }},
+        {{ node.horizontal_position }},
         {{ node.position }}
-    ]
+      ]
     });
   {% endfor %}
 
