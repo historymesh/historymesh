@@ -15,8 +15,9 @@ class LayoutView(TemplateView):
         engine = NodeLayoutEngine()
         engine.lay_out()
         return {
-            "strings": engine.strings,
-            "nodes": engine.annotated_nodes(),
+            "strings": list(engine.strings),
+            "nodes": list(engine.annotated_nodes()),
+            "edges": list(engine.visible_edges()),
         }
 
 
@@ -293,8 +294,10 @@ class NodeLayoutEngine(object):
             # something to help resolve the crossover.
             for edge in self.string_edges:
                 # Look for crossovers on the left.
-                for other_edge in self.edges_between(edge.start, edge.end):
+                for other_edge in self.string_edges:
                     if other_edge == edge:
+                        continue
+                    if not other_edge.overlaps(edge.start, edge.end):
                         continue
                     if edge.crosses(other_edge):
                         print "Pushing to fix crossover of %s %s" % (
@@ -308,12 +311,6 @@ class NodeLayoutEngine(object):
                 string.position += forces[string]
             if moved < self.minimum_total_movement:
                 return
-
-    def edges_between(self, start, end):
-        """Get a list of all edges between the start and end position"""
-        for edge in self.string_edges:
-            if edge.overlaps(start, end):
-                yield edge
 
     def push_to_resolve_crossing(self, forces, edge, other_edge):
         left_diff = abs(other_edge.start_position - edge.start_position)
@@ -491,7 +488,7 @@ class StringEdge(object):
         return hash((self.left, self.right))
 
     def overlaps(self, start, end):
-        """Return true iff the edge overlaps with the time range given."""
+        """Return true iff the edge overlaps or nearly overlaps with the time range given."""
         return (
             not (self.start >= end) and
             not (start >= self.end)
@@ -500,22 +497,57 @@ class StringEdge(object):
     def crosses(self, other):
         """Check if the edge crosses other.
 
-        If not, return 0.
-
-        If so, return True
         Return true if the edge would cross the other edge if they had the
         same start and end points.
 
         """
+        if self.left == other.left or self.right == other.right:
+            # If the strings at an end are the same, it can't be a crossover.
+            return
+        if self.end == self.start or other.end == other.start:
+            # Any degenerate strings where start == end can't be crossovers.
+            return
+
+        print "Checking crossover of %s and %s" % (self, other)
+
         a0 = self.start_position
         a1 = self.end_position
+        a_grad = (a1 - a0) / float(self.end - self.start)
         b0 = other.start_position
         b1 = other.end_position
+        b_grad = (b1 - b0) / float(other.end - other.start)
+        overlap_start = max(self.start, other.start)
+        overlap_end = min(self.end, other.end)
 
+        if overlap_start >= overlap_end:
+            return False
+
+        print "OVERLAP from %d to %d ((%f, %f)-(%f, %f) and (%f, %f)-(%f, %f))" % (
+            overlap_start, overlap_end,
+            self.start, a0,
+            self.end, a1,
+            other.start, b0,
+            other.end, b1,
+        )
+
+        a_start = a0 + a_grad * (overlap_start - self.start)
+        b_start = b0 + b_grad * (overlap_start - other.start)
+
+        a_end = a0 + a_grad * (overlap_end - self.start)
+        b_end = b0 + b_grad * (overlap_end - other.start)
+
+        print "a_start: %f, a_end: %f, b_start: %f, b_end: %f" % (
+            a_start, a_end, b_start, b_end,
+        )
+
+        print (
+            (a_start < b_start and a_end > b_end) or
+            (a_start > b_start and a_end < b_end)
+        )
         return (
-            (a0 < b0 and a1 > b1) or
-            (a0 > b0 and a1 < b1)
-           )
+            (a_start < b_start and a_end > b_end) or
+            (a_start > b_start and a_end < b_end)
+        )
 
     def __repr__(self):
         return "<StringEdge: %s %s %s %s>" % (
