@@ -36,30 +36,6 @@
         }
     }, 
     {
-        "pk": 6, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 2, 
-            "subject_type": "core.object", 
-            "subject_id": 22, 
-            "object_type": "core.person", 
-            "object_id": 24, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 2, 
-            "subject_type": "core.person", 
-            "subject_id": 24, 
-            "object_type": "core.object", 
-            "object_id": 1, 
-            "verb": "primary"
-        }
-    }, 
-    {
         "pk": 8, 
         "model": "core.edge", 
         "fields": {
@@ -164,30 +140,6 @@
             "subject_id": 33, 
             "object_type": "core.object", 
             "object_id": 40, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 19, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 3, 
-            "subject_type": "core.object", 
-            "subject_id": 40, 
-            "object_type": "core.object", 
-            "object_id": 2, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 20, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 3, 
-            "subject_type": "core.object", 
-            "subject_id": 2, 
-            "object_type": "core.object", 
-            "object_id": 29, 
             "verb": "primary"
         }
     }, 
@@ -312,18 +264,6 @@
         }
     }, 
     {
-        "pk": 16, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 3, 
-            "subject_type": "core.object", 
-            "subject_id": 22, 
-            "object_type": "core.person", 
-            "object_id": 11, 
-            "verb": "primary"
-        }
-    }, 
-    {
         "pk": 40, 
         "model": "core.edge", 
         "fields": {
@@ -356,18 +296,6 @@
             "subject_id": 7, 
             "object_type": "core.event", 
             "object_id": 14, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 32, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.event", 
-            "subject_id": 14, 
-            "object_type": "core.object", 
-            "object_id": 27, 
             "verb": "primary"
         }
     }, 
@@ -456,30 +384,6 @@
         }
     }, 
     {
-        "pk": 17, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 3, 
-            "subject_type": "core.person", 
-            "subject_id": 11, 
-            "object_type": "core.object", 
-            "object_id": 25, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 43, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 3, 
-            "subject_type": "core.object", 
-            "subject_id": 25, 
-            "object_type": "core.object", 
-            "object_id": 37, 
-            "verb": "primary"
-        }
-    }, 
-    {
         "pk": 44, 
         "model": "core.edge", 
         "fields": {
@@ -552,207 +456,375 @@
         }
     }, 
     {
-        "pk": 50, 
+        "pk": 51, 
         "model": "core.edge", 
         "fields": {
-            "story": 3, 
+            "story": null, 
             "subject_type": "core.person", 
             "subject_id": 11, 
-            "object_type": "core.storycontent", 
+            "object_type": "core.object", 
+            "object_id": 12, 
+            "verb": "discovered"
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 1, 
+            "object_type": "core.object", 
+            "object_id": 2, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 39, 
+            "object_type": "core.person", 
             "object_id": 1, 
-            "verb": "described_by"
+            "verb": "depicted"
         }
     }, 
     {
-        "pk": 31, 
-        "model": "core.person", 
+        "pk": 54, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "9th Century", 
-            "name": "Ban\u016b M\u016bs\u0101", 
-            "text": "", 
-            "slug": "banu-musa", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Ban\u016b%20M\u016bs\u0101", 
-            "timeline_date": 850
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 30, 
+            "object_type": "core.object", 
+            "object_id": 29, 
+            "verb": "invented"
         }
     }, 
     {
-        "pk": 34, 
-        "model": "core.person", 
+        "pk": 55, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "1771-1858", 
-            "name": "Robert Owen", 
-            "text": "", 
-            "slug": "robert-owen", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Robert+Owen", 
-            "timeline_date": 1819
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 30, 
+            "object_type": "core.object", 
+            "object_id": 39, 
+            "verb": "owned"
         }
     }, 
     {
-        "pk": 11, 
-        "model": "core.person", 
+        "pk": 56, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "11-12th Century", 
-            "name": "Su Song", 
-            "text": "", 
-            "slug": "su-song", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Su+Song", 
-            "timeline_date": 1100
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 29, 
+            "object_type": "core.person", 
+            "object_id": 37, 
+            "verb": "was described by"
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 21, 
+            "object_type": "core.person", 
+            "object_id": 37, 
+            "verb": "was parent to"
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 36, 
+            "object_type": "core.person", 
+            "object_id": 38, 
+            "verb": "was parent to"
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 18, 
+            "object_type": "core.object", 
+            "object_id": 27, 
+            "verb": "primary"
         }
     }, 
     {
         "pk": 32, 
-        "model": "core.person", 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "16th Century", 
-            "name": "Taqi al-Din", 
-            "text": "", 
-            "slug": "taqi-al-din", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Taqi%20al-Din%20Muhammad%20ibn%20Ma'ruf", 
-            "timeline_date": 1550
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 14, 
+            "object_type": "core.object", 
+            "object_id": 18, 
+            "verb": "primary"
         }
     }, 
     {
-        "pk": 10, 
-        "model": "core.person", 
+        "pk": 60, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "18th Century", 
-            "name": "Basile Bouchon", 
-            "text": "", 
-            "slug": "basile-bouchon", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Basile+Bouchon", 
-            "timeline_date": 1725
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 18, 
+            "object_type": "core.object", 
+            "object_id": 1, 
+            "verb": "primary"
         }
     }, 
     {
-        "pk": 27, 
-        "model": "core.person", 
+        "pk": 7, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "17th Century", 
-            "name": "George Bruce", 
-            "text": "", 
-            "slug": "george-bruce", 
-            "reference_url": "http://10.0.0.56:9292/wiki/George+Bruce+of+Carnock", 
-            "timeline_date": 1600
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 24, 
+            "object_type": "core.object", 
+            "object_id": 18, 
+            "verb": "primary"
         }
     }, 
     {
-        "pk": 2, 
-        "model": "core.person", 
+        "pk": 61, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "18th Century", 
-            "name": "Jacques de Vaucanson", 
-            "text": "", 
-            "slug": "jacques-de-vaucanson", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Jacques+de+Vaucanson", 
-            "timeline_date": 1740
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 20, 
+            "object_type": "core.storycontent", 
+            "object_id": 2, 
+            "verb": "described_by"
         }
     }, 
     {
-        "pk": 4, 
-        "model": "core.person", 
+        "pk": 62, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "18th Century", 
-            "name": "James Watt", 
-            "text": "", 
-            "slug": "james-watt", 
-            "reference_url": "http://10.0.0.56:9292/wiki/James+Watt", 
-            "timeline_date": 1770
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 26, 
+            "object_type": "core.storycontent", 
+            "object_id": 3, 
+            "verb": "described_by"
         }
     }, 
     {
-        "pk": 19, 
-        "model": "core.person", 
+        "pk": 63, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "18th Century", 
-            "name": "Richard Arkwright", 
-            "text": "", 
-            "slug": "richard-arkwright", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Richard+Arkwright", 
-            "timeline_date": 1771
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 22, 
+            "object_type": "core.storycontent", 
+            "object_id": 4, 
+            "verb": "described_by"
         }
     }, 
     {
-        "pk": 9, 
-        "model": "core.person", 
+        "pk": 64, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "19th Century", 
-            "name": "Richard Trevithick", 
-            "text": "", 
-            "slug": "richard-trevithick", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Richard+Trevithick", 
-            "timeline_date": 1800
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 11, 
+            "object_type": "core.object", 
+            "object_id": 24, 
+            "verb": "invented"
         }
     }, 
     {
-        "pk": 22, 
-        "model": "core.person", 
+        "pk": 17, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "18th Century", 
-            "name": "Thomas Newcomen", 
-            "text": "", 
-            "slug": "thomas-newcomen", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Thomas+Newcomen", 
-            "timeline_date": 1712
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 11, 
+            "object_type": "core.person", 
+            "object_id": 24, 
+            "verb": "primary"
         }
     }, 
     {
-        "pk": 13, 
-        "model": "core.person", 
+        "pk": 6, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "17th Century", 
-            "name": "Thomas Savery", 
-            "text": "", 
-            "slug": "thomas-savery", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Thomas+Savery", 
-            "timeline_date": 1698
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 22, 
+            "object_type": "core.person", 
+            "object_id": 11, 
+            "verb": "primary"
         }
     }, 
     {
-        "pk": 26, 
-        "model": "core.person", 
+        "pk": 16, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "20th Century", 
-            "name": "Alan Turing", 
-            "text": "", 
-            "slug": "alan-turing", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Alan+Turing", 
-            "timeline_date": 1940
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 22, 
+            "object_type": "core.object", 
+            "object_id": 37, 
+            "verb": "primary"
         }
     }, 
     {
-        "pk": 25, 
-        "model": "core.person", 
+        "pk": 65, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "20th Century", 
-            "name": "Albert Einstein", 
-            "text": "", 
-            "slug": "albert-einstein", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Albert+Einstein", 
-            "timeline_date": 1910
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 20, 
+            "object_type": "core.object", 
+            "object_id": 25, 
+            "verb": "preceded"
         }
     }, 
     {
-        "pk": 30, 
-        "model": "core.person", 
+        "pk": 66, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "19th Century", 
-            "name": "Charles Babbage", 
-            "text": "", 
-            "slug": "charles-babbage", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Charles+Babbage", 
-            "timeline_date": 1840
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 37, 
+            "object_type": "core.storycontent", 
+            "object_id": 5, 
+            "verb": "described_by"
         }
     }, 
     {
-        "pk": 1, 
-        "model": "core.person", 
+        "pk": 67, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "19th Century", 
-            "name": "Joseph Marie Jacquard", 
-            "text": "", 
-            "slug": "joseph-marie-jacquard", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Joseph+Marie+Jacquard", 
-            "timeline_date": 1801
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 33, 
+            "object_type": "core.storycontent", 
+            "object_id": 6, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 68, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 40, 
+            "object_type": "core.object", 
+            "object_id": 2, 
+            "verb": "enabled"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 40, 
+            "object_type": "core.object", 
+            "object_id": 29, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 40, 
+            "object_type": "core.object", 
+            "object_id": 2, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 70, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 30, 
+            "object_type": "core.storycontent", 
+            "object_id": 7, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 71, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 40, 
+            "object_type": "core.storycontent", 
+            "object_id": 8, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 2, 
+            "object_type": "core.object", 
+            "object_id": 40, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 29, 
+            "object_type": "core.storycontent", 
+            "object_id": 9, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 74, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.person", 
+            "subject_id": 26, 
+            "object_type": "core.storycontent", 
+            "object_id": 10, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 19, 
+            "object_type": "core.storycontent", 
+            "object_id": 11, 
+            "verb": "described_by"
         }
     }, 
     {
@@ -765,102 +837,6 @@
             "slug": "herman-hollerith", 
             "reference_url": "http://10.0.0.56:9292/wiki/Herman+Hollerith", 
             "timeline_date": 1920
-        }
-    }, 
-    {
-        "pk": 18, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "18th Century", 
-            "name": "John Joseph Merlin", 
-            "text": "", 
-            "slug": "john-joseph-merlin", 
-            "reference_url": "http://10.0.0.56:9292/wiki/John+Joseph+Merlin", 
-            "timeline_date": 1760
-        }
-    }, 
-    {
-        "pk": 20, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "18th Century", 
-            "name": "John Lombe", 
-            "text": "", 
-            "slug": "john-lombe", 
-            "reference_url": "http://10.0.0.56:9292/wiki/John+Lombe", 
-            "timeline_date": 1721
-        }
-    }, 
-    {
-        "pk": 21, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "19th Century", 
-            "name": "Lord Byron", 
-            "text": "", 
-            "slug": "lord-byron", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Lord+Byron", 
-            "timeline_date": 1800
-        }
-    }, 
-    {
-        "pk": 12, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "18th Century", 
-            "name": "Matthew Boulton", 
-            "text": "", 
-            "slug": "matthew-boulton", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Matthew+Boulton", 
-            "timeline_date": 1761
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "19th Century", 
-            "name": "Nagai Nagayoshi", 
-            "text": "", 
-            "slug": "nagai-nagayoshi", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Nagai+Nagayoshi", 
-            "timeline_date": 1893
-        }
-    }, 
-    {
-        "pk": 8, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "19th Century", 
-            "name": "Robert Peel", 
-            "text": "", 
-            "slug": "robert-peel", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Robert+Peel", 
-            "timeline_date": 1844
-        }
-    }, 
-    {
-        "pk": 33, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "3rd Century BC", 
-            "name": "Theophrastus", 
-            "text": "\"On Stones\" (talks about coal)", 
-            "slug": "theophrastus", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Theophrastus", 
-            "timeline_date": -300
-        }
-    }, 
-    {
-        "pk": 16, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "3rd Century BC", 
-            "name": "Philo of Byzantium", 
-            "text": "He made/talked about a water wheel", 
-            "slug": "philo-of-byzantium", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Philo+of+Byzantium", 
-            "timeline_date": -200
         }
     }, 
     {
@@ -885,30 +861,6 @@
             "slug": "w-edwards-deming", 
             "reference_url": "http://10.0.0.56:9292/wiki/W.+Edwards+Deming", 
             "timeline_date": 1950
-        }
-    }, 
-    {
-        "pk": 36, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "18th Century", 
-            "name": "Mary Wollstonecraft", 
-            "text": "", 
-            "slug": "mary-wollstonecraft", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Mary+Wollstonecraft", 
-            "timeline_date": 1780
-        }
-    }, 
-    {
-        "pk": 37, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "19th Century", 
-            "name": "Ada Lovelace", 
-            "text": "", 
-            "slug": "ada-lovelace", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Ada+Lovelace", 
-            "timeline_date": 1837
         }
     }, 
     {
@@ -972,147 +924,327 @@
         }
     }, 
     {
+        "pk": 16, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "3rd Century BC", 
+            "name": "Philo of Byzantium", 
+            "text": "Philo of Byzantium, also known as Philo Mechanicus, was a Greek engineer and writer on mechanics, and lived during the latter half of the 3nd century BCE. He was probably younger than Ctesibius, though some place him a century earlier.\r\n\r\nPhilo was the author of a large work, Mechanike syntaxis (Compendium of Mechanics), and a section of his work Pneumatics includes the first description of a water mill in history. Pneumatics also describes an escapement mechanism, the earliest known, as part of a washstand.", 
+            "slug": "philo-of-byzantium", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Philo+of+Byzantium", 
+            "timeline_date": -200
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "17th Century", 
+            "name": "George Bruce", 
+            "text": "_Sir George Bruce of Carnock_ (1568\u20131625) was a Scottish merchant and engineer, born in 1568 in Carnock, near Dunfermline.\r\n\r\nBruce was an innovator in coal mining techniques, introducing undersea mining into the Upper Hirst seam with use of new drainage technology.", 
+            "slug": "george-bruce", 
+            "reference_url": "http://10.0.0.56:9292/wiki/George+Bruce+of+Carnock", 
+            "timeline_date": 1600
+        }
+    }, 
+    {
         "pk": 2, 
-        "model": "core.event", 
+        "model": "core.person", 
         "fields": {
-            "display_date": "Early 19th Century", 
-            "name": "Canut revolts", 
-            "text": "", 
-            "slug": "canut-revolts", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Canut_revolts", 
-            "timeline_date": 1825
+            "display_date": "18th Century", 
+            "name": "Jacques de Vaucanson", 
+            "text": "Jacques de Vaucanson (February 24, 1709 \u2013 November 21, 1782) was a French inventor and artist with a mechanical background who is credited with creating the world's first true robots, as well as for creating the first completely automated loom.", 
+            "slug": "jacques-de-vaucanson", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Jacques+de+Vaucanson", 
+            "timeline_date": 1740
         }
     }, 
     {
-        "pk": 1, 
-        "model": "core.event", 
+        "pk": 22, 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1842", 
-            "name": "1842 General Strike", 
-            "text": "", 
-            "slug": "1842-general-strike", 
-            "reference_url": "http://10.0.0.56:9292/wiki/1842_General_Strike", 
-            "timeline_date": 1842
+            "display_date": "18th Century", 
+            "name": "Thomas Newcomen", 
+            "text": "Thomas Newcomen (born shortly before 24 February 1664; died 5 August 1729) was an ironmonger by trade and a Baptist lay preacher by calling. He was born in Dartmouth, Devon, England, near a part of the country noted for its tin mines. Newcomen created the first practical steam engine for pumping water, the Newcomen steam engine. Consequently, he can be regarded as a forefather of the Industrial Revolution.", 
+            "slug": "thomas-newcomen", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Thomas+Newcomen", 
+            "timeline_date": 1712
         }
     }, 
     {
-        "pk": 3, 
-        "model": "core.event", 
+        "pk": 18, 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1349", 
-            "name": "Ordinance of Labourers", 
-            "text": "", 
-            "slug": "ordinance-of-labourers", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Ordinance%20of%20Labourers", 
-            "timeline_date": 1349
+            "display_date": "18th Century", 
+            "name": "John Joseph Merlin", 
+            "text": "John-Joseph Merlin (17 September 1735 \u2013 4 May 1803) was a Belgian inventor and horologist.\r\n\r\nHe was an inventor, noted for the invention of roller skates in 1760. He also improved musical instruments and manufactured automata, such as Cox\u2019s timepiece. He created Merlin's Mechanical Museum to display his machines.", 
+            "slug": "john-joseph-merlin", 
+            "reference_url": "http://10.0.0.56:9292/wiki/John+Joseph+Merlin", 
+            "timeline_date": 1760
         }
     }, 
     {
-        "pk": 4, 
-        "model": "core.event", 
+        "pk": 9, 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1315 - 1317", 
-            "name": "Great Famine of 1315\u20131317", 
-            "text": "", 
-            "slug": "great-famine-of-13151317", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Great%20Famine%20of%201315%E2%80%931317", 
-            "timeline_date": 1315
+            "display_date": "19th Century", 
+            "name": "Richard Trevithick", 
+            "text": "Richard Trevithick  was a British inventor and mining engineer.\r\n\r\nHis most significant success was the high pressure steam engine and he also built the first full-scale working railway steam locomotive. On 21 February 1804 the world's first railway journey took place as Trevithick's unnamed steam locomotive hauled a train along the tramway of the Penydarren Ironworks, near Merthyr Tydfil in Wales.", 
+            "slug": "richard-trevithick", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Richard+Trevithick", 
+            "timeline_date": 1800
         }
     }, 
     {
-        "pk": 5, 
-        "model": "core.event", 
+        "pk": 30, 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1984 - 1985", 
-            "name": "UK miners' strike (1984\u20131985)", 
-            "text": "", 
-            "slug": "uk-miners-strike-19841985", 
-            "reference_url": "http://10.0.0.56:9292/wiki/UK%20miners'%20strike%20(1984%E2%80%931985)", 
-            "timeline_date": 1984
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "core.event", 
-        "fields": {
-            "display_date": "1926", 
-            "name": "1926 United Kingdom general strike", 
-            "text": "", 
-            "slug": "1926-united-kingdom-general-strike", 
-            "reference_url": "http://10.0.0.56:9292/wiki/1926%20United%20Kingdom%20general%20strike", 
-            "timeline_date": 1926
-        }
-    }, 
-    {
-        "pk": 10, 
-        "model": "core.event", 
-        "fields": {
-            "display_date": "1381", 
-            "name": "Peasants' Revolt", 
-            "text": "", 
-            "slug": "peasants-revolt", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Peasants'%20Revolt", 
-            "timeline_date": 1381
+            "display_date": "19th Century", 
+            "name": "Charles Babbage", 
+            "text": "Charles Babbage, FRS (26 December 1791\u201318 October 1871) was an English mathematician, philosopher, inventor, and mechanical engineer who originated the concept of a programmable computer. Parts of his uncompleted mechanisms are on display in the London Science Museum. Considered a \"father of the computer\", Babbage is credited with inventing the first mechanical computer that eventually led to more complex designs.\r\n", 
+            "slug": "charles-babbage", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Charles+Babbage", 
+            "timeline_date": 1840
         }
     }, 
     {
         "pk": 11, 
-        "model": "core.event", 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1891", 
-            "name": "Rerum Novarum", 
-            "text": "", 
-            "slug": "rerum-novarum", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Rerum%20Novarum", 
-            "timeline_date": 1891
+            "display_date": "11-12th Century", 
+            "name": "Su Song", 
+            "text": "Su Song was a Chinese polymath, spending his time variously as diplomat, pharmacologist, engineer and poet, amongst many other disciplines. He designed a water-driven astronomical clock tower in the eleventh century AD (although its use of an early escapement mechanism was due to inventions by the Buddhist monk Yi Xing in the eight century), completed a large celestial atlas which is the oldest surviving printed star map, and an extended treatise that covers mineralogy, zoology, botany and metallurgy, and which documented the use of ephedrine as a drug.", 
+            "slug": "su-song", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Su+Song", 
+            "timeline_date": 1100
         }
     }, 
     {
         "pk": 12, 
-        "model": "core.event", 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1838 - 1850", 
-            "name": "Chartism", 
-            "text": "", 
-            "slug": "chartism", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Chartism", 
-            "timeline_date": 1845
+            "display_date": "18th Century", 
+            "name": "Matthew Boulton", 
+            "text": "Born 3 September 1728, died 17 August 1809 - was an English manufacturer and business partner of James Watt.  Born in birmingham, took over the family business of manufacturing small metal products, and started producing Boulton and Watt steam engines, which made the mechanisation of factories and mills possible.\r\n\r\nWikipedia says:\r\n\r\nBorn in Birmingham, England in 1728, Boulton was the son of a Birmingham manufacturer of small metal products who died when Boulton was 31. By then Boulton had managed the business for several years, and thereafter expanded it considerably, consolidating operations at the Soho Manufactory, built by him near Birmingham. At Soho, he adopted the latest techniques, branching into silver plate, ormolu and other decorative arts. He became associated with James Watt when Watt's business partner, John Roebuck, was unable to pay a debt to Boulton, who accepted Roebuck's share of Watt's patent as settlement. He then successfully lobbied Parliament to extend Watt's patent for an additional 17 years, enabling the firm to market Watt's steam engine. The firm installed hundreds of Boulton & Watt steam engines in Britain and abroad, initially in mines and then in factories.\r\n\r\nBoulton was a key member of the Lunar Society, a group of Birmingham-area men prominent in the arts, sciences, and theology. Members included Watt, Erasmus Darwin, Josiah Wedgwood and Joseph Priestley. The Society met each month near the full moon. Members of the Society have been given credit for developing concepts and techniques in science, agriculture, manufacturing, mining, and transport that laid the groundwork for the Industrial Revolution.\r\n\r\nBoulton founded the Soho Mint, to which he soon adapted steam power. He sought to improve the poor state of Britain's coinage, and after several years of effort obtained a contract in 1797 to produce the first British copper coinage in a quarter century. His \"cartwheel\" pieces were well-designed and difficult to counterfeit, and included the first striking of the large copper British penny, which continued to be coined until decimalisation in 1971. He retired in 1800, though continuing to run his mint, and died in 1809.", 
+            "slug": "matthew-boulton", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Matthew+Boulton", 
+            "timeline_date": 1761
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "16th Century", 
+            "name": "Taqi al-Din", 
+            "text": "Taqi al-Din Muhammad ibn Ma'ruf al-Shami al-Asadi (Arabic: \u062a\u0642\u064a \u0627\u0644\u062f\u064a\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0645\u0639\u0631\u0648\u0641 \u0627\u0644\u0634\u0627\u0645\u064a \u0627\u0644\u0633\u0639\u062f\u064a, Turkish: Takiyuddin) (1526&ndash;1585) was a major Ottoman Turkish or Arab Muslim polymath: a scientist, astronomer and astrologer, engineer and inventor, clockmaker, physicist and mathematician, botanist and zoologist, pharmacist and physician, Islamic judge and mosque timekeeper, Islamic philosopher and theologian, and madrasah teacher. He was the author of more than 90 books on a wide variety of subjects, including astronomy, astrology, clocks, engineering, mathematics, mechanics, optics and natural philosophy, though only 24 of those works have survived. He was widely regarded by his contemporaries in the Ottoman Empire as \u201cthe greatest scientist on earth\u201d.", 
+            "slug": "taqi-al-din", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Taqi%20al-Din%20Muhammad%20ibn%20Ma'ruf", 
+            "timeline_date": 1550
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "9th Century", 
+            "name": "Ban\u016b M\u016bs\u0101", 
+            "text": "The Ban\u016b M\u016bs\u0101 brothers (\u201cSons of M\u016bs\u0101\u201d) were three 9th-century Persian scholars, of Baghdad, active in the House of Wisdom:\r\n* _Abu Ja'far Muhammad ibn M\u016bs\u0101 ibn Sh\u0101kir_ (before 803&ndash;873), who specialised in astronomy, engineering, geometry and physics;\r\n* _Ahmad ibn M\u016bs\u0101 ibn Sh\u0101kir_ (803&ndash;873), who specialised in engineering and mechanics;\r\n* _Al-Hasan ibn M\u016bs\u0101 ibn Sh\u0101kir_ (810&ndash;873), who specialised in engineering and geometry.\r\n", 
+            "slug": "banu-musa", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ban\u016b%20M\u016bs\u0101", 
+            "timeline_date": 850
         }
     }, 
     {
         "pk": 13, 
-        "model": "core.event", 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1791", 
-            "name": "Le Chapelier Law", 
-            "text": "", 
-            "slug": "le-chapelier-law", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Le%20Chapelier%20Law", 
-            "timeline_date": 1791
+            "display_date": "17th Century", 
+            "name": "Thomas Savery", 
+            "text": "Thomas Savery (c. 1650\u20131715) was an English inventor, born at Shilstone, a manor house near Modbury, Devon, England.\r\n\r\nOn 2 July 1698, Savery patented an early steam engine, \u201cA new invention for raiseing of water and occasioning motion to all sorts of mill work by the impellent force of fire, which will be of great use and advantage for drayning mines, serveing townes with water, and for the working of all sorts of mills where they have not the benefitt of water nor constant windes.\u201d He demonstrated it to the Royal Society on 14 June 1699.", 
+            "slug": "thomas-savery", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Thomas+Savery", 
+            "timeline_date": 1698
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "John Lombe", 
+            "text": "John Lombe was a silk spinner in 18th century Derby, England.\r\n\r\nIn 1718, Thomas Lombe was able to obtain a patent, which stated that it was for:\r\n\r\nbq. three sorts of engines never before made or used within this our Kingdom of Great Britain, one to wind finest raw silk, another to spin and the other to twist the finest Italian raw silk into organzine in great perfection which was never before done in this our Kingdom, by which means many thousand families of our subjects may be constantly employed in Great Britain, be furnished with silks of all sorts of the manufacture of our subjects, and great quantities exported into foreign parts by being made as good and cheap as any foreign silk can be.\r\n", 
+            "slug": "john-lombe", 
+            "reference_url": "http://10.0.0.56:9292/wiki/John+Lombe", 
+            "timeline_date": 1721
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Basile Bouchon", 
+            "text": "Basile Bouchon was a textile worker in the silk center in Lyon who invented a way to control a loom with a perforated paper tape in 1725. The son of an organ maker, Bouchon partially automated the tedious setting up process of the drawloom in which an operator lifted the warp threads using cords.", 
+            "slug": "basile-bouchon", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Basile+Bouchon", 
+            "timeline_date": 1725
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "James Watt", 
+            "text": "James Watt, FRS, FRSE (19 January 1736\u201325 August 1819) was a Scottish inventor and mechanical engineer whose improvements to the Newcomen steam engine were fundamental to the changes brought by the Industrial Revolution in both the Kingdom of Great Britain and the world.\r\n\r\nWhile working as an instrument maker at the University of Glasgow, Watt became interested in the technology of steam engines. He realised that contemporary engine designs wasted a great deal of energy by repeatedly cooling and re-heating the cylinder. Watt introduced a design enhancement, the separate condenser, which avoided this waste of energy and radically improved the power, efficiency, and cost-effectiveness of steam engines. He developed the concept of horsepower. The SI unit of power, the watt, was named after him.\r\n", 
+            "slug": "james-watt", 
+            "reference_url": "http://10.0.0.56:9292/wiki/James+Watt", 
+            "timeline_date": 1770
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Richard Arkwright", 
+            "text": "Sir Richard Arkwright (New Style 3 January 1733\u20133 August 1792), was an Englishman who, although the patents were eventually overturned, is often credited for inventing the spinning frame \u2013 later renamed the water frame following the transition to water power. He also patented a carding engine, so could convert raw cotton into yarn. A self-made man, he was a leading entrepreneur of the Industrial Revolution. Arkwright's achievement was to combine power, machinery, semi-skilled labour, and a new raw material (cotton) to create mass produced yarn.", 
+            "slug": "richard-arkwright", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Richard+Arkwright", 
+            "timeline_date": 1771
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Mary Wollstonecraft", 
+            "text": "Mary Wollstonecraft (27 April 1759\u201310 September 1797) was an eighteenth-century British writer, philosopher, and feminist. During her brief career, she wrote novels, treatises, a travel narrative, a history of the French Revolution, a conduct book, and a children's book. Wollstonecraft is best known for <cite>A Vindication of the Rights of Woman</cite> (1792), in which she argues that women are not naturally inferior to men, but appear to be only because they lack education. She suggested that both men and women should be treated as rational beings and imagineed a social order founded on reason.", 
+            "slug": "mary-wollstonecraft", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Mary+Wollstonecraft", 
+            "timeline_date": 1780
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Ada Lovelace", 
+            "text": "Augusta Ada King, Countess of Lovelace (1815 \u2013 1852), born Augusta Ada Byron, was an English writer chiefly known for her work on Charles Babbage's early mechanical general-purpose computer, the analytical engine. Her notes on the engine include what is recognised as the first algorithm intended to be processed by a machine; as such she is regarded as the world's first computer programmer.\r\n\r\nShe was the only legitimate child of the poet Lord Byron (with Anne Isabella Milbanke), but had no relationship with her father, who died when she was nine. As a young adult she took an interest in mathematics, and in particular Babbage's work on the analytical engine.  Though Babbage's engine was never built, Lovelace's notes are important in the early history of computers. She also foresaw the capability of computers to go beyond mere calculating or number-crunching while others, including Babbage himself, focused only on these capabilities.", 
+            "slug": "ada-lovelace", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ada+Lovelace", 
+            "timeline_date": 1837
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Lord Byron", 
+            "text": "George Gordon Byron, 6th Baron Byron, later George Gordon Noel, 6th Baron Byron, FRS, commonly known simply as Lord Byron, was an English poet and a leading figure in Romanticism. Amongst Byron's best-known works are the brief poems She Walks in Beauty, When We Two Parted, and So, we'll go no more a roving, in addition to the narrative poems Childe Harold's Pilgrimage and Don Juan. He is regarded as one of the greatest British poets and remains widely read and influential.\r\n\r\nByron's notability rests not only on his writings but also on his life, which featured aristocratic excesses, huge debts, numerous love affairs, and self-imposed exile. He was famously described by Lady Caroline Lamb as \"mad, bad and dangerous to know\".", 
+            "slug": "lord-byron", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Lord+Byron", 
+            "timeline_date": 1800
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "1771-1858", 
+            "name": "Robert Owen", 
+            "text": "Robert Owen (14 May 1771\u201317 November 1858), (born in Newtown, Montgomeryshire, Wales), was a social reformer and one of the founders of socialism and the cooperative movement.\r\n\r\nOwen's philosophy was based on three intellectual pillars:\r\n\r\n* First, no one was responsible for his will and his own actions because his whole character is formed independently of himself; people are products of their environment, hence his support for education and labour reform, rendering him a pioneer in human capital investment.\r\n* Second, all religions are based on the same ridiculous imagination, that make man a weak, imbecile animal; a furious bigot and fanatic; or a miserable hypocrite; (though in his later years he embraced Spiritualism).\r\n* Third, support for the putting-out system instead of the factory system.\r\n", 
+            "slug": "robert-owen", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Robert+Owen", 
+            "timeline_date": 1819
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Joseph Marie Jacquard", 
+            "text": "Joseph Marie Charles, nicknamed Jacquard, played an important role in the development of the earliest programmable loom (the \"Jacquard loom\"), which in turn played an important role in the development of other programmable machines, such as computers.\r\n\r\nIn the 1800s, Joseph began to dabble in inventing: a treadle loom in 1800, a loom to weave fishing nets in 1803, and starting in 1804, the \u201cJacquard\u201d loom, which would weave patterned silk automatically. However, none of his inventions operated well and thus were unsuccessful.\r\n\r\nIn 1801, Jacquard exhibited his invention at the industrial exhibition in Paris; and in 1803 he was summoned to Paris and attached to the Conservatoire des Arts et Metiers. A loom by Jacques de Vaucanson on display there suggested various improvements in his own, which he gradually perfected to its final state.", 
+            "slug": "joseph-marie-jacquard", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Joseph+Marie+Jacquard", 
+            "timeline_date": 1801
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "1797\u20131851", 
+            "name": "Mary Shelley", 
+            "text": "Mary Shelley (n\u00e9e Mary Wollstonecraft Godwin; 30 August 1797\u20131 February 1851) was a British novelist, short story writer, dramatist, essayist, biographer, and travel writer, best known for her Gothic novel Frankenstein: or, The Modern Prometheus (1818). She also edited and promoted the works of her husband, the Romantic poet and philosopher Percy Bysshe Shelley. Her father was the political philosopher William Godwin, and her mother was the philosopher and feminist Mary Wollstonecraft.\r\n", 
+            "slug": "mary-shelley", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Mary+Shelley", 
+            "timeline_date": 1818
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Nagai Nagayoshi", 
+            "text": "Nagai Nagayoshi was a notable Japanese organic chemist and pharmacologist, best known for his study of ephedrine.\r\n\r\n\r\nNagai studied at Tokyo Imperial University, and became the first doctor of pharmacy in Japan. He was sent under government sponsorship to Prussia in 1871 to study at the University of Berlin. He was the only civilian in a group of military students sent to study in Great Britain and France, and he traveled by way of the United States and Great Britain.\r\n\r\nWhile in Berlin, he resided at the home of Japanese diplomat Aoki Sh\u016bz\u014d. He was influenced by the lectures of von Hofmann, and received a doctorate with a study on eugenol while working as an assistant at von Hofmann's laboratory. He decided to take up organic chemistry in 1873.\r\n\r\nWhile in Germany, Nagai married Therese Schumacher, the daughter of a wealthy lumber and mining magnate. On their return to Japan, she became a professor of German language at Japan Women's University, and was active in introducing German foods and culture to Japan. In 1923, Nagai and his wife hosted Albert Einstein and his wife during their visit to Japan.", 
+            "slug": "nagai-nagayoshi", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Nagai+Nagayoshi", 
+            "timeline_date": 1893
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "20th Century", 
+            "name": "Alan Turing", 
+            "text": "Alan Mathison Turing, <abbr title=\"Order of the British Empire\">OBE</abbr>, <abbr title=\"Fellow of the Royal Society\">FRS</abbr> (23 June 1912\u20137 June 1954), was an English mathematician, logician, cryptanalyst and computer scientist. He was influential in the development of computer science and providing a formalisation of the concept of the algorithm and computation with the Turing machine, playing a significant role in the creation of the modern computer.", 
+            "slug": "alan-turing", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Alan+Turing", 
+            "timeline_date": 1940
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "20th Century", 
+            "name": "Albert Einstein", 
+            "text": "Albert Einsten (14 March 1879\u201318 April 1955) was a theoretical physicist, philosopher and author who is widely regarded as one of the most influential and best known scientists of all time. A German-Swiss Nobel laureate, he is often regarded as the father of modern physics.\r\n\r\nEinstein published more than 300 scientific and over 150 non-scientific works; he additionally wrote and commentated prolifically on various philosophical and political subjects.\r\n", 
+            "slug": "albert-einstein", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Albert+Einstein", 
+            "timeline_date": 1910
         }
     }, 
     {
         "pk": 8, 
-        "model": "core.event", 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1973 - 1974", 
-            "name": "1974 Miners' Dispute", 
-            "text": "", 
-            "slug": "1974-miners-dispute", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Three-Day%20Week", 
-            "timeline_date": 1974
+            "display_date": "19th Century", 
+            "name": "Robert Peel", 
+            "text": "Sir Robert Peel, 2nd Baronet (1788 - 1850) was a British Conservative statesman who served as Prime Minister of the United Kingdom from 10 December 1834 to 8 April 1835, and again from 30 August 1841 to 29 June 1846. Peel, whilst Home Secretary, helped create the modern concept of the police force, leading to officers being known as \"bobbies\" (in England) and \"Peelers\" (in Ireland) to this day. Whilst Prime Minister, Peel repealed the Corn Laws, passed the Factory Act and issued the Tamworth Manifesto, leading to the formation of the Conservative Party out of the shattered Tory Party.\r\n\r\nPeel's Factory Act of 1844, the second most famous bill of this ministry, while \"reforming\" in 21st century eyes, was in fact aimed at the reformers themselves, with their constituency among the new industrial rich. The Act worked more against these industrialists than it did against the traditional stronghold of the Conservatives, the landed gentry, by restricting the number of hours that children and women could work in a factory, and setting rudimentary safety standards for machinery.", 
+            "slug": "robert-peel", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Robert+Peel", 
+            "timeline_date": 1844
         }
     }, 
     {
-        "pk": 7, 
-        "model": "core.event", 
+        "pk": 33, 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1832", 
-            "name": "Tolpuddle Martyrs", 
-            "text": "", 
-            "slug": "tolpuddle-martyrs", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Tolpuddle%20Martyrs", 
-            "timeline_date": 1832
+            "display_date": "3rd Century BC", 
+            "name": "Theophrastus", 
+            "text": "Theophrastus, a Greek native of Eresos in Lesbos, was the successor of Aristotle in the Peripatetic school. He came to Athens at a young age, and initially studied in Plato's school.\r\n\r\nThe interests of Theophrastus were wide-ranging, extending from biology and physics to ethics and metaphysics. His two surviving botanical works, Enquiry into Plants and On the Causes of Plants, were an important influence on medieval science. There are also surviving works On Moral Characters, On Sensation, On Stones (about coal), and fragments on Physics and Metaphysics all written in Greek.", 
+            "slug": "theophrastus", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Theophrastus", 
+            "timeline_date": -300
         }
     }, 
     {
@@ -1137,18 +1269,6 @@
             "slug": "war-of-currents", 
             "reference_url": "http://10.0.0.56:9292/wiki/War+of+Currents", 
             "timeline_date": 1896
-        }
-    }, 
-    {
-        "pk": 16, 
-        "model": "core.event", 
-        "fields": {
-            "display_date": "1921", 
-            "name": "Rossum's Universal Robots", 
-            "text": "", 
-            "slug": "rossums-universal-robots", 
-            "reference_url": "http://10.0.0.56:9292/wiki/R.U.R._(Rossum's_Universal_Robots)", 
-            "timeline_date": 1921
         }
     }, 
     {
@@ -1188,99 +1308,171 @@
         }
     }, 
     {
+        "pk": 10, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1381", 
+            "name": "Peasants' Revolt", 
+            "text": "The Peasants' Revolt, Wat Tyler's Rebellion, or the Great Rising of 1381 was one of a number of popular revolts in late medieval Europe.\r\n\r\nThe revolt later came to be seen as a mark of the beginning of the end of serfdom in medieval England, although the revolt itself was a failure. It increased awareness in the upper classes of the need for the reform of feudalism in England and the appalling misery felt by the lower classes as a result of their enforced slavery.", 
+            "slug": "peasants-revolt", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Peasants'%20Revolt", 
+            "timeline_date": 1381
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1832", 
+            "name": "Tolpuddle Martyrs", 
+            "text": "The Tolpuddle Martyrs were a group of 19th century English agricultural labourers who were arrested for, and convicted of, swearing a secret oath as members of the Friendly Society of Agricultural Labourers.\r\n\r\nThe rules of the society show it was clearly structured as a friendly society, and operated as a trade-specific benefit society; however, at the time, friendly societies had strong elements of what we now consider trade unionism. The Tolpuddle Martyrs were subsequently sentenced to transportation to Australia.", 
+            "slug": "tolpuddle-martyrs", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Tolpuddle%20Martyrs", 
+            "timeline_date": 1832
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1791", 
+            "name": "Le Chapelier Law", 
+            "text": "The Le Chapelier Law was a piece of legislation passed by the National Assembly during the first phase of the French Revolution (June 14, 1791), banning guilds as the early version of trade unions, as well as compagnonnage (by organizations such as the Compagnons du Tour de France) and the right to strike, and proclaiming free enterprise as the norm.\r\n\r\nThe law was annulled on May 25, 1864, through the _loi Ollivier_ (proposed by \u00c9mile Ollivier and acceded to by Napoleon III), which reinstated the right to associate and the right to strike.", 
+            "slug": "le-chapelier-law", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Le%20Chapelier%20Law", 
+            "timeline_date": 1791
+        }
+    }, 
+    {
         "pk": 9, 
         "model": "core.event", 
         "fields": {
             "display_date": "19th Century", 
             "name": "Luddite riots", 
-            "text": "", 
+            "text": "The Luddites were a social movement of British textile artisans in the nineteenth century who protested (often by destroying mechanized looms) against the changes produced by the Industrial Revolution, which they felt was leaving them without work and changing their way of life.\r\n\r\nThe movement emerged in the harsh economic climate of the Napoleonic Wars and difficult working conditions in the new textile factories. The principal objection of the Luddites was to the introduction of new wide-framed automated looms that could be operated by cheap, relatively unskilled labour, resulting in the loss of jobs for many skilled textile workers.\r\n\r\nIn modern usage, \"Luddite\" is a term describing those opposed to industrialization, automation, computerization or new technologies in general.", 
             "slug": "luddite-riots", 
             "reference_url": "http://10.0.0.56:9292/wiki/Luddite", 
             "timeline_date": 1800
         }
     }, 
     {
-        "pk": 5, 
-        "model": "core.object", 
+        "pk": 2, 
+        "model": "core.event", 
         "fields": {
-            "display_date": "1768", 
-            "name": "Water frame", 
-            "text": "", 
-            "slug": "water-frame", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Water%20frame", 
-            "timeline_date": 1768
+            "display_date": "Early 19th Century", 
+            "name": "Canut revolts", 
+            "text": "The Canut revolts comprised three major revolts by silk workers in Lyon, France, and took place during the first half of the 19th century. The first occurred in November 1831, and was the first clearly defined worker uprising of the Industrial Revolution.\r\n", 
+            "slug": "canut-revolts", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Canut_revolts", 
+            "timeline_date": 1825
         }
     }, 
     {
-        "pk": 7, 
-        "model": "core.object", 
+        "pk": 3, 
+        "model": "core.event", 
         "fields": {
-            "display_date": "1774", 
-            "name": "Cromford Mill", 
-            "text": "", 
-            "slug": "cromford-mill", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Derwent%20Valley%20Mills", 
-            "timeline_date": 1774
+            "display_date": "1349", 
+            "name": "Ordinance of Labourers", 
+            "text": "The Ordinance of Labourers (1349) is often considered to be the start of English labour law. Along with the Statute of Labourers (1351), it made the employment contract different from other contracts and made illegal any attempt on the part of workers to bargain collectively.\r\n\r\nSpecifically, it fixed wages and imposed price controls, required all those under the age of 60 to work, prohibited the enticing away of another's servants, and other terms.", 
+            "slug": "ordinance-of-labourers", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ordinance%20of%20Labourers", 
+            "timeline_date": 1349
         }
     }, 
     {
-        "pk": 8, 
-        "model": "core.object", 
+        "pk": 4, 
+        "model": "core.event", 
         "fields": {
-            "display_date": "1766", 
-            "name": "Soho Manufactory", 
-            "text": "", 
-            "slug": "soho-manufactory", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Soho%20Manufactory", 
-            "timeline_date": 1766
+            "display_date": "1315 - 1317", 
+            "name": "Great Famine of 1315\u20131317", 
+            "text": "The Great Famine of 1315\u20131317 (occasionally dated 1315-1322) was the first of a series of large scale crises that struck Europe early in the fourteenth century, causing millions of deaths over an extended number of years and marking a clear end to an earlier period of growth and prosperity during the eleventh to thirteenth centuries.\r\n\r\nStarting with bad weather in spring 1315, universal crop failures lasted through 1316 until summer 1317; Europe did not fully recover until 1322. It was a period marked by extreme levels of crime, disease, mass death and even cannibalism and infanticide. It had consequences for Church, State, European society and future calamities to follow in the fourteenth century.\r\n", 
+            "slug": "great-famine-of-13151317", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Great%20Famine%20of%201315%E2%80%931317", 
+            "timeline_date": 1315
         }
     }, 
     {
-        "pk": 9, 
-        "model": "core.object", 
+        "pk": 1, 
+        "model": "core.event", 
         "fields": {
-            "display_date": "1721", 
-            "name": "The Lombe Silk Mill", 
-            "text": "", 
-            "slug": "the-lombe-silk-mill", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Derby%20Industrial%20Museum", 
-            "timeline_date": 1721
+            "display_date": "1842", 
+            "name": "1842 General Strike", 
+            "text": "The 1842 General Strike, also known as the Plug Plot Riots, started among the Staffordshire miners and soon spread through the country affecting factories, mills and coal mines from Dundee to South Wales and Cornwall.\r\n\r\nThe strike was influenced by the Chartist movement, a mass working class movement from 1838 - 1848. After the second Chartist Petition was presented to Parliament in April 1842, Stalybridge contributed 10,000 signatures. After the rejection of the petition the first general strike began in the coal mines of Staffordshire. The second phase of the strike originated in Stalybridge.", 
+            "slug": "1842-general-strike", 
+            "reference_url": "http://10.0.0.56:9292/wiki/1842_General_Strike", 
+            "timeline_date": 1842
         }
     }, 
     {
-        "pk": 10, 
-        "model": "core.object", 
+        "pk": 16, 
+        "model": "core.event", 
         "fields": {
-            "display_date": "1104", 
-            "name": "The Venetian Arsenal", 
-            "text": "", 
-            "slug": "the-venetian-arsenal", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Venetian%20Arsenal", 
-            "timeline_date": 1104
+            "display_date": "1921", 
+            "name": "Rossum's Universal Robots", 
+            "text": "R.U.R. (Rossum's Universal Robots) (Czech: Rossumovi univerz\u00e1ln\u00ed roboti) is a science fiction play in the Czech language by Karel \u010capek. It premiered in 1921, and is noted for introducing the term \"robot\".\r\n\r\nIsaac Asimov, author of the Robot Series of books and creator of the Three Laws of Robotics, stated: \"Capek's play is, in my own opinion, a terribly bad one, but it is immortal for that one word. It contributed the word 'robot' not only to English but, through English, to all the languages in which science fiction is now written.\"", 
+            "slug": "rossums-universal-robots", 
+            "reference_url": "http://10.0.0.56:9292/wiki/R.U.R._(Rossum's_Universal_Robots)", 
+            "timeline_date": 1921
         }
     }, 
     {
-        "pk": 11, 
-        "model": "core.object", 
+        "pk": 6, 
+        "model": "core.event", 
         "fields": {
-            "display_date": "1893", 
-            "name": "Methamphetamine", 
-            "text": "", 
-            "slug": "methamphetamine", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Methamphetamine", 
-            "timeline_date": 1893
+            "display_date": "1926", 
+            "name": "1926 United Kingdom general strike", 
+            "text": "The 1926 General Strike in the United Kingdom was a general strike that lasted ten days, from 3 May 1926 to 13 May 1926.\r\n\r\nIt was called by the General Council of the Trades Union Congress (TUC) in an unsuccessful attempt to force the British government to act to prevent wage reduction and worsening conditions for coal miners.\r\n", 
+            "slug": "1926-united-kingdom-general-strike", 
+            "reference_url": "http://10.0.0.56:9292/wiki/1926%20United%20Kingdom%20general%20strike", 
+            "timeline_date": 1926
         }
     }, 
     {
         "pk": 12, 
-        "model": "core.object", 
+        "model": "core.event", 
         "fields": {
-            "display_date": "1070", 
-            "name": "Ephedrine", 
-            "text": "", 
-            "slug": "ephedrine", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Ephedrine", 
-            "timeline_date": 1070
+            "display_date": "1838 - 1850", 
+            "name": "Chartism", 
+            "text": "Chartism was a movement for political and social reform in the United Kingdom of Great Britain and Ireland during the mid-19th century, between 1838 and 1850. It takes its name from the People's Charter of 1838, which stipulated the six main aims of the movement as:\r\n\r\n* A vote for every man twenty-one years of age, of sound mind, and not undergoing punishment for crime\r\n* The secret ballot\r\n* No property qualification for members of Parliamen\r\n* Payment of members\r\n* Equal constituencies\r\n* Annual parliaments\r\n\r\nChartism was possibly the first mass working class labour movement in the world. Its leaders have often been described as either \"physical force\" or \"moral force\" leaders, depending upon their attitudes to violent protest. Chartists were largely unsuccessful at convincing Parliament to reform the voting system of the mid-1800s; however, this movement caught the interest of the working class. The working class's interest in politics from that point on aided later suffrage movements.\r\n", 
+            "slug": "chartism", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Chartism", 
+            "timeline_date": 1845
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1891", 
+            "name": "Rerum Novarum", 
+            "text": "Rerum Novarum (\"Of New Things\") is an encyclical issued by Pope Leo XIII on May 15, 1891. It was an open letter, passed to all Catholic bishops, that addressed the condition of the working classes. The encyclical is entitled: \"Rights and Duties of Capital and Labour\".\r\n\r\nIt discussed the relationships and mutual duties between labour and obtaining capital, as well as government and its citizens. Of primary concern was the need for some amelioration for \"the misery and wretchedness pressing so unjustly on the majority of the working class\". It supported the rights of labor to form unions, rejected communism and unrestricted capitalism, whilst affirming the right to private property.\r\n\r\nMany of the positions in Rerum Novarum were supplemented by later encyclicals, in particular Pius XI's Quadragesimo Anno (1931), John XXIII's Mater et Magistra (1961), and John Paul II's Centesimus Annus (1991).", 
+            "slug": "rerum-novarum", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Rerum%20Novarum", 
+            "timeline_date": 1891
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1984 - 1985", 
+            "name": "UK miners' strike (1984\u20131985)", 
+            "text": "The UK Miners' Strike was a major industrial action affecting the British coal industry. It was a defining moment in British industrial relations, and its defeat significantly weakened the British trades union movement. It was also seen as a major political and ideological victory for Margaret Thatcher and the Conservative Party.\r\n\r\nThe strike became a symbolic struggle, since the National Union of Mineworkers (NUM) was, if not the strongest, then one of the strongest in the country. The strike ended with the miners' defeat, and the Thatcher government being able to consolidate its free market programme.\r\n\r\nThe political power of the NUM was broken permanently. The dispute exposed deep divisions in British society and caused considerable bitterness, especially in Northern England and in Wales. Ten deaths resulted from events around the strike: six pickets, three teenagers searching for coal, and a taxi driver taking a non-striking miner to work.", 
+            "slug": "uk-miners-strike-19841985", 
+            "reference_url": "http://10.0.0.56:9292/wiki/UK%20miners'%20strike%20(1984%E2%80%931985)", 
+            "timeline_date": 1984
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1973 - 1974", 
+            "name": "1974 Miners' Dispute", 
+            "text": "From 1 January until 7 March 1974, commercial users of electricity were limited to three specified consecutive days' consumption each week and prohibited from working longer hours on those days.\r\n\r\nThis was one of several measures introduced in the United Kingdom by the Conservative Government between 1970 and 1974 to conserve electricity, the production of which was severely limited due to industrial action by coal miners.\r\n", 
+            "slug": "1974-miners-dispute", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Three-Day%20Week", 
+            "timeline_date": 1974
         }
     }, 
     {
@@ -1332,42 +1524,6 @@
         }
     }, 
     {
-        "pk": 18, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "16th Century", 
-            "name": "Artificio de Juanelo", 
-            "text": "", 
-            "slug": "artificio-de-juanelo", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Artificio%20de%20Juanelo", 
-            "timeline_date": 1568
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "", 
-            "name": "Fairground organ", 
-            "text": "", 
-            "slug": "fairground-organ", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Fairground+organ", 
-            "timeline_date": null
-        }
-    }, 
-    {
-        "pk": 4, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "c. 1764", 
-            "name": "Spinning Jenny", 
-            "text": "", 
-            "slug": "spinning-jenny", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Spinning+jenny", 
-            "timeline_date": 1764
-        }
-    }, 
-    {
         "pk": 1, 
         "model": "core.object", 
         "fields": {
@@ -1377,54 +1533,6 @@
             "slug": "the-digesting-duck", 
             "reference_url": "http://10.0.0.56:9292/wiki/Digesting+Duck", 
             "timeline_date": 1739
-        }
-    }, 
-    {
-        "pk": 20, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "2400BC", 
-            "name": "Abacus", 
-            "text": "", 
-            "slug": "abacus", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Abacus", 
-            "timeline_date": -2400
-        }
-    }, 
-    {
-        "pk": 24, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1094", 
-            "name": "Su Song's Astronomical Clock Tower", 
-            "text": "", 
-            "slug": "su-songs-astronomical-clock-tower", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Su+Song", 
-            "timeline_date": 1094
-        }
-    }, 
-    {
-        "pk": 25, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "Middle Ages", 
-            "name": "Chequered Cloths", 
-            "text": "", 
-            "slug": "chequered-cloths", 
-            "reference_url": "", 
-            "timeline_date": 1300
-        }
-    }, 
-    {
-        "pk": 26, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "2nd Century BC", 
-            "name": "Antikythera mechanism", 
-            "text": "", 
-            "slug": "antikythera-mechanism", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Antikythera%20mechanism", 
-            "timeline_date": -100
         }
     }, 
     {
@@ -1440,78 +1548,6 @@
         }
     }, 
     {
-        "pk": 28, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1733", 
-            "name": "Flying shuttle", 
-            "text": "", 
-            "slug": "flying-shuttle", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Flying+shuttle", 
-            "timeline_date": 1733
-        }
-    }, 
-    {
-        "pk": 30, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1884", 
-            "name": "Steam turbine", 
-            "text": "", 
-            "slug": "steam-turbine", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Steam+turbine", 
-            "timeline_date": 1884
-        }
-    }, 
-    {
-        "pk": 31, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "19th Century", 
-            "name": "Piano roll", 
-            "text": "", 
-            "slug": "piano-roll", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Piano+roll", 
-            "timeline_date": 1896
-        }
-    }, 
-    {
-        "pk": 32, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1864", 
-            "name": "Tower Colliery", 
-            "text": "", 
-            "slug": "tower-colliery", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Tower+Colliery", 
-            "timeline_date": 1864
-        }
-    }, 
-    {
-        "pk": 33, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1725", 
-            "name": "Punch bands", 
-            "text": "", 
-            "slug": "punch-bands", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Basile+Bouchon", 
-            "timeline_date": 1725
-        }
-    }, 
-    {
-        "pk": 34, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1948", 
-            "name": "Curta calculator", 
-            "text": "", 
-            "slug": "curta-calculator", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Curta_calculator", 
-            "timeline_date": 1948
-        }
-    }, 
-    {
         "pk": 35, 
         "model": "core.object", 
         "fields": {
@@ -1521,30 +1557,6 @@
             "slug": "anita", 
             "reference_url": "http://10.0.0.56:9292/wiki/Sumlock%20ANITA%20calculator", 
             "timeline_date": 1961
-        }
-    }, 
-    {
-        "pk": 36, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1950's", 
-            "name": "NC machine tools", 
-            "text": "", 
-            "slug": "nc-machine-tools", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Numerical+control", 
-            "timeline_date": 1950
-        }
-    }, 
-    {
-        "pk": 37, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1620's", 
-            "name": "Slide rule", 
-            "text": "", 
-            "slug": "slide-rule", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Slide+rule", 
-            "timeline_date": 1620
         }
     }, 
     {
@@ -1572,18 +1584,6 @@
         }
     }, 
     {
-        "pk": 2, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1801", 
-            "name": "The Jacquard Loom", 
-            "text": "", 
-            "slug": "the-jacquard-loom", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Jacquard%2Bloom", 
-            "timeline_date": 1801
-        }
-    }, 
-    {
         "pk": 39, 
         "model": "core.object", 
         "fields": {
@@ -1593,30 +1593,6 @@
             "slug": "jacquard-portrait", 
             "reference_url": "", 
             "timeline_date": 1838
-        }
-    }, 
-    {
-        "pk": 29, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1837", 
-            "name": "Analytical engine", 
-            "text": "", 
-            "slug": "analytical-engine", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Analytical+engine", 
-            "timeline_date": 1837
-        }
-    }, 
-    {
-        "pk": 40, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1740", 
-            "name": "Punch cards", 
-            "text": "", 
-            "slug": "punch-cards", 
-            "reference_url": "http://10.0.0.56:9292/wiki/punched+card", 
-            "timeline_date": 1740
         }
     }, 
     {
@@ -1656,15 +1632,15 @@
         }
     }, 
     {
-        "pk": 43, 
+        "pk": 3, 
         "model": "core.object", 
         "fields": {
-            "display_date": "By 1750", 
-            "name": "Brick-lined mine shafts", 
-            "text": "", 
-            "slug": "brick-lined-mine-shafts", 
-            "reference_url": "", 
-            "timeline_date": 1750
+            "display_date": "19th/20th century", 
+            "name": "Fairground organ", 
+            "text": "A fairground organ is a pipe organ designed for use in a commercial public fairground setting to provide loud music to accompany fairground rides and attractions.\r\n\r\nUnlike organs intended for indoor use, they are designed to produce a large volume of sound to be heard over and above the noise of crowds of people and fairground machinery.", 
+            "slug": "fairground-organ", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Fairground+organ", 
+            "timeline_date": 1880
         }
     }, 
     {
@@ -1673,22 +1649,82 @@
         "fields": {
             "display_date": "9th Century", 
             "name": "Automatic Flute Player", 
-            "text": "The Banu Musa invented an \"automatic flute player\" which appears to have been the first programmable machine. The flute sounds were produced through hot steam and the user could adjust the device to various patterns so that they could get various sounds from it.", 
+            "text": "The Banu Musa, three brothers working in Baghdad in the ninth century AD, invented an \"automatic flute player\" which appears to have been the first programmable machine. The flute sounds were produced through hot steam and the user could adjust the device to various patterns so that they could get various sounds from it.", 
             "slug": "automatic-flute-player", 
             "reference_url": "http://10.0.0.56:9292/wiki/Book%20of%20Ingenious%20Devices", 
             "timeline_date": 850
         }
     }, 
     {
-        "pk": 19, 
+        "pk": 24, 
         "model": "core.object", 
         "fields": {
-            "display_date": "1000BC", 
-            "name": "Chinese Android", 
-            "text": "bq. The king stared at the figure in astonishment. It walked with rapid strides, moving its head up and down, so that anyone would have taken it for a live human being. The artificer touched its chin, and it began singing, perfectly in tune. He touched its hand, and it began posturing, keeping perfect time...As the performance was drawing to an end, the robot winked its eye and made advances to the ladies in attendance, whereupon the king became incensed and would have had Yen Shih [Yan] executed on the spot had not the latter, in mortal fear, instantly taken the robot to pieces to let him see what it really was. And, indeed, it turned out to be only a construction of leather, wood, glue and lacquer, variously coloured white, black, red and blue. Examining it closely, the king found all the internal organs complete\u2014liver, gall, heart, lungs, spleen, kidneys, stomach and intestines; and over these again, muscles, bones and limbs with their joints, skin, teeth and hair, all of them artificial...The king tried the effect of taking away the heart, and found that the mouth could no longer speak; he took away the liver and the eyes could no longer see; he took away the kidneys and the legs lost their power of locomotion. The king was delighted.", 
-            "slug": "chinese-android", 
-            "reference_url": "http://10.0.0.56:9292/wiki/King+Mu+of+Zhou", 
-            "timeline_date": -1000
+            "display_date": "1094", 
+            "name": "Su Song's Astronomical Clock Tower", 
+            "text": "Su Song built a water-driven astronomical clock tower in medieval Kaifeng, which employed the use of an early escapement mechanism to keep more accurate time.\r\n\r\nThe escapement mechanism of Su's clock tower had previously been invented by Buddhist monk Yi Xing and government official Liang Lingzan in 725 AD to operate a water-powered armillary sphere, although Su's armillary sphere was the first to be provided with a mechanical clock drive.", 
+            "slug": "su-songs-astronomical-clock-tower", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Su+Song", 
+            "timeline_date": 1094
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "Middle Ages", 
+            "name": "Chequered Cloths", 
+            "text": "Chequered cloths were used in early medieval counting houses to aid with arithmetic, including addition and multiplication.", 
+            "slug": "chequered-cloths", 
+            "reference_url": "", 
+            "timeline_date": 1300
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1893", 
+            "name": "Methamphetamine", 
+            "text": "Methamphetamin, also known colloquially as _meth_ or _crystal meth_, is a psychoactive stimulant drug. It increases alertness, concentration, energy, and in high doses, can induce euphoria, enhance self-esteem, and increase libido.\r\n\r\nMethamphetamine has high potential for abuse and addiction by activating the psychological reward system via increasing levels of dopamine, norepinephrine and serotonin in the brain.", 
+            "slug": "methamphetamine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Methamphetamine", 
+            "timeline_date": 1893
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1801", 
+            "name": "The Jacquard Loom", 
+            "text": "The Jacquard loom is a mechanical loom, invented by Joseph Marie Jacquard in 1801, that simplifies the process of manufacturing textiles with complex patterns such as brocade, damask, and matelasse.\r\n\r\nThe loom is controlled by punched cards with punched holes, each row of which corresponds to one row of the design. Multiple rows of holes are punched on each card and the many cards that compose the design of the textile are strung together in order.\r\n", 
+            "slug": "the-jacquard-loom", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Jacquard%2Bloom", 
+            "timeline_date": 1801
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "c. 1764", 
+            "name": "Spinning Jenny", 
+            "text": "The _spinning jenny_ is a multi-spool spinning wheel, invented around 1764 by James Hargreaves in Lancashire, England. \r\n\r\nThe device dramatically reduced the amount of work needed to produce yarn, with a single worker able to work eight or more spools at once; therefore making more clothing materials in a shorter amount of time while reducing the overall cost.\r\n", 
+            "slug": "spinning-jenny", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Spinning+jenny", 
+            "timeline_date": 1764
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1768", 
+            "name": "Water frame", 
+            "text": "The water frame is the name given to a spinning frame, when water power is used to drive it. Both are credited to Richard Arkwright who patented the technology in 1768. It was based on an invention by Thomas Highs and the patent was later overturned.\r\n \r\nThe water frame is derived from the use of a water wheel to drive a number of spinning frames. The water wheel provided more power to the spinning frame than human operators, reducing the amount of human labor needed and increasing the spindle count dramatically. However, unlike the spinning jenny, the water frame could only spin one thread at a time until Samuel Crompton combined the two inventions into his spinning mule in 1779.", 
+            "slug": "water-frame", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Water%20frame", 
+            "timeline_date": 1768
         }
     }, 
     {
@@ -1704,6 +1740,90 @@
         }
     }, 
     {
+        "pk": 32, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1864", 
+            "name": "Tower Colliery", 
+            "text": "Tower Colliery was the oldest continuously worked deep-coal mine in the United Kingdom, and possibly the world, and the only mine of its kind remaining in the South Wales Valleys. It is located near the villages of Hirwaun and Rhigos, north of the town of Aberdare in the Cynon Valley, in south Wales.\r\n\r\nBritish Coal closed Tower Colliery on 22 April 1994 on the grounds that it would be uneconomic in current market conditions to continue production.\r\n", 
+            "slug": "tower-colliery", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Tower+Colliery", 
+            "timeline_date": 1864
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1837", 
+            "name": "The Analytical Engine", 
+            "text": "The analytical engine, an important step in the history of computers, was the design of a mechanical general-purpose computer by English mathematician Charles Babbage. In its logical design the machine was essentially modern, anticipating the first completed general-purpose computers by about 100 years.\r\n\r\nIt was first described in 1837. Babbage continued to refine the design until his death in 1871. Because of the complexity of the machine, the lack of project management science, the expense of its construction, and the difficulty of assessing its value by Parliament relative to other projects being lobbied for, the engine was never built.", 
+            "slug": "analytical-engine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Analytical+engine", 
+            "timeline_date": 1837
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1766", 
+            "name": "Soho Manufactory", 
+            "text": "The Soho Manufactory was an early factory which pioneered mass production on the assembly line principle, in Soho, Birmingham, England.\r\n\r\nThe factory was established by the \"toy\" manufacturer Matthew Boulton and his business partner John Fothergill. In 1761, they leased a site on Handsworth Heath, containing a cottage and a water-driven metal-rolling mill. The mill was replaced by a new factory, designed and built by the Wyatt family of Lichfield, and completed in 1766. The cottage was later demolished and Boulton's home (Soho House) was built on the site, also by the Wyatts.\r\n\r\nThe Manufactory produced a wide range of goods from buttons, buckles and boxes to japanned ware (collectively called \"toys\"), and later luxury products such as silverware and ormolu (a type of gilded bronze). It was also home to the first steam-powered mint, whose presses were subsequently used at the first Birmingham Mint.\r\n", 
+            "slug": "soho-manufactory", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Soho%20Manufactory", 
+            "timeline_date": 1766
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1733", 
+            "name": "Flying shuttle", 
+            "text": "The flying shuttle was one of the key developments in weaving that helped fuel the Industrial Revolution. It was patented by John Kay (1704\u20131764) in 1733.\r\n\r\nIt helped revolutionise the weaving industry; the increase in production due to the flying shuttle exceeded the capacity of the spinning industry of the day, and prompted development of powered spinning machines, beginning with the spinning jenny and the waterframe, and culminating in the spinning mule, which could produce strong, fine thread in the quantities needed.", 
+            "slug": "flying-shuttle", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Flying+shuttle", 
+            "timeline_date": 1733
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1774", 
+            "name": "Cromford Mill", 
+            "text": "Cromford Mill was Richard Arkwright's first mill, and after it was built his system of production and workers' housing was copied throughout the Derwent valley.\r\n\r\nThe mill was the first application of Arkwright's water frame patent; while water-power was first introduced to England by John Lombe at his silk mill in Derby in 1719, it was Arkwright who applied water-power to the process of producing cotton in the 1770s. The water frame allowed cotton to be produced continuously, and by unskilled workers.", 
+            "slug": "cromford-mill", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Derwent%20Valley%20Mills", 
+            "timeline_date": 1774
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1740", 
+            "name": "Punch cards", 
+            "text": "A punched card is a piece of stiff paper that contains digital information represented by the presence or absence of holes in predefined positions.\r\n\r\nNow almost an obsolete recording medium, punched cards were widely used throughout the 19th century for controlling textile looms and in the late 19th and early 20th century for operating fairground organs and related instruments. They were used through the 20th century in unit record machines for input, processing, and data storage. Early digital computers used punched cards, often prepared using keypunch machines, as the primary medium for input of both computer programs and data.\r\n", 
+            "slug": "punch-cards", 
+            "reference_url": "http://10.0.0.56:9292/wiki/punched+card", 
+            "timeline_date": 1740
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "16th Century", 
+            "name": "Artificio de Juanelo", 
+            "text": "The Artificio de Juanelo was the name of two devices built in Toledo in the 16th century by Juanelo Turriano. They were designed to supply the city with a source of readily available water by lifting it from the Tagus (Tajo) river to the Alc\u00e1zar. Now in ruins, the precise details of the operation of the devices are unknown, but at the time they were considered engineering wonders.\r\n", 
+            "slug": "artificio-de-juanelo", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Artificio%20de%20Juanelo", 
+            "timeline_date": 1568
+        }
+    }, 
+    {
         "pk": 21, 
         "model": "core.object", 
         "fields": {
@@ -1713,6 +1833,162 @@
             "slug": "aeolipile", 
             "reference_url": "http://10.0.0.56:9292/wiki/Aeolipile", 
             "timeline_date": -50
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "2nd Century BC", 
+            "name": "Antikythera mechanism", 
+            "text": "The Antikythera mechanism, is conjectured to be an ancient mechanical computer dedicated to astronomical phenomena. It operates as a complex mechanical \"computer\" which tracks the cycles of the Solar System.\r\n\r\nThe remains of the device is displayed in the Bronze Collection of the National Archaeological Museum of Athens, accompanied by a reconstruction made and donated to the museum by Derek de Solla Price. Other reconstructions are on display at the American Computer Museum in Bozeman, Montana, the Children's Museum of Manhattan in New York, and in Kassel, Germany.", 
+            "slug": "antikythera-mechanism", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Antikythera%20mechanism", 
+            "timeline_date": -100
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "2400BC", 
+            "name": "Abacus", 
+            "text": "The abacus is a calculating tool used primarily in parts of Asia for performing arithmetic processes. It was probably first developed in Sumer, and evidence has been found for its use in Ancient Egypt and Persia, as well as later variants in Ancient Greece and Rome, where often counters were moved on marked tables to perform basic arithmetic. The Romans developed a hand abacus, probably the first portable calculating device for engineers and merchants, although it was less capable than its predecessors. The Chinese abacus, which dates from perhaps the second century BC, provides more sophistication, enabling more complex computation including division and square and cube roots.", 
+            "slug": "abacus", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Abacus", 
+            "timeline_date": -2400
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1620's", 
+            "name": "Slide rule", 
+            "text": "The slide rule, also known colloquially as a slipstick is a mechanical analog computer, used primarily for multiplication and division, and also for functions such as roots, logarithms and trigonometry. It is not normally used for addition or subtraction (compare with some abaci designs, where operations more complex than addition and subtraction were not always possible).\r\n\r\nWilliam Oughtred and others developed the slide rule based on the emerging work on logarithms by John Napier. Before the advent of the pocket calculator, it was the most commonly used calculation tool in science and engineering, and use continued to grow through the 1950s despite analog and later digital computation devices being introduced. It was ultimately replaced by the electronic computer in the 1970s.", 
+            "slug": "slide-rule", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Slide+rule", 
+            "timeline_date": 1620
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1725", 
+            "name": "Punch bands", 
+            "text": "Punch bands were a simple way of storing a textile \"program\", developed by Basile Bouchon in 1725. Possibly inspired by his father's work as an organ maker, holes in the band or tape would affect whether the needles in a loom were raised or lowered, which made it simpler to set up the drawlooms of the time. Bouchon's assistant Jean-Baptiste Falcon subsequently refined the technique, turning the band into rectangular cards joined together into a loop, presaging both piano rolls that would be developed in the 19th century and the punch cards that would enable complete automation of textile weaver.", 
+            "slug": "punch-bands", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Basile+Bouchon", 
+            "timeline_date": 1725
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1950's", 
+            "name": "NC machine tools", 
+            "text": "Numerical control (NC) refers to the automation of machine tools that are operated by abstractly programmed commands encoded on a storage medium, as opposed to manually controlled via handwheels or levers, or mechanically automated via cams alone.\r\n\r\nThe first NC machines were built in the 1940s and '50s, based on existing tools that were modified with motors that moved the controls to follow points fed into the system on punched tape. These early servomechanisms were rapidly augmented with analog and digital computers, creating the modern computed numerically controlled (CNC) machine tools that have revolutionized the manufacturing process.\r\n", 
+            "slug": "nc-machine-tools", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Numerical+control", 
+            "timeline_date": 1950
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1948", 
+            "name": "Curta calculator", 
+            "text": "The Curta is a small, hand-cranked mechanical calculator introduced in 1948. It has an extremely compact design - a small cylinder that fits in the palm of the hand.\r\n\r\nIt can be used to perform addition, subtraction, multiplication, division, and, with more difficulty, square roots and other operations. The Curta's design is a descendant of Gottfried Leibniz's Stepped Reckoner and Thomas's Arithmometer, accumulating values on cogs, which are added or complemented by a stepped drum mechanism.", 
+            "slug": "curta-calculator", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Curta_calculator", 
+            "timeline_date": 1948
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Piano roll", 
+            "text": "A piano roll is the music storage medium used to operate the player piano, pianola or a reproducing piano. It was the first medium which could be produced and copied industrially, and made it possible to provide the customer with actual music quickly and easily.\r\n\r\nA piano roll is a roll of paper with perforations (holes) punched in it. The position and length of the perforation determines the note played on the piano. The roll moves over a device known as the 'tracker bar', which first had 58 holes, was expanded to 65 and then was upgraded to 88 holes (generally, one for each piano key). When a perforation passes over the hole, the note sounds.\r\n", 
+            "slug": "piano-roll", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Piano+roll", 
+            "timeline_date": 1896
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1884", 
+            "name": "Steam turbine", 
+            "text": "A steam turbine is a mechanical device that extracts thermal energy from pressurized steam, and converts it into rotary motion.\r\n\r\nIt has almost completely replaced the reciprocating piston steam engine primarily because of its greater thermal efficiency and higher power-to-weight ratio. Because the turbine generates rotary motion, it is particularly suited to be used to drive an electrical generator \u2013 about 80% of all electricity generation in the world is by use of steam turbines.\r\n", 
+            "slug": "steam-turbine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Steam+turbine", 
+            "timeline_date": 1884
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1104", 
+            "name": "The Venetian Arsenal", 
+            "text": "The Venetian Arsenal was a complex of state-owned shipyards and armories clustered together in Venice, northern Italy. Its construction began around 1104, during Venice's republican era.\r\n\r\nIt was the largest industrial complex in Europe prior to the Industrial Revolution, spanning about fifteen percent of Venice. Surrounded by a rampart, a gated of community laborers and shipbuilders regularly worked within the Arsenal, building ships that sailed from the city's port.\r\n\r\nWith high walls shielding the Arsenal from public view and guards protecting its perimeter, different areas of the Arsenal each produced a particular prefabricated ship part or other maritime implement, such as munitions, rope, and rigging; these parts could then be assembled into a ship in as little as one day.", 
+            "slug": "the-venetian-arsenal", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Venetian%20Arsenal", 
+            "timeline_date": 1104
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1070", 
+            "name": "Ephedrine", 
+            "text": "Ephedrine is a sympathomimetic amine commonly used as a stimulant, appetite suppressant, concentration aid, decongestant, and to treat hypotension associated with anaesthesia.\r\n\r\nEphedrine is similar in structure to the (semi-synthetic) derivatives amphetamine and methamphetamine. Chemically, it is an alkaloid derived from various plants in the genus Ephedra (family Ephedraceae). It is most usually marketed in the hydrochloride and sulfate forms.", 
+            "slug": "ephedrine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Ephedrine", 
+            "timeline_date": 1070
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1721", 
+            "name": "The Lombe Silk Mill", 
+            "text": "The _Lombe Silk Mill_ in Derby, England, was the first silk mill in Britian. Built between 1717 and 1721 for the Lombe brothers John and Thomas, it housed machinery for \"doubling\" (or twisting) silk into thread.\r\n\r\nNow it is the _Derby Industrial Museum_, a museum of the history of industry.\r\n", 
+            "slug": "the-lombe-silk-mill", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Derby%20Industrial%20Museum", 
+            "timeline_date": 1721
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1000BC", 
+            "name": "Chinese Android", 
+            "text": "bq. The king stared at the figure in astonishment. It walked with rapid strides, moving its head up and down, so that anyone would have taken it for a live human being.\r\n\r\nA tale in the Lie Zi, from the 3rd century BC, tells of an encounter between the 10th century King Mu of the Zhou Dynasty and a life-sized human automaton made by a mechanical engineer called Yan Shi. Although the story's claims \u2014 that it had mechanical equivalents of all the human organs that controlled its various functions \u2014 seem unbelievable, we cannot be certain whether the entire thing is a fiction or based on an early actual automaton, with lesser functions.", 
+            "slug": "chinese-android", 
+            "reference_url": "http://10.0.0.56:9292/wiki/King+Mu+of+Zhou", 
+            "timeline_date": -1000
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "By 1750", 
+            "name": "Brick-lined mine shafts", 
+            "text": "For much of early mining history, mines were either very shallow or supported by wooden trusses. The development of mining through the centuries, and the need for deeper and more stable mine shafts, led to the introduction of brick lining.", 
+            "slug": "brick-lined-mine-shafts", 
+            "reference_url": "", 
+            "timeline_date": 1750
         }
     }, 
     {
@@ -1764,6 +2040,76 @@
         "model": "core.storycontent", 
         "fields": {
             "text": "Su Song did some computing using water and the power of awesome."
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Early computational aids were things like tally sticks. Later, the abacus made it faster to multiple and divide as well. These tools were primitive compared to today, augmenting rather than replacing human abilities."
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The Greeks experimented with mechanical computation, constructing complex astronomical calculators to calculate the positions of the Sun, Moon and planets. Some of their work may have survived via Byzantium to inform Islamic artificers by the late first millennium, although some of the sophistication may well have been lost, as mechanisms of similar complexity did not start to appear in Europe until the middle of the second millennium."
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Towards the end of the first millennium, mechanical computation moved on from tools designed either to perform very specific calculations, such as the astronomical calculators of Ancient Greece, or devices such as the abacus which provided shortcuts for people doing more complex calculations themselves.\r\n\r\nThe advent of machines that could be reprogrammed, albeit still in a limited way, set the stage both for the automatic machines such as the Jacquard Loom adopted in the second Industrial Revolution (** I think) and for the more generalised computing machines made possible in the twentieth century, and which lead to you reading this right now."
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The development of logarithms in the 17th century by mathematicians such as John Napier, based on work by Michael Stiffel in the mid-16th century, enabled multiplication and division of arbitrary numbers to be accomplished more quickly than before, operations which were incorporated in slide rules. The sophistication of slide rules continued to be developed into the 19th century, where log log slide rules, compounding the logarithmic principal, enabled swift calculation of roots and exponents."
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Although textile manufacture was not the first application of mechanisms to simplify or automate tiresome and error-prone human actions (calculating machines and automated personal attendants having both been experimented with for hundreds of years), the rapid evolution of reprogrammable machines and their application to the textile industry resulted in practical and simple techniques for storing information that would underpin the development of computing technology from the mid eighteen century."
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Antiquity is full of stories of automata, mechanical creatures and figures that by turns entertain, assist or confound the humans around them. Although it is often impossible to be certain which tales have elements of truth and which are purely myth, there are many stories from some parts of the world, in particular around the island of Rhodes where the streets were said to be lined with subtle mechanical statues.\r\n\r\nEven in cases where purported automata are actually frauds, such as The Turk in the 18th century where its chess-playing prowess was actually a small accomplice sitting within the figure, they serve to illustrate the appetite for mechanical contrivances. Although automata were mainly for entertainment (and boasting), the intricate requirements on clockwork, pneumatics, hydraulics and so forth would help drive forward the state of the art, enabling more practical applications \u2014 although it's notable that a recurring type of automata, among the mechanical birds, singing creatures and puppet theatres, is the personal butler, a trend continuing as a major strand of modern robotics research."
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "A steam turbine is a mechanical device that converts heat from pressurised steam into a rotary motion. It has a greater thermal efficiency and higher power-to-weight ratio than the piston-based steam engine that is has almost completely replaced.\r\n\r\nThe first such device was a toy; the aeolipile described in the 1st century by Hero of Alexandria. In 1551 AD the Turkish polymath _Taqi al-Din_ described the workings of a rudimentary steam turbine in _The Sublime Methods of Spiritual Machines_.\r\n\r\nThe modern steam turbine was invented in 1884 by the Englishman Sir Charles Parsons. The first model generated 7.5 kilowatts of electricity. The turbine was scaled up by the American George Westinghouse, to units of up to 50,000 kilowatts.\r\n"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Punch cards provided a more robust way of storing programs than punch bands (which used paper tape), but easier to create and cheaper to replicate than other possibilities such as pegs attached to a rotating barrel. It wasn't until the mid 19th century that punch cards were used for storing data as well as instructions, and although initially these were once more fixed function machines they pointed the way towards the development of computers that could be both reprogrammed to perform different tasks, and operate on different sets of data."
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Although not built in his lifetime, Babbage's Analytical Engine was in many ways a modern computer, albeit mechanical rather than electronic. A development of his Difference Engine design, a special purpose calculator, the Analytical Engine would have used punch cards both for inputting data and for the operational program to be run, and would have had printing output devices much like some early electronic computers. Its internal functions, including data storage (memory) and an arithmetic unit, are conceptually similar to modern microprocessors, and various people who wrote about it influenced the development of computing in the first half of the 20th century, including Ada Lovelace's translation of Luigi Menabrea's description in Italian, where her extensive annotations including a way of calculating Bernoulli numbers are seen as the first example of deliberate computer programming."
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The Second World War resulted in a intense period of scientific discovery and invention, including considerable steps forward in the development of modern computation, often building on earlier work by those enrolled in the war effort. The work done by Allied cryptanalysts in creating early computers to decode German and Japanese coded messages would set the stage for general purpose electrical and later electronic computers, and those who worked through the war would continue to play significant roles in their development. Alan Turing in particular developed various concepts which provide theoretical support for modern computer science, as well as some early electronic computers after the war."
         }
     }
 ]

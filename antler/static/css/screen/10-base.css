@@ -58,7 +58,7 @@ a {
 		 transition-duration: 0.2s;
 	}	
 	/* -- */
-	a:hover {
+	a:hover, a:focus {
 		color: #000;
 		text-decoration: underline;
 	}
@@ -175,7 +175,7 @@ header nav {
 		line-height: 1;
 		margin: 0;
 	}
-	header nav a, header nav a:visited {
+	header nav a, header nav em, header nav a:visited {
 		color: #fff;
 		padding: 2px 12px 4px 12px;
 		margin: 0;
@@ -187,7 +187,7 @@ header nav {
 		-cp-border-radius: 24px;
 		text-decoration: none;
 	}
-	header nav li.current a, header nav li.current a:visited {
+	header nav li.current em, header nav li.current a:visited {
 		background: #a3a3a3;
 		-cp-border-radius: 24px;
 		-webkit-box-shadow: #000 inset 0 1px 0;
@@ -201,7 +201,7 @@ header nav a, header nav a:visited {
 header nav a:hover, header nav a:focus {
 	-webkit-box-shadow: #bbb 0 1px 0, inset #d3d3d3 0 1px 0;
 }
-header nav li.current a, header nav li.current a:visited {
+header nav li.current em, header nav li.current a:visited {
 	-webkit-box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
 	-moz-box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
 	box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
@@ -255,10 +255,23 @@ header input {
 	-cp-border-radius: 3px;
 	padding: 3px 8px 5px 65px;
 }
+/*! verbatim */
+	.admin {
+		-webkit-transition: -webkit-box-shadow 0.1s ease-out;
+	}
+	.admin:hover {
+		-webkit-transform: translateY(-2px);
+		-webkit-box-shadow: rgba(0,0,0,0.15) 0 2px 0;
+	}
+/* -- */
+
 	.admin a {
 		text-decoration: none;
 		color: #666;
 		line-height: 1;
+	}
+	.admin a:hover, .admin a:focus {
+		text-decoration: underline;
 	}
 
 figure {
@@ -282,8 +295,8 @@ figure {
 	}
 	figcaption {
 		display: block;
-		font-size: 12px;
-		margin: 3px 0 0 0;
+		font: italic 1em "Times New Roman", palatino, serif;
+		margin: 0.5em 0 0 0;
 		color: #000;
 	}
 
@@ -296,6 +309,13 @@ figure {
 div.home {
 	padding: 6em 2em 1px 2em;
 	background: #fff;
+}
+.home h1 {
+	font-size: 1.5em;
+	line-height: 2;
+}
+.home h2 {
+	clear: both;
 }
 .home h3 {
 	margin-bottom: 0;
@@ -318,12 +338,37 @@ div.home {
 	.home li h3, .home li p {
 		padding-left: 95px;
 	}
+.home .about {
+	width: 25%;
+	margin: 0 10% 0 5%;
+	padding-top: 4.5em;
+	float: left;
+}
+	.home .about p {
+		font: italic 1.5em "Times New Roman", palatino, serif;
+		line-height: 2;
+	}
+	.home .about a {
+		font-weight: normal;
+	}
+	.home .about .more {
+		display: block;
+		margin-top: 1em;
+		font-style: normal;
+		font-family: NuvoMediumWOFF, "Lucida Grande", Calibri, Helvetica, Arial, sans-serif;
+	}
+.home .stories {
+	width: 60%;
+	float: right;
+}
 .home .map {
 	background: #f1f1f1;
 	border: solid 1px #ccc;
 	border-width: 1px 0;
 	padding: 1em 0;
 	margin: 0 -2em;
+	-webkit-user-select: none;
+	cursor: move;
 }
 /*! verbatim */
 	/* pre-parser don't do border-width */
@@ -367,7 +412,10 @@ div.home {
 .view-map .map {
 	margin-top: 40px;
 	padding: 0;
+	background: #f1f1f1;
 	border-bottom: solid 1px #ccc;
+	-webkit-user-select: none;
+	cursor: move;
 }
 	.view-map .map img {
 		line-height: 1;
