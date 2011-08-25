@@ -9,6 +9,7 @@ Network = function(container, width, height) {
   this.nodeRadius   = 0.9 * this.pathWidth;
   this.nodeStroke   = 0.5 * this.pathWidth;
   this.cornerRadius = 16;
+  this.minSize      = 50;
 
   var self   = this,
       wrap   = $('<div></div>');
@@ -75,8 +76,8 @@ $.extend(Network.prototype, {
   _normalize: function() {
     var box        = this._bounding,
         view       = this._viewport,
-        boxWidth   = box.e - box.w,
-        boxHeight  = box.s - box.n,
+        boxWidth   = (box.e - box.w) || this.minSize,
+        boxHeight  = (box.s - box.n) || this.minSize,
         viewAspect = view.width / view.height,
         boxAspect  = boxWidth / boxHeight,
         vertical   = boxAspect < viewAspect,
@@ -110,8 +111,6 @@ $.extend(Network.prototype, {
         boxHeight = box.s - box.n,
         padding   = 2 * this._padding;
 
-    console.log(boxWidth, view.width, padding);
-
     if (this._vertical) {
       this._offsetTop = (view.height - boxHeight - padding) / 2;
       this._container.css({top: this._offsetTop + 'px'});
@@ -119,6 +118,12 @@ $.extend(Network.prototype, {
       this._offsetLeft = (view.width - boxWidth - padding) / 2;
       this._container.css({left: this._offsetLeft + 'px'});
     }
+  },
+
+  moveBy: function(left, top) {
+    this._offsetLeft += left;
+    this._offsetTop  += top;
+    this._container.css({left: this._offsetLeft + 'px', top: this._offsetTop + 'px'});
   },
 
   initDrag: function(event) {
