@@ -185,6 +185,7 @@ $.extend(Network.prototype, {
     else
       this._offsetLeft = diff[0];
 
+    node.select();
     this._updateCSSOffset(animate);
   },
 
@@ -215,6 +216,11 @@ $.extend(Network.prototype, {
     delete this._dragStart;
     this._offsetLeft += this._dragLeft;
     this._offsetTop  += this._dragTop;
+  },
+
+  deselectAll: function() {
+    for (var id in this._nodes)
+      this._nodes[id].deselect();
   },
 
   hidePreviews: function() {
@@ -291,6 +297,9 @@ $.extend(Network.Node.prototype, {
     circle.mouseover(this.preview, this);
     circle.click(this.visit, this);
 
+    this._marker = paper.circle(pos[0], pos[1], radius/2).attr({fill: color, stroke: 'none'});
+    this._marker.hide();
+
     return circle;
   },
 
@@ -299,6 +308,15 @@ $.extend(Network.Node.prototype, {
     this._color = this._color || color;
     node._color = color;
     return this._network.addEdge(this, node, color, secondary );
+  },
+
+  select: function() {
+    this._network.deselectAll();
+    this._marker.show();
+  },
+
+  deselect: function() {
+    this._marker.hide();
   },
 
   preview: function() {
