@@ -180,8 +180,12 @@ header nav {
 		padding: 2px 12px 4px 12px;
 		margin: 0;
 		text-decoration: none;
-		text-shadow: rgba(0,0,0,0.2) 0 1px 1px;
 	}
+	/*! verbatim */
+	header nav a, header nav em, header nav a:visited {
+		text-shadow: rgba(0,0,0,0.2) 0 1px 1px;
+    }
+    /* -- */
 	header nav a:hover, header nav a:focus {
 		background: #cccccc;
 		-cp-border-radius: 24px;
@@ -356,6 +360,9 @@ div.home {
 		margin-top: 1em;
 		font-style: normal;
 		font-family: NuvoMediumWOFF, "Lucida Grande", Calibri, Helvetica, Arial, sans-serif;
+	}
+	.home .about .more:after {
+	    content:               ' ›';
 	}
 .home .stories {
 	width: 60%;
