@@ -75,9 +75,9 @@ class NodeLayoutEngine(object):
 
     iterations = 1000
 
-    repulsion_factor = 0.5 # Range 0..1
+    repulsion_factor = 2 # Range 0..1
     repulsion_min_distance = 3
-    repulsion_max_distance = 50
+    repulsion_max_distance = 100
 
     attraction_factor = 0 # Range 0..1
     attraction_min_distance = 35
@@ -88,7 +88,7 @@ class NodeLayoutEngine(object):
     vertical_separation = 60
 
     # How strong the push to get even angles should be; range 0..1
-    angle_factor = 0.5
+    angle_factor = 0.2
 
     # How strong a push to make to fix crossovers
     crossover_factor = 0.5

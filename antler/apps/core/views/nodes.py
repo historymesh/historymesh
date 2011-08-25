@@ -4,18 +4,19 @@ from django.shortcuts import get_object_or_404
 
 
 class NodeView(TemplateView):
-    
+    template_name = 'nodes/show.html'
+
     def model_name(self):
         return self.model._meta.object_name.lower()
     
-    def get_template_names(self):
-        return "nodes/%s.html" % self.model_name()
-    
     def get_context_data(self, slug):
         instance = get_object_or_404(self.model, slug=slug)
-        
-        story_slug = self.request.GET.get('story')
-        story = Story.objects.get(slug=story_slug)
+
+        try:
+            story_slug = self.request.GET.get('story')
+            story = Story.objects.get(slug=story_slug)
+        except Story.DoesNotExist:
+            story = None
 
         story_content = instance.outgoing('described_by')
         current_story_content = story_content.filter(story=story).follow()
@@ -30,7 +31,7 @@ class NodeView(TemplateView):
             story_prev = story_prev[0]
 
         return {
-            self.model_name(): instance,
+            "subject": instance,
             "incoming": instance.incoming().by_verb(),
             "outgoing": instance.outgoing().by_verb(),
             "story": story,

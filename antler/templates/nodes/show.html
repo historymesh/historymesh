@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block page_title %}{{ subject.name }}{% endblock %}
+
+{% block content %}
+<h1>{{subject.name}}{% if story %} (in context {{story}}){% endif %}</h1>
+
+<ol>
+{% if story_prev %}
+<li><a rel='prev' href='{{story_prev.url}}?story={{story.slug}}'>Previous: {{ story_prev.name }}</a></li>
+{% endif %}
+
+{% if story_next %}
+<li><a rel='next' href='{{story_next.url}}?story={{story.slug}}'>Next: {{ story_next.name }}</a></li>
+{% endif %}
+</ol>
+
+
+{% if user.is_authenticated %}
+<a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit in Admin</a>
+{% if current_story_content %}
+<a href="/admin/core/storycontent/{{ current_story_content.pk }}/">Edit Story Content</a>
+{% else %}
+<a href="/admin/core/storycontent/add/?">Add Story Content</a>
+{% endif %}
+{% endif %}
+
+{{subject.text|linebreaks}}
+
+{% if current_story_content %}
+  <h2>Current story content</h2>
+  <ul>
+  {% for content in current_story_content %}
+    <li>{{content.text|linebreaks}}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+{% if other_story_content %}
+  <h2>Other story content</h2>
+  <ul>
+  {% for content in other_story_content %}
+    <li>{{content.text|linebreaks}}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+{% include "nodes/links.html" %}
+{% endblock %}

@@ -7,9 +7,9 @@ admin.site.register(
     list_display=[
         'id',
         'story',
-        'subject',
+        'linked_subject',
         'verb',
-        'object',
+        'linked_object',
     ],
     list_filter = [
         'subject_type',
