@@ -57,26 +57,34 @@
 	
 	{{ subject.text|textile }}
 
-{% if user.is_staff %}
-<a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit in Admin</a>
-{% endif %}
-
 {% if story.story_content %}
-{{ story.story_content|textile }}
+  <h2>Current story content</h2>
+  <ul>
+    <li>{{story.story_content.text|textile}}</li>
+  </ul>
 {% endif %}
 
 {% if user.is_staff %}
 {% if story.story_content %}
 <a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
 {% else %}
-<a href="/admin/core/storycontent/add/?">Add Story Content</a>
+<a href="/admin/core/storycontent/add/?story={{ story.pk }}">Add Story Content</a>
 {% endif %}
 {% endif %}
 
 {% for other_story in subject.stories %}
 {% if other_story != story %}
     <h3>{{other_story.name}}</h3>
-    {{other_story.story_content.text|linebreaks}}
+{% if other_story.story_content %}
+    {{other_story.story_content.text|textile}}
+{% if user.is_staff %}
+<a href="/admin/core/storycontent/{{ other_story.story_content.pk }}/">Edit Story Content</a>
+{% endif %}
+{% else %}
+{% if user.is_staff %}
+<a href="/admin/core/storycontent/add/?story={{ other_story.pk }}">Add Story Content</a>
+{% endif %}
+{% endif %}
 {% endif %}
 {% endfor %}
 
