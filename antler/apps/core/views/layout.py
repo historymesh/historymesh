@@ -167,14 +167,9 @@ class NodeLayoutEngine(object):
         self.edges_by_subject = {}
         self.edges_by_object = {}
         for edge in edges:
-            self.do_if_shown(
-                lambda node: self.edges_by_subject.setdefault(node, []).append(edge),
-                edge.subject,
-            )
-            self.do_if_shown(
-                lambda node: self.edges_by_object.setdefault(node, []).append(edge),
-                edge.object,
-            )
+            if not (edge.subject.hidden_in_map or edge.object.hidden_in_map):
+                self.edges_by_subject.setdefault(edge.subject, []).append(edge)
+                self.edges_by_object.setdefault(edge.object, []).append(edge)
         # Start with all nodes with no incoming edges
         for node in set(self.nodes) - set(self.edges_by_object):
             queue.append(node)

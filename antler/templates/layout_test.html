@@ -61,6 +61,7 @@
   {% for node in nodes %}
     nodes["{{ node|slugify }}"] = network.addNode({
       name: '{{ node.name }}',
+      url: '{{ node.url }}',
       position: [
         {{ node.horizontal_position }},
         {{ node.position }}

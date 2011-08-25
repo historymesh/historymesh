@@ -457,6 +457,19 @@ class Story(models.Model):
         if len(nodes) > 0:
             return nodes[0]
 
+    def story_content(self):
+        """
+        Returns the story content for the current node in the current story.
+        Call set_current_node first so that this makes sense.
+        """
+        try:
+            nodes = self.current_node.outgoing('described_by').filter(story=self).follow()
+        except AttributeError:
+            return
+
+        if len(nodes) > 0:
+            return nodes[0]
+
     def __unicode__(self):
         return self.name
         
@@ -475,11 +488,17 @@ class StoryContent(BaseNode):
 
     @property
     def story(self):
-        return self.incoming("described_by").get(story__isnull=False).story
+        try:
+            return self.incoming("described_by").get(story__isnull=False).story
+        except Edge.DoesNotExist:
+            return None
 
     @property
     def name(self):
-        return self.story.name
+        try:
+            return self.story.name
+        except AttributeError:
+            return "Unknown"
     
     def url(self):
         return "/"
