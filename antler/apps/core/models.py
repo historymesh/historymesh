@@ -306,6 +306,9 @@ class ExternalLink(models.Model, EdgesMixin):
     """
     A link to an external site.
     """
+
+    hidden_in_map = True
+
     name = models.CharField(max_length=1024, unique=True)
     url = models.URLField(max_length=255, verify_exists=False)
 
@@ -321,6 +324,8 @@ class Image(models.Model, EdgesMixin):
     """
     An image attached to one or more other nodes.
     """
+
+    hidden_in_map = True
 
     image = models.ImageField(upload_to="images/%Y-%m/")
     caption = models.TextField(blank=True)
