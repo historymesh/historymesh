@@ -235,7 +235,8 @@ $.extend(Network.Node.prototype, {
   },
 
   visit: function() {
-    alert('Something something ' + this._data.name);
+    // alert('Something something ' + this._data.name);
+    window.location.href = this._data.url;
   }
 });
 
