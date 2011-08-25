@@ -299,6 +299,7 @@ figure {
 		display: block;
 		float: right;
 		margin: 0 0 2em 2em;
+		padding-top: 0.5em;
 		width: 250px;
 	}
 	figure img {
@@ -376,7 +377,7 @@ div.home {
 		font-family: NuvoMediumWOFF, "Lucida Grande", Calibri, Helvetica, Arial, sans-serif;
 	}
 	.home .about .more:after {
-	    content:               ' ›';
+	    content: " ›";
 	}
 .home .stories {
 	width: 60%;
@@ -408,6 +409,12 @@ div.home {
 	top: 0.25em;
 	left: 0;
 }
+/*! verbatim */
+	.home li.story-automatons h3:before {content: url(/static/img/ico-automatons.png);}
+	.home li.story-computing h3:before {content: url(/static/img/ico-computing.png);}
+	.home li.story-power h3:before {content: url(/static/img/ico-power.png);}
+	.home li.story-textiles h3:before {content: url(/static/img/ico-textiles.png);}
+/* -- */
 .home footer {
 	background: #fff;
 	margin: 0;
@@ -426,8 +433,41 @@ div.home {
 
 
 
+/* =================================== */
+/* ! Common About & Error Page style	 */
+/* =================================== */
+body.about, body.error {
+	background: #fff;
+}
+.about h1, .error h1 {
+	color: #555;
+}
+.about article, .error article {
+	background: #fff;
+	padding: 6em 2em 0 0;
+	margin: 0;
+}
+.about .body, .error .body {
+	padding: 0 2em 0 400px;
+}
+.about footer, .error footer {
+	border-top: solid 1px #ccc;
+	padding-top: 2em;
+}
+
+.error404 .body {
+	background: url(/static/img/404.gif) no-repeat 100px 30%;
+	padding: 10% 100px 10% 500px;
+}
+.error404 .explanation {
+	font: italic 1.5em "Times New Roman", palatino, serif;
+	line-height: 2;
+}
+
+
+
 /* ================= */
-/* ! Map View			   */
+/* ! Map Page			   */
 /* ================= */
 
 .view-map .map {
@@ -444,6 +484,7 @@ div.home {
 .view-map article {
 	background: #fff;
 }
+
 
 
 
