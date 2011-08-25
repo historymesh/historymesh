@@ -57,6 +57,10 @@
 	
 	{{ subject.text|textile }}
 
+{% if user.is_staff %}
+<a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit Node</a>
+{% endif %}
+
 {% if story.story_content %}
   <h2>Current story content</h2>
   <ul>
@@ -64,11 +68,11 @@
   </ul>
 {% endif %}
 
-{% if user.is_staff %}
+{% if user.is_staff and story %}
 {% if story.story_content %}
 <a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
 {% else %}
-<a href="/admin/core/storycontent/add/?story={{ story.pk }}">Add Story Content</a>
+<a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
 {% endif %}
 {% endif %}
 
@@ -82,7 +86,7 @@
 {% endif %}
 {% else %}
 {% if user.is_staff %}
-<a href="/admin/core/storycontent/add/?story={{ other_story.pk }}">Add Story Content</a>
+<a href="/admin/core/storycontent/add/?story={{ other_story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
 {% endif %}
 {% endif %}
 {% endif %}
