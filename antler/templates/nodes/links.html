@@ -1,26 +1,17 @@
-<hr>
-<!-- here be useful debugging, but not useful content, dragons -->
-
-<h2>Outgoing links</h2>
+<ul>
 {% for verb, links in outgoing.items %}
-{% if verb != "primary" and verb != "secondary" %}
-    <h3>{{verb}}</h3>
-    <ul>
+{% if verb != "primary" and verb != "secondary" and verb != "described_by" %}
     {% for link in links %}
-        <li><a href="{{link.url}}">{{link.name}}</a></li>
+        <li>{{ subject.name }} {{ verb }} <a href="{{link.url}}">{{link.name}}</a></li>
     {% endfor %}
-    </ul>
 {% endif %}
 {% endfor %}
 
-<h2>Incoming links</h2>
 {% for verb, links in incoming.items %}
-{% if verb != "primary" and verb != "secondary" %}
-    <h3>{{verb}}</h3>
-    <ul>
+{% if verb != "primary" and verb != "secondary" and verb != "described_by" %}
     {% for link in links %}
-        <li><a href="{{link.url}}">{{link.name}}</a></li>
+        <li><a href="{{link.url}}">{{link.name}}</a> {{ verb }} {{ subject.name }}</li>
     {% endfor %}
-    </ul>
 {% endif %}
 {% endfor %}
+</ul>
