@@ -36,10 +36,6 @@ jQuery(function($) {
             }
             $(document).trigger('node:transition', {slug: data.objectId});
 
-            var body = document.body;
-            body.className = body.className.replace(/\bstory-\S+/g, '');
-            body.className += ' story-' + data.storySlug;
-
             // Transition in
             var newContent = $(data.html).hide();
             $('article .textual').html('').append(newContent);
@@ -102,6 +98,13 @@ jQuery(function($) {
     });
 
     $(document).bind('node:navigate', function(event, data) {
+        var storyRE = /\bstory=(\w+)/,
+            current = (window.location.href.match(storyRE) || [])[1],
+            next    = (data.url.match(storyRE) || [])[1];
+
+        if (current && next && current !== next)
+          return window.location.href = data.url;
+
         transition(data.url, true);
     });
 
