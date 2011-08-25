@@ -100,6 +100,7 @@ class NodeLayoutEngine(object):
     minimum_total_movement = 0.1
 
     max_node_distance = 5
+    horizontal_scale_factor = 5
 
     def __init__(self, iterations=None):
         if iterations is not None:
@@ -141,7 +142,7 @@ class NodeLayoutEngine(object):
         for node in self.nodes[1:]:
             delta = node.timeline_date - last_node.timeline_date
             delta = min(delta, self.max_node_distance)
-            delta *= 10
+            delta *= self.horizontal_scale_factor
             self.horizontal_positions[node] = \
                 self.horizontal_positions[last_node] + delta
             last_node = node
