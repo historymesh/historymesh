@@ -1,16 +1,268 @@
 /* -*- Mode: CSS; tab-width: 4; indent-tabs-mode: nil; -*- */
 
-body {
-    margin:                 0 auto;
-    width:                  800px;
+/*! verbatim */
+@font-face {
+	font-family: NuvoMediumWOFF;
+	src: url(/static/fonts/nuvo-medium-woff-demo.woff) format("woff");
 }
+/* -- */
 
-// using <b> ("stylistically offset from the normal prose without conveying
-// any extra importance”) for the off-left effect of text useful for screen
-// readers, but not to be displayed as CSS gives the context
+/*
+using <b> ("stylistically offset from the normal prose without conveying
+any extra importance”) for the off-left effect of text useful for screen
+readers, but not to be displayed as CSS gives the context
+*/
+
 b {
     direction:              ltr;
     position:               absolute;
     left:                   -9999px;
     width:                  500px;
 }
+
+/* Defaults */
+
+html {
+	background: #f1f1f1;
+}
+
+body {
+	margin: 2em 10%;
+	font-family: NuvoMediumWOFF, sans-serif;
+	margin: 0;
+	line-height: 1.6;
+	font-size: .9em;
+	color: #555;
+	-webkit-font-smoothing: antialiased;
+	background: #f1f1f1;
+}
+
+/*! verbatim */
+body {
+	text-rendering: optimizeLegibility;
+}	
+/* -- */
+
+
+strong {
+	color: #000;
+}
+
+a {
+	font-weight: bold;
+	color: #164B9E;
+}
+
+/*! verbatim */
+a {
+	-o-transition-property: color;
+	-webkit-transition-property: color;
+	-moz-transition-property: color;
+	transition-property: color;
+	 -o-transition-duration: 0.2s;
+	 -webkit-transition-duration: 0.2s;
+	 -moz-transition-duration: 0.2s;
+	 transition-duration: 0.2s;	
+}	
+/* -- */
+
+
+a:hover {
+	color: #000;
+}
+
+blockquote {
+	margin: 0 0 1em 0;
+    padding: 0 0 0 2em;
+    border-left: 1px solid #ccc;
+   }
+
+blockquote p {
+    font-size: 1.3em;
+    text-indent: -0.4em;
+    margin: 0 0 0.5em 0;
+}
+
+blockquote p:before {
+	content: '“';
+	}
+blockquote p:after {
+	content: '”';
+	}	
+	
+cite {
+	font-style: normal;
+	text-align: right;
+	display: block;
+}
+
+fieldset { 
+	border: 0;
+}
+
+h1 {
+	font-size: 3em;
+	margin: 0 0 1em 0;
+	line-height: 1.2;
+	color: #777;
+}
+
+h1 span {
+	color: #ccc;
+	font-size: 0.7em;
+}
+
+h2 {
+	margin: 0 0 1em 0;
+	font-size: 2em;
+	line-height: 1.2;
+}
+
+h3 {
+	margin: 0 0 0.5em 0;
+	font-size:1.5em;
+}
+
+h4 {
+	margin: 0;
+	font-size: 1em;
+	color: #666;
+}
+
+img {
+	border: 0;
+}
+
+p {
+	margin: 0 0 1em 0;
+}
+
+footer  {
+	clear: both;
+}
+
+section {
+	margin: 1em 0;
+}
+
+table {
+	border-collapse:collapse;
+	margin: 0 0 1em 0;
+}
+
+/* ========== */
+/* ! Layout   */
+/* ========== */
+
+.timeline {
+	position: fixed;
+	z-index: 0;
+	left:0;
+	right: 0;
+	top:0;
+	bottom: 0;
+	font-size: 11px;
+	color: #aaa;
+}
+
+.timeline li {
+	padding: 0 0 0 5px;
+	border-bottom: 1px solid #e2e2e2;
+	margin: 20px 0 200px 0;
+}
+
+.tail {
+	position: fixed;
+	left: 380px;
+	top: 40px;
+	width: 20px;
+	height: 30px;
+	background: url(../img/tail.png);
+	z-index: 2;
+}
+
+article {
+	position: relative;
+	z-index: 1;
+	margin: 0 0 0 400px;
+	padding: 2em;
+	overflow: auto;
+}
+
+/*! verbatim */
+article {
+	background: rgba(255,255,255,0.8);
+}	
+/* -- */
+
+.fr {
+	float: right;
+	margin: 0 0 2em 2em;
+}
+
+.thread {
+	line-height: 30px;
+}
+
+.auto { color: blue; }
+.comp { color: green; }
+.medic { color: red; }
+
+.thread:before {
+	content: "●";
+	font-size: 30px;
+	margin: -2px 6px 0 0;
+	display: block;
+	float: left;
+	vertical-align: middle;
+}
+
+.secondary {
+	margin: 1.5em 0;
+}
+
+.secondary ul {
+	list-style-type: none;
+}
+
+/*! verbatim */
+.trunc {
+	text-overflow: ellipsis;
+}	
+/* -- */
+
+
+.storynav {
+	overflow: auto;
+}
+
+.storynav li {
+	width:46%;
+	float: left;
+	margin: 0 2%;
+}
+
+/*! verbatim */
+/* Viewport of 800px and above */
+@media screen and (min-width: 1024px) {
+
+	.main {
+		width: 65%;
+		float: left;
+	}
+	
+	.secondary {
+		width: 30%;
+		float: right;
+	}
+	
+	.storynav li {
+		width: auto;
+		float: none;
+		margin: 0;
+	}
+}	
+/* -- */
+
+
+

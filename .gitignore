@@ -8,3 +8,4 @@ ENV
 *.tsv
 *.xml
 antler/media/
+/*_ve/

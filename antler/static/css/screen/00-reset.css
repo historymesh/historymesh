@@ -117,3 +117,9 @@ tt {
     font-family:            monospace;
     line-height:            100%;
 }
+
+
+/* HTML5 tags */
+header,hgroup,footer,nav,aside,section, article { 
+	display: block; 
+}
