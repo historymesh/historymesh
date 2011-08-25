@@ -63,8 +63,8 @@
       name: '{{ node.name }}',
       color: '#f80',
       position: [
-        ({{ node.timeline_date }} - 1800) * 3,
-        {{ node.position }} * 3
+        ({{ node.horizontal_position }} + 2) * 8,
+        ({{ node.position }} + 10) * 2
     ]
     });
   {% endfor %}

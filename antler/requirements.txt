@@ -1,2 +1,2 @@
-south
-django
+South
+Django

@@ -8,14 +8,14 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding field 'Story.slug'
-        db.add_column('core_story', 'slug', self.gf('django.db.models.fields.SlugField')(default='', unique=False, max_length=255, db_index=True), keep_default=False)
+        # Adding field 'Story.featured'
+        db.add_column('core_story', 'featured', self.gf('django.db.models.fields.BooleanField')(default=True), keep_default=False)
 
 
     def backwards(self, orm):
         
-        # Deleting field 'Story.slug'
-        db.delete_column('core_story', 'slug')
+        # Deleting field 'Story.featured'
+        db.delete_column('core_story', 'featured')
 
 
     models = {
@@ -25,7 +25,7 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '1024'}),
             'reference_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'False', 'max_length': '1024', 'db_index': 'True'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '1024', 'db_index': 'True', 'blank': 'True'}),
             'text': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'timeline_date': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         },
@@ -45,7 +45,7 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '1024'}),
             'reference_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '1024', 'db_index': 'True'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '1024', 'db_index': 'True', 'blank': 'True'}),
             'text': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'timeline_date': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         },
@@ -55,13 +55,19 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '1024'}),
             'url': ('django.db.models.fields.URLField', [], {'max_length': '255'})
         },
+        'core.image': {
+            'Meta': {'object_name': 'Image'},
+            'caption': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'})
+        },
         'core.object': {
             'Meta': {'object_name': 'Object'},
             'display_date': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '1024'}),
             'reference_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '1024', 'db_index': 'True'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '1024', 'db_index': 'True', 'blank': 'True'}),
             'text': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'timeline_date': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         },
@@ -71,12 +77,14 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '1024'}),
             'reference_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '1024', 'db_index': 'True'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '1024', 'db_index': 'True', 'blank': 'True'}),
             'text': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'timeline_date': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         },
         'core.story': {
             'Meta': {'object_name': 'Story'},
+            'colour': ('django.db.models.fields.CharField', [], {'max_length': '8', 'blank': 'True'}),
+            'featured': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'}),
             'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '255', 'db_index': 'True'}),
@@ -88,7 +96,7 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '1024'}),
             'reference_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '1024', 'db_index': 'True'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '1024', 'db_index': 'True', 'blank': 'True'}),
             'text': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'timeline_date': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         }

@@ -25,11 +25,11 @@ class LayoutImage(View):
 
     width = 500
     height = 300
-    start_date = -1
-    end_date = 30
+    start_date = 0
+    end_date = 120
 
     def transform(self, node):
-        x = (node.timeline_date - self.start_date) / float(self.end_date - self.start_date) * self.width
+        x = (self.engine.node_horizontal_position(node) - self.start_date) / float(self.end_date - self.start_date) * self.width
         y = (self.height / 2) + (self.engine.node_position(node) * 1)
         return x, y
 
@@ -73,11 +73,11 @@ class NodeLayoutEngine(object):
     Lays out nodes in a rough time-like order.
     """
 
-    iterations = 3
+    iterations = 1000
 
     repulsion_factor = 0.5 # Range 0..1
     repulsion_min_distance = 3
-    repulsion_max_distance = 25
+    repulsion_max_distance = 50
 
     attraction_factor = 0 # Range 0..1
     attraction_min_distance = 35
@@ -98,6 +98,8 @@ class NodeLayoutEngine(object):
 
     # Stop iterating if the total movement is less than this.
     minimum_total_movement = 0.01
+
+    max_node_distance = 5
 
     def __init__(self, iterations=None):
         if iterations is not None:
@@ -128,6 +130,23 @@ class NodeLayoutEngine(object):
             self.do_if_shown(self.nodes.add, edge.object)
         # Sort them
         self.nodes = sorted(self.nodes, key=lambda node: node.timeline_date)
+        if len(self.nodes) == 0:
+            return
+
+        self.horizontal_positions = {}
+
+        # Rewrite dates to enforce min and max separation.
+        last_node = self.nodes[0]
+        self.horizontal_positions[last_node] = 0
+        for node in self.nodes[1:]:
+            delta = node.timeline_date - last_node.timeline_date
+            delta = min(delta, self.max_node_distance)
+            self.horizontal_positions[node] = \
+                self.horizontal_positions[last_node] + delta
+            last_node = node
+
+        self.horizontal_start = 0
+        self.horizontal_end = self.horizontal_positions[last_node]
 
     def construct_strings(self):
         """
@@ -184,7 +203,7 @@ class NodeLayoutEngine(object):
                         self.do_if_shown(queue.append, edge.object)
                     break
             # Save the string
-            self.strings.add(String(string))
+            self.strings.add(String(self, string))
         # Second phase: assign neighbouring strings
         self.string_edges = set()
         for string in self.strings:
@@ -297,12 +316,17 @@ class NodeLayoutEngine(object):
                 for other_edge in self.string_edges:
                     if other_edge == edge:
                         continue
-                    if not other_edge.overlaps(edge.start, edge.end):
+                    if not other_edge.overlaps(edge):
                         continue
                     if edge.crosses(other_edge):
                         print "Pushing to fix crossover of %s %s" % (
                             edge, other_edge)
                         self.push_to_resolve_crossing(forces, edge, other_edge)
+
+                for string in self.strings:
+                    if edge.crosses(string):
+                        print "String crossing"
+                        self.push_to_resolve_crossing(forces, edge, string)
 
             # Third pass: USE THE FORCE
             moved = sum(map(abs, forces.values()))
@@ -336,7 +360,6 @@ class NodeLayoutEngine(object):
             else:
                 forces[edge.right] = -push
                 forces[other_edge.right] = push
-
 
     def set_forces_to_flip(self, forces, edge):
         """Set the forces on the strings at each end of an edge to push towards
@@ -382,9 +405,13 @@ class NodeLayoutEngine(object):
             if node in string:
                 return string.position
 
+    def node_horizontal_position(self, node):
+        return self.horizontal_positions[node]
+
     def annotated_nodes(self):
         for node in self.nodes:
             node.position = self.node_position(node)
+            node.horizontal_position = self.node_horizontal_position(node)
             yield node
         
     def visible_edges(self):
@@ -395,21 +422,38 @@ class NodeLayoutEngine(object):
 
 class String(object):
 
-    def __init__(self, nodes):
+    def __init__(self, engine, nodes):
         assert nodes, "Strings must contain at least one node"
+        self.engine = engine
         self.nodes = tuple(
-            sorted(nodes, key=lambda node: node.timeline_date)
+            sorted(nodes, key=lambda node: engine.node_horizontal_position(node))
         )
-        gen = random.Random(x=hash(self.nodes) + 2)
+        gen = random.Random(x=hash(self.nodes) + 1)
         self.position = gen.random() * 70
     
     @property
     def start(self):
-        return self.first.timeline_date
+        return self.engine.node_horizontal_position(self.first)
     
     @property
     def end(self):
-        return self.last.timeline_date
+        return self.engine.node_horizontal_position(self.last)
+
+    @property
+    def start_position(self):
+        return self.position
+
+    @property
+    def end_position(self):
+        return self.position
+
+    @property
+    def left(self):
+        return self
+
+    @property
+    def right(self):
+        return self
 
     @property
     def first(self):
@@ -429,13 +473,14 @@ class String(object):
         return item in self.nodes
     
     def overlaps(self, other):
+        print repr(other.end), repr(self.end)
         return (
             not (self.start > other.end + 0.5) and
             not (other.start > self.end + 0.5)
         )
 
     def __repr__(self):
-        return "<String: %s %r>" % repr(self.position, self.nodes)
+        return "<String: %s %r>" % (self.position, self.nodes)
 
 
 class StringEdge(object):
@@ -450,7 +495,7 @@ class StringEdge(object):
     def start(self):
         """ The start date of the edge. """
         return self.left.end
-    
+
     @property
     def end(self):
         """ The end date of the edge. """
@@ -464,51 +509,40 @@ class StringEdge(object):
     def end_position(self):
         return self.right.position
 
-    @property
-    def start_date(self):
-        return self.left.end
-
-    @property
-    def gradient(self):
-        if self.start_date == self.end_date:
-            return 1000000
-        return (
-                float(self.end_position - self.start_position) /
-                (self.end_date - self.start_date)
-        )
-
-    @property
-    def end_date(self):
-        return self.right.start
-
     def __eq__(self, other):
         return self.left == other.left and self.right == other.right
     
     def __hash__(self):
         return hash((self.left, self.right))
 
-    def overlaps(self, start, end):
+    def overlaps(self, other):
         """Return true iff the edge overlaps or nearly overlaps with the time range given."""
         return (
-            not (self.start >= end) and
-            not (start >= self.end)
+            not (self.start >= other.end) and
+            not (other.start >= self.end)
         )
 
     def crosses(self, other):
         """Check if the edge crosses other.
 
-        Return true if the edge would cross the other edge if they had the
-        same start and end points.
+        Returns None if the edge doesn't cross the other edge.
+
+        Returns 
 
         """
-        if self.left == other.left or self.right == other.right:
-            # If the strings at an end are the same, it can't be a crossover.
-            return
         if self.end == self.start or other.end == other.start:
-            # Any degenerate strings where start == end can't be crossovers.
+            # Any degenerate edges where start == end can't be crossovers.
+            return
+        if (
+            self.start_position == other.start_position or
+            self.end_position == other.end_position
+        ):
+            # If both edges start or end at the same height, can't be a
+            # crossover.
             return
 
-        print "Checking crossover of %s and %s" % (self, other)
+
+        #print "Checking crossover of %s and %s" % (self, other)
 
         a0 = self.start_position
         a1 = self.end_position
@@ -522,13 +556,13 @@ class StringEdge(object):
         if overlap_start >= overlap_end:
             return False
 
-        print "OVERLAP from %d to %d ((%f, %f)-(%f, %f) and (%f, %f)-(%f, %f))" % (
-            overlap_start, overlap_end,
-            self.start, a0,
-            self.end, a1,
-            other.start, b0,
-            other.end, b1,
-        )
+        #print "OVERLAP from %d to %d ((%f, %f)-(%f, %f) and (%f, %f)-(%f, %f))" % (
+        #    overlap_start, overlap_end,
+        #    self.start, a0,
+        #    self.end, a1,
+        #    other.start, b0,
+        #    other.end, b1,
+        #)
 
         a_start = a0 + a_grad * (overlap_start - self.start)
         b_start = b0 + b_grad * (overlap_start - other.start)
@@ -536,14 +570,15 @@ class StringEdge(object):
         a_end = a0 + a_grad * (overlap_end - self.start)
         b_end = b0 + b_grad * (overlap_end - other.start)
 
-        print "a_start: %f, a_end: %f, b_start: %f, b_end: %f" % (
-            a_start, a_end, b_start, b_end,
-        )
+        #print "a_start: %f, a_end: %f, b_start: %f, b_end: %f" % (
+        #    a_start, a_end, b_start, b_end,
+        #)
 
-        print (
+        if (
             (a_start < b_start and a_end > b_end) or
             (a_start > b_start and a_end < b_end)
-        )
+        ):
+            print "Found crossover of %s and %s" % (self, other)
         return (
             (a_start < b_start and a_end > b_end) or
             (a_start > b_start and a_end < b_end)
@@ -551,8 +586,8 @@ class StringEdge(object):
 
     def __repr__(self):
         return "<StringEdge: %s %s %s %s>" % (
-                                              self.start_date,
+                                              self.start,
                                               self.start_position,
-                                              self.end_date,
+                                              self.end,
                                               self.end_position,
                                              )

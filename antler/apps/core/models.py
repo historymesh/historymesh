@@ -251,7 +251,7 @@ class Node(models.Model, EdgesMixin):
     hidden_in_map = False
 
     name = models.CharField(max_length=1024, unique=True)
-    slug = models.SlugField(max_length=1024, unique=True, default='')
+    slug = models.SlugField(max_length=1024, unique=True, default='', blank=True)
     text = models.TextField(blank=True)
 
     timeline_date = models.IntegerField(blank=True, null=True, help_text="Years since 0AD")
@@ -368,6 +368,7 @@ class Story(models.Model):
     slug = models.SlugField(max_length=255, unique=True, default='')
     text = models.TextField(blank=True, help_text="Brief description about the story for appearing on the homepage")
     colour = models.CharField(max_length=8, help_text="Colour as a hexdecimal string with no #, e.g. '0932f5'", blank=True)
+    featured = models.BooleanField(default=True, help_text="Whether this story is featured on the homepage")
 
     def start(self):
         story_edges = Edge.objects.filter(story=self)
