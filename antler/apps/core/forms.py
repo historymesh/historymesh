@@ -1,23 +1,29 @@
 from django import forms
 from core.models import Person, Edge, Node
 
+class NodeList(object):
+
+    def __iter__(self):
+        choices_to_return = []
+        for model in Node.all_child_classes():
+            for node_object in model.objects.all():
+                choices_to_return.append(node_object.select_tuple)
+        return iter(sorted(choices_to_return, key=lambda node:node[1]))
+
+
 class SpecialChoices(forms.ChoiceField):
     def __init__(self, *args, **kwargs):
         super(SpecialChoices, self).__init__(*args, **kwargs)
         self.widget.choices = self.choices
 
     def _get_choices(self):
-        choices_to_return = []
-        for model in Node.all_child_classes():
-            for node_object in model.objects.all():
-                choices_to_return.append(node_object.select_tuple)
-        return sorted(choices_to_return, key=lambda node:node[1])
-
+        return NodeList()
 
     def _set_choices(self,value):
         pass
 
     choices = property(_get_choices, _set_choices)
+
 
 class EdgeForm(forms.Form):
 
