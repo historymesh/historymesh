@@ -242,6 +242,13 @@ header input {
 /* ! Reusable Classes   */
 /* ==================== */
 
+.admin {
+	background: #eee url(../img/admin.png) 7px 12px no-repeat;
+	display: inline-block;
+	-cp-border-radius: 3px;
+	padding: 5px 5px 5px 65px;
+}
+
 figure {
 	display: block;
 }
