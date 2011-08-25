@@ -19,6 +19,7 @@
         "model": "core.person",
         "fields": {
             "name": "Charles Babbage",
+            "slug": "charles-babbage",
             "timeline_date": 1800
         }
     },
@@ -27,6 +28,7 @@
         "model": "core.person",
         "fields": {
             "name": "Ada Lovelace",
+            "slug": "ada-lovelace",
             "timeline_date": 1810
         }
     },
@@ -35,6 +37,7 @@
         "model": "core.person",
         "fields": {
             "name": "Steve Jobs",
+            "slug": "steve-jobs",
             "timeline_date": 1984
         }
     },
@@ -44,6 +47,7 @@
         "model": "core.object",
         "fields": {
             "name": "Jacquard Loom",
+            "slug": "jacquard-loom",
             "timeline_date": 1700
         }
     },
@@ -52,6 +56,7 @@
         "model": "core.object",
         "fields": {
             "name": "Difference engine",
+            "slug": "difference-engine",
             "timeline_date": 1820
         }
     },

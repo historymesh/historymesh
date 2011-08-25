@@ -3,63 +3,72 @@
         "pk": 1,
         "model": "core.person",
         "fields": {
-            "name": "Babbage"
+            "name": "Babbage",
+            "slug": "babbage"
         }
     },
     {
         "pk": 2,
         "model": "core.person",
         "fields": {
-            "name": "Turing"
+            "name": "Turing",
+            "slug": "turing"
         }
     },
     {
         "pk": 3,
         "model": "core.person",
         "fields": {
-            "name": "Lovelace"
+            "name": "Lovelace",
+            "slug": "lovelace"
         }
     },
     {
         "pk": 1,
         "model": "core.concept",
         "fields": {
-            "name": "Computers"
+            "name": "Computers",
+            "slug": "computers"
         }
     },
     {
         "pk": 2,
         "model": "core.concept",
         "fields": {
-            "name": "Punch cards"
+            "name": "Punch cards",
+            "slug": "punch-cards"
         }
     },
     {
         "pk": 3,
         "model": "core.concept",
         "fields" : {
-            "name": "Jam"
+            "name": "Jam",
+            "slug": "jam"
         }
     },
     {
         "pk": 1,
         "model": "core.object",
         "fields" : {
-            "name": "Difference Engine"
+            "name": "Difference Engine",
+            "slug": "difference-engine"
         }
     },    
     {
         "pk": 2,
         "model": "core.object",
         "fields" : {
-            "name": "Analytic Engine"
+            "name": "Analytic Engine",
+            "slug": "analytic-engine"
         }
     },    
     {
         "pk": 1,
         "model": "core.event",
         "fields" : {
-            "name": ""
+            "name": "",
+            "slug": ""
         }
     },    
     {
