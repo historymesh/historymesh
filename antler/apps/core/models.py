@@ -42,8 +42,8 @@ class Edge(models.Model):
         "affected",
         "owned",
         "created",
-        "primary",
-        "secondary",
+        "primary", # For primary narrative threads
+        "secondary", # For secondary narrative threads
         "described_by", # For linking to StoryContent nodes
     ]
 
