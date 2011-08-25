@@ -24,8 +24,8 @@ class LayoutImage(View):
 
     width = 500
     height = 300
-    start_date = 1880
-    end_date = 2020
+    start_date = -1
+    end_date = 30
 
     def transform(self, node):
         x = (node.timeline_date - self.start_date) / float(self.end_date - self.start_date) * self.width
@@ -78,13 +78,13 @@ class NodeLayoutEngine(object):
     repulsion_min_distance = 3
     repulsion_max_distance = 25
 
-    attraction_factor = 0.5 # Range 0..1
+    attraction_factor = 0 # Range 0..1
     attraction_min_distance = 35
     attraction_max_distance = 100
 
     slowdown_factor = 1
 
-    vertical_separation = 30
+    vertical_separation = 60
 
     # How strong the push to get even angles should be; range 0..1
     angle_factor = 0.5
