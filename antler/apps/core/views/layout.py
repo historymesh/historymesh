@@ -15,8 +15,9 @@ class LayoutView(TemplateView):
         engine = NodeLayoutEngine()
         engine.lay_out()
         return {
-            "strings": engine.strings,
-            "nodes": engine.annotated_nodes(),
+            "strings": list(engine.strings),
+            "nodes": list(engine.annotated_nodes()),
+            "edges": list(engine.visible_edges()),
         }
 
 
