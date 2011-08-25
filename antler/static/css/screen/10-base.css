@@ -131,10 +131,6 @@ h4 {
 	text-transform: uppercase;
 }
 
-img {
-	border: 0;
-}
-
 p {
 	margin: 0 0 1em 0;
 }
@@ -205,12 +201,12 @@ header input {
 }
 
 .map {
-	position: absolute;
+	position: fixed;
 	left: 100px;
 	top: 45px;
 	width: 270px;
 	bottom: 0;
-	background: url(/static/img/.png);
+	background: url(/static/img/temp-sidebar-map.png) no-repeat right 50%;
 }
 
 .tail {
@@ -239,9 +235,27 @@ article {
 }	
 /* -- */
 
-.fr {
+figure {
+	display: block;
 	float: right;
 	margin: 0 0 2em 2em;
+	width: 250px;
+}
+
+img {
+	border: 0;
+}
+
+figure img {
+	max-width: 250px;
+	display: block;
+}
+
+figcaption {
+	display: block;
+	font-size: 12px;
+	margin: 3px 0 0 0;
+	color: #000;
 }
 
 .thread {
