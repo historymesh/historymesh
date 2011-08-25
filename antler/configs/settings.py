@@ -111,6 +111,7 @@ INSTALLED_APPS = (
     'core',
     'south',
     'search',
+    'django.contrib.markup',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
