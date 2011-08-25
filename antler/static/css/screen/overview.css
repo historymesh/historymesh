@@ -1,0 +1,21 @@
+.overview h2 {
+    font-weight:            bold;
+}
+
+.overview ol {
+    margin-bottom:          1em;
+}
+
+.overview li ul,
+.overview li li {
+    display:                inline-block;
+}
+
+.overview li li {
+    font-size:              11px;
+    padding:                2px;
+    margin-left:            3px;
+    background:             #eee;
+    -cp-border-radius:      2px;
+}
+

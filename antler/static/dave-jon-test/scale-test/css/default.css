@@ -1,0 +1,164 @@
+@import url("reset.css");
+@font-face {
+	font-family: NuvoMediumWOFF;
+	src: url(nuvo-medium-woff-demo.woff) format("woff");
+}
+
+
+																		/* -- Base HTML -- */
+
+a {
+	color: #C00;
+	text-decoration: none;
+}
+	a:hover {
+		color: #900;
+	}
+body {
+	font: 13px NuvoMediumWOFF, sans-serif;
+	color: #000;
+	background: #fff;
+}
+h1 {
+	font-size: 30px;
+}
+p {
+	font-size: 14px;
+	line-height: 1.5;
+	margin: 0.5em 0;
+}
+
+
+																												/* -- shared node style -- */
+.nodes li {
+	text-align: center;
+}
+.nodes li a, .nodes li a:visited {
+	display: block;
+}
+.nodes .label {
+	display: block;
+}
+.nodes .label:before {
+	content: " ";
+	background: #fff;
+	width: 15px;
+	height: 15px;
+	display: block;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	border: solid 10px #C00;
+	margin: 0 auto 10px auto;
+}
+	.nodes a:hover .label:before {
+		border-color: #900;
+		-webkit-box-shadow: rgba(255,255,255,0.5) 0 0 0 1px;
+	}
+.time-scale {
+	color: #ccc;
+	font-size: 10px;
+}
+
+
+																												/* -- horizontal nodes -- */
+.horizontal .nodes {
+	width: 100%;
+	margin: 55px 0 20px 0;
+	display: table;
+	border-top: solid 10px #C00;
+}
+.horizontal .nodes li {
+	display: table-cell;
+	position: relative;
+	top: -25px;
+}
+.horizontal .nodes .label {
+	display: block;	
+	-webkit-transform: rotate(45deg);
+	position: relative;
+}
+.horizontal .nodes .label:before {
+	margin-bottom: 20px;
+}
+.horizontal section {
+	margin: 0 10%;
+}
+.horizontal .time-scale {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: url(../scale-h.gif) repeat-x;
+}
+.horizontal .time-scale li {
+	float: left;
+	padding-top: 20px;
+	-webkit-transform: rotate(45deg);
+}
+	.horizontal .time-scale li:nth-child(1) {margin-left: 5px;}
+	.horizontal .time-scale li:nth-child(2) {margin-left: 65px;}
+	.horizontal .time-scale li:nth-child(3) {margin-left: 23px;}
+	.horizontal .time-scale li:nth-child(4) {margin-left: -2px;}
+	.horizontal .time-scale li:nth-child(5) {margin-left: 19px;}
+	.horizontal .time-scale li:nth-child(6) {margin-left: 3px;}
+	.horizontal .time-scale li:nth-child(7) {margin-left: -29px;}
+	.horizontal .time-scale li:nth-child(8) {margin-left: -30px;}
+	.horizontal .time-scale li:nth-child(9) {margin-left: -18px;}
+
+
+																												/* -- vertical nodes -- */
+.vertical .map {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 30%;
+	height: 100%;
+}
+.vertical .time-scale {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background: url(../scale-v.gif) repeat-y;
+	padding-left: 12px;
+}
+.vertical .time-scale li {
+	padding-bottom: 15px;
+}
+	.vertical .time-scale li:nth-child(1) {margin-top: -6px;}
+	.vertical .time-scale li:nth-child(2) {margin-top: 72px;}
+	.vertical .time-scale li:nth-child(3) {margin-top: 11px;}
+	.vertical .time-scale li:nth-child(5) {margin-top: 22px;}
+	.vertical .time-scale li:nth-child(6) {margin-top: 10px;}
+	.vertical .time-scale li:nth-child(7) {margin-top: -21px;}
+	.vertical .time-scale li:nth-child(8) {margin-top: -21px;}
+	.vertical .time-scale li:nth-child(9) {margin-top: -11px;}
+
+.vertical .nodes {
+	margin: 0;
+	padding: 0 0 0 80px;
+}
+.vertical .nodes .label {
+	clear: left;
+	line-height: 35px;
+	text-align: left;
+}
+.vertical .nodes .label:before {
+	float: left;
+	margin-right: 5%;
+}
+.vertical .nodes ol {
+	border-left: solid 10px #C00;
+}
+.vertical .nodes li {
+	position: relative;
+	padding: 5% 0 20% 0;
+	left: -22px;
+}
+.vertical section {
+	width: 60%;
+	padding: 5% 10% 0 30%;
+}
+
+

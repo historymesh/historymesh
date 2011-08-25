@@ -16,8 +16,10 @@ urlpatterns = patterns('',
     url(r'^object/(?P<pk>\d+)/$', nodes.ObjectView.as_view(), name="object"),
     url(r'^edge/$', edge.EdgeView.as_view(), name="edges"),
     url(r'^edge/(?P<pk>[0-9]+)/$', edge.EdgeEdit.as_view(), name="edge"),
-    url(r'^edge/create/$', edge.EdgeCreate.as_view(), name="create_edge"),
-    url(r'^layout/', layout.layout_view),
+    url(r'^edge/create/$', edge.EdgeCreate.as_view(), name="edge_create"),
+    url(r'^layout/$', layout.LayoutView.as_view()),
+    url(r'^layout/image/$', layout.LayoutImage.as_view()),
+    url(r'^overview/$', nodes.NodeIndexView.as_view()),
 )
 
 if settings.DEBUG:

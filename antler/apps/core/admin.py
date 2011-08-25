@@ -5,9 +5,10 @@ admin.site.register(
     Edge,
     list_display=[
         'id',
+        'story',
         'subject',
-        'object',
         'verb',
+        'object',
     ],
     list_filter = [
         'subject_type',
@@ -17,8 +18,8 @@ admin.site.register(
 )
 
 class NodeAdmin(admin.ModelAdmin):
-    list_display = ["name", "timeline_date", "display_date"]
-    list_editable = ["timeline_date", "display_date"]
+    list_display = ["name", "timeline_date", "display_date", "reference_url"]
+    list_editable = ["timeline_date", "display_date", "reference_url"]
 
 class StoryAdmin(admin.ModelAdmin):
     list_display = ["name"]

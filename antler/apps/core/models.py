@@ -200,6 +200,12 @@ class EdgesMixin(object):
             setup=True,
         )
 
+    def stories(self):
+        queryset = self.incoming() | self.outgoing()
+        queryset = queryset.filter(verb__in=['primary', 'secondary'])
+        story_ids = queryset.distinct().values_list('story', flat=True)
+        return Story.objects.in_bulk(list(story_ids)).values()
+
     def readable_name(self):
         return "%s (%s)" % (
             self.name,
@@ -222,11 +228,15 @@ class Node(models.Model, EdgesMixin):
     Abstract superclass for Nodes in our graph.
     """
 
+    hidden_in_map = False
+
     name = models.CharField(max_length=1024, unique=True)
     text = models.TextField(blank=True)
 
-    timeline_date = models.DateField(blank=True, null=True)
+    timeline_date = models.IntegerField(blank=True, null=True, help_text="Years since 0AD")
     display_date = models.CharField(max_length=255, blank=True)
+
+    reference_url = models.URLField(verify_exists=False, blank=True)
 
     class Meta:
         abstract = True
@@ -240,7 +250,7 @@ class Node(models.Model, EdgesMixin):
 
     @classmethod
     def all_child_classes(self):
-        return [Person, Event, Concept, Object, ExternalLink]
+        return [Person, Event, Concept, Object, ExternalLink, StoryContent]
 
 
 class Person(Node):
@@ -306,11 +316,14 @@ class Story(models.Model):
         story_edges = Edge.objects.filter(story=self)
         subject_nodes = set(edge.subject for edge in story_edges)
         object_nodes = set(edge.object for edge in story_edges)
-
         return (subject_nodes - object_nodes).pop()
+
+    def __unicode__(self):
+        return self.name
 
 class StoryContent(Node):
     """
     Extra info about a node relating to a story, for instance "Brunnel in Automota"
     """
-    pass
+    
+    hidden_in_map = True

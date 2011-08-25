@@ -10,6 +10,43 @@
     <style type="text/css">
       body { background: #ccc; }
       section { background: #fff; width: 1200px; height: 400px; }
+
+      .node-preview {
+        display:        table-cell;
+        vertical-align: middle;
+        cursor:         pointer;
+       }
+      .node-preview h4 {
+        background:     #444;
+        color:          #fff;
+        display:        inline-block;
+        font:           10px FreeSans, Helvetica, Arial, sans-serif;
+        margin:         0 -40px;
+        opacity:        0;
+        padding:        6px;
+        position:       relative;
+        text-align:     center;
+
+        -webkit-border-radius: 8px;
+           -moz-border-radius: 8px;
+                border-radius: 8px;
+
+        -webkit-transition: opacity 0.2s linear,
+                            top     0.2s ease-out;
+
+           -moz-transition: opacity 0.2s linear,
+                            top     0.2s ease-out;
+
+             -o-transition: opacity 0.2s linear,
+                            top     0.2s ease-out;
+
+            -ms-transition: opacity 0.2s linear,
+                            top     0.2s ease-out;
+      }
+      .selected .node-preview h4 {
+        opacity:        1;
+        top:            -50px;
+      }
     </style>
   </head>
   <body>
@@ -24,19 +61,24 @@
 
       var network = new Network('container');
 
-      var loom = network.addNode({
-        name:     'Jacquard Loom',
-        color:    '#f80',
-        position: [400, 270]
-      });
+      var internet = network.addNode({name: 'The Intarwebs', color: '#6cf', position: [550, 70]});
+      var nyan     = network.addNode({name: 'Nyan Cat',      color: '#6cf', position: [650, 70]});
 
-      var duck = network.addNode({
-        name:     'Robot duck',
-        color:    '#f80',
-        position: [550, 270]
-      });
+      var loom     = network.addNode({name: 'Jacquard Loom', color: '#f80', position: [400, 170]});
+      var duck     = network.addNode({name: 'Robot duck',    color: '#f80', position: [550, 170]});
+      var ada      = network.addNode({name: 'Ada Lovelace',  color: '#f80', position: [650, 170]});
+
+      var mine     = network.addNode({name: 'Minecraft',     color: '#3c6', position: [650, 270]});
+      var devfort  = network.addNode({name: '/dev/fort',     color: '#3c6', position: [800, 270]});
 
       loom.leadsTo(duck);
+      duck.leadsTo(ada);
+
+      duck.leadsTo(mine);
+      mine.leadsTo(devfort);
+
+      loom.leadsTo(internet);
+      internet.leadsTo(nyan);
 
       network.draw();
 

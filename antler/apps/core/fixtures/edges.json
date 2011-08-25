@@ -7,6 +7,20 @@
         }
     },
     {
+        "pk": 2,
+        "model": "core.person",
+        "fields": {
+            "name": "Turing"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "core.person",
+        "fields": {
+            "name": "Lovelace"
+        }
+    },
+    {
         "pk": 1,
         "model": "core.concept",
         "fields": {
@@ -27,6 +41,27 @@
             "name": "Jam"
         }
     },
+    {
+        "pk": 1,
+        "model": "core.object",
+        "fields" : {
+            "name": "Difference Engine"
+        }
+    },    
+    {
+        "pk": 2,
+        "model": "core.object",
+        "fields" : {
+            "name": "Analytic Engine"
+        }
+    },    
+    {
+        "pk": 1,
+        "model": "core.event",
+        "fields" : {
+            "name": ""
+        }
+    },    
     {
         "pk": 1,
         "model": "core.edge",
@@ -59,6 +94,84 @@
             "object_id": 2,
             "verb": "invented"
         }
+    },
+    {
+        "pk": 4,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 1,
+            "object_type": "core.object",
+            "object_id": 1,
+            "verb": "invented"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 1,
+            "object_type": "core.object",
+            "object_id": 2,
+            "verb": "invented"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 2,
+            "object_type": "core.concept",
+            "object_id": 1,
+            "verb": "invented"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.object",
+            "subject_id": 2,
+            "object_type": "core.person",
+            "object_id": 2,
+            "verb": "inspired"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 1,
+            "object_type": "core.person",
+            "object_id": 2,
+            "verb": "dined_with"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 2,
+            "object_type": "core.person",
+            "object_id": 1,
+            "verb": "dined_with"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 3,
+            "object_type": "core.person",
+            "object_id": 2,
+            "verb": "inspired"
+        }
     }
+
 ]
 

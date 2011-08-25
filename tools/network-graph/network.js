@@ -1,5 +1,5 @@
 Network = function(container, width, height) {
-  var el = jQuery('#' + container);
+  var el = $('#' + container);
 
   this._paper = Raphael(container, width, height);
   this._nodes = {};
@@ -11,7 +11,7 @@ Network = function(container, width, height) {
   var self   = this,
       width  = el.width(),
       height = el.height(),
-      wrap   = jQuery('<div></div>');
+      wrap   = $('<div></div>');
 
   wrap.css({
     position: 'relative',
@@ -83,6 +83,11 @@ $.extend(Network.prototype, {
     this._offsetTop  += this._dragTop;
   },
 
+  hidePreviews: function() {
+    for (var id in this._nodes)
+      this._nodes[id].hide();
+  },
+
   _nextId: function() {
     this._autoinc = this._autoinc || 0;
     this._autoinc += 1;
@@ -106,6 +111,40 @@ $.extend(Network.Node.prototype, {
   draw: function() {
     if (this._circle) return this._circle;
 
+    this._preview = this._renderPreview();
+    return this._circle = this._renderCircle();
+  },
+
+  _renderPreview: function() {
+    var preview = $('<div>' +
+                      '<div class="node-preview">' +
+                        '<h4>' + this._data.name + '</h4>' +
+                      '</div>' +
+                    '</div>');
+
+    var radius = this._network.nodeRadius,
+        pos    = this._data.position,
+        el     = this._network._container,
+        self   = this;
+
+    preview.css({
+      position:   'absolute',
+      left:       (pos[0] - radius / 2) + 'px',
+      top:        (pos[1] - radius / 2) + 'px',
+      width:      radius + 'px',
+      height:     radius + 'px',
+      textAlign:  'center',
+      display:    'table'
+    });
+    el.append(preview);
+
+    preview.mouseover(function() { self.preview() });
+    preview.click(function() { self.visit() });
+
+    return preview;
+  },
+
+  _renderCircle: function() {
     var paper  = this._network._paper,
         data   = this._data,
         pos    = data.position,
@@ -119,13 +158,20 @@ $.extend(Network.Node.prototype, {
       'stroke':       color,
       'stroke-width': radius * 0.75
     });
-    circle.click(this.visit, this);
-
-    return this._circle = circle;
+    return circle;
   },
 
   leadsTo: function(node) {
     return this._network.addEdge(this, node);
+  },
+
+  preview: function() {
+    this._network.hidePreviews();
+    this._preview.addClass('selected');
+  },
+
+  hide: function() {
+    this._preview.removeClass('selected');
   },
 
   visit: function() {

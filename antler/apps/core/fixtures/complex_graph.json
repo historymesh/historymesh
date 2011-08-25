@@ -1,0 +1,217 @@
+[
+    {
+        "pk": 1,
+        "model": "core.story",
+        "fields": {"name": "Layout test"}
+    },
+
+    {
+        "pk": 1,
+        "model": "core.person",
+        "fields": {
+            "name": "A",
+            "timeline_date": 1900
+        }
+    },
+    {
+        "pk": 2,
+        "model": "core.person",
+        "fields": {
+            "name": "B",
+            "timeline_date": 1920
+        }
+    },
+    {
+        "pk": 3,
+        "model": "core.person",
+        "fields": {
+            "name": "C",
+            "timeline_date": 1940
+        }
+    },
+    {
+        "pk": 4,
+        "model": "core.person",
+        "fields": {
+            "name": "D",
+            "timeline_date": 1920
+        }
+    },
+    {
+        "pk": 5,
+        "model": "core.person",
+        "fields": {
+            "name": "E",
+            "timeline_date": 1940
+        }
+    },
+    {
+        "pk": 6,
+        "model": "core.person",
+        "fields": {
+            "name": "F",
+            "timeline_date": 1960
+        }
+    },
+    {
+        "pk": 7,
+        "model": "core.person",
+        "fields": {
+            "name": "G",
+            "timeline_date": 1980
+        }
+    },
+    {
+        "pk": 8,
+        "model": "core.person",
+        "fields": {
+            "name": "H",
+            "timeline_date": 1960
+        }
+    },
+    {
+        "pk": 9,
+        "model": "core.person",
+        "fields": {
+            "name": "I",
+            "timeline_date": 1980
+        }
+    },
+    {
+        "pk": 10,
+        "model": "core.person",
+        "fields": {
+            "name": "J",
+            "timeline_date": 2000
+        }
+    },
+    {
+        "pk": 11,
+        "model": "core.person",
+        "fields": {
+            "name": "K",
+            "timeline_date": 2000
+        }
+    },
+
+    {
+        "pk": 1,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 1,
+            "object_type": "core.person",
+            "object_id": 2,
+            "verb": "primary",
+            "story": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 2,
+            "object_type": "core.person",
+            "object_id": 3,
+            "verb": "primary",
+            "story": 1
+        }
+    },
+    {
+        "pk": 3,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 4,
+            "object_type": "core.person",
+            "object_id": 5,
+            "verb": "primary",
+            "story": 1
+        }
+    },
+    {
+        "pk": 4,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 3,
+            "object_type": "core.person",
+            "object_id": 6,
+            "verb": "primary",
+            "story": 1
+        }
+    },
+    {
+        "pk": 5,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 3,
+            "object_type": "core.person",
+            "object_id": 8,
+            "verb": "primary",
+            "story": 1
+        }
+    },
+    {
+        "pk": 6,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 5,
+            "object_type": "core.person",
+            "object_id": 8,
+            "verb": "primary",
+            "story": 1
+        }
+    },
+    {
+        "pk": 7,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 6,
+            "object_type": "core.person",
+            "object_id": 7,
+            "verb": "primary",
+            "story": 1
+        }
+    },
+    {
+        "pk": 8,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 8,
+            "object_type": "core.person",
+            "object_id": 9,
+            "verb": "primary",
+            "story": 1
+        }
+    },
+    {
+        "pk": 9,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 7,
+            "object_type": "core.person",
+            "object_id": 10,
+            "verb": "primary",
+            "story": 1
+        }
+    },
+    {
+        "pk": 10,
+        "model": "core.edge",
+        "fields": {
+            "subject_type": "core.person",
+            "subject_id": 7,
+            "object_type": "core.person",
+            "object_id": 11,
+            "verb": "primary",
+            "story": 1
+        }
+    }
+]

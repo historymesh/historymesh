@@ -34,4 +34,17 @@ class ConceptView(NodeView):
 
 
 class ObjectView(NodeView):
-    model = Object    
+    model = Object
+
+
+class NodeIndexView(TemplateView):
+    template_name = 'nodes/index.html'
+
+    def get_context_data(self):
+        return {
+            'people': Person.objects.order_by('timeline_date'),
+            'events': Event.objects.order_by('timeline_date'),
+            'concepts': Concept.objects.order_by('timeline_date'),
+            'objects': Object.objects.order_by('timeline_date'),
+        }
+

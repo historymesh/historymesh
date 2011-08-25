@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body-class %}homepage{% endblock %}
+
+{% block content %}
+
+<img src="image/" />
+
+<h2>Strings</h2>
+<ul>
+    {% for start, string in strings.items %}
+        <li>{{ start }}: {{ string }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Positions</h2>
+<ul>
+    {% for node in nodes %}
+        <li>{{ node }}: {{ node.timeline_date }}, {{ node.position }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
