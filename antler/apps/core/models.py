@@ -475,11 +475,17 @@ class StoryContent(BaseNode):
 
     @property
     def story(self):
-        return self.incoming("described_by").get(story__isnull=False).story
+        try:
+            return self.incoming("described_by").get(story__isnull=False).story
+        except Edge.DoesNotExist:
+            return None
 
     @property
     def name(self):
-        return self.story.name
+        try:
+            return self.story.name
+        except AttributeError:
+            return "Unknown"
     
     def url(self):
         return "/"
