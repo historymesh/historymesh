@@ -9,63 +9,23 @@
 
 <h2>People</h2>
 <ol>
-{% for person in people %}
-    <li>
-        {{person.timeline_date}}:
-        <a href='{{person.url}}'>{{person.name}}</a>
-        <ul>
-        {% for story in person.stories %}
-            <li>{{story.name}}</li>
-        {% endfor %}
-        </ul>
-    </li>
-{% endfor %}
-</ol>
-
-<h2>Concepts</h2>
-<ol>
-{% for concept in concepts %}
-    <li>
-        {{concept.timeline_date}}:
-        <a href='{{concept.url}}'>{{concept.name}}</a>
-        <ul>
-        {% for story in concept.stories %}
-            <li>{{story.name}}</li>
-        {% endfor %}
-        </ul>
-    </li>
+{% for node in people %}
+{% include "nodes/_node_in_list.html" %}
 {% endfor %}
 </ol>
 
 <h2>Objects</h2>
 <ol>
-{% for object in objects %}
-    <li>
-        {{object.timeline_date}}:
-        <a href='{{object.url}}'>{{object.name}}</a>
-        <ul>
-        {% for story in object.stories %}
-            <li>{{story.name}}</li>
-        {% endfor %}
-        </ul>
-    </li>
+{% for node in objects %}
+{% include "nodes/_node_in_list.html" %}
 {% endfor %}
 </ol>
 
 <h2>Events</h2>
 <ol>
-{% for event in events %}
-    <li>
-        {{event.timeline_date}}:
-        <a href='{{event.url}}'>{{event.name}}</a>
-        <ul>
-        {% for story in event.stories %}
-            <li>{{story.name}}</li>
-        {% endfor %}
-        </ul>
-    </li>
+{% for node in events %}
+{% include "nodes/_node_in_list.html" %}
 {% endfor %}
 </ol>
 
 {% endblock %}
-
