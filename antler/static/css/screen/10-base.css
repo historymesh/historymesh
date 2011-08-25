@@ -138,6 +138,7 @@ p {
 footer  {
 	clear: both;
 	margin-top: 2em;
+	padding: 0 2em 2em 2em;
 }
 
 section {
@@ -235,15 +236,6 @@ header input {
 	margin: 20px 0 150px 0;
 }
 
-.map {
-	position: fixed;
-	left: 100px;
-	top: 45px;
-	width: 270px;
-	bottom: 0;
-	background: url(/static/img/temp-sidebar-map.png) no-repeat right 50%;
-}
-
 .tail {
 	position: fixed;
 	left: 380px;
@@ -259,11 +251,9 @@ header input {
 /* ================= */
 /* ! Home Page		   */
 /* ================= */
-.home article {
-	margin: 0;
-}
 div.home {
-	padding-top: 4em;
+	padding: 5em 2em 1px 2em;
+	background: #fff;
 }
 .home h3 {
 	font-size: 1.2em;
@@ -276,13 +266,36 @@ div.home {
 	margin-left: 11%;
 	float: left;
 }
+.home .map {
+	background: #fff;
+	border: solid 1px #ccc;
+	border-width: 1px 0;
+	padding: 1em 0;
+}
+/*! verbatim */
+	/* Norm, add border-width to this thing maybe? */
+.home .map {
+	border-width: 1px 0;
+}
+/* -- */
+
+
+
 
 
 /* ================= */
-/* ! Article Pages   */
+/* ! Node Pages   */
 /* ================= */
+.node .map {
+	position: fixed;
+	left: 100px;
+	top: 45px;
+	width: 270px;
+	bottom: 0;
+	background: url(/static/img/temp-sidebar-map.png) no-repeat right 50%;
+}
 
-article {
+.node article {
 	position: relative;
 	z-index: 1;
 	margin: 0 0 0 400px;
@@ -389,7 +402,7 @@ figcaption {
 	padding: 7px 0;
 }
 /*! verbatim */
-	/* Norm, add border-width */
+	/* Norm, add border-width to this thing maybe? */
 .storynav {
 	border-width: 1px 0;
 }
