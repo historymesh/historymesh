@@ -25,11 +25,11 @@ class LayoutImage(View):
 
     width = 500
     height = 300
-    start_date = 0
-    end_date = 120
 
     def transform(self, node):
-        x = (self.engine.node_horizontal_position(node) - self.start_date) / float(self.end_date - self.start_date) * self.width
+        start_date = self.engine.horizontal_start
+        end_date = self.engine.horizontal_end
+        x = (self.engine.node_horizontal_position(node) - start_date) / float(end_date - start_date) * self.width
         y = (self.height / 2) + (self.engine.node_position(node) * 1)
         return x, y
 
@@ -75,7 +75,7 @@ class NodeLayoutEngine(object):
 
     iterations = 1000
 
-    repulsion_factor = 2 # Range 0..1
+    repulsion_factor = 0.2 # Range 0..1
     repulsion_min_distance = 3
     repulsion_max_distance = 100
 
@@ -88,16 +88,16 @@ class NodeLayoutEngine(object):
     vertical_separation = 60
 
     # How strong the push to get even angles should be; range 0..1
-    angle_factor = 0.2
+    angle_factor = 0.1
 
     # How strong a push to make to fix crossovers
     crossover_factor = 0.5
 
     # Minimum distance to use when calculating crossover pushes
-    crossover_min = 10
+    crossover_min = 20
 
     # Stop iterating if the total movement is less than this.
-    minimum_total_movement = 0.01
+    minimum_total_movement = 0.1
 
     max_node_distance = 5
 
@@ -221,120 +221,139 @@ class NodeLayoutEngine(object):
         #print string, string.left_strings, string.right_strings
         #print self.string_edges
 
+    def init_forces(self):
+        forces = {}
+        for string in self.strings:
+            forces[string] = 0
+        return forces
+
     def position_strings(self):
         """
         Goes through the strings and lays them out along the
         non-time axis.
         """
         for i in range(self.iterations):
-            # Work out slowdown/friction multiplier
-            slowdown = (1 - (1.0/self.iterations) * i)
+            forces = self.init_forces()
+            self.set_forces_from_overlaps(forces, i)
+            if not self.apply_forces(forces, i):
+                break
 
-            forces = {}
+        for i in range(self.iterations):
             # First pass: calculate forces
-            for string in self.strings:
-                forces[string] = 0
-            for string in self.strings:
-                # First, find all other strings that overlap us
-                overlapping_strings = [
-                    other_string
-                    for other_string in self.strings
-                    if (
-                        string != other_string and 
-                        string.overlaps(other_string)
-                    )
-                ]
-                # Then, work out the repulsion for each
-                for other_string in overlapping_strings:
-                    if string.position < other_string.position:
-                        direction = -1
-                    else:
-                        direction = 1
-                    sub_force = (
-                        self.calculate_repulsion(string, other_string) -
-                        self.calculate_attraction(string, other_string)
-                    ) * direction 
-                    forces[string] += sub_force * slowdown
-                # Now, run the angle solver
-                number_left_strings = len(string.left_strings)
-                number_right_strings = len(string.right_strings)
-                if number_left_strings > 1:
-                    delta = (
-                        self.vertical_separation *
-                        0.5 *
-                        math.tan(
-                            math.pi / (float(number_left_strings * 2))
-                        )
-                    )
-                    left_strings = sorted(
-                        string.left_strings,
-                        key = lambda string: string.position,
-                    )
-                    for j, other_string in enumerate(left_strings):
-                        number_deltas = (
-                            (j * 2) -
-                            (number_left_strings - 1)
-                        )
-                        target_position = (
-                            string.position +
-                            (delta * number_deltas)
-                        )
-                        offset = target_position - other_string.position
-                        forces[other_string] += (
-                           offset * self.angle_factor * slowdown
-                        )
-                if number_right_strings > 1:
-                    delta = (
-                        self.vertical_separation *
-                        0.5 *
-                        math.tan(
-                            math.pi / (float(number_right_strings * 2))
-                        )
-                    )
-                    right_strings = sorted(
-                        string.right_strings,
-                        key = lambda string: string.position,
-                    )
-                    for j, other_string in enumerate(right_strings):
-                        number_deltas = (
-                            (j * 2) -
-                            (number_right_strings - 1)
-                        )
-                        target_position = (
-                            string.position +
-                            (delta * number_deltas)
-                        )
-                        offset = target_position - other_string.position
-                        forces[other_string] += (
-                           offset * self.angle_factor * slowdown
-                        )
+            forces = self.init_forces()
 
-            # Second pass: look for crossovers, and replace the force with
-            # something to help resolve the crossover.
-            for edge in self.string_edges:
-                # Look for crossovers on the left.
-                for other_edge in self.string_edges:
-                    if other_edge == edge:
-                        continue
-                    if not other_edge.overlaps(edge):
-                        continue
-                    if edge.crosses(other_edge):
-                        print "Pushing to fix crossover of %s %s" % (
-                            edge, other_edge)
-                        self.push_to_resolve_crossing(forces, edge, other_edge)
+            self.set_forces_from_connections(forces, i)
+            self.set_forces_from_overlaps(forces, i)
+            if not self.apply_forces(forces, i):
+                break
 
-                for string in self.strings:
-                    if edge.crosses(string):
-                        print "String crossing"
-                        self.push_to_resolve_crossing(forces, edge, string)
+    def set_forces_from_connections(self, forces, i):
+        # Work out slowdown/friction multiplier
+        slowdown = (1 - (1.0/self.iterations) * i)
 
-            # Third pass: USE THE FORCE
-            moved = sum(map(abs, forces.values()))
-            print "Iteration %i: Moved %s, %s" % (i, moved, slowdown)
+        for string in self.strings:
+            # First, find all other strings that overlap us
+            overlapping_strings = [
+                other_string
+                for other_string in self.strings
+                if (
+                    string != other_string and 
+                    string.overlaps(other_string)
+                )
+            ]
+            # Then, work out the repulsion for each
+            for other_string in overlapping_strings:
+                if string.position < other_string.position:
+                    direction = -1
+                else:
+                    direction = 1
+                sub_force = (
+                    self.calculate_repulsion(string, other_string) -
+                    self.calculate_attraction(string, other_string)
+                ) * direction 
+                forces[string] += sub_force * slowdown
+            # Now, run the angle solver
+            number_left_strings = len(string.left_strings)
+            number_right_strings = len(string.right_strings)
+            if number_left_strings > 1:
+                delta = (
+                    self.vertical_separation *
+                    0.5 *
+                    math.tan(
+                        math.pi / (float(number_left_strings * 2))
+                    )
+                )
+                left_strings = sorted(
+                    string.left_strings,
+                    key = lambda string: string.position,
+                )
+                for j, other_string in enumerate(left_strings):
+                    number_deltas = (
+                        (j * 2) -
+                        (number_left_strings - 1)
+                    )
+                    target_position = (
+                        string.position +
+                        (delta * number_deltas)
+                    )
+                    offset = target_position - other_string.position
+                    forces[other_string] += (
+                        offset * self.angle_factor * slowdown
+                    )
+            if number_right_strings > 1:
+                delta = (
+                    self.vertical_separation *
+                    0.5 *
+                    math.tan(
+                        math.pi / (float(number_right_strings * 2))
+                    )
+                )
+                right_strings = sorted(
+                    string.right_strings,
+                    key = lambda string: string.position,
+                )
+                for j, other_string in enumerate(right_strings):
+                    number_deltas = (
+                        (j * 2) -
+                        (number_right_strings - 1)
+                    )
+                    target_position = (
+                        string.position +
+                        (delta * number_deltas)
+                    )
+                    offset = target_position - other_string.position
+                    forces[other_string] += (
+                        offset * self.angle_factor * slowdown
+                    )
+
+    def set_forces_from_overlaps(self, forces, i):
+        for edge in self.string_edges:
+            # Look for crossovers on the left.
+            for other_edge in self.string_edges:
+                if other_edge == edge:
+                    continue
+                if not other_edge.overlaps(edge):
+                    continue
+                if edge.crosses(other_edge):
+                    print "Pushing to fix crossover of %s %s" % (
+                        edge, other_edge)
+                    self.push_to_resolve_crossing(forces, edge, other_edge)
+
             for string in self.strings:
-                string.position += forces[string]
-            if moved < self.minimum_total_movement:
-                return
+                if edge.crosses(string):
+                    print "Pushing to fix crossover of %s %s" % (
+                        edge, string)
+                    self.push_to_resolve_crossing(forces, edge, string)
+
+    def apply_forces(self, forces, i):
+        """USE THE FORCE
+
+        """
+        moved = sum(map(abs, forces.values()))
+        print "Iteration %i: Moved %s" % (i, moved)
+        for string in self.strings:
+            string.position += forces[string]
+        return moved >= self.minimum_total_movement
 
     def push_to_resolve_crossing(self, forces, edge, other_edge):
         left_diff = abs(other_edge.start_position - edge.start_position)
@@ -345,21 +364,21 @@ class NodeLayoutEngine(object):
             push = max(abs(edge.start_position - other_edge.start_position),
                        self.crossover_min) * self.crossover_factor
             if edge.start_position < other_edge.start_position:
-                forces[edge.left] = push
-                forces[other_edge.left] = -push
+                forces[edge.left] += push
+                forces[other_edge.left] += -push
             else:
-                forces[edge.left] = -push
-                forces[other_edge.left] = push
+                forces[edge.left] += -push
+                forces[other_edge.left] += push
         else:
             # Push right hand strings to crossover
             push = max(abs(edge.end_position - other_edge.end_position),
                        self.crossover_min) * self.crossover_factor
             if edge.end_position < other_edge.end_position:
-                forces[edge.right] = push
-                forces[other_edge.right] = -push
+                forces[edge.right] += push
+                forces[other_edge.right] += -push
             else:
-                forces[edge.right] = -push
-                forces[other_edge.right] = push
+                forces[edge.right] += -push
+                forces[other_edge.right] += push
 
     def set_forces_to_flip(self, forces, edge):
         """Set the forces on the strings at each end of an edge to push towards
@@ -430,6 +449,7 @@ class String(object):
         )
         gen = random.Random(x=hash(self.nodes) + 1)
         self.position = gen.random() * 70
+        print "Initialpos %s for %r" % (self.position, self)
     
     @property
     def start(self):
@@ -473,7 +493,6 @@ class String(object):
         return item in self.nodes
     
     def overlaps(self, other):
-        print repr(other.end), repr(self.end)
         return (
             not (self.start > other.end + 0.5) and
             not (other.start > self.end + 0.5)
