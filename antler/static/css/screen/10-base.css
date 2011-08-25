@@ -352,7 +352,7 @@ div.home {
 	position: relative;
 	z-index: 1;
 	margin: 0 0 0 400px;
-	padding: 7em 2em 6em 2em;
+	padding: 8em 2em 6em 2em;
 	overflow: auto;
 	background: #fff;
 }
@@ -360,10 +360,10 @@ div.home {
 .prev-next {
 	width: 88px;
 	height: 44px;
-	margin: 0;
+	margin: 0 0 0 -9px;
 	position: absolute;
-	left: -7px;
-	top: 4em;
+	left: 2em;
+	top: 5.5em;
 }
 	.prev-next li {
 		width: 40px;
