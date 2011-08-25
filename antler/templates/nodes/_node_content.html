@@ -1,3 +1,4 @@
+{% load markup %}
 {% if story %}
 	<ol class="prev-next">
 {% if story.previous %}
@@ -85,3 +86,8 @@
 		<li>
 			<h4>Next in <span class="auto">{{ story.name }}</span></h4>
 			<h3 class="thread auto"><a rel='next' href='{{ story.next.url }}?story={{ story.slug }}'>{{ story.next.name }}</a></h3>
+
+		</li>
+{% endif %}
+	</ol>
+{% endfor %}
