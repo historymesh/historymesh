@@ -15,6 +15,16 @@
 {% endif %}
 </ol>
 
+
+{% if user.is_authenticated %}
+<a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit in Admin</a>
+{% if current_story_content %}
+<a href="/admin/core/storycontent/{{ current_story_content.pk }}/">Edit Story Content</a>
+{% else %}
+<a href="/admin/core/storycontent/add/?">Add Story Content</a>
+{% endif %}
+{% endif %}
+
 {{subject.text|linebreaks}}
 
 {% if current_story_content %}

@@ -257,9 +257,30 @@ class EdgesMixin(object):
         )
 
 
-class Node(models.Model, EdgesMixin):
+class BaseNode(models.Model, EdgesMixin):
     """
-    Abstract superclass for Nodes in our graph.
+    Abstract base for nodes - has no fields, only useful
+    methods.
+    """
+
+    class Meta:
+        abstract = True
+
+    def __unicode__(self):
+        return "%s (%s:%d)" % (
+            self.name,
+            self._meta.object_name,
+            self.pk,
+        )
+
+    def object_name(self):
+        return self._meta.object_name.lower()
+
+
+class Node(BaseNode):
+    """
+    Abstract superclass for Nodes in our graph that have
+    a presence in time.
     """
 
     hidden_in_map = False
@@ -275,13 +296,6 @@ class Node(models.Model, EdgesMixin):
 
     class Meta:
         abstract = True
-
-    def __unicode__(self):
-        return "%s (%s:%d)" % (
-            self.name,
-            self._meta.object_name,
-            self.pk,
-        )
 
     @classmethod
     def all_child_classes(self):
@@ -333,7 +347,7 @@ class Object(Node):
         return reverse('object', kwargs={'slug': self.slug})
 
 
-class ExternalLink(models.Model, EdgesMixin):
+class ExternalLink(BaseNode):
     """
     A link to an external site.
     """
@@ -351,7 +365,7 @@ class ExternalLink(models.Model, EdgesMixin):
         )
 
 
-class Image(models.Model, EdgesMixin):
+class Image(BaseNode):
     """
     An image attached to one or more other nodes.
     """
