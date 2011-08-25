@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% load markup %}
 
 {% block page_title %}{{ subject.name }}{% if story %} {{ story.slug }}{% endif %}{% endblock %}
-{% block body-class %}node{% endblock %}
+{% block body-class %}view-node{% endblock %}
 
 {% block view_toggle %}
 		<nav>
@@ -13,6 +13,16 @@
 {% endblock %}
 
 {% block content %}
+
+	<ol class="timeline">
+		<li>BCE/CE</li>
+		<li>1000</li>
+		<li>1200</li>
+		<li>1600</li>
+		<li>1700</li>
+		<li>1800</li>
+		<li>1900</li>
+	</ol>
 
 	<div class="map"></div>
 	

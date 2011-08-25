@@ -210,7 +210,13 @@ header nav {
 	header nav li.current a, header nav li.current a:visited {
 		background: #a3a3a3;
 		-cp-border-radius: 24px;
+		-webkit-box-shadow: #000 inset 0 1px 0;
 	}
+/*! verbatim */
+header nav li.current a, header nav li.current a:visited {
+	-webkit-box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
+}	
+/* -- */
 
 header input {
 	float: right;
@@ -222,10 +228,10 @@ header input {
 .timeline {
 	position: fixed;
 	z-index: 0;
-	left:0;
-	right: 0;
-	top:120px;
+	left: 0;
 	bottom: 0;
+	top: 120px;
+	width: 400px;
 	font-size: 11px;
 	color: #aaa;
 }
@@ -281,12 +287,25 @@ div.home {
 
 
 
+/* ================= */
+/* ! Map View			   */
+/* ================= */
+
+.view-map .map {
+	margin-top: 40px;
+	padding: none;
+	border-bottom: solid 1px #ccc;
+}
+	.view-map .map img {
+		line-height: 1;
+	}
+
 
 
 /* ================= */
-/* ! Node Pages   */
+/* ! Node Pages   	 */
 /* ================= */
-.node .map {
+.view-node .map {
 	position: fixed;
 	left: 100px;
 	top: 45px;
@@ -295,7 +314,7 @@ div.home {
 	background: url(/static/img/temp-sidebar-map.png) no-repeat right 50%;
 }
 
-.node article {
+.view-node article {
 	position: relative;
 	z-index: 1;
 	margin: 0 0 0 400px;
