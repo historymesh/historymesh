@@ -11,6 +11,7 @@ html {
 
 body {
     -webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
 }
 
 body,
@@ -116,4 +117,10 @@ samp,
 tt {
     font-family:            monospace;
     line-height:            100%;
+}
+
+
+/* HTML5 tags */
+header,hgroup,footer,nav,aside,section, article { 
+	display: block; 
 }
