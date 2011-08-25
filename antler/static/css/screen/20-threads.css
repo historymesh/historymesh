@@ -2,45 +2,15 @@
 /* ! Thread Colours   */
 /* ================== */
 
-/*
-.c1, .auto   { color: #e03c31;}
-.c2, .comp  { color: #1945ec;}
-.c3, .medic  { color: #f5b133;}
-.c4  { color: #309e1d;}
-.c5  { color: #000000;}
-.c6  { color: #e55ffe;}
-.c7  { color: #83b3f2;}
-.c8  { color: #fcd933;}
-.c9  { color: #baf41a;}
-.c10 { color: #bdbdbd;}
-.c11 { color: #79221b;}
-.c12 { color: #233168;}
-.c13 { color: #6a5327;}
-.c14 { color: #273924;}
-
-.bgc2  { background-color: #1945ec;}
-.bgc3  { background-color: #f5b133;}
-.bgc4  { background-color: #309e1d;}
-.bgc5  { background-color: #000000;}
-.bgc6  { background-color: #e55ffe;}
-.bgc7  { background-color: #83b3f2;}
-.bgc8  { background-color: #fcd933;}
-.bgc9  { background-color: #baf41a;}
-.bgc10 { background-color: #bdbdbd;}
-.bgc11 { background-color: #79221b;}
-.bgc12 { background-color: #233168;}
-.bgc13 { background-color: #6a5327;}
-.bgc14 { background-color: #273924;}
-
-*/
-
 /*! verbatim */
 	/* pre-parser don't do generated content */
 .story-automatons .story-name, .story-automatons .story-name a {color: #e03c31;}
 .story-computing .story-name, .story-computing .story-name a {color: #1945ec;}
 .story-power .story-name, .story-power .story-name a {color: #f5b133;}
+.story-textiles .story-name, .story-textiles .story-name a {color: #309e1d;}
 
 li.story-automatons h3:before, .story-automatons .prev-next li { background-color: #e03c31;}
 li.story-computing h3:before, .story-computing .prev-next li { background-color: #1945ec;}
 li.story-power h3:before, .story-power .prev-next li { background-color: #f5b133;}
+li.story-textiles h3:before, .story-textiles .prev-next li { background-color: #f5b133;}
 /* -- */
