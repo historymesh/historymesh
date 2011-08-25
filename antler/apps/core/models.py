@@ -230,6 +230,8 @@ class Node(models.Model, EdgesMixin):
     timeline_date = models.IntegerField(blank=True, null=True, help_text="Years since 0AD")
     display_date = models.CharField(max_length=255, blank=True)
 
+    reference_url = models.URLField(verify_exists=False, blank=True)
+
     class Meta:
         abstract = True
 
