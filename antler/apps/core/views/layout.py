@@ -90,7 +90,7 @@ class NodeLayoutEngine(object):
     angle_factor = 0.5
 
     # How strong a push to make to fix crossovers
-    crossover_factor = 0.1
+    crossover_factor = 0.5
 
     # Minimum distance to use when calculating crossover pushes
     crossover_min = 10
@@ -321,7 +321,7 @@ class NodeLayoutEngine(object):
 
         if left_diff < right_diff:
             # Push left hand strings to crossover
-            push = min(abs(edge.start_position - other_edge.start_position),
+            push = max(abs(edge.start_position - other_edge.start_position),
                        self.crossover_min) * self.crossover_factor
             if edge.start_position < other_edge.start_position:
                 forces[edge.left] = push
@@ -331,7 +331,7 @@ class NodeLayoutEngine(object):
                 forces[other_edge.left] = push
         else:
             # Push right hand strings to crossover
-            push = min(abs(edge.end_position - other_edge.end_position),
+            push = max(abs(edge.end_position - other_edge.end_position),
                        self.crossover_min) * self.crossover_factor
             if edge.end_position < other_edge.end_position:
                 forces[edge.right] = push
@@ -403,7 +403,7 @@ class String(object):
         self.nodes = tuple(
             sorted(nodes, key=lambda node: node.timeline_date)
         )
-        gen = random.Random(x=hash(self.nodes))
+        gen = random.Random(x=hash(self.nodes) + 2)
         self.position = gen.random() * 70
     
     @property
