@@ -511,8 +511,6 @@ h1 .meta {
 }
 /* -- */
 	.storynav-lg .tertiary {
-		border-top: solid 1px #ccc;
-		padding-top: 7px;
 		margin-top: 7px;
 	}
 .storynav-lg ol {
@@ -694,7 +692,7 @@ noscript {
 
 }
 .noscript article {
-	margin: 0 0 0 200px;	
+	margin: 0 0 0 200px;
 }
 
 .timeline {
