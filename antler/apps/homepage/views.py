@@ -7,5 +7,5 @@ class HomepageView(TemplateView):
     
     def get_context_data(self):
         return {
-            'stories': Story.objects.all()
+            'stories': Story.objects.filter(featured=True)
         }
