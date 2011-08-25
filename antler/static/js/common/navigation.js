@@ -10,7 +10,7 @@ jQuery(function($) {
         var outInProgress = false,
             inWaiting = null;
 
-        var goOut = function() {
+        var fadeOut = function() {
             // Indicate out is in progress so that in won't try running at the
             // same time
             outInProgress = true;
@@ -22,12 +22,12 @@ jQuery(function($) {
             // run in again.
             outInProgress = false;
             if(inWaiting) {
-                goIn(inWaiting);
+                fadeIn(inWaiting);
                 inWaiting = null;
             }
         };
 
-        var goIn = function(data) {
+        var fadeIn = function(data) {
             // Don't transition in if we're still transitioning out
             // By setting inWaiting we instruct out to call in when it finishes
             if(outInProgress) {
@@ -43,7 +43,7 @@ jQuery(function($) {
         };
 
         return function(targetURL, push) {
-            goOut();
+            fadeOut();
             load(targetURL, function(data) {
                 var $map_link = $('#map-link a');
                 var href      = $map_link.attr('href');
@@ -60,7 +60,7 @@ jQuery(function($) {
                 if(push) {
                     history.pushState(state, data.title, targetURL);
                 }
-                goIn(data);
+                fadeIn(data);
             });
         };
     })();
