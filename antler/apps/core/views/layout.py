@@ -40,7 +40,10 @@ class LayoutImage(View):
         ctx = cairo.Context(surface)
         ctx.set_source_rgb(.9, .9, .9)
         ctx.paint()
-        self.engine = NodeLayoutEngine()
+        iterations = request.GET.get('iterations')
+        if iterations is not None:
+            iterations = int(iterations)
+        self.engine = NodeLayoutEngine(iterations)
         self.engine.lay_out()
         # Paint on the links
         ctx.set_source_rgb(1, 0, 0)
@@ -71,11 +74,11 @@ class NodeLayoutEngine(object):
 
     iterations = 3
 
-    repulsion_factor = 2
+    repulsion_factor = 0.5 # Range 0..1
     repulsion_min_distance = 3
     repulsion_max_distance = 25
 
-    attraction_factor = 0
+    attraction_factor = 0.5 # Range 0..1
     attraction_min_distance = 35
     attraction_max_distance = 100
 
@@ -83,7 +86,11 @@ class NodeLayoutEngine(object):
 
     vertical_separation = 30
 
-    angle_factor = 0.0
+    angle_factor = 0.1
+
+    def __init__(self, iterations=None):
+        if iterations is not None:
+            self.iterations = iterations
 
     def lay_out(self):
         # First, fetch a list of all the nodes
@@ -203,9 +210,9 @@ class NodeLayoutEngine(object):
                 # Then, work out the repulsion for each
                 for other_string in overlapping_strings:
                     if string.position < other_string.position:
-                        direction = 1
-                    else:
                         direction = -1
+                    else:
+                        direction = 1
                     sub_force = (
                         self.calculate_repulsion(string, other_string) -
                         self.calculate_attraction(string, other_string)
@@ -237,7 +244,7 @@ class NodeLayoutEngine(object):
                         )
                         offset = target_position - other_string.position
                         forces[other_string] += (
-                           offset * self.angle_factor * (i**0.5)
+                           offset * self.angle_factor
                         )
                 if number_right_strings > 1:
                     delta = (
@@ -261,8 +268,8 @@ class NodeLayoutEngine(object):
                             (delta * number_deltas)
                         )
                         offset = target_position - other_string.position
-                        forces[other_string] -= (
-                           offset * self.angle_factor * (i**0.5)
+                        forces[other_string] += (
+                           offset * self.angle_factor
                         )
 
             # Work out slowdown/friction multiplier
@@ -296,7 +303,7 @@ class NodeLayoutEngine(object):
             self.attraction_min_distance,
         )
         distance -= self.attraction_min_distance
-        return (distance ** 2) * self.attraction_factor
+        return distance * self.attraction_factor
 
     def node_position(self, node):
         for string in self.strings:
