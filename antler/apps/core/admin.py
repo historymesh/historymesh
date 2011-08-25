@@ -15,6 +15,7 @@ admin.site.register(
         'subject_type',
         'object_type',
         'verb',
+        'story',
     ],
     form = EdgeAdminForm,
 )
