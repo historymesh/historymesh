@@ -274,7 +274,6 @@ $.extend(Network.Node.prototype, {
     el.append(preview);
 
     preview.mouseover(function() { self.preview() });
-    //preview.click(function() { self.visit() });
 
     return preview;
   },
@@ -309,11 +308,6 @@ $.extend(Network.Node.prototype, {
 
   hide: function() {
     this._preview.removeClass('selected');
-  },
-
-  visit: function() {
-    // alert('Something something ' + this._data.name);
-    window.location.href = this._data.url;
   }
 });
 

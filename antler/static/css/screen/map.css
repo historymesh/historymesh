@@ -1,7 +1,7 @@
 .node-preview {
   display:         table-cell;
   vertical-align:  middle;
-  cursor:          pointer;
+  cursor:          default;
   text-decoration: none;
 }
 .node-preview h4 {
@@ -41,3 +41,4 @@
   opacity:        1;
   top:            -36px;
 }
+
