@@ -8,6 +8,7 @@ from django.http import Http404
 from django.db import models
 from django.views.generic.base import TemplateView, View
 from django.template.loader import render_to_string
+from django.template.defaultfilters import slugify
 from core.models import Person, Concept, Event, Object, Story, Edge
 from django.shortcuts import HttpResponseRedirect as Redirect, get_object_or_404
 import random
@@ -263,6 +264,7 @@ class NodeJsonView(NodeView):
             "storySlug": story_slug,
             "nodeType": type,
             "nodeSlug": slug,
+            "objectId": slugify(instance),
             "title": title,
             "html": render_to_string(
                 'nodes/_node_content.html',
@@ -277,5 +279,4 @@ class NodeJsonView(NodeView):
         )
         response.status_code = status_code
         return response
-
 

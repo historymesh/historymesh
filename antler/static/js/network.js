@@ -170,9 +170,9 @@ $.extend(Network.prototype, {
     this._updateCSSOffset();
   },
 
-  snapNode: function(node, x, y) {
+  snapToNode: function(node, position) {
     var pos  = node.getPosition(),
-        diff = [x - pos[0], y - pos[1]];
+        diff = [position[0] - pos[0], position[1] - pos[1]];
 
     if (this._vertical)
       this._offsetTop = diff[1];
@@ -180,6 +180,21 @@ $.extend(Network.prototype, {
       this._offsetLeft = diff[0];
 
     this._updateCSSOffset();
+  },
+
+  scrollToNode: function(node, position) {
+    var pos  = node.getPosition(),
+        diff = [position[0] - pos[0], position[1] - pos[1]];
+
+    if (this._vertical)
+      this._offsetTop = diff[1];
+    else
+      this._offsetLeft = diff[0];
+
+    this._container.animate({
+      left: this._offsetLeft + 'px',
+      top:  this._offsetTop  + 'px'
+    }, 700);
   },
 
   initDrag: function(event) {
@@ -436,3 +451,4 @@ $.extend(Network.Scale.prototype, {
   }
 
 });
+

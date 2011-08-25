@@ -42,7 +42,7 @@ jQuery(function($) {
                 poop.css('height', '3px');
                 poop.css('background-color', '#E03C31');
                 p.append(poop);
-                
+
                 function scooper() { $(this).remove(); }
                 poop.animate({'top': 300}, {'duration': 500, 'complete': scooper});
             }

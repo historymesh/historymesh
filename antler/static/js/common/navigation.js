@@ -28,6 +28,8 @@ jQuery(function($) {
         };
 
         var goIn = function(data) {
+            $(document).trigger('node:navigate', {slug: data.objectId});
+
             // Don't transition in if we're still transitioning out
             // By setting inWaiting we instruct out to call in when it finishes
             if(outInProgress) {
@@ -54,7 +56,7 @@ jQuery(function($) {
                 goIn(data);
             });
         };
-    }());
+    })();
 
     // Load function. Responsible from fetching data from either a cache or from
     // the server.
