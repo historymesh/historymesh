@@ -63,7 +63,7 @@
       name: '{{ node.name }}',
       color: '#f80',
       position: [
-        {{ node.horizontal_position }} * 90,
+        {{ node.horizontal_position }},
         {{ node.position }}
     ]
     });
@@ -89,8 +89,9 @@
 <h2>Positions</h2>
 <ul>
     {% for node in nodes %}
-        <li>{{ node }}: {{ node.timeline_date }}, {{ node.position }}</li>
+        <li>{{ node }}: {{ node.horizontal_position }}, {{ node.position }}</li>
     {% endfor %}
 </ul>
 
 {% endblock content %}
+
