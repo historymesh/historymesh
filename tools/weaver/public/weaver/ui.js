@@ -55,19 +55,17 @@ $('a.relatable, section.article-text a.relatable').live('mouseenter', function()
 
   var thatSlug = urlToArticle($(this).attr('href')).name;
 
+  var relatedArticle;
+  Weaver.Article.findOrCreate(thatSlug, function (art) { relatedArticle = art; });
+
   relList.html('');
-  var relationships = [ 'invented', 'conceived', 'killed', 'preceded', 'befriended', 'married', 'dined_with', 'inspired', 'enabled', 'primary', 'secondary', 'described_by' ];
+  var relationships = [ 'invented', 'conceived', 'killed', 'preceded', 'befriended', 'married', 'parented', 'dined with', 'inspired', 'enabled', 'described' ];
   relationships.forEach(function (relation) {
     var relLink = $("<a class='relType'>" + relation + "</a>");
-
-    var relatedArticle;
-    Weaver.Article.findOrCreate(thatSlug, function (art) { relatedArticle = art; });
 
     relLink.click(function () {
       relatedArticle.addRelationship(thisArticle, relation);
     });
-
-    relList.append($("<li>").append(relLink).append(" " + thisSlug));
 
     var reverseRelLink = $("<a class='relType'> was " + relation + " by</a>");
 
@@ -75,7 +73,23 @@ $('a.relatable, section.article-text a.relatable').live('mouseenter', function()
       thisArticle.addRelationship(relatedArticle, relation);
     });
 
-    relList.append($("<li>").append(reverseRelLink).append(" " + thisSlug));
+    relList.append($("<li>").append(relLink).append(" / ").append(reverseRelLink).append(" " + thisSlug));
+  });
+
+  relList.append("<hr/>");
+
+  Weaver.Article.findStories(function (story) {
+    var fbLink = $("<a class='relType'>is followed by</a>");
+    fbLink.click(function () {
+      story.addToStoryLine(thisArticle, relatedArticle);
+    });
+
+    var fLink = $("<a class='relType'>follows</a>");
+    fLink.click(function () {
+      story.addToStoryLine(relatedArticle, thisArticle);
+    });
+    relList.append($("<li>").append(relatedArticle.name + " ").append(fbLink).append(" " + thisSlug + " in the " + story.name + " story."));
+    relList.append($("<li>").append(relatedArticle.name + " ").append(fLink).append(" " + thisSlug + " in the " + story.name + " story."));
   });
 
   $(this).before(panelContainer);

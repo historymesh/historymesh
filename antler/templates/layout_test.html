@@ -2,7 +2,80 @@
 
 {% block body-class %}homepage{% endblock %}
 
+{% block head-js %}
+  <script src="/static/js/network.js"></script>
+  <style type="text/css">
+      body { background: #ccc; }
+      section { background: #fff; width: 1200px; height: 400px; }
+
+      .node-preview {
+        display:        table-cell;
+        vertical-align: middle;
+        cursor:         pointer;
+       }
+      .node-preview h4 {
+        background:     #444;
+        color:          #fff;
+        display:        inline-block;
+        font:           10px FreeSans, Helvetica, Arial, sans-serif;
+        margin:         0 -40px;
+        opacity:        0;
+        padding:        6px;
+        position:       relative;
+        text-align:     center;
+
+        -webkit-border-radius: 8px;
+           -moz-border-radius: 8px;
+                border-radius: 8px;
+
+        -webkit-transition: opacity 0.2s linear,
+                            top     0.2s ease-out;
+
+           -moz-transition: opacity 0.2s linear,
+                            top     0.2s ease-out;
+
+             -o-transition: opacity 0.2s linear,
+                            top     0.2s ease-out;
+
+            -ms-transition: opacity 0.2s linear,
+                            top     0.2s ease-out;
+      }
+      .selected .node-preview h4 {
+        opacity:        1;
+        top:            -50px;
+      }
+    </style>
+{% endblock %}
+
 {% block content %}
+
+<section>
+  <div id="container"></div>
+</section>
+
+<script type="text/javascript">
+
+  var network = new Network('container');
+
+  var nodes = {};
+  {% for node in nodes %}
+    nodes["{{ node|slugify }}"] = network.addNode({
+      name: '{{ node.name }}',
+      color: '#f80',
+      position: [
+        ({{ node.timeline_date }} - 1800) * 3,
+        {{ node.position }} * 3
+    ]
+    });
+  {% endfor %}
+
+  {% for edge in edges %}
+    nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"]);
+  {% endfor %}
+
+  network.draw();
+
+</script>
 
 <img src="image/" />
 

@@ -11,8 +11,8 @@ class NodeView(TemplateView):
     def get_template_names(self):
         return "nodes/%s.html" % self.model_name()
     
-    def get_context_data(self, pk):
-        instance = get_object_or_404(self.model, pk=pk)
+    def get_context_data(self, slug):
+        instance = get_object_or_404(self.model, slug=slug)
         
         return {
                 self.model_name():instance,
@@ -34,4 +34,17 @@ class ConceptView(NodeView):
 
 
 class ObjectView(NodeView):
-    model = Object    
+    model = Object
+
+
+class NodeIndexView(TemplateView):
+    template_name = 'nodes/index.html'
+
+    def get_context_data(self):
+        return {
+            'people': Person.objects.order_by('timeline_date'),
+            'events': Event.objects.order_by('timeline_date'),
+            'concepts': Concept.objects.order_by('timeline_date'),
+            'objects': Object.objects.order_by('timeline_date'),
+        }
+

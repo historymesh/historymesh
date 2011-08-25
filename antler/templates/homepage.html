@@ -4,10 +4,12 @@
 
 {% block content %}
 
+  <a href='/overview/'>Overview</a>
+
   <ul id='stories'>
   {% for story in stories %}
     <li>
-      <h3><a href='#TODO'>{{story.name}}</a></h3>
+      <h3><a href='{{story.start.url}}'>{{story.name}}</a></h3>
       {{story.text|linebreaks}}
     </li>
   {% endfor %}

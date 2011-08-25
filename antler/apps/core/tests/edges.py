@@ -1,5 +1,5 @@
 from django.test import TestCase
-from core.models import Person, Concept, Edge, Object, Event
+from core.models import Person, Concept, Edge, Object, Event, Story
 
 
 class FollowingTest(TestCase):
@@ -72,6 +72,7 @@ class FollowingTest(TestCase):
         self.assertEqual({}, concept.incoming().by_verb())
         self.assertEqual({}, concept.outgoing().by_verb())
 
+
 class EdgeTest(TestCase):
     fixtures = [ 'edges' ]
 
@@ -84,3 +85,24 @@ class EdgeTest(TestCase):
 
     def test_model_from_type_string(self):
         self.assertEqual(Person, Edge._model_from_type_string("core.person"))
+
+
+class StoryEdgeTest(TestCase):
+    fixtures = [ 'stories' ]
+
+    def test_finding_a_nodes_stories(self):
+        babbage = Person.objects.get(pk=1)
+        lovelace = Person.objects.get(pk=2)
+        people_story = Story.objects.get(pk=1)
+        loom_story = Story.objects.get(pk=2)
+
+        self.assertEqual(
+            babbage.stories(),
+            [ people_story ],
+        )
+
+        self.assertEqual(
+            lovelace.stories(),
+            [ people_story, loom_story ],
+        )
+

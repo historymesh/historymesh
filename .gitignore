@@ -7,3 +7,4 @@ ENV
 .pydevproject
 *.tsv
 *.xml
+antler/media/

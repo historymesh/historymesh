@@ -1,6 +1,22 @@
 from django.db import models
 from django.db.models.query import QuerySet
 from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
+from django.db.models.signals import pre_save
+
+def generate_slug_as_needed(sender, instance, **kwargs):
+    """
+    Set the slug based on the name for a given instance if it has
+    both a slug and a name field.
+    """
+    try:
+        if instance.name and instance.slug == '':
+            instance.slug = slugify(instance.name)
+    except AttributeError:
+        pass
+
+pre_save.connect(generate_slug_as_needed)
+
 
 class Edge(models.Model):
     """
@@ -60,6 +76,8 @@ class Edge(models.Model):
         self.object_id = object.pk
 
     def get_object(self):
+        if not (self.object_type and self.object_id):
+            return None
         model = self._model_from_type_string(self.object_type)
         return model.objects.get(pk=self.object_id)
 
@@ -70,13 +88,15 @@ class Edge(models.Model):
         self.subject_id = subject.pk
 
     def get_subject(self):
+        if not (self.subject_type and self.subject_id):
+            return None
         model = self._model_from_type_string(self.subject_type)
         return model.objects.get(pk=self.subject_id)
 
     subject = property(get_subject, set_subject)
 
     def url(self):
-        return reverse('edge', kwargs={'pk': self.pk})
+        return reverse('edge', kwargs={'slug': self.slug})
 
 
 class EdgeObjectQuerySet(QuerySet):
@@ -200,10 +220,16 @@ class EdgesMixin(object):
             setup=True,
         )
 
+    def stories(self):
+        queryset = self.incoming() | self.outgoing()
+        queryset = queryset.filter(verb__in=['primary', 'secondary'])
+        story_ids = queryset.distinct().values_list('story', flat=True)
+        return Story.objects.in_bulk(list(story_ids)).values()
+
     def readable_name(self):
-        return "%s (%s)" % (
-            self.name,
+        return "%s: %s" % (
             self._meta.object_name,
+            self.name,
         )
 
     @property
@@ -225,6 +251,7 @@ class Node(models.Model, EdgesMixin):
     hidden_in_map = False
 
     name = models.CharField(max_length=1024, unique=True)
+    slug = models.SlugField(max_length=1024, unique=True, default='')
     text = models.TextField(blank=True)
 
     timeline_date = models.IntegerField(blank=True, null=True, help_text="Years since 0AD")
@@ -244,7 +271,13 @@ class Node(models.Model, EdgesMixin):
 
     @classmethod
     def all_child_classes(self):
-        return [Person, Event, Concept, Object, ExternalLink, StoryContent]
+        return [Person, Event, Concept, Object, ExternalLink, StoryContent, Image]
+    
+    def get_absolute_url(self):
+        try:
+            return self.url()
+        except AttributeError:
+            return None
 
 
 class Person(Node):
@@ -256,7 +289,7 @@ class Person(Node):
         verbose_name_plural = "people"
 
     def url(self):
-        return reverse('person', kwargs={'pk': self.pk})
+        return reverse('person', kwargs={'slug': self.slug})
 
 
 class Event(Node):
@@ -265,7 +298,7 @@ class Event(Node):
     """
 
     def url(self):
-        return reverse('event', kwargs={'pk': self.pk})
+        return reverse('event', kwargs={'slug': self.slug})
 
 
 class Concept(Node):
@@ -274,7 +307,7 @@ class Concept(Node):
     """
 
     def url(self):
-        return reverse('concept', kwargs={'pk': self.pk})
+        return reverse('concept', kwargs={'slug': self.slug})
 
 
 class Object(Node):
@@ -283,15 +316,47 @@ class Object(Node):
     """
 
     def url(self):
-        return reverse('object', kwargs={'pk': self.pk})
+        return reverse('object', kwargs={'slug': self.slug})
 
 
 class ExternalLink(models.Model, EdgesMixin):
     """
     A link to an external site.
     """
+
+    hidden_in_map = True
+
     name = models.CharField(max_length=1024, unique=True)
     url = models.URLField(max_length=255, verify_exists=False)
+
+    def __unicode__(self):
+        return "%s (%s:%d)" % (
+            self.name,
+            self._meta.object_name,
+            self.pk,
+        )
+
+
+class Image(models.Model, EdgesMixin):
+    """
+    An image attached to one or more other nodes.
+    """
+
+    hidden_in_map = True
+
+    image = models.ImageField(upload_to="images/%Y-%m/")
+    caption = models.TextField(blank=True)
+
+    @property
+    def name(self):
+        return str(self.image)
+
+    def __unicode__(self):
+        return "%s (%s:%s)" % (
+            self.image,
+            self._meta.object_name,
+            self.pk,
+        )
 
 
 class Story(models.Model):
@@ -300,11 +365,9 @@ class Story(models.Model):
     """
 
     name = models.CharField(max_length=255, unique=True)
-
-    """
-    Breif description aobut the story for appearing on the homepage
-    """
-    text = models.TextField(blank=True)
+    slug = models.SlugField(max_length=255, unique=True, default='')
+    text = models.TextField(blank=True, help_text="Brief description about the story for appearing on the homepage")
+    colour = models.CharField(max_length=8, help_text="Colour as a hexdecimal string with no #, e.g. '0932f5'", blank=True)
 
     def start(self):
         story_edges = Edge.objects.filter(story=self)

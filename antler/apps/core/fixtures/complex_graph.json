@@ -10,6 +10,7 @@
         "model": "core.person",
         "fields": {
             "name": "A",
+            "slug": "a",
             "timeline_date": 1900
         }
     },
@@ -18,6 +19,7 @@
         "model": "core.person",
         "fields": {
             "name": "B",
+            "slug": "b",
             "timeline_date": 1920
         }
     },
@@ -26,6 +28,7 @@
         "model": "core.person",
         "fields": {
             "name": "C",
+            "slug": "c",
             "timeline_date": 1940
         }
     },
@@ -34,6 +37,7 @@
         "model": "core.person",
         "fields": {
             "name": "D",
+            "slug": "d",
             "timeline_date": 1920
         }
     },
@@ -42,6 +46,7 @@
         "model": "core.person",
         "fields": {
             "name": "E",
+            "slug": "e",
             "timeline_date": 1940
         }
     },
@@ -50,6 +55,7 @@
         "model": "core.person",
         "fields": {
             "name": "F",
+            "slug": "f",
             "timeline_date": 1960
         }
     },
@@ -58,6 +64,7 @@
         "model": "core.person",
         "fields": {
             "name": "G",
+            "slug": "g",
             "timeline_date": 1980
         }
     },
@@ -66,6 +73,7 @@
         "model": "core.person",
         "fields": {
             "name": "H",
+            "slug": "h",
             "timeline_date": 1960
         }
     },
@@ -74,6 +82,7 @@
         "model": "core.person",
         "fields": {
             "name": "I",
+            "slug": "i",
             "timeline_date": 1980
         }
     },
@@ -82,6 +91,7 @@
         "model": "core.person",
         "fields": {
             "name": "J",
+            "slug": "j",
             "timeline_date": 2000
         }
     },
@@ -90,6 +100,7 @@
         "model": "core.person",
         "fields": {
             "name": "K",
+            "slug": "k",
             "timeline_date": 2000
         }
     },

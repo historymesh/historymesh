@@ -11,28 +11,32 @@
         "pk": 1,
         "model": "core.person",
         "fields": {
-            "name": "Babbage"
+            "name": "Babbage",
+            "slug": "babbage"
         }
     },
     {
         "pk": 1,
         "model": "core.concept",
         "fields": {
-            "name": "Computers"
+            "name": "Computers",
+            "slug": "computers"
         }
     },
     {
         "pk": 2,
         "model": "core.concept",
         "fields": {
-            "name": "Punch cards"
+            "name": "Punch cards",
+            "slug": "punch-cards"
         }
     },
     {
         "pk": 3,
         "model": "core.concept",
         "fields" : {
-            "name": "Jam"
+            "name": "Jam",
+            "slug": "jam"
         }
     },
     {
@@ -76,6 +80,7 @@
         "model": "core.storycontent",
         "fields": {
             "name": "Babbage in Automota",
+            "slug": "babbage-in-automate",
             "text": "Babbage was a GOD. Damn hell ass GOD!"
         }
     },
