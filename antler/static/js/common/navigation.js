@@ -41,11 +41,16 @@ jQuery(function($) {
             $('article .textual').children().fadeIn();
         };
 
-        return function(targetURL) {
+        return function(targetURL, push) {
             goOut();
             load(targetURL, function(data) {
                 $('title').html(data.title);
-                history.pushState({}, data.title, targetURL);
+                var state = {
+                    'url': targetURL
+                };
+                if(push) {
+                    history.pushState(state, data.title, targetURL);
+                }
                 goIn(data);
             });
         };
@@ -56,17 +61,18 @@ jQuery(function($) {
     var load = (function() {
         var loadCache = {};
         return function(targetURL, callback) {
-            if(targetURL.indexOf('?') > -1) {
-                targetURL = targetURL.replace('?', 'json/?');
+            var jsonURL = targetURL;
+            if(jsonURL.indexOf('?') > -1) {
+                jsonURL = jsonURL.replace('?', 'json/?');
             } else {
-                targetURL = targetURL + 'json/';
+                jsonURL = jsonURL + 'json/';
             }
 
             if(loadCache.hasOwnProperty(targetURL)) {
                 callback(loadCache[targetURL]);
             } else {
                 jQuery.ajax({
-                    "url": targetURL,
+                    "url": jsonURL,
                     "success": function(data) {
                         loadCache[targetURL] = data;
                         callback(data);
@@ -76,23 +82,26 @@ jQuery(function($) {
         };
     }());
 
-    // Set some initial state
-    history.replaceState({}, window.title, window.location.href);
-
     // Enhance the previous and next links to transition
     $('a[rel=next], a[rel=prev]').live('click', function() {
         var url = $(this).attr('href');
-        transition(url);
+        transition(url, true);
         return false;
     });
 
     // Handle history events
     window.onpopstate = function(event) {
-        console.log("onpopstate", event.state);
         if(event.state) {
-            transition(window.location.href);
+            transition(event.state.url, false);
         }
     };
+
+    // Set initial state
+    history.replaceState(
+        {'url': window.location.href},
+        window.title,
+        window.location.href
+    );
 
 });
 
