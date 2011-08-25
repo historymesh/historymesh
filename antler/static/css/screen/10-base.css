@@ -28,7 +28,7 @@ html {
 
 body {
 	margin: 2em 10%;
-	font-family: NuvoMediumWOFF, sans-serif;
+	font-family: NuvoMediumWOFF, "Lucida Grande", Calibri, Helvetica, Arial, sans-serif;
 	margin: 0;
 	line-height: 1.6;
 	font-size: .9em;
@@ -101,7 +101,7 @@ fieldset {
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 2.6em;
 	margin: 60px 0 1em 0;
 	line-height: 1.2;
 	color: #777;
@@ -125,8 +125,10 @@ h3 {
 
 h4 {
 	margin: 0;
-	font-size: 1em;
+	font-size: 0.9em;
 	color: #666;
+	letter-spacing: 1px;
+	text-transform: uppercase;
 }
 
 img {
@@ -161,15 +163,22 @@ header {
 	right: 0;
 	top:0;
 	line-height: 1;
-	padding: 6px;
-	background: #ddd;
+	padding: 13px;
 }
+
+/*! verbatim */
+header {
+	background: rgba(187,187,187,0.7);
+}	
+/* -- */
+
 
 header h2 {
 	font-size: 14px;
 	text-transform: uppercase;
 	float: left;
 	margin: 0;
+	color: #fff;
 }
 
 header input {
@@ -183,22 +192,33 @@ header input {
 	z-index: 0;
 	left:0;
 	right: 0;
-	top:90px;
+	top:120px;
 	bottom: 0;
 	font-size: 11px;
 	color: #aaa;
 }
 
 .timeline li {
-	padding: 0 0 0 5px;
+	padding: 0 0 0 13px;
 	border-bottom: 1px solid #e2e2e2;
-	margin: 20px 0 200px 0;
+	margin: 20px 0 150px 0;
+}
+
+.map {
+	position: absolute;
+	left: 100px;
+	top: 45px;
+	width: 270px;
+	bottom: 0;
+	background: url(/static/img/.png);
 }
 
 .tail {
 	position: fixed;
 	left: 380px;
 	top: 100px;
+	top:50%;
+	margin: -15px 0 0 0;
 	width: 20px;
 	height: 30px;
 	background: url(../img/tail.png);
@@ -209,7 +229,7 @@ article {
 	position: relative;
 	z-index: 1;
 	margin: 0 0 0 400px;
-	padding: 2em;
+	padding: 2em 2em 6em 2em;
 	overflow: auto;
 }
 
@@ -228,10 +248,6 @@ article {
 	line-height: 30px;
 }
 
-.auto { color: blue; }
-.comp { color: green; }
-.medic { color: red; }
-
 .thread:before {
 	content: "●";
 	font-size: 30px;
@@ -239,6 +255,10 @@ article {
 	display: block;
 	float: left;
 	vertical-align: middle;
+}
+
+.main {
+	overflow: auto;
 }
 
 .secondary {
@@ -249,34 +269,33 @@ article {
 	list-style-type: none;
 }
 
-/*! verbatim */
-.trunc {
-	text-overflow: ellipsis;
-}	
-/* -- */
-
-
 .storynav {
 	overflow: auto;
+	border-bottom: 1px solid #ccc;
 }
 
 .storynav li {
 	width:46%;
 	float: left;
-	margin: 0 2%;
+	margin: 0 2% 0 0;
+}
+
+.storynav li+li {
+	margin: 0 0 0 2%;
 }
 
 /*! verbatim */
 /* Viewport of 800px and above */
 @media screen and (min-width: 1024px) {
 
+/*
 	.main {
-		width: 65%;
+		width: 70%;
 		float: left;
 	}
 	
 	.secondary {
-		width: 30%;
+		width: 28%;
 		float: right;
 	}
 	
@@ -285,6 +304,7 @@ article {
 		float: none;
 		margin: 0;
 	}
+*/
 }	
 /* -- */
 
