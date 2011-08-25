@@ -324,6 +324,14 @@ class Node(BaseNode):
         except AttributeError:
             return None
 
+    def search_data(self):
+        return {
+            'name': self.name,
+            'text': self.text,
+            'timeline_date': self.timeline_date,
+            'display_date': self.display_date,
+        }
+
 
 class Person(Node):
     """
