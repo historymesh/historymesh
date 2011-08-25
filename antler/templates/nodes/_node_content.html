@@ -1,17 +1,17 @@
 {% load markup %}
 {% if story %}
 	<ol class="prev-next">
-{% if story.previous %}
-<li class="prev bgc1"><a rel='prev' href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
-{% else %}
-<li class="prev"></li>
-{% endif %}
-
-{% if story.next %}
-<li class="next bgc1"><a rel='next' href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
-{% else %}
-<li class="next"></li>
-{% endif %}
+		{% if story.previous %}
+		<li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
+		{% else %}
+		<li class="prev-disabled"></li>
+		{% endif %}
+		
+		{% if story.next %}
+		<li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
+		{% else %}
+		<li class="next-disabled"></li>
+		{% endif %}
 	</ol>
 {% endif %}
 		

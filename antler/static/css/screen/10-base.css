@@ -296,7 +296,7 @@ div.home {
 	width: 44.9%;
 	margin: 0 5% 1em 0;
 	float: left;
-	background: url(/static/img/icon-placeholder.png) no-repeat 0 0;
+	position: relative;
 }
 	.home li h3, .home li p {
 		padding-left: 95px;
@@ -308,10 +308,20 @@ div.home {
 	padding: 1em 0;
 }
 /*! verbatim */
-	/* Norm, add border-width to this thing maybe? */
+	/* pre-parser don't do border-width or generated content */
 .home .map {
 	border-width: 1px 0;
 }
+	.home li h3:before {
+		content: url(/static/img/temp-icon-placeholder.png) no-repeat 0 0;
+		background: #666;
+		display: block;
+		width: 80px;
+		height: 80px;
+		position: absolute;
+		top: 0.5em;
+		left: 0;
+	}
 /* -- */
 
 
@@ -344,6 +354,8 @@ div.home {
 	margin: 1.5em 0;
 }
 
+/*
+	killing the background image for now, style may have to change when finalized
 .view-node .map {
 	position: fixed;
 	left: 100px;
@@ -352,6 +364,7 @@ div.home {
 	bottom: 0;
 	background: url(/static/img/temp-sidebar-map.png) no-repeat right 50%;
 }
+*/
 
 .view-node article {
 	position: relative;
@@ -394,6 +407,10 @@ div.home {
 	.prev-next li a:hover, .prev-next li a:focus {
 		background-color: #666;
 	}
+	
+	ol.prev-next li.prev-disabled {
+		background: #eee url(/static/img/arrow-nav.png);
+	}
 
 
 
@@ -421,7 +438,7 @@ div.home {
 	padding: 7px 0;
 }
 /*! verbatim */
-	/* Norm, add border-width to this thing maybe? */
+	/* pre-parser don't do border-width */
 .storynav {
 	border-width: 1px 0;
 }
