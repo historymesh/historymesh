@@ -256,6 +256,21 @@ header input {
 	z-index: 2;
 }
 
+/* ================= */
+/* ! Home Page		   */
+/* ================= */
+.home article {
+	margin: 0;
+}
+div.home {
+	padding-top: 4em;
+}
+
+
+/* ================= */
+/* ! Article Pages   */
+/* ================= */
+
 article {
 	position: relative;
 	z-index: 1;
