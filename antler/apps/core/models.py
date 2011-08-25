@@ -45,6 +45,7 @@ class Edge(models.Model):
         "primary", # For primary narrative threads
         "secondary", # For secondary narrative threads
         "described_by", # For linking to StoryContent nodes
+        "image_of", # For linking from Image nodes to their subjects
     ]
 
     subject_type = models.CharField(max_length=255)
@@ -441,7 +442,17 @@ class Image(BaseNode):
     @property
     def name(self):
         return str(self.image)
-    
+
+    def orientation(self):
+        """
+        Returns 'landscape' or 'portrait'.
+        Square images are considered portrait.
+        """
+        if self.image.width > self.image.height:
+            return "landscape"
+        else:
+            return "portrait"
+
     def url(self):
         return self.image.url
 

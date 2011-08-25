@@ -34,10 +34,16 @@
   <div class="body">
   
   <div class="main">
-  <figure class="portrait">
-    <img src="/static/img/placeholder.png" alt="" class="fr" width="249" height="333">
-    <figcaption>Close up view of comber board, harness, malls, weights, (Lingoes) and warp with 1040 ends</figcaption>
-  </figure>
+  {% for image in incoming.image_of %}
+    <figure class="{{ image.orientation }}">
+      <img src="{{ image.url }}" alt="" class="fr"
+           width="{{ image.image.width }}"
+           height="{{ image.image.height }}">
+      {% if image.caption %}
+        <figcaption>{{ image.caption }}</figcaption>
+      {% endif %}
+    </figure>
+  {% endfor %}
 
   {{ subject.text|textile }}
 
