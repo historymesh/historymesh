@@ -30,14 +30,14 @@
 
 {% if story %}
 	<ol class="prev-next">
-{% if story.prev %}
-<li class="prev bgc1"><a rel='prev' href="{{ story.prev.url }}">Previous: {{ story.prev.name }}</a></li>
+{% if story.previous %}
+<li class="prev bgc1"><a rel='prev' href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
 {% else %}
 <li class="prev bgc1">Previous</li>
 {% endif %}
 
 {% if story.next %}
-<li class="next bgc1"><a rel='next' href="{{ story.next.url }}">Next: {{ story.next.name }}</a></li>
+<li class="next bgc1"><a rel='next' href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
 {% else %}
 <li class="next bgc1">Next</li>
 {% endif %}
@@ -101,12 +101,12 @@
 	
 	
 	<div class="secondary">
-{% if story %}
+{% for story in subject.stories %}
 	<ol class="storynav">
-{% if story.prev %}
+{% if story.previous %}
 		<li>
 			<h4>Previously in <span class="auto">{{ story.name }}</span></h4>
-			<h3 class="thread auto"><a rel='prev' href='{{ story.prev.url }}'>{{ story.prev.name }}</a></h3>
+			<h3 class="thread auto"><a rel='prev' href='{{ story.previous.url }}?story={{ story.slug }}'>{{ story.previous.name }}</a></h3>
 
 			<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum.</p> -->
 		</li>
@@ -114,13 +114,13 @@
 {% if story.next %}
 		<li>
 			<h4>Next in <span class="auto">{{ story.name }}</span></h4>
-			<h3 class="thread auto"><a rel='next' href='{{ story.next.url }}'>{{ story.next.name }}</a></h3>
+			<h3 class="thread auto"><a rel='next' href='{{ story.next.url }}?story={{ story.slug }}'>{{ story.next.name }}</a></h3>
 
 			<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum.</p> -->
 		</li>
 {% endif %}
 	</ol>
-{% endif %}
+{% endfor %}
 
 {% include "nodes/links.html" %}
 {% endblock %}
