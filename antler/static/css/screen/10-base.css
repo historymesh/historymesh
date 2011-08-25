@@ -306,22 +306,24 @@ div.home {
 	border: solid 1px #ccc;
 	border-width: 1px 0;
 	padding: 1em 0;
+	margin: 0 -2em;
 }
+.home li h3:before {
+	content: url(/static/img/temp-icon-placeholder.png);
+	background: #666;
+	display: block;
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: 0.5em;
+	left: 0;
+}
+
 /*! verbatim */
 	/* pre-parser don't do border-width or generated content */
 .home .map {
 	border-width: 1px 0;
 }
-	.home li h3:before {
-		content: url(/static/img/temp-icon-placeholder.png) no-repeat 0 0;
-		background: #666;
-		display: block;
-		width: 80px;
-		height: 80px;
-		position: absolute;
-		top: 0.5em;
-		left: 0;
-	}
 /* -- */
 
 
