@@ -38,7 +38,7 @@ jQuery(function($) {
             // Transition in
             var newContent = $(data.html).hide();
             $('article .textual').html('').append(newContent);
-            $('article .textual').children().fadeIn();
+            $('article .textual').children().stop().fadeIn();
         };
 
         return function(targetURL, push) {
