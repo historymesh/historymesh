@@ -317,7 +317,7 @@ div.home {
 
 .view-map .map {
 	margin-top: 40px;
-	padding: none;
+	padding: 0;
 	border-bottom: solid 1px #ccc;
 }
 	.view-map .map img {
