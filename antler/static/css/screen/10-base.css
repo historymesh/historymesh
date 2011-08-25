@@ -288,6 +288,10 @@ article {
 
 figure {
 	display: block;
+}
+
+figure.portrait {
+	display: block;
 	float: right;
 	margin: 0 0 2em 2em;
 	width: 250px;
@@ -298,8 +302,16 @@ img {
 }
 
 figure img {
-	max-width: 250px;
 	display: block;
+}
+
+figure.portrait img {
+	max-width: 250px;
+}
+
+figure.landscape img {
+	max-width: 100%;
+	height: auto;
 }
 
 figcaption {
@@ -351,25 +363,19 @@ figcaption {
 
 /*! verbatim */
 /* Viewport of 800px and above */
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 1024px) {
 
-/*
-	.main {
-		width: 70%;
-		float: left;
-	}
-	
-	.secondary {
-		width: 28%;
-		float: right;
-	}
-	
-	.storynav li {
-		width: auto;
+	figure {
 		float: none;
-		margin: 0;
+		width: auto;
+		margin: 0 0 1.5em 0;
 	}
-*/
+
+	figure img {
+		margin: 0 auto;
+	}
+
+
 }	
 /* -- */
 
