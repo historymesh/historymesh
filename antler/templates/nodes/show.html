@@ -3,10 +3,6 @@
 {% block pagetitle %}{{ subject.name }}{% if story %} in {{ story.slug }}{% endif %}{% endblock %}
 {% block body-class %}view-node story-{{ story.slug }}{% endblock %}
 
-{% block head-js %}
-  <script src="/static/js/network.js"></script>
-{% endblock %}
-
 {% block view_toggle %}
   <nav>
     <ul>
