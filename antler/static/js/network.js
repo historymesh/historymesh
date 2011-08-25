@@ -271,23 +271,30 @@ $.extend(Network.Edge.prototype, {
 
         corner, alpha, beta, gamma, sweep;
 
-    if (diffX > diffY) {
-      corner = [fromPos[0] + diffY * signX , toPos[1]];
-      alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
-      beta   = [corner[0] + chop * signX, corner[1]];
-      sweep  = (signX === signY) ? '0' : '1';
+    // If the line is very close to 45 degrees, just draw it
+    if (Math.abs(diffX - diffY) < 10) {
+      var pathString = 'M' + fromPos[0] + ' ' + fromPos[1] +
+                       'L' + toPos[0]   + ' ' + toPos[1];
     } else {
-      corner = [toPos[0] , fromPos[1] + diffX * signY];
-      alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
-      beta   = [corner[0], corner[1] + chop * signY];
-      sweep  = (signX !== signY) ? '0' : '1';
-    }
+      // Otherwise, do the nice line.
+      if (diffX > diffY) {
+        corner = [fromPos[0] + diffY * signX , toPos[1]];
+        alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
+        beta   = [corner[0] + chop * signX, corner[1]];
+        sweep  = (signX === signY) ? '0' : '1';
+      } else {
+        corner = [toPos[0] , fromPos[1] + diffX * signY];
+        alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
+        beta   = [corner[0], corner[1] + chop * signY];
+        sweep  = (signX !== signY) ? '0' : '1';
+      }
 
-    var pathString = 'M' + fromPos[0] + ' ' + fromPos[1] +
-                     'L' + alpha[0]   + ' ' + alpha[1]   +
-                     'A' + cornerR    + ',' + cornerR + ' 0 0,' + sweep + ' ' +
-                           beta[0]    + ' ' + beta[1]    +
-                     'L' + toPos[0]   + ' ' + toPos[1];
+      var pathString = 'M' + fromPos[0] + ' ' + fromPos[1] +
+                       'L' + alpha[0]   + ' ' + alpha[1]   +
+                       'A' + cornerR    + ',' + cornerR + ' 0 0,' + sweep + ' ' +
+                             beta[0]    + ' ' + beta[1]    +
+                       'L' + toPos[0]   + ' ' + toPos[1];
+    }
 
     var path = paper.path(pathString);
 
