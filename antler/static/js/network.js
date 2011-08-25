@@ -274,19 +274,29 @@ $.extend(Network.Node.prototype, {
       return
     }
 
-    var self = this;
+    var self = this, network = this._network;
 
-    if (this._label) this._label.animate({'opacity': 0}, network.animateSpeed, function(){ self._label.hide() });
-    if (this._preview) this._preview.animate({'opacity': 0}, network.animateSpeed, function(){ self._preview.hide() });
-    this._circle.animate({'opacity': 0}, network.animateSpeed, function(){ self._circle.hide() });
+    if (this._label)
+      this._label.animate({opacity: 0},
+                          network.animateSpeed,
+                          function(){ self._label.hide() });
+
+    if (this._preview)
+      this._preview.animate({opacity: 0},
+                            network.animateSpeed,
+                            function(){ self._preview.hide() });
+
+    this._circle.animate({opacity: 0},
+                        network.animateSpeed,
+                        function(){ self._circle.hide() });
   },
 
   show: function() {
     this._hidden = false;
 
-    if (this._label) this._label.show().animate({'opacity': 1}, network.animateSpeed);
-    if (this._preview) this._preview.show().animate({'opacity': 1}, network.animateSpeed);
-    this._circle.show().animate({'opacity': 1}, network.animateSpeed)
+    if (this._label) this._label.show().animate({opacity: 1}, this._network.animateSpeed);
+    if (this._preview) this._preview.show().animate({opacity: 1}, this._network.animateSpeed);
+    this._circle.show().animate({opacity: 1}, this._network.animateSpeed)
   },
 
   _renderPreview: function() {
@@ -333,7 +343,7 @@ $.extend(Network.Node.prototype, {
 
     label.css({
       position:   'absolute',
-      bottom:     network.canvasSize - (pos[1] - radius / 2) + 'px',
+      bottom:     this._network.canvasSize - (pos[1] - radius / 2) + 'px',
       width:      '150px',
       height:     'auto',
       textAlign:  'right',
@@ -487,7 +497,7 @@ $.extend(Network.Edge.prototype, {
       this._path.attr('opacity', 0);
     }
     else {
-      this._path.animate({'opacity': 0}, network.animateSpeed);
+      this._path.animate({'opacity': 0}, this._network.animateSpeed);
     }
   },
   show: function() {
