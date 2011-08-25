@@ -89,11 +89,14 @@ class StoryContentAdminForm(forms.ModelForm):
         return instance
 
     def save_m2m_real(self):
-        edge = Edge(verb="described_by")
-        edge.subject = self.cleaned_data['subject']
-        edge.object = self.instance
-        edge.story = self.cleaned_data['story']
-        edge.save()
+        try:
+            self.instance.incoming("described_by").get(story__isnull=False)
+        except Edge.DoesNotExist:
+            edge = Edge(verb="described_by")
+            edge.subject = self.cleaned_data['subject']
+            edge.object = self.instance
+            edge.story = self.cleaned_data['story']
+            edge.save()
 
     class Meta:
         model = StoryContent
