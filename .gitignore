@@ -9,3 +9,6 @@ ENV
 *.xml
 antler/media/
 /*_ve/
+*~
+*.json
+.DS_Store
