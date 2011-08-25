@@ -41,10 +41,7 @@ class LayoutImage(View):
         ctx = cairo.Context(surface)
         ctx.set_source_rgb(.9, .9, .9)
         ctx.paint()
-        iterations = request.GET.get('iterations')
-        if iterations is not None:
-            iterations = int(iterations)
-        self.engine = NodeLayoutEngine(iterations)
+        self.engine = NodeLayoutEngine()
         self.engine.lay_out()
         # Paint on the links
         ctx.set_source_rgb(1, 0, 0)
@@ -73,7 +70,9 @@ class NodeLayoutEngine(object):
     Lays out nodes in a rough time-like order.
     """
 
-    iterations = 1000
+    iterations_crossover_only = 20
+    iterations_both = 30
+    iterations_repulsion = 100
 
     repulsion_factor = 0.2 # Range 0..1
     repulsion_min_distance = 3
@@ -101,10 +100,6 @@ class NodeLayoutEngine(object):
 
     max_node_distance = 5
     horizontal_scale_factor = 5
-
-    def __init__(self, iterations=None):
-        if iterations is not None:
-            self.iterations = iterations
 
     def lay_out(self):
         # First, fetch a list of all the nodes
@@ -229,24 +224,29 @@ class NodeLayoutEngine(object):
         Goes through the strings and lays them out along the
         non-time axis.
         """
-        for i in range(self.iterations):
+        for i in range(self.iterations_crossover_only):
             forces = self.init_forces()
             self.set_forces_from_overlaps(forces, i)
             if not self.apply_forces(forces, i):
                 break
 
-        for i in range(self.iterations):
-            # First pass: calculate forces
+        for i in range(self.iterations_both):
             forces = self.init_forces()
-
-            self.set_forces_from_connections(forces, i)
+            self.set_forces_from_connections(forces, i, self.iterations_both)
             self.set_forces_from_overlaps(forces, i)
             if not self.apply_forces(forces, i):
                 break
 
-    def set_forces_from_connections(self, forces, i):
+        for i in range(self.iterations_repulsion):
+            forces = self.init_forces()
+            self.set_forces_from_connections(forces, i, self.iterations_both)
+            self.set_forces_from_overlaps(forces, i)
+            if not self.apply_forces(forces, i):
+                break
+
+    def set_forces_from_connections(self, forces, i, iterations):
         # Work out slowdown/friction multiplier
-        slowdown = (1 - (1.0/self.iterations) * i)
+        slowdown = (1 - (1.0/iterations) * i)
 
         for string in self.strings:
             # First, find all other strings that overlap us
