@@ -75,7 +75,6 @@ class StoryContentAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(StoryContentAdminForm, self).__init__(*args, **kwargs)
         if self.instance:
-            print self.instance.incoming("described_by")
             try:
                 story_edge = self.instance.incoming("described_by").get(story__isnull=False)
             except Edge.DoesNotExist:
