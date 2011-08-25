@@ -191,7 +191,7 @@ $.extend(Network.prototype, {
     else
       this._offsetLeft = diff[0];
 
-    this._container.animate({
+    this._container.stop().animate({
       left: this._offsetLeft + 'px',
       top:  this._offsetTop  + 'px'
     }, 700);
