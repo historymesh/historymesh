@@ -251,6 +251,12 @@ class Node(models.Model, EdgesMixin):
     @classmethod
     def all_child_classes(self):
         return [Person, Event, Concept, Object, ExternalLink, StoryContent]
+    
+    def get_absolute_url(self):
+        try:
+            return self.url()
+        except AttributeError:
+            return None
 
 
 class Person(Node):
@@ -306,11 +312,8 @@ class Story(models.Model):
     """
 
     name = models.CharField(max_length=255, unique=True)
-
-    """
-    Breif description aobut the story for appearing on the homepage
-    """
-    text = models.TextField(blank=True)
+    text = models.TextField(blank=True, help_text="Brief description about the story for appearing on the homepage")
+    colour = models.CharField(max_length=8, help_text="Colour as a hexdecimal string with no #, e.g. '0932f5'", blank=True)
 
     def start(self):
         story_edges = Edge.objects.filter(story=self)
