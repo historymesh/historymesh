@@ -240,7 +240,6 @@ class NodeLayoutEngine(object):
         for i in range(self.iterations_repulsion):
             forces = self.init_forces()
             self.set_forces_from_connections(forces, i, self.iterations_both)
-            self.set_forces_from_overlaps(forces, i)
             if not self.apply_forces(forces, i):
                 break
 
