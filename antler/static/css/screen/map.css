@@ -1,7 +1,7 @@
 .node-preview {
   display:         table-cell;
   vertical-align:  middle;
-  cursor:          default;
+  cursor:          pointer;
   text-decoration: none;
 }
 .node-preview h4 {
