@@ -8,7 +8,7 @@ if [[ $# -eq 0 ]]; then
 fi
 
 for project_name in $*; do
-    env_name="${project_name}_ve"
+    env_name="$(basename $project_name)_ve"
 
     if [[ -e $env_name ]]; then
 	echo "Looks like you've already got a ${project_name} virtualenv here."
