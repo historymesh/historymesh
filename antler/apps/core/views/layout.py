@@ -25,11 +25,11 @@ class LayoutImage(View):
 
     width = 500
     height = 300
-    start_date = -1
-    end_date = 30
+    start_date = 0
+    end_date = 120
 
     def transform(self, node):
-        x = (node.timeline_date - self.start_date) / float(self.end_date - self.start_date) * self.width
+        x = (self.engine.node_horizontal_position(node) - self.start_date) / float(self.end_date - self.start_date) * self.width
         y = (self.height / 2) + (self.engine.node_position(node) * 1)
         return x, y
 
@@ -99,6 +99,8 @@ class NodeLayoutEngine(object):
     # Stop iterating if the total movement is less than this.
     minimum_total_movement = 0.01
 
+    max_node_distance = 5
+
     def __init__(self, iterations=None):
         if iterations is not None:
             self.iterations = iterations
@@ -128,6 +130,23 @@ class NodeLayoutEngine(object):
             self.do_if_shown(self.nodes.add, edge.object)
         # Sort them
         self.nodes = sorted(self.nodes, key=lambda node: node.timeline_date)
+        if len(self.nodes) == 0:
+            return
+
+        self.horizontal_positions = {}
+
+        # Rewrite dates to enforce min and max separation.
+        last_node = self.nodes[0]
+        self.horizontal_positions[last_node] = 0
+        for node in self.nodes[1:]:
+            delta = node.timeline_date - last_node.timeline_date
+            delta = min(delta, self.max_node_distance)
+            self.horizontal_positions[node] = \
+                self.horizontal_positions[last_node] + delta
+            last_node = node
+
+        self.horizontal_start = 0
+        self.horizontal_end = self.horizontal_positions[last_node]
 
     def construct_strings(self):
         """
@@ -184,7 +203,7 @@ class NodeLayoutEngine(object):
                         self.do_if_shown(queue.append, edge.object)
                     break
             # Save the string
-            self.strings.add(String(string))
+            self.strings.add(String(self, string))
         # Second phase: assign neighbouring strings
         self.string_edges = set()
         for string in self.strings:
@@ -386,6 +405,9 @@ class NodeLayoutEngine(object):
             if node in string:
                 return string.position
 
+    def node_horizontal_position(self, node):
+        return self.horizontal_positions[node]
+
     def annotated_nodes(self):
         for node in self.nodes:
             node.position = self.node_position(node)
@@ -399,21 +421,22 @@ class NodeLayoutEngine(object):
 
 class String(object):
 
-    def __init__(self, nodes):
+    def __init__(self, engine, nodes):
         assert nodes, "Strings must contain at least one node"
+        self.engine = engine
         self.nodes = tuple(
-            sorted(nodes, key=lambda node: node.timeline_date)
+            sorted(nodes, key=lambda node: engine.node_horizontal_position(node))
         )
         gen = random.Random(x=hash(self.nodes) + 1)
         self.position = gen.random() * 70
     
     @property
     def start(self):
-        return self.first.timeline_date
+        return self.engine.node_horizontal_position(self.first)
     
     @property
     def end(self):
-        return self.last.timeline_date
+        return self.engine.node_horizontal_position(self.last)
 
     @property
     def start_position(self):
@@ -449,6 +472,7 @@ class String(object):
         return item in self.nodes
     
     def overlaps(self, other):
+        print repr(other.end), repr(self.end)
         return (
             not (self.start > other.end + 0.5) and
             not (other.start > self.end + 0.5)
