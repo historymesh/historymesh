@@ -200,6 +200,12 @@ class EdgesMixin(object):
             setup=True,
         )
 
+    def stories(self):
+        queryset = self.incoming() | self.outgoing()
+        queryset = queryset.filter(verb__in=['primary', 'secondary'])
+        story_ids = queryset.distinct().values_list('story', flat=True)
+        return Story.objects.in_bulk(list(story_ids)).values()
+
     def readable_name(self):
         return "%s (%s)" % (
             self.name,

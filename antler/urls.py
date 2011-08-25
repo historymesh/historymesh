@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^edge/create/$', edge.EdgeCreate.as_view(), name="edge_create"),
     url(r'^layout/$', layout.LayoutView.as_view()),
     url(r'^layout/image/$', layout.LayoutImage.as_view()),
+    url(r'^overview/$', nodes.NodeIndexView.as_view()),
 )
 
 if settings.DEBUG:
