@@ -9,9 +9,10 @@
       section { background: #fff; width: 1200px; height: 400px; }
 
       .node-preview {
-        display:        table-cell;
-        vertical-align: middle;
-        cursor:         pointer;
+        display:         table-cell;
+        vertical-align:  middle;
+        cursor:          pointer;
+        text-decoration: none;
        }
       .node-preview h4 {
         background:     #444;
@@ -55,12 +56,13 @@
 
 <script type="text/javascript">
 
-  var network = new Network('container', 1200, 400);
+  var network = new Network('container', 800, 300);
 
   var nodes = {};
   {% for node in nodes %}
     nodes["{{ node|slugify }}"] = network.addNode({
-      name: '{{ node.name }}',
+      name: '{{ node.name }}{% if node.display_date %} ({{ node.display_date }}){% endif %}',
+      url: '{{ node.url }}',
       position: [
         {{ node.horizontal_position }},
         {{ node.position }}

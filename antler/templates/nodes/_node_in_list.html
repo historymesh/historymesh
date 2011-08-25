@@ -1,0 +1,13 @@
+    <li>
+        {{node.timeline_date}}:
+        <a href='{{node.url}}'>{{node.name}}</a>
+        <ul>
+        {% for edge in node.outgoing %}
+            {% if edge.story %}
+            <li class='story'>{% if edge.verb == 'primary' %}&rArr;{% else %}&rarr;{% endif %} <a href='{{edge.object.url}}'>{{edge.object.name}}</a> ({{ edge.story.name }})</li>
+            {% else %}
+            <li class='non-story'>{{ edge.verb }} &rarr; <a href='{{edge.object.url}}'>{{edge.object.name}}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </li>

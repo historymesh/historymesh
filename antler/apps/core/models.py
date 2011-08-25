@@ -28,13 +28,17 @@ class Edge(models.Model):
     VERBS = [
         "invented",
         "conceived",
-        "killed",
+        "discovered",
         "preceded",
-        "befriended",
-        "married",
+        "was friends with",
+        "was parent to",
+        "was described by",
+        "was married to",
         "dined_with",
         "inspired",
         "enabled",
+        "depicted",
+        "owned",
         "primary",
         "secondary",
         "described_by", # For linking to StoryContent nodes
@@ -109,8 +113,11 @@ class Edge(models.Model):
         }
     linked_subject.allow_tags = True
 
+    def get_absolute_url(self):
+        return self.url()
+
     def url(self):
-        return reverse('edge', kwargs={'slug': self.slug})
+        return self.subject.url()
 
 
 class EdgeObjectQuerySet(QuerySet):
@@ -324,6 +331,14 @@ class Node(BaseNode):
         except AttributeError:
             return None
 
+    def search_data(self):
+        return {
+            'name': self.name,
+            'text': self.text,
+            'timeline_date': self.timeline_date,
+            'display_date': self.display_date,
+        }
+
 
 class Person(Node):
     """
@@ -457,6 +472,19 @@ class Story(models.Model):
         if len(nodes) > 0:
             return nodes[0]
 
+    def story_content(self):
+        """
+        Returns the story content for the current node in the current story.
+        Call set_current_node first so that this makes sense.
+        """
+        try:
+            nodes = self.current_node.outgoing('described_by').filter(story=self).follow()
+        except AttributeError:
+            return
+
+        if len(nodes) > 0:
+            return nodes[0]
+
     def __unicode__(self):
         return self.name
         
@@ -475,11 +503,27 @@ class StoryContent(BaseNode):
 
     @property
     def story(self):
-        return self.incoming("described_by").get(story__isnull=False).story
+        try:
+            return self.incoming("described_by").get(story__isnull=False).story
+        except Edge.DoesNotExist:
+            return None
+
+    @property
+    def subject(self):
+        try:
+            return self.incoming("described_by").get(story__isnull=False).subject
+        except Edge.DoesNotExist:
+            return None
 
     @property
     def name(self):
-        return self.story.name
+        try:
+            return self.story.name
+        except AttributeError:
+            return "Unknown"
+
+    def get_absolute_url(self):
+        return self.url()
     
     def url(self):
-        return "/"
+        return self.subject.url() + "?story=" + self.story.slug

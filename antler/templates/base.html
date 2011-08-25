@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset='UTF-8'>
-  <title>{% block page_title %}{% endblock %}</title>
+  <meta charset='utf-8'>
+  <title>{% block pagetitle %}{% endblock %}</title>
 
   {% block full-head-css %}
     <link rel="stylesheet" media="screen" href="/static/css/screen.css">
@@ -31,12 +31,35 @@
 <body class='{% block body-class %}{% endblock %}'>
 
   {% block masthead %}
-  <div id='masthead'>
-    <h1>Wodge of Information</h1>
-  </div>
+  <header id="masthead">
+    <div class="site-name">
+      <a href="/">The Mothers of Invention</a>
+    </div>
+    {% block view_toggle %}
+    {% endblock %}
+
+    <form action="{% url search %}" method="GET">
+      <input type="search" name="q" placeholder="Search">
+    </form>
+  </header>
   {% endblock %}
   
-  {% block content %}{% endblock %}
+  <article>
+    {% block content %}{% endblock %}
+    <footer>
+      <p id='licence'
+         about='' typeof='cc:Work' xmlns:cc='http://creativecommons.org/ns#'
+         xmlns:dct='http://purl.org/dc/terms/'>
+        &copy; A <a href="http://devfort.com/">/dev/fort</a> production. The 
+        <span rel='dct:type' href='http://purl.org/dc/dcmitype/Text'>text</span>
+        published on <span property='dct:title'>mothersofinvention.com</span>
+        is licenced under a 
+        <a href='http://creativecommons.org/licenses/by-sa/3.0/' 
+           rel='license'>Creative Commons Attribution-ShareAlike 
+             3.0 Unported License</a>.
+      </p>
+    </footer>
+  </article>
 
 </body>
 </html>

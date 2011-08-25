@@ -7,5 +7,13 @@ ENV
 .pydevproject
 *.tsv
 *.xml
-antler/media/
+/antler/media/
+
+# Ignore auto-generated CSS/JS files
+/antler/static/css/*.css
+/antler/static/js/*.js
+
 /*_ve/
+*~
+*.json
+.DS_Store
