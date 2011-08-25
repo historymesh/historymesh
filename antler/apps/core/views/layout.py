@@ -141,6 +141,7 @@ class NodeLayoutEngine(object):
         for node in self.nodes[1:]:
             delta = node.timeline_date - last_node.timeline_date
             delta = min(delta, self.max_node_distance)
+            delta *= 10
             self.horizontal_positions[node] = \
                 self.horizontal_positions[last_node] + delta
             last_node = node
