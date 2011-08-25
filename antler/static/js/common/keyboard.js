@@ -1,6 +1,9 @@
 jQuery(function($) {
     $('body').keyup(function(event) {
         var url;
+        if (event.ctrlKey || event.altKey || event.shiftKey) {
+            return true;
+        }
         switch(event.keyCode) {
             case 37: // left
             case 75: // k
