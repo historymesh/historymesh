@@ -78,6 +78,8 @@ class NodeView(TemplateView):
         i = 0
         node_separation = 45
         last_node = None
+
+
         for node in nodes:
             while len(keys) and node.timeline_date > keys[0]:
                 if last_node and group.get("display_mark") != False:
@@ -100,24 +102,31 @@ class NodeView(TemplateView):
             last_node = node
             i += 1
 
-        other_nodes,other_edges = self.other_story_links(instance, story)
+        # After we have collected all the main story nodes (and thus know
+        # where the speration) we can position the other forks
+        for node in nodes:
+            other_nodes,other_edges = self.other_story_links(node, story)
 
-        for other_node in other_nodes:
-            # We want to find the two nodes in the mainline on either side of other_node to work out its position
-            try:
-                before,after = self._get_bracketing_nodes(other_node, nodes)
-                other_node.position = self._calculate_position(before, after, other_node.timeline_date)
-                nodes.append(other_node)
-            except:
-                if len(nodes) > 0:
+            if len(other_nodes) == 0:
+                continue
+            node.forks = { "nodes": other_nodes, "edges": other_edges }
+
+            for other_node in other_nodes:
+                # We want to find the two nodes in the mainline on either side of other_node to work out its position
+                try:
+                    before,after = self._get_bracketing_nodes(other_node, nodes)
+                    other_node.position = self._calculate_position(before, after, other_node.timeline_date)
+                except:
+                    # import traceback
+                    # traceback.print_exc()
                     if nodes[-1].timeline_date <= other_node.timeline_date:
-                        other_node.position = nodes[-1].position + 2*self.node_separation
+                        other_node.position = node.position + 2*self.node_separation
                     else:
-                        other_node.position = nodes[-1].position - self.node_separation
-                    nodes.append(other_node)
+                        other_node.position = node.position - self.node_separation
 
-        edges = edges.union(other_edges)
 
+        # Put the other_edges in first so that the main story node is the right color
+        # edges = other_edges.union(edges)
         return {
             "nodes": nodes,
             "edges": edges,
@@ -133,13 +142,11 @@ class NodeView(TemplateView):
 
     # TODO: hadle cases where target is outside the range in nodes
     def _get_bracketing_nodes(self, target, nodes):
-        print "looking for %d" % target.timeline_date
         prev = None
         for node in nodes:
             if not prev:
                 prev = node
                 continue
-            print "prev: %d, next, %d" % (prev.timeline_date, target.timeline_date)
             if prev.timeline_date <= target.timeline_date and target.timeline_date <= node.timeline_date:
                 return prev,node
             prev = node
@@ -190,7 +197,11 @@ class NodeView(TemplateView):
 
             nodes.add(node)
             edges.add(edge)
+
         for edge in incoming:
+            # The incoming links kink the wrong way on the map. Reversing the link fixes this. We do it in the view
+            edge.incoming = True
+
             node = edge.subject
             node.horizontal_position = self.node_separation
             node.story = edge.story
@@ -273,6 +284,7 @@ class NodeJsonView(NodeView):
             "nodeSlug": slug,
             "objectId": slugify(instance),
             "title": title,
+            "map_node": instance.select_tuple[0],
             "html": render_to_string(
                 'nodes/_node_content.html',
                 RequestContext(request, self.get_context_data(slug)),

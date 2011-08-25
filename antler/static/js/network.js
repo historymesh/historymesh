@@ -9,6 +9,7 @@ Network = function(container, width, height) {
   this.nodeRadius   = 0.9 * this.pathWidth;
   this.nodeStroke   = 0.5 * this.pathWidth;
   this.cornerRadius = 16;
+  this.animateSpeed = 500;
 
   this.canvasSize = 10000;
 
@@ -78,7 +79,6 @@ $.extend(Network.prototype, {
   draw: function() {
     this._paper.clear();
     this._normalize();
-    this._center();
     for (var id in this._scales) this._scales[id].draw();
     for (var id in this._edges)  this._edges[id].draw();
     for (var id in this._nodes)  this._nodes[id].draw();
@@ -185,6 +185,7 @@ $.extend(Network.prototype, {
     else
       this._offsetLeft = diff[0];
 
+    node.select();
     this._updateCSSOffset(animate);
   },
 
@@ -217,9 +218,14 @@ $.extend(Network.prototype, {
     this._offsetTop  += this._dragTop;
   },
 
+  deselectAll: function() {
+    for (var id in this._nodes)
+      this._nodes[id].deselect();
+  },
+
   hidePreviews: function() {
     for (var id in this._nodes)
-      this._nodes[id].hide();
+      this._nodes[id].hidePreview();
   },
 
   _nextId: function() {
@@ -241,8 +247,46 @@ $.extend(Network.Node.prototype, {
   draw: function() {
     if (this._circle) return this._circle;
 
-    this._preview = this._renderPreview();
-    return this._circle = this._renderCircle();
+    if (!this._data.alwaysShowLabel) {
+      this._preview = this._renderPreview();
+    }
+    else {
+      this._label = this._renderLabel();
+    }
+    this._circle = this._renderCircle();
+
+    // We want to create the nodes at the right z-index but then hide them
+    if (this._hidden) this.hide(true);
+
+    return this._circle;
+  },
+
+  hide: function(instant) {
+    this._hidden = true;
+
+    if (!this._circle) return;
+
+
+    if (instant) {
+      if (this._label) this._label.attr('opacity', 0).hide();
+      if (this._preview) this._preview.attr('opacity', 0).hide();
+      this._circle.attr('opacity', 0).hide();
+      return
+    }
+
+    var self = this;
+
+    if (this._label) this._label.animate({'opacity': 0}, network.animateSpeed, function(){ self._label.hide() });
+    if (this._preview) this._preview.animate({'opacity': 0}, network.animateSpeed, function(){ self._preview.hide() });
+    this._circle.animate({'opacity': 0}, network.animateSpeed, function(){ self._circle.hide() });
+  },
+
+  show: function() {
+    this._hidden = false;
+
+    if (this._label) this._label.show().animate({'opacity': 1}, network.animateSpeed);
+    if (this._preview) this._preview.show().animate({'opacity': 1}, network.animateSpeed);
+    this._circle.show().animate({'opacity': 1}, network.animateSpeed)
   },
 
   _renderPreview: function() {
@@ -274,6 +318,36 @@ $.extend(Network.Node.prototype, {
     return preview;
   },
 
+  _renderLabel: function() {
+   var label = $('<div>' +
+                    '<a class="node-label" href="' +
+                     this._data.url + '">' +
+                      '<h4>' + this._data.name + '</h4>' +
+                    '</div>' +
+                 '</div>');
+
+    var radius = this._network.nodeRadius,
+        pos    = this._normal,
+        el     = this._network._container,
+        self   = this;
+
+    label.css({
+      position:   'absolute',
+      bottom:     network.canvasSize - (pos[1] - radius / 2) + 'px',
+      width:      '150px',
+      height:     'auto',
+      textAlign:  'right',
+      display:    'table',
+    });
+    el.append(label);
+
+    label.css('left', (pos[0] - radius / 2 - label.width() - 10) + 'px' );
+
+    // preview.mouseover(function() { self.preview() });
+
+    return label;
+  },
+
   _renderCircle: function() {
     var paper  = this._network._paper,
         pos    = this._normal,
@@ -291,6 +365,9 @@ $.extend(Network.Node.prototype, {
     circle.mouseover(this.preview, this);
     circle.click(this.visit, this);
 
+    this._marker = paper.circle(pos[0], pos[1], radius/2).attr({fill: color, stroke: 'none'});
+    this._marker.hide();
+
     return circle;
   },
 
@@ -301,13 +378,24 @@ $.extend(Network.Node.prototype, {
     return this._network.addEdge(this, node, color, secondary );
   },
 
-  preview: function() {
-    this._network.hidePreviews();
-    this._preview.addClass('selected');
+  select: function() {
+    this._network.deselectAll();
+    this._marker.show();
   },
 
-  hide: function() {
-    this._preview.removeClass('selected');
+  deselect: function() {
+    this._marker.hide();
+  },
+
+  preview: function() {
+    this._network.hidePreviews();
+    if (this._preview)
+      this._preview.addClass('selected');
+  },
+
+  hidePreview: function() {
+    if (this._preview)
+      this._preview.removeClass('selected');
   },
 
   visit: function() {
@@ -357,6 +445,9 @@ $.extend(Network.Edge.prototype, {
         alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
         beta   = [corner[0] + chop * signX, corner[1]];
         sweep  = (signX === signY) ? '0' : '1';
+
+        // toPos[0] += diffX > 10 ? signX * width : 0;
+        // toPos[1] += diffY > 10 ? signY * width : 0;
       } else {
         corner = [toPos[0] , fromPos[1] + diffX * signY];
         alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
@@ -381,8 +472,29 @@ $.extend(Network.Edge.prototype, {
     if (this._secondary)
       path.attr('opacity', 0.4);
 
-    return this._path = path;
+    this._path = path;
+
+    if (this._hidden) this.hide(true);
+
+    return path;
+  },
+
+  hide: function(instant) {
+    this._hidden = true;
+
+    if (!this._path) return;
+    if (instant) {
+      this._path.attr('opacity', 0);
+    }
+    else {
+      this._path.animate({'opacity': 0}, network.animateSpeed);
+    }
+  },
+  show: function() {
+    this._hidden = false;
+    this._path.animate({'opacity': this._secondary ? 0.4 : 1}, 500);
   }
+
 });
 
 Network.Scale = function(network, label, x, y) {

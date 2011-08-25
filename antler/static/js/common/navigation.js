@@ -28,14 +28,13 @@ jQuery(function($) {
         };
 
         var goIn = function(data) {
-            $(document).trigger('node:transition', {slug: data.objectId});
-
             // Don't transition in if we're still transitioning out
             // By setting inWaiting we instruct out to call in when it finishes
             if(outInProgress) {
                 inWaiting = data;
                 return;
             }
+            $(document).trigger('node:transition', {slug: data.objectId});
 
             // Transition in
             var newContent = $(data.html).hide();
@@ -46,6 +45,14 @@ jQuery(function($) {
         return function(targetURL, push) {
             goOut();
             load(targetURL, function(data) {
+                var $map_link = $('#map-link a');
+                var href      = $map_link.attr('href');
+                var new_href  = href.replace(
+                    /current_node=([^&]+)/g,
+                    'current_node=' + data['map_node']
+                );
+                $map_link.attr('href', new_href);
+
                 $('title').html(data.title);
                 var state = {
                     'url': targetURL
@@ -91,6 +98,13 @@ jQuery(function($) {
     });
 
     $(document).bind('node:navigate', function(event, data) {
+        var storyRE = /\bstory=(\w+)/,
+            current = (window.location.href.match(storyRE) || [])[1],
+            next    = (data.url.match(storyRE) || [])[1];
+
+        if (current && next && current !== next)
+          return window.location.href = data.url;
+
         transition(data.url, true);
     });
 
