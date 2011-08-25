@@ -43,8 +43,11 @@ jQuery(function($) {
         };
 
         return function(targetURL, push) {
-            fadeOut();
+            //TODO: Visual feedback to the user that we're loading the new content
             load(targetURL, function(data) {
+                fadeOut();
+
+                // Update the map link to highlight the correct object
                 var $map_link = $('#map-link a');
                 var href      = $map_link.attr('href');
                 var new_href  = href.replace(
