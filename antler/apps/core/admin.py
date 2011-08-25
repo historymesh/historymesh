@@ -1,5 +1,6 @@
 from django.contrib import admin
 from core.models import Edge, Person, Concept, Object, Event, StoryContent, ExternalLink, Story
+from core.forms import EdgeAdminForm
 
 admin.site.register(
     Edge,
@@ -15,6 +16,7 @@ admin.site.register(
         'object_type',
         'verb',
     ],
+    form = EdgeAdminForm,
 )
 
 class NodeAdmin(admin.ModelAdmin):

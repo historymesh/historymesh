@@ -22,6 +22,11 @@ class SpecialChoices(forms.ChoiceField):
     def _set_choices(self,value):
         pass
 
+    def clean(self, value):
+        subject_string, pk = value.split(":")
+        subject_model = Edge._model_from_type_string(subject_string)
+        return subject_model.objects.get(pk=pk)
+
     choices = property(_get_choices, _set_choices)
 
 
@@ -31,14 +36,36 @@ class EdgeForm(forms.Form):
     verb = forms.ChoiceField(choices=[(x,x) for x in Edge.VERBS])
     object = SpecialChoices()
 
-    def clean_subject(self):
-        return self._get_object_for_select_string(self.cleaned_data['subject'])
 
-    def clean_object(self):
-        return self._get_object_for_select_string(self.cleaned_data['object'])
-        
-    def _get_object_for_select_string(self, select_string):
-        subject_string, pk = select_string.split(":")
-        subject_model = Edge._model_from_type_string(subject_string)
-        return subject_model.objects.get(pk=pk)
-    
+class EdgeAdminForm(forms.ModelForm):
+
+    subject = SpecialChoices()
+    verb = forms.ChoiceField(choices=[(x,x) for x in Edge.VERBS])
+    object = SpecialChoices()
+
+    def __init__(self, *args, **kwargs):
+        super(EdgeAdminForm, self).__init__(*args, **kwargs)
+        if self.instance:
+            if self.instance.object:
+                self.initial["object"] = self.instance.object.select_tuple[0]
+            if self.instance.subject:
+                self.initial["subject"] = self.instance.subject.select_tuple[0]
+
+    def save(self, commit=True):
+        instance = super(EdgeAdminForm, self).save(commit=False)
+        instance.subject = self.cleaned_data['subject']
+        instance.object = self.cleaned_data['object']
+        if commit:
+            instance.save()
+            self.save_m2m()
+        return instance
+
+    class Meta:
+        model = Edge
+        fields = ("subject", "verb", "object", "story")
+        exclude = (
+            "subject_type",
+            "subject_id", 
+            "object_type",
+            "object_id",
+        )

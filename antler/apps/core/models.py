@@ -60,6 +60,8 @@ class Edge(models.Model):
         self.object_id = object.pk
 
     def get_object(self):
+        if not (self.object_type and self.object_id):
+            return None
         model = self._model_from_type_string(self.object_type)
         return model.objects.get(pk=self.object_id)
 
@@ -70,6 +72,8 @@ class Edge(models.Model):
         self.subject_id = subject.pk
 
     def get_subject(self):
+        if not (self.subject_type and self.subject_id):
+            return None
         model = self._model_from_type_string(self.subject_type)
         return model.objects.get(pk=self.subject_id)
 
