@@ -36,13 +36,12 @@ body {
 	color: #555;
 	background: #f1f1f1;
 }
-
 /*! verbatim */
 body {
 	text-rendering: optimizeLegibility;
+/* 	-webkit-user-select: none; */
 }	
 /* -- */
-
 a {
 	font-weight: bold;
 	color: #164B9E;
@@ -65,10 +64,9 @@ a {
 blockquote {
 	margin: 0 0 1em 0;
 	padding: 0 0 0 2em;
-	border-left: 1px solid #ccc;
 }
 blockquote p {
-	font-size: 1.3em;
+	font-size: 1.1em;
 	text-indent: -0.4em;
 	margin: 0 0 0.5em 0;
 }
@@ -282,20 +280,27 @@ figure {
 /* ! Home Page		   */
 /* ================= */
 div.home {
-	padding: 5em 2em 1px 2em;
+	padding: 6em 2em 1px 2em;
 	background: #fff;
 }
 .home h3 {
 	font-size: 1.2em;
 }
 .home ul {
-	width: 90%;
+	width: 100%;
+	margin: 0;
+	padding: 0 0 2em 0;
+	overflow: hidden;
 }
 .home li {
-	width: 39%;
-	margin-left: 11%;
+	width: 44.9%;
+	margin: 0 5% 1em 0;
 	float: left;
+	background: url(/static/img/icon-placeholder.png) no-repeat 0 0;
 }
+	.home li h3, .home li p {
+		padding-left: 95px;
+	}
 .home .map {
 	background: #fff;
 	border: solid 1px #ccc;
