@@ -23,5 +23,5 @@ for project_name in $*; do
     echo "Picking nose"
     pip install -E $env_name --use-mirrors --mirrors=http://pypi.fort/ nose
     echo "Installing requirements"
-    pip install -E $env_name --use-mirrors --mirrors=http://pypi.fort/ -r ${project_name}/requirements.txt
+    pip install -E $env_name -i http://pypi.fort/ -r ${project_name}/requirements.txt
 done

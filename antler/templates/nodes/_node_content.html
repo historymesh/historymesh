@@ -1,21 +1,31 @@
 {% load markup %}
 {% if story %}
-	<ol class="prev-next">
-		{% if story.previous %}
-		<li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
-		{% else %}
-		<li class="prev-disabled"></li>
-		{% endif %}
-		
-		{% if story.next %}
-		<li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
-		{% else %}
-		<li class="next-disabled"></li>
-		{% endif %}
-	</ol>
+	<div class="prev-next">
+		<ol>
+			{% if story.previous %}
+			<li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
+			{% else %}
+			<li class="prev-disabled"></li>
+			{% endif %}
+			
+			{% if story.next %}
+			<li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
+			{% else %}
+			<li class="next-disabled"></li>
+			{% endif %}
+		</ol>
+		{% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}
+	</div>
 {% endif %}
 		
-	<h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}{% if subject.display_date %} <span>({{subject.display_date}})</span>{% endif %}</h1>
+	<h1>
+		<span class="name">{{subject.name}}</span>
+		{% if story or subject.display_date %}
+		<span class="meta">(
+			{% if subject.display_date %}<span class="date">{{subject.display_date}}</span>{% endif %}
+		)</span>
+		{% endif %}
+	</h1>
 
 	
 	<div class="body">
@@ -80,13 +90,11 @@ Content</a>
 	
 	
 	
+  {% if story %}
   <div class="secondary storynav">
-    {% if story %}
-      <ol>
-      {% include "nodes/_full_story_nav.html" %}
-      </ol>
-    {% endif %}
-    
+    <ol>
+    {% include "nodes/_full_story_nav.html" %}
+    </ol>
     {% for other_story in subject.stories %}
       {% if story != other_story %}
 				<div class="tertiary story-{{ other_story.slug }}">
@@ -99,3 +107,4 @@ Content</a>
       {% endif %}
     {% endfor %}
   </div>
+  {% endif %}

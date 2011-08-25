@@ -1,6 +1,6 @@
-/* ================== */
-/* ! Thread Colours   */
-/* ================== */
+/* ====================== */
+/* ! Story Thread Style   */
+/* ====================== */
 
 /*! verbatim */
 	/* pre-parser don't do generated content */
@@ -8,6 +8,13 @@
 .story-computing .story-name, .story-computing .story-name a {color: #1945ec;}
 .story-power .story-name, .story-power .story-name a {color: #f5b133;}
 .story-textiles .story-name, .story-textiles .story-name a {color: #309e1d;}
+
+	.story-automatons .story-name a:hover, .story-automatons .story-name a:focus,
+	.story-computing .story-name a:hover, .story-computing .story-name a:focus,
+	.story-power .story-name a:hover, .story-power .story-name a:focus,
+	.story-textiles .story-name a:hover, .story-textiles .story-name a:focus {
+		text-decoration: underline;
+	}
 
 li.story-automatons h3:before, .story-automatons .prev-next li { background-color: #e03c31;}
 li.story-computing h3:before, .story-computing .prev-next li { background-color: #1945ec;}
