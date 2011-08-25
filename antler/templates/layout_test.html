@@ -61,7 +61,7 @@
   var nodes = {};
   {% for node in nodes %}
     nodes["{{ node|slugify }}"] = network.addNode({
-      name: '{{ node.name }}',
+      name: '{{ node.name }}{% if node.display_date %} ({{ node.display_date }}){% endif %}',
       url: '{{ node.url }}',
       position: [
         {{ node.horizontal_position }},
