@@ -78,7 +78,6 @@ $.extend(Network.prototype, {
   draw: function() {
     this._paper.clear();
     this._normalize();
-    this._center();
     for (var id in this._scales) this._scales[id].draw();
     for (var id in this._edges)  this._edges[id].draw();
     for (var id in this._nodes)  this._nodes[id].draw();
