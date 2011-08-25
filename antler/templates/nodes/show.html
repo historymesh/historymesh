@@ -3,7 +3,7 @@
 {% block page_title %}{{ subject.name }}{% endblock %}
 
 {% block content %}
-<h1>{{subject.name}}{% if story %} (in context {{story}}){% endif %}</h1>
+<h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}</h1>
 
 <ol>
 {% if story_prev %}
