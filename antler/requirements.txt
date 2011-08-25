@@ -1,4 +1,4 @@
 South
 Django
 textile
-restpose>=0.7.2
+restpose>=0.7.3
