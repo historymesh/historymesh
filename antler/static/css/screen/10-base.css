@@ -1,9 +1,11 @@
 /* -*- Mode: CSS; tab-width: 4; indent-tabs-mode: nil; -*- */
 
+/*! verbatim */
 @font-face {
 	font-family: NuvoMediumWOFF;
-	src: url(../fonts/nuvo-medium-woff-demo.woff) format("woff");
+	src: url(/static/fonts/nuvo-medium-woff-demo.woff) format("woff");
 }
+/* -- */
 
 /*
 using <b> ("stylistically offset from the normal prose without conveying
@@ -18,8 +20,12 @@ b {
     width:                  500px;
 }
 
-
 /* Defaults */
+
+html {
+	background: #f1f1f1;
+}
+
 body {
 	margin: 2em 10%;
 	font-family: NuvoMediumWOFF, sans-serif;
@@ -28,9 +34,15 @@ body {
 	font-size: .9em;
 	color: #555;
 	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
 	background: #f1f1f1;
 }
+
+/*! verbatim */
+body {
+	text-rendering: optimizeLegibility;
+}	
+/* -- */
+
 
 strong {
 	color: #000;
@@ -39,6 +51,10 @@ strong {
 a {
 	font-weight: bold;
 	color: #164B9E;
+}
+
+/*! verbatim */
+a {
 	-o-transition-property: color;
 	-webkit-transition-property: color;
 	-moz-transition-property: color;
@@ -47,7 +63,9 @@ a {
 	 -webkit-transition-duration: 0.2s;
 	 -moz-transition-duration: 0.2s;
 	 transition-duration: 0.2s;	
-}
+}	
+/* -- */
+
 
 a:hover {
 	color: #000;
@@ -136,27 +154,26 @@ table {
 /* ! Layout   */
 /* ========== */
 
-
 .timeline {
-	position: absolute;
+	position: fixed;
 	z-index: 0;
 	left:0;
 	right: 0;
 	top:0;
 	bottom: 0;
-	padding: 0 0 0 5px;
 	font-size: 11px;
-	color: rgba(0,0,0,0.3);	
+	color: #aaa;
 }
 
 .timeline li {
-	border-bottom: 1px solid rgba(0,0,0,0.08);
+	padding: 0 0 0 5px;
+	border-bottom: 1px solid #e2e2e2;
 	margin: 20px 0 200px 0;
 }
 
 .tail {
 	position: fixed;
-	right: 55%;
+	left: 380px;
 	top: 40px;
 	width: 20px;
 	height: 30px;
@@ -167,10 +184,20 @@ table {
 article {
 	position: relative;
 	z-index: 1;
-	margin: 0 0 0 45%;
-	background: rgba(255,255,255,0.8);
+	margin: 0 0 0 400px;
 	padding: 2em;
 	overflow: auto;
+}
+
+/*! verbatim */
+article {
+	background: rgba(255,255,255,0.8);
+}	
+/* -- */
+
+.fr {
+	float: right;
+	margin: 0 0 2em 2em;
 }
 
 .thread {
@@ -198,9 +225,12 @@ article {
 	list-style-type: none;
 }
 
+/*! verbatim */
 .trunc {
 	text-overflow: ellipsis;
-}
+}	
+/* -- */
+
 
 .storynav {
 	overflow: auto;
@@ -214,7 +244,7 @@ article {
 
 /*! verbatim */
 /* Viewport of 800px and above */
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
 
 	.main {
 		width: 65%;
