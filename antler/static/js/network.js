@@ -274,6 +274,7 @@ $.extend(Network.Node.prototype, {
     el.append(preview);
 
     preview.mouseover(function() { self.preview() });
+    preview.click(function() { self.visit(); return false });
 
     return preview;
   },
@@ -292,6 +293,9 @@ $.extend(Network.Node.prototype, {
       'stroke-width': this._network.nodeStroke,
       'href':         this._data.url
     });
+    circle.mouseover(this.preview, this);
+    circle.click(this.visit, this);
+
     return circle;
   },
 
@@ -308,6 +312,10 @@ $.extend(Network.Node.prototype, {
 
   hide: function() {
     this._preview.removeClass('selected');
+  },
+
+  visit: function() {
+    $(document).trigger('node:navigate', {url: this._data.url});
   }
 });
 
