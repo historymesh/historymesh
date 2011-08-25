@@ -449,7 +449,7 @@ class String(object):
         self.nodes = tuple(
             sorted(nodes, key=lambda node: engine.node_horizontal_position(node))
         )
-        gen = random.Random(x=hash(self.nodes) + 1)
+        gen = random.Random(x=hash(self.nodes))
         self.position = gen.random() * 70
         print "Initialpos %s for %r" % (self.position, self)
     
