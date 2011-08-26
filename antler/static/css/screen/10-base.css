@@ -427,26 +427,35 @@ div.home {
 
 
 
-/* =================== */
-/* ! About Page			   */
-/* =================== */
-body.about {
+/* =================================== */
+/* ! Common About & Error Page style	 */
+/* =================================== */
+body.about, body.error {
 	background: #fff;
 }
-.about h1 {
+.about h1, .error h1 {
 	color: #555;
 }
-.about article {
+.about article, .error article {
 	background: #fff;
 	padding: 6em 2em 0 0;
 	margin: 0;
 }
-.about .body {
+.about .body, .error .body {
 	padding: 0 2em 0 400px;
 }
-.about footer {
+.about footer, .error footer {
 	border-top: solid 1px #ccc;
 	padding-top: 2em;
+}
+
+.error404 .body {
+	background: url(/static/img/404.gif) no-repeat 100px 30%;
+	padding: 10% 100px 10% 500px;
+}
+.error404 .explanation {
+	font: italic 1.5em "Times New Roman", palatino, serif;
+	line-height: 2;
 }
 
 
