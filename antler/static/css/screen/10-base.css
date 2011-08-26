@@ -531,6 +531,9 @@ h1 .meta {
 	.storynav li.prev {
 		width: 36px;
 	}
+	.storynav li.next {
+		text-align: right;
+	}
 	.storynav li.next a, .storynav li.next a:focus {
 		background-position: -48px 0;
 	}
@@ -626,6 +629,9 @@ h1 .meta {
 	padding-left: 50px;
 }
 .storynav-lg .next dl {
+	text-align: right;
+}
+.storynav-lg .next dd {
 	padding-right: 50px;
 }
 	.storynav-lg dt {
