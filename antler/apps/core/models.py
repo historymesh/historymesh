@@ -41,6 +41,7 @@ class Edge(models.Model):
         "depicted",
         "affected",
         "owned",
+        "created",
         "primary",
         "secondary",
         "described_by", # For linking to StoryContent nodes
