@@ -17,7 +17,10 @@ class NodeView(TemplateView):
         try:
             story_slug = self.request.GET.get('story')
             story = Story.objects.get(slug=story_slug)
-            story.set_current_node(instance)
+            if story in instance.stories():
+                story.set_current_node(instance)
+            else:
+                story = None
         except Story.DoesNotExist:
             story = None
 
