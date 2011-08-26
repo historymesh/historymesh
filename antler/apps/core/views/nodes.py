@@ -108,7 +108,11 @@ class NodeView(TemplateView):
                 other_node.position = self._calculate_position(before, after, other_node.timeline_date)
                 nodes.append(other_node)
             except:
-                pass
+                if nodes[-1].timeline_date <= other_node.timeline_date:
+                    other_node.position = nodes[-1].position + 2*self.node_separation
+                else:
+                    other_node.position = nodes[-1].position - self.node_separation
+                nodes.append(other_node)
 
         edges = edges.union(other_edges)
 
@@ -181,6 +185,7 @@ class NodeView(TemplateView):
             node = edge.object
             node.horizontal_position = -self.node_separation
             node.story = edge.story
+
             nodes.add(node)
             edges.add(edge)
         for edge in incoming:
