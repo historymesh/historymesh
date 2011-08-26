@@ -299,6 +299,7 @@ figure {
 		display: block;
 		float: right;
 		margin: 0 0 2em 2em;
+		padding-top: 0.5em;
 		width: 250px;
 	}
 	figure img {
@@ -426,8 +427,32 @@ div.home {
 
 
 
+/* =================== */
+/* ! About Page			   */
+/* =================== */
+body.about {
+	background: #fff;
+}
+.about h1 {
+	color: #555;
+}
+.about article {
+	background: #fff;
+	padding: 6em 2em 0 0;
+	margin: 0;
+}
+.about .body {
+	padding: 0 2em 0 400px;
+}
+.about footer {
+	border-top: solid 1px #ccc;
+	padding-top: 2em;
+}
+
+
+
 /* ================= */
-/* ! Map View			   */
+/* ! Map Page			   */
 /* ================= */
 
 .view-map .map {
@@ -444,6 +469,7 @@ div.home {
 .view-map article {
 	background: #fff;
 }
+
 
 
 
