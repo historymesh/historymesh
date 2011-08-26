@@ -81,22 +81,16 @@ Content</a>
 	
 	
 	<div class="secondary">
-{% for story in subject.stories %}
 	<ol class="storynav">
-{% if story.previous %}
-		<li>
-			<h4>Previously in <span class="auto">{{ story.name }}</span></h4>
-			<h3 class="thread auto"><a rel='prev' href='{{ story.previous.url }}?story={{ story.slug }}'>{{ story.previous.name }}</a></h3>
-
-			<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum.</p> -->
-		</li>
+{% if story %}
+{% include "nodes/_full_story_nav.html" %}
 {% endif %}
-{% if story.next %}
-		<li>
-			<h4>Next in <span class="auto">{{ story.name }}</span></h4>
-			<h3 class="thread auto"><a rel='next' href='{{ story.next.url }}?story={{ story.slug }}'>{{ story.next.name }}</a></h3>
-
-		</li>
+{% for other_story in subject.stories %}
+{% if story != other_story %}
+{% with other_story as story %}
+{% include "nodes/_full_story_nav.html" %}
+{% endwith %}
 {% endif %}
-	</ol>
 {% endfor %}
+	</ol>
+	</div>
