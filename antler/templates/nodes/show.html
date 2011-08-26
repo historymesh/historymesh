@@ -16,8 +16,7 @@
   </nav>
 {% endblock %}
 
-{% block content %}
-
+{% block timeline %}
 	<noscript>
 	<ol class="timeline">
 	{% for year,group in map.century_grouped_nodes.items %}
@@ -34,8 +33,9 @@
 	{% endfor %}
 	</ol>
 	</noscript>
+{% endblock %}
 
-
+{% block content %}
 
 	<script>
 	document.write('<div class="map"><div id="container"></div><div class="tail"></div></div>');
