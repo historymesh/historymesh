@@ -18,6 +18,10 @@ for project_name in $*; do
 
     echo "Setting up virtualenv for ${project_name}"
     virtualenv $env_name
+    # Thanks to some weirdness with restkit/restpose/something, nose needs to
+    # be installed first
+    echo "Picking nose"
+    pip install -E $env_name --use-mirrors --mirrors=http://pypi.fort/ nose
     echo "Installing requirements"
     pip install -E $env_name --use-mirrors --mirrors=http://pypi.fort/ -r ${project_name}/requirements.txt
 done
