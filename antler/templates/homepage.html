@@ -7,27 +7,27 @@
 
 <div class="home">
 
-	<div class="about">
-	  <h1>Wibbly Wobbly Timey Wimey</h1>
-	  <p>Explore a woven world of technological whimsy. Start with our suggested stories, or choose a <a href="{% url random-node %}">random node</a> to dive in.</p>
-	  <a href="/about" class="more">Learn More</a>
-	</div>
+  <div class="about">
+    <h1>Wibbly Wobbly Timey Wimey</h1>
+    <p>Explore a woven world of technological whimsy. Start with our suggested stories, or choose a <a href="{% url random-node %}">random node</a> to dive in.</p>
+    <a href="/about" class="more">Learn More</a>
+  </div>
 
   {% if stories %}
-	<div class="stories">
-	  <h2>The Stories</h2>
-	  <ul id="stories">
-	    {% for story in stories %}
-	    <li class="story-{{story.slug}}">
-	      <a href="{{story.start.url}}?story={{story.slug}}">
-  	      <h3 class="story-name">{{story.name}}</h3>
-  	    </a>
-	      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-	      {{story.text|linebreaks}}
-	    </li>
-	    {% endfor %}
-	  </ul>
-	</div>
+  <div class="stories">
+    <h2>The Stories</h2>
+    <ul id="stories">
+      {% for story in stories %}
+      <li class="story-{{story.slug}}">
+        <a href="{{story.start.url}}?story={{story.slug}}">
+          <h3 class="story-name">{{story.name}}</h3>
+        </a>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
+        {{story.text|linebreaks}}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
   {% endif %}
 
   <h2>Timeline Map View</h2>
