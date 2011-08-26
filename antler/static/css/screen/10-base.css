@@ -469,50 +469,16 @@ body.about, body.error {
 
 
 
-/* ================= */
-/* ! Map Page			   */
-/* ================= */
-
-.view-map .map {
-	margin-top: 40px;
-	padding: 0;
-	background: #f1f1f1;
-	border-bottom: solid 1px #ccc;
-	-webkit-user-select: none;
-	cursor: move;
-}
-.view-map article {
-	background: #fff;
-}
-.view-map .body {
-	padding: 0 2em 2em 2em;
-}
-.view-map h1 {
-	padding: 0.7em 0 0.7em 0.7em;
-}
-
-
-
-/* ================= */
-/* ! Node Pages   	 */
-/* ================= */
-.view-node .main {
-	overflow: auto;
-}
+/* =========================================== */
+/* ! Shared between Map and Nodes Page			   */
+/* =========================================== */
 .secondary {
 	margin: 1.5em 0;
 	clear: both;
 }
-
-.view-node .map {
-  position: fixed;
-  left: 0;
-  top: 45px;
-  width: 400px;
-  bottom: 0;
-	-webkit-user-select: none;
+.secondary ul {
+	list-style-type: none;
 }
-
 h1 .name {
 	float: left;
 	margin-right: 0.5em;
@@ -532,62 +498,12 @@ h1 .meta {
 	position: relative;
 	z-index: 1;
 	margin: 0 0 0 400px;
-	padding: 8em 2em 6em 2em;
+	padding: 6em 2em 6em 2em;
 	overflow: auto;
 	background: #fff;
 }
-.storynav {
-	height: 44px;
-	margin: 0 0 0 -9px;
-	position: absolute;
-	left: 2em;
-	top: 5.5em;
-}
-	.storynav li {
-		width: 40px;
-		height: 44px;
-		padding: 0;
-		margin: 0;
-		float: left;
-	}
-	.storynav li.prev {
-		width: 36px;
-	}
-	.storynav li.next a, .storynav li.next a:focus {
-		background-position: -48px 0;
-	}
-	.storynav li a, .storynav li a:visited {
-		display: block;
-		width: 40px;
-		height: 44px;
-		background-image: url(/static/img/arrow-nav.png);
-		text-indent: -9999px;
-		text-decoration: none;
-	}
-	.storynav li a:hover, .storynav li a:focus {
-		background-color: #666;
-	}
-	.storynav ol li.prev-disabled {
-		background: #eee url(/static/img/arrow-nav.png);
-	}
-	.storynav ol li.next-disabled {
-		background: #eee url(/static/img/arrow-nav.png) -44px 0;
-	}
-	.storynav .story-line {
-		position: absolute;
-		left: 80px;
-		top: 0;
-		line-height: 44px;
-		white-space: nowrap;
-	}
 .thread {
 	line-height: 30px;
-}
-
-
-
-.secondary ul {
-	list-style-type: none;
 }
 .storynav-lg {
 	overflow: hidden;
@@ -664,6 +580,97 @@ h1 .meta {
 		.storynav-lg dd a {
 			text-decoration: none;
 		}
+
+
+/* ================= */
+/* ! Map Page			   */
+/* ================= */
+
+.view-map .map {
+	margin-top: 40px;
+	padding: 0;
+	background: #f1f1f1;
+	border-bottom: solid 1px #ccc;
+	-webkit-user-select: none;
+	cursor: move;
+}
+.view-map article {
+	background: #fff;
+}
+.view-map .body {
+	padding: 0 2em 0 2em;
+}
+.view-map h1 {
+	padding: 1.05em 0 1.05em 0.7em;
+}
+.view-map footer {
+	padding: 2em 0;
+}
+
+
+
+/* ================= */
+/* ! Node Pages   	 */
+/* ================= */
+.view-node .main {
+	overflow: auto;
+}
+.view-node .map {
+  position: fixed;
+  left: 0;
+  top: 45px;
+  width: 400px;
+  bottom: 0;
+	-webkit-user-select: none;
+}
+.storynav {
+	height: 44px;
+	margin: 0 0 0 -9px;
+	position: absolute;
+	left: 2em;
+	top: 5.5em;
+}
+	.storynav li {
+		width: 40px;
+		height: 44px;
+		padding: 0;
+		margin: 0;
+		float: left;
+	}
+	.storynav li.prev {
+		width: 36px;
+	}
+	.storynav li.next a, .storynav li.next a:focus {
+		background-position: -48px 0;
+	}
+	.storynav li a, .storynav li a:visited {
+		display: block;
+		width: 40px;
+		height: 44px;
+		background-image: url(/static/img/arrow-nav.png);
+		text-indent: -9999px;
+		text-decoration: none;
+	}
+	.storynav li a:hover, .storynav li a:focus {
+		background-color: #666;
+	}
+	.storynav ol li.prev-disabled {
+		background: #eee url(/static/img/arrow-nav.png);
+	}
+	.storynav ol li.next-disabled {
+		background: #eee url(/static/img/arrow-nav.png) -44px 0;
+	}
+	.storynav .story-line {
+		position: absolute;
+		left: 80px;
+		top: 0;
+		line-height: 44px;
+		white-space: nowrap;
+	}
+
+
+
+
 
 
 
