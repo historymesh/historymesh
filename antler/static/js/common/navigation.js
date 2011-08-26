@@ -16,7 +16,7 @@ jQuery(function($) {
             outInProgress = true;
 
             // Transition out
-            $('article').children().fadeOut();
+            $('article .textual').children().fadeOut();
 
             // If in has been attempted while out was still running we should
             // run in again.
@@ -37,8 +37,8 @@ jQuery(function($) {
 
             // Transition in
             var newContent = $(data.html).hide();
-            $('article').html('').append(newContent);
-            $('article').children().fadeIn();
+            $('article .textual').html('').append(newContent);
+            $('article .textual').children().fadeIn();
         };
 
         return function(targetURL) {
