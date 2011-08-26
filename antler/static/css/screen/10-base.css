@@ -534,7 +534,7 @@ h1 .meta {
 .storynav-lg {
 	overflow: hidden;
 	border: solid 1px #ccc;
-	padding: 7px 0;
+	padding: 7px 0 9px 0;
 }
 /*! verbatim */
 	/* pre-parser don't do border-width */
