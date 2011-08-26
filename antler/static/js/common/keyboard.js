@@ -39,7 +39,8 @@ jQuery(function($) {
                 poop.css('background-color', '#E03C31');
                 p.append(poop);
                 
-                poop.animate({'top': 300}, {'duration': 500});
+                function scooper() { $(this).remove(); }
+                poop.animate({'top': 300}, {'duration': 500, 'complete': scooper});
             }
         } else {
             post = 0;
