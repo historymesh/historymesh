@@ -1,6 +1,6 @@
 {% load markup %}
 {% if story %}
-	<div class="prev-next">
+	<div class="storynav">
 		<ol>
 			{% if story.previous %}
 			<li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
@@ -92,7 +92,7 @@
 	
 	
   {% if story %}
-  <div class="secondary storynav">
+  <div class="secondary storynav-lg">
     <ol>
     {% include "nodes/_full_story_nav.html" %}
     </ol>

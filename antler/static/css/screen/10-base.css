@@ -466,12 +466,10 @@ h1 .meta {
 	padding-top: 0.4em;
 	float: left;
 }
-
 .body {
 	clear: both;
 	padding-top: 2em;
 }
-
 .view-node article {
 	position: relative;
 	z-index: 1;
@@ -480,28 +478,27 @@ h1 .meta {
 	overflow: auto;
 	background: #fff;
 }
-
-.prev-next {
+.storynav {
 	height: 44px;
 	margin: 0 0 0 -9px;
 	position: absolute;
 	left: 2em;
 	top: 5.5em;
 }
-	.prev-next li {
+	.storynav li {
 		width: 40px;
 		height: 44px;
 		padding: 0;
 		margin: 0;
 		float: left;
 	}
-	.prev-next li.prev {
+	.storynav li.prev {
 		width: 36px;
 	}
-	.prev-next li.next a, .prev-next li.next a:focus {
+	.storynav li.next a, .storynav li.next a:focus {
 		background-position: -44px 0;
 	}
-	.prev-next li a, .prev-next li a:visited {
+	.storynav li a, .storynav li a:visited {
 		display: block;
 		width: 40px;
 		height: 44px;
@@ -509,74 +506,112 @@ h1 .meta {
 		text-indent: -9999px;
 		text-decoration: none;
 	}
-	.prev-next li a:hover, .prev-next li a:focus {
+	.storynav li a:hover, .storynav li a:focus {
 		background-color: #666;
 	}
-	.prev-next ol li.prev-disabled {
+	.storynav ol li.prev-disabled {
 		background: #eee url(/static/img/arrow-nav.png);
 	}
-	.prev-next ol li.next-disabled {
+	.storynav ol li.next-disabled {
 		background: #eee url(/static/img/arrow-nav.png) -44px 0;
 	}
-	.prev-next .story-line {
+	.storynav .story-line {
 		position: absolute;
 		left: 80px;
 		top: 0;
 		line-height: 44px;
 		white-space: nowrap;
 	}
-
 .thread {
 	line-height: 30px;
 }
-	.thread:before {
-		content: "●";
-		font-size: 30px;
-		margin: -2px 6px 0 0;
-		display: block;
-		float: left;
-		vertical-align: middle;
-	}
+
 
 
 .secondary ul {
 	list-style-type: none;
 }
-.storynav {
+.storynav-lg {
 	overflow: hidden;
 	border: solid 1px #ccc;
 	padding: 7px 0;
 }
 /*! verbatim */
 	/* pre-parser don't do border-width */
-.storynav {
+.storynav-lg {
 	border-width: 1px 0;
 }
 /* -- */
-	.storynav .tertiary {
+	.storynav-lg .tertiary {
 		border-top: solid 1px #ccc;
 		padding-top: 7px;
 		margin-top: 7px;
 	}
-
-.storynav h3 {
-	margin: 0;
-}
-	.storynav h3 a {
-		text-decoration: none;
-	}
-.storynav ol {
+.storynav-lg ol {
 	-cp-contain: easy;
 }
-.storynav li {
+.storynav-lg li {
 	width: 46%;
 	float: left;
 	margin: 0 2% 0 0;
 	min-height: 2em;
+	position: relative;
 }
-	.storynav li+li {
+	.storynav-lg li+li {
 		margin: 0 0 0 2%;
 	}
+.storynav-lg a.arrow {
+	content: " ";
+	display: block;
+	width: 44px;
+	height: 44px;
+	position: absolute;
+	z-index: 1;
+	top: 1.1em;
+	left: 0;
+	background-image: url(/static/img/arrow-nav.png);
+	text-decoration: none;
+	text-indent: -9999px;
+}
+	.storynav-lg .next a.arrow {
+		left: auto;
+		right: 0;
+		background-position: -44px 0;
+	}
+	.storynav-lg li a.arrow:hover, .storynav-lg li a.arrow:focus,
+	div.storynav-lg .tertiary a.arrow:hover, div.storynav-lg .tertiary a.arrow:focus {
+		background-color: #666;
+	}
+.storynav-lg .prev dt {
+	position: relative;
+	z-index: 9;
+}
+.storynav-lg .prev dd {
+	padding-left: 55px;
+}
+.storynav-lg .next dl {
+	padding-right: 55px;
+}
+	.storynav-lg dt {
+		margin: 0;
+		font-size: 0.9em;
+		color: #666;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+	.storynav-lg dd {
+		margin: 0;
+		font-size: 1.5em;
+	}
+		.storynav-lg dd a {
+			text-decoration: none;
+		}
+
+
+
+
+
+
 
 /*! verbatim */
 /* Viewport of 800px and above */
