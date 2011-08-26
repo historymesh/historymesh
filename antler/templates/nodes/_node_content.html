@@ -4,13 +4,13 @@
 {% if story.previous %}
 <li class="prev bgc1"><a rel='prev' href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
 {% else %}
-<li class="prev bgc1">Previous</li>
+<li class="prev"></li>
 {% endif %}
 
 {% if story.next %}
 <li class="next bgc1"><a rel='next' href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
 {% else %}
-<li class="next bgc1">Next</li>
+<li class="next"></li>
 {% endif %}
 	</ol>
 {% endif %}
