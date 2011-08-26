@@ -16,12 +16,13 @@ urlpatterns = patterns('',
     url(r'^concept/(?P<slug>[a-z0-9-]+)/$', nodes.ConceptView.as_view(), name="concept"),
     url(r'^event/(?P<slug>[a-z0-9-]+)/$', nodes.EventView.as_view(), name="event"),
     url(r'^object/(?P<slug>[a-z0-9-]+)/$', nodes.ObjectView.as_view(), name="object"),
+    url(r'^random$', nodes.RandomNodeView.as_view(), name="random-node"),
     url(r'^layout/$', layout.LayoutView.as_view()),
     url(r'^layout/image/$', layout.LayoutImage.as_view()),
     url(r'^overview/$', nodes.NodeIndexView.as_view()),
     url(r'^map/$', layout.MapView.as_view(), name="map"),
     url(r'^search/$', SearchView.as_view(), name="search"),
-    
+    url(r'^about$', TemplateView.as_view(template_name="about.html"), name="about-page"),
 )
 
 if settings.DEBUG:

@@ -1,6 +1,7 @@
-from django.views.generic.base import TemplateView 
+from django.views.generic.base import TemplateView, View
 from core.models import Person, Concept, Event, Object, Story
-from django.shortcuts import get_object_or_404
+from django.shortcuts import HttpResponseRedirect as Redirect, get_object_or_404
+import random
 
 
 class NodeView(TemplateView):
@@ -64,3 +65,18 @@ class NodeIndexView(TemplateView):
             'objects': Object.objects.order_by('timeline_date'),
         }
 
+class RandomNodeView(View):
+    def get(self, request):
+        # there are five types of node, pick one first
+        node_class = random.randint(0, 3)
+        if node_class == 0:
+            node = Person.objects.order_by("?")[0]
+        elif node_class == 1:
+            node = Concept.objects.order_by("?")[0]
+        elif node_class == 2:
+            node = Event.objects.order_by("?")[0]
+        elif node_class == 3:
+            node = Object.objects.order_by("?")[0]
+        
+        print node
+        return Redirect( node.url() )

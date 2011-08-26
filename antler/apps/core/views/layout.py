@@ -16,6 +16,8 @@ class MapView(TemplateView):
         engine = NodeLayoutEngine()
         engine.lay_out()
         return {
+            "next":  self.request.GET.get('next'),
+            "story": self.request.GET.get('story'),
             "nodes": list(engine.annotated_nodes()),
             "edges": list(engine.visible_edges()),
         }
@@ -140,6 +142,7 @@ class NodeLayoutEngine(object):
         for edge in Edge.objects.filter(story__isnull=False):
             self.do_if_shown(self.nodes.add, edge.subject)
             self.do_if_shown(self.nodes.add, edge.object)
+            self.edges.add(edge)
         # Sort them
         self.nodes = sorted(self.nodes, key=lambda node: node.timeline_date)
         if len(self.nodes) == 0:
@@ -174,7 +177,7 @@ class NodeLayoutEngine(object):
         self.strings = set()
         # Queue-based string processor
         queue = deque()
-        edges = list(Edge.objects.filter(story__isnull=False))
+        edges = list(self.edges)
         self.edges_by_subject = {}
         self.edges_by_object = {}
         for edge in edges:

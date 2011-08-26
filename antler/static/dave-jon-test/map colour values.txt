@@ -3,6 +3,7 @@
 503
 
 home page about
-	map home page -> grey
 about page
 
+
+bulletproof @font-face syntax
