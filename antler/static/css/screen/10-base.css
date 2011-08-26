@@ -12,16 +12,15 @@ using <b> ("stylistically offset from the normal prose without conveying
 any extra importance”) for the off-left effect of text useful for screen
 readers, but not to be displayed as CSS gives the context
 */
-
 b {
-    direction: ltr;
-    position: absolute;
-    left: -9999px;
-    width: 500px;
+  direction: ltr;
+  position: absolute;
+  left: -9999px;
+  width: 500px;
 }
 
-/* Defaults */
 
+/* Defaults */
 html {
 	background: #f1f1f1;
 }
@@ -614,11 +613,11 @@ h1 .meta {
 	-webkit-user-select: none;
 }
 .storynav {
+	width: 100%;
 	height: 44px;
 	margin: 0 0 0 -9px;
-	position: absolute;
-	left: 2em;
-	top: 5.5em;
+	top: 0;
+	position: relative;
 }
 	.storynav li {
 		width: 40px;
@@ -657,6 +656,14 @@ h1 .meta {
 		top: 0;
 		line-height: 44px;
 		white-space: nowrap;
+	}
+	.storynav .return {
+		position: absolute;
+		top: 0;
+		right: 0;
+		text-indent: 0;
+		white-space: nowrap;
+		line-height: 44px;
 	}
 
 

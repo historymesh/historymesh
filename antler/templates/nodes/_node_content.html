@@ -16,6 +16,9 @@
 			{% endif %}
 		</ol>
 		{% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}
+		{% if not story.next %}
+			<span class="return"><a href="/">Return to Story List</a></span>
+		{% endif %}
 	</div>
   {% endif %}
 {% endif %}
