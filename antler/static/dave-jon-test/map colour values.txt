@@ -1,17 +1,8 @@
-Map Colour Values
-(Ordered by preference)
+404
+500
+503
 
-1 - e03c31
-2 - 1945ec
-3 - f5b133
-4 - 309e1d
-5 - 000000
-6 - e55ffe
-7 - 83b3f2
-8 - fcd933
-9 - baf41a
-10 - bdbdbd
-11 - 79221b
-12 - 233168
-13 - 6a5327
-14 - 273924
+home page about
+	map home page -> grey
+about page
+

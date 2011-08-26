@@ -1,0 +1,12 @@
+		<li>
+{% if story.previous %}
+			<h4>Previously in <span class="story-name">{{ story.name }}</span></h4>
+			<h3 class="thread story-name"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">{{ story.previous.name }}</a></h3>
+{% endif %}
+		</li>
+		<li>
+{% if story.next %}
+			<h4>Next in <span class="story-name">{{ story.name }}</span></h4>
+			<h3 class="thread story-name"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">{{ story.next.name }}</a></h3>
+{% endif %}
+		</li>

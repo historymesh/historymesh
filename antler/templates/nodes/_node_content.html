@@ -1,21 +1,31 @@
 {% load markup %}
 {% if story %}
-	<ol class="prev-next">
-{% if story.previous %}
-<li class="prev bgc1"><a rel='prev' href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
-{% else %}
-<li class="prev bgc1">Previous</li>
-{% endif %}
-
-{% if story.next %}
-<li class="next bgc1"><a rel='next' href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
-{% else %}
-<li class="next bgc1">Next</li>
-{% endif %}
-	</ol>
+	<div class="prev-next">
+		<ol>
+			{% if story.previous %}
+			<li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
+			{% else %}
+			<li class="prev-disabled"></li>
+			{% endif %}
+			
+			{% if story.next %}
+			<li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
+			{% else %}
+			<li class="next-disabled"></li>
+			{% endif %}
+		</ol>
+		{% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}
+	</div>
 {% endif %}
 		
-	<h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}{% if subject.display_date %} <span>({{subject.display_date}})</span>{% endif %}</h1>
+	<h1>
+		<span class="name">{{subject.name}}</span>
+		{% if story or subject.display_date %}
+		<span class="meta">(
+			{% if subject.display_date %}<span class="date">{{subject.display_date}}</span>{% endif %}
+		)</span>
+		{% endif %}
+	</h1>
 
 	
 	<div class="body">
@@ -35,7 +45,7 @@
 {% endif %}
 
 {% if story.story_content %}
-  <h2>Current story content</h2>
+  <h2>{{ story.name }}</h2>
   <ul>
     <li>{{story.story_content.text|textile}}</li>
   </ul>
@@ -80,23 +90,21 @@ Content</a>
 	
 	
 	
-	<div class="secondary">
-{% for story in subject.stories %}
-	<ol class="storynav">
-{% if story.previous %}
-		<li>
-			<h4>Previously in <span class="auto">{{ story.name }}</span></h4>
-			<h3 class="thread auto"><a rel='prev' href='{{ story.previous.url }}?story={{ story.slug }}'>{{ story.previous.name }}</a></h3>
-
-			<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum.</p> -->
-		</li>
-{% endif %}
-{% if story.next %}
-		<li>
-			<h4>Next in <span class="auto">{{ story.name }}</span></h4>
-			<h3 class="thread auto"><a rel='next' href='{{ story.next.url }}?story={{ story.slug }}'>{{ story.next.name }}</a></h3>
-
-		</li>
-{% endif %}
-	</ol>
-{% endfor %}
+  {% if story %}
+  <div class="secondary storynav">
+    <ol>
+    {% include "nodes/_full_story_nav.html" %}
+    </ol>
+    {% for other_story in subject.stories %}
+      {% if story != other_story %}
+				<div class="tertiary story-{{ other_story.slug }}">
+        {% with other_story as story %}
+			    <ol>
+          {% include "nodes/_full_story_nav.html" %}
+			    </ol>
+        {% endwith %}
+       	</div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}

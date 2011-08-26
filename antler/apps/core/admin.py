@@ -34,7 +34,7 @@ admin.site.register(Object, NodeAdmin)
 admin.site.register(Event, NodeAdmin)
 admin.site.register(
     StoryContent,
-    list_display = ["story"],
+    list_display = ["story", "subject"],
     form = StoryContentAdminForm,
 )
 

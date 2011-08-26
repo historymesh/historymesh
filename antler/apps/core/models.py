@@ -28,13 +28,17 @@ class Edge(models.Model):
     VERBS = [
         "invented",
         "conceived",
-        "killed",
+        "discovered",
         "preceded",
-        "befriended",
-        "married",
+        "was friends with",
+        "was parent to",
+        "was described by",
+        "was married to",
         "dined_with",
         "inspired",
         "enabled",
+        "depicted",
+        "owned",
         "primary",
         "secondary",
         "described_by", # For linking to StoryContent nodes
@@ -109,8 +113,11 @@ class Edge(models.Model):
         }
     linked_subject.allow_tags = True
 
+    def get_absolute_url(self):
+        return self.url()
+
     def url(self):
-        return reverse('edge', kwargs={'slug': self.slug})
+        return self.subject.url()
 
 
 class EdgeObjectQuerySet(QuerySet):
@@ -303,6 +310,8 @@ class Node(BaseNode):
 
     reference_url = models.URLField(verify_exists=False, blank=True)
 
+    named_url = None
+
     class Meta:
         abstract = True
 
@@ -332,17 +341,27 @@ class Node(BaseNode):
             'display_date': self.display_date,
         }
 
+    def url(self):
+        return reverse(self.named_url, kwargs={'slug': self.slug})
+
+    def link_url(self):
+        # just used in links; something that has no text and isn't
+        # in any stories should use its reference_url instead.
+        if not self.text and self.reference_url and len(self.stories())==0:
+            return self.reference_url
+        else:
+            return self.url()
+
 
 class Person(Node):
     """
     A person.
     """
 
+    named_url = 'person'
+
     class Meta:
         verbose_name_plural = "people"
-
-    def url(self):
-        return reverse('person', kwargs={'slug': self.slug})
 
 
 class Event(Node):
@@ -350,8 +369,7 @@ class Event(Node):
     A thing that happened at a given point in time.
     """
 
-    def url(self):
-        return reverse('event', kwargs={'slug': self.slug})
+    named_url = 'event'
 
 
 class Concept(Node):
@@ -359,8 +377,7 @@ class Concept(Node):
     A concept that was developed or discovered, e.g. punch cards, communism
     """
 
-    def url(self):
-        return reverse('concept', kwargs={'slug': self.slug})
+    named_url = 'concept'
 
 
 class Object(Node):
@@ -368,8 +385,7 @@ class Object(Node):
     A physical thing which arose from a concept, e.g. the Jacquard Loom
     """
 
-    def url(self):
-        return reverse('object', kwargs={'slug': self.slug})
+    named_url = 'object'
 
 
 class ExternalLink(BaseNode):

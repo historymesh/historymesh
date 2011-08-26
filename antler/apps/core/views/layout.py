@@ -7,6 +7,20 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView, View
 from core.models import Edge, Node
 
+
+class MapView(TemplateView):
+
+    template_name = "map.html"
+
+    def get_context_data(self):
+        engine = NodeLayoutEngine()
+        engine.lay_out()
+        return {
+            "nodes": list(engine.annotated_nodes()),
+            "edges": list(engine.visible_edges()),
+        }
+
+
 class LayoutView(TemplateView):
 
     template_name = "layout_test.html"
@@ -41,10 +55,7 @@ class LayoutImage(View):
         ctx = cairo.Context(surface)
         ctx.set_source_rgb(.9, .9, .9)
         ctx.paint()
-        iterations = request.GET.get('iterations')
-        if iterations is not None:
-            iterations = int(iterations)
-        self.engine = NodeLayoutEngine(iterations)
+        self.engine = NodeLayoutEngine()
         self.engine.lay_out()
         # Paint on the links
         ctx.set_source_rgb(1, 0, 0)
@@ -73,9 +84,11 @@ class NodeLayoutEngine(object):
     Lays out nodes in a rough time-like order.
     """
 
-    iterations = 1000
+    iterations_crossover_only = 20
+    iterations_both = 100
+    iterations_repulsion = 100
 
-    repulsion_factor = 0.2 # Range 0..1
+    repulsion_factor = 0.1 # Range 0..1
     repulsion_min_distance = 3
     repulsion_max_distance = 100
 
@@ -88,7 +101,9 @@ class NodeLayoutEngine(object):
     vertical_separation = 60
 
     # How strong the push to get even angles should be; range 0..1
-    angle_factor = 0.1
+    # Hint; it seems to be a good idea for this to be at least as strong as the
+    # repulsion factor, or it gets overpowered in awkward situations.
+    angle_factor = 0.2
 
     # How strong a push to make to fix crossovers
     crossover_factor = 0.5
@@ -101,10 +116,6 @@ class NodeLayoutEngine(object):
 
     max_node_distance = 5
     horizontal_scale_factor = 5
-
-    def __init__(self, iterations=None):
-        if iterations is not None:
-            self.iterations = iterations
 
     def lay_out(self):
         # First, fetch a list of all the nodes
@@ -229,24 +240,28 @@ class NodeLayoutEngine(object):
         Goes through the strings and lays them out along the
         non-time axis.
         """
-        for i in range(self.iterations):
+        for i in range(self.iterations_crossover_only):
             forces = self.init_forces()
             self.set_forces_from_overlaps(forces, i)
             if not self.apply_forces(forces, i):
                 break
 
-        for i in range(self.iterations):
-            # First pass: calculate forces
+        for i in range(self.iterations_both):
             forces = self.init_forces()
-
-            self.set_forces_from_connections(forces, i)
+            self.set_forces_from_connections(forces, i, self.iterations_both)
             self.set_forces_from_overlaps(forces, i)
             if not self.apply_forces(forces, i):
                 break
 
-    def set_forces_from_connections(self, forces, i):
+        for i in range(self.iterations_repulsion):
+            forces = self.init_forces()
+            self.set_forces_from_connections(forces, i, self.iterations_both)
+            if not self.apply_forces(forces, i):
+                break
+
+    def set_forces_from_connections(self, forces, i, iterations):
         # Work out slowdown/friction multiplier
-        slowdown = (1 - (1.0/self.iterations) * i)
+        slowdown = (1 - (1.0/iterations) * i)
 
         for string in self.strings:
             # First, find all other strings that overlap us
@@ -444,7 +459,8 @@ class String(object):
         self.nodes = tuple(
             sorted(nodes, key=lambda node: engine.node_horizontal_position(node))
         )
-        gen = random.Random(x=hash(self.nodes))
+        # seed random generator based on number of strings so far
+        gen = random.Random(x=len(engine.strings))
         self.position = gen.random() * 70
         print "Initialpos %s for %r" % (self.position, self)
     
