@@ -242,14 +242,16 @@ class NodeIndexView(TemplateView):
 class RandomNodeView(View):
 
     def get(self, request):
-        # Pick a node type from those available
-        node_classes = [model for model in [Person, Concept, Event, Object]
-                        if model.objects.exists()]
-        if not node_classes:
+        # Pick a random story edge, and then pick one of its nodes
+        edges = Edge.objects.filter(story__isnull=False).order_by("?")
+        try:
+            edge = edges[0]
+        except IndexError:
             raise Http404
-        node_class = random.choice(node_classes)
-
-        node = node_class.objects.order_by("?")[0]
+        if random.choice((True, False)):
+            node = edge.subject
+        else:
+            node = edge.object
         return Redirect( node.url() )
 
 
