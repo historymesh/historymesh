@@ -7,6 +7,7 @@ from django import http
 from django.http import Http404
 from django.db import models
 from django.views.generic.base import TemplateView, View
+from django.template.loader import render_to_string
 from core.models import Person, Concept, Event, Object, Story, Edge
 from django.shortcuts import HttpResponseRedirect as Redirect, get_object_or_404
 import random
@@ -158,12 +159,12 @@ class RandomNodeView(View):
         return Redirect( node.url() )
 
 
-class NodeJsonView(View):
+class NodeJsonView(NodeView):
     def get(self, request, type, slug):
         # Attempt to find the requested model instance
         try:
-            model = models.get_model("core", type)
-            instance = get_object_or_404(model, slug=slug)
+            self.model = models.get_model("core", type)
+            instance = get_object_or_404(self.model, slug=slug)
             status_code = 200
         except AttributeError:
             status_code = 404
@@ -174,13 +175,16 @@ class NodeJsonView(View):
             story = Story.objects.get(slug=story_slug)
         except Story.DoesNotExist:
             story = None
-
+        
         # Set up the payload
         payload = {
             "storySlug": story_slug,
             "nodeType": type,
             "nodeSlug": slug,
-            "html": '<div>test</div>',
+            "html": render_to_string(
+                'nodes/_node_content.html',
+                self.get_context_data(slug),
+            )
         }
 
         # Return a JSON payload
