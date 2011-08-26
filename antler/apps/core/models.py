@@ -407,7 +407,7 @@ class Object(Node):
         if self.name.startswith(u'The '):
             return u'the %s' % self.name[4:]
         else:
-            return self.name.lower()
+            return self.name
 
 
 class ExternalLink(BaseNode):
