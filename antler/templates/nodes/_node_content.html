@@ -113,7 +113,7 @@
 {% endfor %}
 
 {% if subject.reference_url %}
-<p class='read-more'>Read more about <a href="{{subject.reference_url}}">{{subject.name}} on {{subject.reference_name}}</a>.</p>
+<p class='read-more'>Read more about <a href="{{subject.reference_url}}">{{subject.name_possibly_lowercased}} on {{subject.reference_name}}</a>.</p>
 {% endif %}
 
 </div>
