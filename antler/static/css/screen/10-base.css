@@ -437,8 +437,11 @@ body.about, body.error, body.search {
 	padding: 6em 2em 0 0;
 	margin: 0;
 }
-.about .body, .error .body, .search .body {
+.about .body, .error .body {
 	padding: 0 2em 0 400px;
+}
+.search .body {
+	padding: 0 2em;
 }
 .about footer, .error footer, .search footer {
 	border-top: solid 1px #ccc;
