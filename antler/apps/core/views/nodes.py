@@ -31,6 +31,15 @@ class NodeView(TemplateView):
         if len(story_prev) > 0:
             story_prev = story_prev[0]
 
+        return {
+            "subject": instance,
+            "incoming": instance.incoming().by_verb(),
+            "outgoing": instance.outgoing().by_verb(),
+            "story": story,
+            "map": self._prepare_story_map(story)
+        }
+
+    def _prepare_story_map(self, story):
         nodes,edges = self.story_node_map(story)
 
         # Group the nodes by century(ish) for <noscript> output
@@ -78,13 +87,9 @@ class NodeView(TemplateView):
             i += 1
 
         return {
-            "subject": instance,
-            "incoming": instance.incoming().by_verb(),
-            "outgoing": instance.outgoing().by_verb(),
-            "story": story,
-            "map_nodes": nodes,
-            "map_edges": edges,
-            "map_marks": marks,
+            "nodes": nodes,
+            "edges": edges,
+            "marks": marks,
             "century_grouped_nodes": groups,
         }
 
