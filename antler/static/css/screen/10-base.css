@@ -312,6 +312,7 @@ div.home {
 }
 .home h1 {
 	font-size: 1.5em;
+	line-height: 2;
 }
 .home h2 {
 	clear: both;
@@ -338,8 +339,8 @@ div.home {
 		padding-left: 95px;
 	}
 .home .about {
-	width: 30%;
-	margin-right: 10%;
+	width: 25%;
+	margin: 0 10% 0 5%;
 	padding-top: 4.5em;
 	float: left;
 }
@@ -348,9 +349,11 @@ div.home {
 		line-height: 2;
 	}
 	.home .about a {
+		font-weight: normal;
+	}
+	.home .about .more {
 		display: block;
 		margin-top: 1em;
-		font-size: 0.66em;
 		font-style: normal;
 		font-family: NuvoMediumWOFF, "Lucida Grande", Calibri, Helvetica, Arial, sans-serif;
 	}
