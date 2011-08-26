@@ -22,9 +22,11 @@ b {
 
 /* Defaults */
 
+/*
 html {
 	background: #f1f1f1;
 }
+*/
 
 body {
 	margin: 2em 10%;
@@ -34,7 +36,7 @@ body {
 	font-size: .9em;
 	-webkit-font-smoothing: antialiased;
 	color: #555;
-	background: #f1f1f1;
+	background: #fff;
 }
 
 /*! verbatim */
@@ -215,13 +217,15 @@ header input {
 
 .timeline {
 	position: fixed;
+	background: #f1f1f1;
 	z-index: 0;
 	left:0;
-	right: 0;
-	top:120px;
+	width: 400px;
+	top:0;
 	bottom: 0;
 	font-size: 11px;
 	color: #aaa;
+	padding: 120px 0 0 0;
 }
 
 .timeline li {
@@ -237,6 +241,10 @@ header input {
 	width: 270px;
 	bottom: 0;
 	background: url(/static/img/temp-sidebar-map.png) no-repeat right 50%;
+}
+
+.home .map {
+	background: url(/static/img/temp-homepage-vertical.png) no-repeat right top;	
 }
 
 .tail {
@@ -255,9 +263,8 @@ article {
 	position: relative;
 	z-index: 1;
 	margin: 0 0 0 400px;
-	padding: 2em 2em 6em 2em;
+	padding: 2em 2em 3em 2em;
 	overflow: auto;
-	background: #fff;
 }
 
 .prev-next {
@@ -311,12 +318,18 @@ figure img {
 	display: block;
 }
 
+figure.landscape {
+	width: 600px;
+	margin: 0 auto 1.5em auto;
+}
+
 figure.portrait img {
 	max-width: 250px;
 }
 
 figure.landscape img {
-	max-width: 100%;
+	width: 100%;
+	max-width: 600px;
 	height: auto;
 }
 
@@ -380,16 +393,19 @@ figcaption {
 /* Viewport of 800px and above */
 @media screen and (max-width: 1024px) {
 
-	figure {
+	figure.portrait {
 		float: none;
 		width: auto;
 		margin: 0 0 1.5em 0;
+	}
+	
+	figure.landscape {
+		width: auto;
 	}
 
 	figure img {
 		margin: 0 auto;
 	}
-
 
 }	
 /* -- */
