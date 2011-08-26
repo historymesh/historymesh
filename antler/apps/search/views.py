@@ -19,6 +19,9 @@ class SearchView(TemplateView):
     template_name = 'search/search.html'
     
     def get_context_data(self):
+        query_string = self.request.GET.get('q')
+        query = build_query(query_string)
         return {
-            'results': build_query(self.request.GET.get('q')),
+            'results': query,
+            'query_string': query_string,
         }
