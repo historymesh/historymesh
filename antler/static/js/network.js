@@ -9,6 +9,7 @@ Network = function(container, width, height) {
   this.nodeRadius   = 0.9 * this.pathWidth;
   this.nodeStroke   = 0.5 * this.pathWidth;
   this.cornerRadius = 16;
+  this.animateSpeed = 500;
 
   this.canvasSize = 10000;
 
@@ -224,7 +225,7 @@ $.extend(Network.prototype, {
 
   hidePreviews: function() {
     for (var id in this._nodes)
-      this._nodes[id].hide();
+      this._nodes[id].hidePreview();
   },
 
   _nextId: function() {
@@ -252,7 +253,40 @@ $.extend(Network.Node.prototype, {
     else {
       this._label = this._renderLabel();
     }
-    return this._circle = this._renderCircle();
+    this._circle = this._renderCircle();
+
+    // We want to create the nodes at the right z-index but then hide them
+    if (this._hidden) this.hide(true);
+
+    return this._circle;
+  },
+
+  hide: function(instant) {
+    this._hidden = true;
+
+    if (!this._circle) return;
+
+
+    if (instant) {
+      if (this._label) this._label.attr('opacity', 0).hide();
+      if (this._preview) this._preview.attr('opacity', 0).hide();
+      this._circle.attr('opacity', 0).hide();
+      return
+    }
+
+    var self = this;
+
+    if (this._label) this._label.animate({'opacity': 0}, network.animateSpeed, function(){ self._label.hide() });
+    if (this._preview) this._preview.animate({'opacity': 0}, network.animateSpeed, function(){ self._preview.hide() });
+    this._circle.animate({'opacity': 0}, network.animateSpeed, function(){ self._circle.hide() });
+  },
+
+  show: function() {
+    this._hidden = false;
+
+    if (this._label) this._label.show().animate({'opacity': 1}, network.animateSpeed);
+    if (this._preview) this._preview.show().animate({'opacity': 1}, network.animateSpeed);
+    this._circle.show().animate({'opacity': 1}, network.animateSpeed)
   },
 
   _renderPreview: function() {
@@ -355,10 +389,11 @@ $.extend(Network.Node.prototype, {
 
   preview: function() {
     this._network.hidePreviews();
-    this._preview.addClass('selected');
+    if (this._preview)
+      this._preview.addClass('selected');
   },
 
-  hide: function() {
+  hidePreview: function() {
     if (this._preview)
       this._preview.removeClass('selected');
   },
@@ -410,6 +445,9 @@ $.extend(Network.Edge.prototype, {
         alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
         beta   = [corner[0] + chop * signX, corner[1]];
         sweep  = (signX === signY) ? '0' : '1';
+
+        // toPos[0] += diffX > 10 ? signX * width : 0;
+        // toPos[1] += diffY > 10 ? signY * width : 0;
       } else {
         corner = [toPos[0] , fromPos[1] + diffX * signY];
         alpha  = [corner[0] - chopX * signX, corner[1] - chopY * signY];
@@ -434,8 +472,29 @@ $.extend(Network.Edge.prototype, {
     if (this._secondary)
       path.attr('opacity', 0.4);
 
-    return this._path = path;
+    this._path = path;
+
+    if (this._hidden) this.hide(true);
+
+    return path;
+  },
+
+  hide: function(instant) {
+    this._hidden = true;
+
+    if (!this._path) return;
+    if (instant) {
+      this._path.attr('opacity', 0);
+    }
+    else {
+      this._path.animate({'opacity': 0}, network.animateSpeed);
+    }
+  },
+  show: function() {
+    this._hidden = false;
+    this._path.animate({'opacity': this._secondary ? 0.4 : 1}, 500);
   }
+
 });
 
 Network.Scale = function(network, label, x, y) {

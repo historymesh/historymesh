@@ -46,7 +46,8 @@
 	network.nodeLabelClass = 'map-node';
 	network.scaleFactor = 3;
 	network.vertical = true;
-	var nodes = {};
+	var nodes = {},
+			forks = {};
 
   {% for node in map.nodes %}
     nodes["{{ node|slugify }}"] = network.addNode({
@@ -58,6 +59,34 @@
       ],
       alwaysShowLabel: {% if node.story == story %}true{% else %}false{% endif %}
     });
+
+    {% if node.forks %}
+	    // Fork
+    	forks["{{ node|slugify }}"] = [];
+	    {% for other_node in node.forks.nodes %}
+	    nodes["{{ other_node|slugify }}"] = network.addNode({
+	      name: '{{ other_node.name }}',
+	      url: '{{ other_node.url }}?story={{ other_node.story.slug }}',
+	      position: [
+	        {{ other_node.horizontal_position }},
+	        {{ other_node.position }}
+	      ]
+	    })
+	  	forks["{{ node|slugify }}"].push(nodes["{{ other_node|slugify }}"]);
+	    {% endfor %}
+	    {% for other_edge in node.forks.edges %}
+	    	{% if not other_edge.incoming %}
+			    forks["{{ node|slugify }}"].push( nodes["{{ other_edge.subject|slugify }}"].leadsTo(nodes["{{ other_edge.object|slugify }}"], "{% if other_edge.story.colour %}#{{other_edge.story.colour}}{% else %}#273924{% endif %}"{% if other_edge.verb == "secondary" %}, true{% else %}, false{% endif %}));
+				{% else %}
+			    forks["{{ node|slugify }}"].push( nodes["{{ other_edge.object|slugify }}"].leadsTo(nodes["{{ other_edge.subject|slugify }}"], "{% if other_edge.story.colour %}#{{other_edge.story.colour}}{% else %}#273924{% endif %}"{% if other_edge.verb == "secondary" %}, true{% else %}, false{% endif %}));
+			   {% endif %}
+	    {% endfor %}
+
+	    {% if node != subject %}
+	    for (var i in forks["{{ node|slugify }}"]) forks["{{ node|slugify }}"][i].hide();
+	    {% endif %}
+	   {% endif %}
+
   {% endfor %}
 
   {% for edge in map.edges %}
