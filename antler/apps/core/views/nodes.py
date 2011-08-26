@@ -243,7 +243,7 @@ class RandomNodeView(View):
 
     def get(self, request):
         # Pick a random story edge, and then pick one of its nodes
-        edges = Edge.objects.filter(story__isnull=False).order_by("?")
+        edges = Edge.objects.filter(verb="primary").order_by("?")
         try:
             edge = edges[0]
         except IndexError:
