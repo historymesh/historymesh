@@ -107,16 +107,20 @@ class NodeView(TemplateView):
             try:
                 before,after = self._get_bracketing_nodes(other_node, nodes)
                 other_node.position = self._calculate_position(before, after, other_node.timeline_date)
-                nodes.append(other_node)
             except:
                 if len(nodes) > 0:
                     if nodes[-1].timeline_date <= other_node.timeline_date:
                         other_node.position = nodes[-1].position + 2*self.node_separation
                     else:
                         other_node.position = nodes[-1].position - self.node_separation
-                    nodes.append(other_node)
+                if nodes[-1].timeline_date <= other_node.timeline_date:
+                    other_node.position = nodes[-1].position + 2*self.node_separation
+                else:
+                    other_node.position = nodes[-1].position - self.node_separation
+            nodes.append(other_node)
 
-        edges = edges.union(other_edges)
+        # Put the other_edges in first so that the main story node is the right color
+        edges = other_edges.union(edges)
 
         return {
             "nodes": nodes,
@@ -133,13 +137,11 @@ class NodeView(TemplateView):
 
     # TODO: hadle cases where target is outside the range in nodes
     def _get_bracketing_nodes(self, target, nodes):
-        print "looking for %d" % target.timeline_date
         prev = None
         for node in nodes:
             if not prev:
                 prev = node
                 continue
-            print "prev: %d, next, %d" % (prev.timeline_date, target.timeline_date)
             if prev.timeline_date <= target.timeline_date and target.timeline_date <= node.timeline_date:
                 return prev,node
             prev = node

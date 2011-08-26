@@ -246,7 +246,12 @@ $.extend(Network.Node.prototype, {
   draw: function() {
     if (this._circle) return this._circle;
 
-    this._preview = this._renderPreview();
+    if (!this._data.alwaysShowLabel) {
+      this._preview = this._renderPreview();
+    }
+    else {
+      this._label = this._renderLabel();
+    }
     return this._circle = this._renderCircle();
   },
 
@@ -277,6 +282,36 @@ $.extend(Network.Node.prototype, {
     preview.click(function() { self.visit(); return false });
 
     return preview;
+  },
+
+  _renderLabel: function() {
+   var label = $('<div>' +
+                    '<a class="node-label" href="' +
+                     this._data.url + '">' +
+                      '<h4>' + this._data.name + '</h4>' +
+                    '</div>' +
+                 '</div>');
+
+    var radius = this._network.nodeRadius,
+        pos    = this._normal,
+        el     = this._network._container,
+        self   = this;
+
+    label.css({
+      position:   'absolute',
+      bottom:     network.canvasSize - (pos[1] - radius / 2) + 'px',
+      width:      '150px',
+      height:     'auto',
+      textAlign:  'right',
+      display:    'table',
+    });
+    el.append(label);
+
+    label.css('left', (pos[0] - radius / 2 - label.width() - 10) + 'px' );
+
+    // preview.mouseover(function() { self.preview() });
+
+    return label;
   },
 
   _renderCircle: function() {
@@ -324,7 +359,8 @@ $.extend(Network.Node.prototype, {
   },
 
   hide: function() {
-    this._preview.removeClass('selected');
+    if (this._preview)
+      this._preview.removeClass('selected');
   },
 
   visit: function() {

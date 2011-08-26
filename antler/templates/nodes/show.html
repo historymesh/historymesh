@@ -55,12 +55,13 @@
       position: [
         {{ node.horizontal_position }},
         {{ node.position }}
-      ]
+      ],
+      alwaysShowLabel: {% if node.story == story %}true{% else %}false{% endif %}
     });
   {% endfor %}
 
   {% for edge in map.edges %}
-    nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], "{% if edge.story.colour %}#{{edge.story.colour}}{% else %}#273924{% endif %}"{% if edge.verb == "secondary" %}, true{% endif %});
+    nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], "{% if edge.story.colour %}#{{edge.story.colour}}{% else %}#273924{% endif %}"{% if edge.verb == "secondary" %}, true{% else %}, false{% endif %});
   {% endfor %}
 
 
