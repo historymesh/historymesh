@@ -44,40 +44,43 @@
 </div>
 {% endif %}
 
-{% if story.story_content %}
+{% if story.story_content or user.is_staff %}
   <h2>{{ story.name }}</h2>
   {{story.story_content.text|textile}}
 {% endif %}
 
 {% if user.is_staff and story %}
 <div class="admin">
-	{% if story.story_content %}
-	<a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
-	{% else %}
-	<a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
-	{% endif %}
+  {% if story.story_content %}
+    <a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
+  {% else %}
+    <a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
+  {% endif %}
 </div>
 {% endif %}
 
 {% for other_story in subject.stories %}
-{% if other_story != story %}
-    <h3>{{other_story.name}}</h3>
-{% if other_story.story_content %}
-    {{other_story.story_content.text|textile}}
-{% if user.is_staff %}
-<div class="admin">
-	<a href="/admin/core/storycontent/{{ other_story.story_content.pk }}/">Edit Story Content</a>
-</div>
-{% endif %}
-{% else %}
-{% if user.is_staff %}
-<div class="admin">
-	<a href="/admin/core/storycontent/add/?story={{ other_story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story 
-Content</a>
-</div>
-{% endif %}
-{% endif %}
-{% endif %}
+  {% if other_story != story %}
+    {# only show a story if there is actual content, or we are admin #}
+    {% if other_story.story_content or user.is_staff %}
+        <h3>{{other_story.name}}</h3>
+      {% if other_story.story_content %}
+        {{other_story.story_content.text|textile}}
+        {% if user.is_staff %}
+          <div class="admin">
+            <a href="/admin/core/storycontent/{{ other_story.story_content.pk }}/">Edit Story Content</a>
+          </div>
+        {% endif %}
+      {% else %}
+        {% if user.is_staff %}
+          <div class="admin">
+            <a href="/admin/core/storycontent/add/?story={{ other_story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story 
+          Content</a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
 {% endfor %}
 
 {% if subject.reference_url %}
