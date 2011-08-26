@@ -72,42 +72,6 @@
         }
     }, 
     {
-        "pk": 11, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 2, 
-            "subject_type": "core.person", 
-            "subject_id": 6, 
-            "object_type": "core.object", 
-            "object_id": 39, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 12, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 2, 
-            "subject_type": "core.object", 
-            "subject_id": 39, 
-            "object_type": "core.person", 
-            "object_id": 5, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 13, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 2, 
-            "subject_type": "core.person", 
-            "subject_id": 5, 
-            "object_type": "core.person", 
-            "object_id": 29, 
-            "verb": "primary"
-        }
-    }, 
-    {
         "pk": 14, 
         "model": "core.edge", 
         "fields": {
@@ -140,18 +104,6 @@
             "subject_id": 33, 
             "object_type": "core.object", 
             "object_id": 40, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 21, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 3, 
-            "subject_type": "core.object", 
-            "subject_id": 29, 
-            "object_type": "core.person", 
-            "object_id": 26, 
             "verb": "primary"
         }
     }, 
@@ -332,18 +284,6 @@
             "subject_id": 32, 
             "object_type": "core.event", 
             "object_id": 1, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 34, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.event", 
-            "subject_id": 15, 
-            "object_type": "core.event", 
-            "object_id": 8, 
             "verb": "primary"
         }
     }, 
@@ -576,30 +516,6 @@
         }
     }, 
     {
-        "pk": 60, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 2, 
-            "subject_type": "core.object", 
-            "subject_id": 18, 
-            "object_type": "core.object", 
-            "object_id": 1, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 2, 
-            "subject_type": "core.person", 
-            "subject_id": 24, 
-            "object_type": "core.object", 
-            "object_id": 18, 
-            "verb": "primary"
-        }
-    }, 
-    {
         "pk": 61, 
         "model": "core.edge", 
         "fields": {
@@ -645,42 +561,6 @@
             "object_type": "core.object", 
             "object_id": 24, 
             "verb": "invented"
-        }
-    }, 
-    {
-        "pk": 17, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 2, 
-            "subject_type": "core.person", 
-            "subject_id": 11, 
-            "object_type": "core.person", 
-            "object_id": 24, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 2, 
-            "subject_type": "core.object", 
-            "subject_id": 22, 
-            "object_type": "core.person", 
-            "object_id": 11, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 16, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 3, 
-            "subject_type": "core.object", 
-            "subject_id": 22, 
-            "object_type": "core.object", 
-            "object_id": 37, 
-            "verb": "primary"
         }
     }, 
     {
@@ -740,18 +620,6 @@
             "subject_id": 40, 
             "object_type": "core.object", 
             "object_id": 29, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 69, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 6, 
-            "subject_type": "core.object", 
-            "subject_id": 40, 
-            "object_type": "core.object", 
-            "object_id": 2, 
             "verb": "primary"
         }
     }, 
@@ -828,39 +696,435 @@
         }
     }, 
     {
-        "pk": 35, 
-        "model": "core.person", 
+        "pk": 76, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "Early 20th Century", 
-            "name": "Herman Hollerith", 
-            "text": "Cofounded IBM\r\n\r\nCame R/W up with datastorage", 
-            "slug": "herman-hollerith", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Herman+Hollerith", 
-            "timeline_date": 1920
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 7, 
+            "object_type": "core.storycontent", 
+            "object_id": 12, 
+            "verb": "described_by"
         }
     }, 
     {
-        "pk": 28, 
-        "model": "core.person", 
+        "pk": 77, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "18th Century", 
-            "name": "Edmund Cartwright", 
-            "text": "Inventor of the power loom.\r\n\r\n\r\nThe power loom reduced demand for skilled handweavers, initially causing reduced wages and unemployment. Protests followed its introduction. For example, in 1816 two thousand rioting Calton weavers tried to destroy power loom mills and stoned the workers\r\n\r\n\r\nThe power loom also opened up opportunities for women mill workers.<ref></ref> A darker side of the power loom's impact was the growth of employment of children in power loom mills\r\n\r\nhttp://10.0.0.56:9292/wiki/Roberts%20Loom \u2014 Roberts Loom was a reliable power loom, viable to replace hand looms and (1830) marked the point where power looms overtook hand looms in deployment in UK", 
-            "slug": "edmund-cartwright", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Edmund+Cartwright", 
-            "timeline_date": 1785
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 22, 
+            "object_type": "core.storycontent", 
+            "object_id": 13, 
+            "verb": "described_by"
         }
     }, 
     {
-        "pk": 14, 
-        "model": "core.person", 
+        "pk": 78, 
+        "model": "core.edge", 
         "fields": {
-            "display_date": "20th Century", 
-            "name": "W. Edwards Deming", 
-            "text": "Statistical quality control. Heavy influence on Japanese industry.", 
-            "slug": "w-edwards-deming", 
-            "reference_url": "http://10.0.0.56:9292/wiki/W.+Edwards+Deming", 
-            "timeline_date": 1950
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 3, 
+            "object_type": "core.object", 
+            "object_id": 11, 
+            "verb": "discovered"
+        }
+    }, 
+    {
+        "pk": 79, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 12, 
+            "object_type": "core.object", 
+            "object_id": 11, 
+            "verb": "preceded"
+        }
+    }, 
+    {
+        "pk": 80, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 3, 
+            "object_type": "core.person", 
+            "object_id": 25, 
+            "verb": "dined with"
+        }
+    }, 
+    {
+        "pk": 81, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 25, 
+            "object_type": "core.person", 
+            "object_id": 26, 
+            "verb": "inspired"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 22, 
+            "object_type": "core.person", 
+            "object_id": 24, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 22, 
+            "object_type": "core.person", 
+            "object_id": 11, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 82, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.person", 
+            "subject_id": 11, 
+            "object_type": "core.object", 
+            "object_id": 37, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 83, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 24, 
+            "object_type": "core.storycontent", 
+            "object_id": 14, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 24, 
+            "object_type": "core.object", 
+            "object_id": 1, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 84, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 1, 
+            "object_type": "core.storycontent", 
+            "object_id": 15, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 85, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 18, 
+            "object_type": "core.object", 
+            "object_id": 17, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 5, 
+            "object_type": "core.person", 
+            "object_id": 29, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 6, 
+            "object_type": "core.person", 
+            "object_id": 5, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 6, 
+            "object_type": "core.object", 
+            "object_id": 39, 
+            "verb": "secondary"
+        }
+    }, 
+    {
+        "pk": 86, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 39, 
+            "object_type": "core.object", 
+            "object_id": 29, 
+            "verb": "secondary"
+        }
+    }, 
+    {
+        "pk": 87, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 27, 
+            "object_type": "core.object", 
+            "object_id": 27, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 88, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 10, 
+            "object_type": "core.object", 
+            "object_id": 33, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 89, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 30, 
+            "object_type": "core.person", 
+            "object_id": 37, 
+            "verb": "was friends with"
+        }
+    }, 
+    {
+        "pk": 90, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.person", 
+            "subject_id": 35, 
+            "object_type": "core.person", 
+            "object_id": 26, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 29, 
+            "object_type": "core.person", 
+            "object_id": 35, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 91, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 4, 
+            "object_type": "core.object", 
+            "object_id": 5, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 92, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 28, 
+            "object_type": "core.object", 
+            "object_id": 4, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 93, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 5, 
+            "object_type": "core.object", 
+            "object_id": 38, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 94, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 38, 
+            "object_type": "core.object", 
+            "object_id": 6, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 95, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 6, 
+            "object_type": "core.object", 
+            "object_id": 42, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 97, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 42, 
+            "object_type": "core.event", 
+            "object_id": 9, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 96, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.event", 
+            "subject_id": 9, 
+            "object_type": "core.object", 
+            "object_id": 2, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 98, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 2, 
+            "object_type": "core.event", 
+            "object_id": 17, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 99, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.event", 
+            "subject_id": 17, 
+            "object_type": "core.event", 
+            "object_id": 7, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 100, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.event", 
+            "subject_id": 7, 
+            "object_type": "core.event", 
+            "object_id": 1, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 15, 
+            "object_type": "core.event", 
+            "object_id": 6, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 101, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 6, 
+            "object_type": "core.event", 
+            "object_id": 8, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 102, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.event", 
+            "subject_id": 20, 
+            "object_type": "core.object", 
+            "object_id": 28, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 103, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.event", 
+            "subject_id": 6, 
+            "object_type": "core.person", 
+            "object_id": 26, 
+            "verb": "affected"
         }
     }, 
     {
@@ -885,18 +1149,6 @@
             "slug": "henri-maillardet", 
             "reference_url": "http://10.0.0.56:9292/wiki/Henri+Maillardet", 
             "timeline_date": 1805
-        }
-    }, 
-    {
-        "pk": 5, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "20th Century", 
-            "name": "Joe Jones", 
-            "text": "Joe Jones (1934 New York City - 1993 Wiesbaden) was an avant-garde musician associated with Fluxus especially known for his creation of rhythmic music machines. He first started experimenting with mechanical instruments in 1962, creating objects like musical boats, solar music umbrellas and a pedaled vehicle that pulled handmade instruments on wheels. Later, he worked with John Lennon and Yoko Ono in the 1970s, ", 
-            "slug": "joe-jones", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Joe+Jones+(Fluxus+artist)", 
-            "timeline_date": 1970
         }
     }, 
     {
@@ -984,6 +1236,30 @@
         }
     }, 
     {
+        "pk": 35, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "Early 20th Century", 
+            "name": "Herman Hollerith", 
+            "text": "Herman Hollerith was a German-American statistician who developed a mechanical tabulator based on punched cards to rapidly tabulate statistics from millions of pieces of data. He was the founder of the company that became IBM.\r\n\r\nHe invented the first automatic card-feed mechanism and the first key punch (that is, a punch operated by a keyboard); a skilled operator could punch 200\u2013300 cards per hour. He also invented a tabulator, which had a control panel that allowed it to do different jobs without being rebuilt.", 
+            "slug": "herman-hollerith", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Herman+Hollerith", 
+            "timeline_date": 1920
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "20th Century", 
+            "name": "W. Edwards Deming", 
+            "text": "William Edwards Deming was an American statistician, professor, author, lecturer, and consultant. He is perhaps best known for his work in Japan, where from 1950 onward he taught top management how to improve design (and thus service), product quality, testing and sales through various methods, including the application of statistical methods.\r\n\r\nDespite being considered something of a hero in Japan, he was only just beginning to win widespread recognition in the U.S. at the time of his death.", 
+            "slug": "w-edwards-deming", 
+            "reference_url": "http://10.0.0.56:9292/wiki/W.+Edwards+Deming", 
+            "timeline_date": 1950
+        }
+    }, 
+    {
         "pk": 9, 
         "model": "core.person", 
         "fields": {
@@ -1017,18 +1293,6 @@
             "slug": "su-song", 
             "reference_url": "http://10.0.0.56:9292/wiki/Su+Song", 
             "timeline_date": 1100
-        }
-    }, 
-    {
-        "pk": 12, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "18th Century", 
-            "name": "Matthew Boulton", 
-            "text": "Born 3 September 1728, died 17 August 1809 - was an English manufacturer and business partner of James Watt.  Born in birmingham, took over the family business of manufacturing small metal products, and started producing Boulton and Watt steam engines, which made the mechanisation of factories and mills possible.\r\n\r\nWikipedia says:\r\n\r\nBorn in Birmingham, England in 1728, Boulton was the son of a Birmingham manufacturer of small metal products who died when Boulton was 31. By then Boulton had managed the business for several years, and thereafter expanded it considerably, consolidating operations at the Soho Manufactory, built by him near Birmingham. At Soho, he adopted the latest techniques, branching into silver plate, ormolu and other decorative arts. He became associated with James Watt when Watt's business partner, John Roebuck, was unable to pay a debt to Boulton, who accepted Roebuck's share of Watt's patent as settlement. He then successfully lobbied Parliament to extend Watt's patent for an additional 17 years, enabling the firm to market Watt's steam engine. The firm installed hundreds of Boulton & Watt steam engines in Britain and abroad, initially in mines and then in factories.\r\n\r\nBoulton was a key member of the Lunar Society, a group of Birmingham-area men prominent in the arts, sciences, and theology. Members included Watt, Erasmus Darwin, Josiah Wedgwood and Joseph Priestley. The Society met each month near the full moon. Members of the Society have been given credit for developing concepts and techniques in science, agriculture, manufacturing, mining, and transport that laid the groundwork for the Industrial Revolution.\r\n\r\nBoulton founded the Soho Mint, to which he soon adapted steam power. He sought to improve the poor state of Britain's coinage, and after several years of effort obtained a contract in 1797 to produce the first British copper coinage in a quarter century. His \"cartwheel\" pieces were well-designed and difficult to counterfeit, and included the first striking of the large copper British penny, which continued to be coined until decimalisation in 1971. He retired in 1800, though continuing to run his mint, and died in 1809.", 
-            "slug": "matthew-boulton", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Matthew+Boulton", 
-            "timeline_date": 1761
         }
     }, 
     {
@@ -1116,6 +1380,18 @@
         }
     }, 
     {
+        "pk": 12, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Matthew Boulton", 
+            "text": "Born 3 September 1728, died 17 August 1809 - was an English manufacturer and business partner of James Watt. He was born in Birmingham, took over the family business of manufacturing small metal products, and started producing Boulton and Watt steam engines, which made the mechanisation of factories and mills possible.\r\n\r\nHe also founded the Soho Mint, to which he soon adapted steam power. He sought to improve the poor state of Britain's coinage, and after several years of effort obtained a contract in 1797 to produce the first British copper coinage in a quarter century.", 
+            "slug": "matthew-boulton", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Matthew+Boulton", 
+            "timeline_date": 1761
+        }
+    }, 
+    {
         "pk": 36, 
         "model": "core.person", 
         "fields": {
@@ -1188,18 +1464,6 @@
         }
     }, 
     {
-        "pk": 3, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "19th Century", 
-            "name": "Nagai Nagayoshi", 
-            "text": "Nagai Nagayoshi was a notable Japanese organic chemist and pharmacologist, best known for his study of ephedrine.\r\n\r\n\r\nNagai studied at Tokyo Imperial University, and became the first doctor of pharmacy in Japan. He was sent under government sponsorship to Prussia in 1871 to study at the University of Berlin. He was the only civilian in a group of military students sent to study in Great Britain and France, and he traveled by way of the United States and Great Britain.\r\n\r\nWhile in Berlin, he resided at the home of Japanese diplomat Aoki Sh\u016bz\u014d. He was influenced by the lectures of von Hofmann, and received a doctorate with a study on eugenol while working as an assistant at von Hofmann's laboratory. He decided to take up organic chemistry in 1873.\r\n\r\nWhile in Germany, Nagai married Therese Schumacher, the daughter of a wealthy lumber and mining magnate. On their return to Japan, she became a professor of German language at Japan Women's University, and was active in introducing German foods and culture to Japan. In 1923, Nagai and his wife hosted Albert Einstein and his wife during their visit to Japan.", 
-            "slug": "nagai-nagayoshi", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Nagai+Nagayoshi", 
-            "timeline_date": 1893
-        }
-    }, 
-    {
         "pk": 26, 
         "model": "core.person", 
         "fields": {
@@ -1248,63 +1512,39 @@
         }
     }, 
     {
-        "pk": 14, 
-        "model": "core.event", 
+        "pk": 28, 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1306", 
-            "name": "Ban on Coal Burning in London", 
-            "text": "But only while Parliament is in session", 
-            "slug": "ban-on-coal-burning-in-london", 
-            "reference_url": "http://10.0.0.56:9292/wiki/1306", 
-            "timeline_date": 1306
+            "display_date": "18th Century", 
+            "name": "Edmund Cartwright", 
+            "text": "Cartwright Cartwright was taught at University College, Oxford and became a clergyman of the Church of England. He invented the power loom, which reduced demand for skilled handweavers.\r\n\r\nHe designed his first power loom in 1784 and patented it in 1785, but it proved to be valueless. In 1789, he patented another loom which served as the model for later inventors to work upon. He also patented a wool combing machine in 1789 and a cordelier (machine for making rope) in 1792, as well as designing a steam engine that used alcohol instead of water.\r\n", 
+            "slug": "edmund-cartwright", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Edmund+Cartwright", 
+            "timeline_date": 1785
         }
     }, 
     {
-        "pk": 15, 
-        "model": "core.event", 
+        "pk": 3, 
+        "model": "core.person", 
         "fields": {
             "display_date": "19th Century", 
-            "name": "War of Currents", 
-            "text": "AC vs DC", 
-            "slug": "war-of-currents", 
-            "reference_url": "http://10.0.0.56:9292/wiki/War+of+Currents", 
-            "timeline_date": 1896
+            "name": "Nagai Nagayoshi", 
+            "text": "Nagai Nagayoshi was a notable Japanese organic chemist and pharmacologist, best known for his study of ephedrine.\r\n\r\nHe studied at Tokyo Imperial University, and became the first doctor of pharmacy in Japan. He was sent under government sponsorship to Prussia in 1871 to study at the University of Berlin. In 1923, Nagai and his wife hosted Albert Einstein and his wife during their visit to Japan.", 
+            "slug": "nagai-nagayoshi", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Nagai+Nagayoshi", 
+            "timeline_date": 1893
         }
     }, 
     {
-        "pk": 17, 
-        "model": "core.event", 
+        "pk": 5, 
+        "model": "core.person", 
         "fields": {
-            "display_date": "1819", 
-            "name": "Cotton Mills and Factories Act", 
-            "text": "No Children under 9", 
-            "slug": "cotton-mills-and-factories-act", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Factory+Acts#Cotton_Mills_etc_Act_1819", 
-            "timeline_date": 1819
-        }
-    }, 
-    {
-        "pk": 18, 
-        "model": "core.event", 
-        "fields": {
-            "display_date": "1818", 
-            "name": "Publication of Frankenstein", 
-            "text": "Monster + Robot = Aweseome", 
-            "slug": "publication-of-frankenstein", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Frankenstein", 
-            "timeline_date": 1818
-        }
-    }, 
-    {
-        "pk": 19, 
-        "model": "core.event", 
-        "fields": {
-            "display_date": "From 3rd Century BC", 
-            "name": "Early coal mining", 
-            "text": "Something something Theophrastus\r\n\r\nRoman surface mining powering smelting\r\n\r\nNo use during romano-brithish period\r\n\r\nRe-emergance by 1200", 
-            "slug": "early-coal-mining", 
-            "reference_url": "", 
-            "timeline_date": -300
+            "display_date": "1934\u20131993", 
+            "name": "Joe Jones", 
+            "text": "Joe Jones was an avant-garde musician associated with the Fluxus group and especially known for his creation of rhythmic music machines. He first started experimenting with mechanical instruments in 1962, creating objects like musical boats, solar music umbrellas and a pedaled vehicle that pulled handmade instruments on wheels. Later, he worked with John Lennon and Yoko Ono in the 1970s.", 
+            "slug": "joe-jones", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Joe+Jones+(Fluxus+artist)", 
+            "timeline_date": 1970
         }
     }, 
     {
@@ -1428,6 +1668,42 @@
         }
     }, 
     {
+        "pk": 19, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "From 3rd Century BC", 
+            "name": "Early coal mining", 
+            "text": "One of the earliest descriptions of (surface) coal mining is contained in Theophrastus' On Stones; the Romans also surface mined coal to power their smelting.\r\n\r\nCoal mining disappeared during the romano-british period, but then re-emerged by around 1200.", 
+            "slug": "early-coal-mining", 
+            "reference_url": "", 
+            "timeline_date": -300
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1306", 
+            "name": "Ban on Coal Burning in London", 
+            "text": "In 1306 a city ordinance was passed, decreeing that heating with coal was forbidden when Parliament was in session. The ordinance was not particularly effective.", 
+            "slug": "ban-on-coal-burning-in-london", 
+            "reference_url": "http://10.0.0.56:9292/wiki/1306", 
+            "timeline_date": 1306
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1819", 
+            "name": "Cotton Mills and Factories Act", 
+            "text": "The 1819 Cotton Mills and Factories Act stated that no children under 9 were to be employed and that children aged 9\u201316 years were limited to 12 hours' work per day.", 
+            "slug": "cotton-mills-and-factories-act", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Factory+Acts#Cotton_Mills_etc_Act_1819", 
+            "timeline_date": 1819
+        }
+    }, 
+    {
         "pk": 12, 
         "model": "core.event", 
         "fields": {
@@ -1476,6 +1752,42 @@
         }
     }, 
     {
+        "pk": 18, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "1818", 
+            "name": "Publication of Frankenstein", 
+            "text": "Shelley started writing Frankenstein when she was 18, and the novel was published when she was 19. The first edition was published anonymously in London in 1818. Shelley's name appears on the second edition, published in France.\r\n\r\nThe title of the novel refers to a scientist, Victor Frankenstein, who learns how to create life and creates a being in the likeness of man, but larger than average and more powerful.\r\n", 
+            "slug": "publication-of-frankenstein", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Frankenstein", 
+            "timeline_date": 1818
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "War of Currents", 
+            "text": "In the \"War of Currents\" era in the late 1880s, George Westinghouse and Thomas Edison became adversaries due to Edison's promotion of direct current (DC) for electric power distribution over alternating current (AC), advocated by Westinghouse and Nikola Tesla.\r\n\r\nEdison's low-voltage distribution system using DC ultimately lost to AC devices proposed by others: primarily Tesla's polyphase systems, and also other contributors, such as Charles Proteus Steinmetz. AC power distribution is now the primary means of long-distance power transmission.", 
+            "slug": "war-of-currents", 
+            "reference_url": "http://10.0.0.56:9292/wiki/War+of+Currents", 
+            "timeline_date": 1896
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "", 
+            "name": "Pre-industrial revolution textile industry", 
+            "text": "Before the Industrial Revolution, the textile industry in the UK was focussed around cottage industry, with much of the work carried about by skilled women. As the UK's cotton industry, and later other textiles, grew, the balance between men and women working in the industry, and between skilled and unskilled labour, would shift more than once, exacerbating the economic uncertainty of the time.", 
+            "slug": "pre-industrial-revolution-textile-industry", 
+            "reference_url": "", 
+            "timeline_date": 1500
+        }
+    }, 
+    {
         "pk": 14, 
         "model": "core.object", 
         "fields": {
@@ -1488,42 +1800,6 @@
         }
     }, 
     {
-        "pk": 15, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1768-74", 
-            "name": "Jacquet-Droz automata", 
-            "text": "the musician, the draughtsman and the writer. The dolls are still functional, and can be seen at the Mus\u00e9e d'Art et d'Histoire of Neuch\u00e2tel, in Switzerland. They are considered to be among the remote ancestors of modern computers.\r\n", 
-            "slug": "jacquet-droz-automata", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Jaquet-Droz%20automata", 
-            "timeline_date": 1768
-        }
-    }, 
-    {
-        "pk": 16, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "12th Century", 
-            "name": "Crankshaft", 
-            "text": "The first known use of a crankshaft in a chain pump was in one of AL-JAZARI's (1136\u20131206) saqiya machines", 
-            "slug": "crankshaft", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Crankshaft", 
-            "timeline_date": 1180
-        }
-    }, 
-    {
-        "pk": 17, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "18th Century", 
-            "name": "The Silver Swan", 
-            "text": "The Silver Swan is an automaton dating from the 18th Century and is housed in the Bowes Museum, Barnard Castle, Teesdale, County Durham, England.\r\n", 
-            "slug": "the-silver-swan", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Silver%20Swan%20(automaton)", 
-            "timeline_date": 1773
-        }
-    }, 
-    {
         "pk": 1, 
         "model": "core.object", 
         "fields": {
@@ -1533,102 +1809,6 @@
             "slug": "the-digesting-duck", 
             "reference_url": "http://10.0.0.56:9292/wiki/Digesting+Duck", 
             "timeline_date": 1739
-        }
-    }, 
-    {
-        "pk": 13, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1092", 
-            "name": "Chain drive", 
-            "text": "Celestial Lader by Su Song\r\n\r\n1770 Vaucanson", 
-            "slug": "chain-drive", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Chain%20drive", 
-            "timeline_date": 1092
-        }
-    }, 
-    {
-        "pk": 35, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1961", 
-            "name": "ANITA", 
-            "text": "The first electronic calculator", 
-            "slug": "anita", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Sumlock%20ANITA%20calculator", 
-            "timeline_date": 1961
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1779", 
-            "name": "Spinning Mule", 
-            "text": "The 1790 mule required main force, meaning:\r\n\r\nHome spinning was the occupation of women and girls, but the strength needed to operate a mule, caused it to be the activity of men. Hand loom weaving however, had been a man's occupation but in the mill it could and was done by girls and women\r\n\r\nMule spinners were the leaders in unionism within the cotton industry\r\n\r\nLater developments including Roberts' Loom (1830), an automatic version.", 
-            "slug": "spinning-mule", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Spinning%20mule", 
-            "timeline_date": 1779
-        }
-    }, 
-    {
-        "pk": 38, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "18th\u201319th Century", 
-            "name": "Cotton factories", 
-            "text": "Large-scale non-mechanized factories bringing together workers and specialised equipment. Rise of UK cotton industry. Enabled by development of power loom & steam engine.", 
-            "slug": "cotton-factories", 
-            "reference_url": "http://10.0.0.56:9292/wiki/cotton%20mill", 
-            "timeline_date": 1771
-        }
-    }, 
-    {
-        "pk": 39, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1838", 
-            "name": "Jacquard Portrait", 
-            "text": "Portrait of Jacuqard woven on 24000 cards on a Jacuqard Loom\r\n\r\nMeasures 20x14 inches\r\n\r\n(from the book)", 
-            "slug": "jacquard-portrait", 
-            "reference_url": "", 
-            "timeline_date": 1838
-        }
-    }, 
-    {
-        "pk": 41, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "18th Century", 
-            "name": "Steam engine", 
-            "text": "Savery, Newcommen, Watt and Trevithnick", 
-            "slug": "steam-engine", 
-            "reference_url": "", 
-            "timeline_date": 1770
-        }
-    }, 
-    {
-        "pk": 42, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1784", 
-            "name": "Power loom", 
-            "text": "Invented by Cartwright of the power loom.\r\n\r\n\r\nThe power loom reduced demand for skilled handweavers, initially causing reduced wages and unemployment. Protests followed its introduction. For example, in 1816 two thousand rioting Calton weavers tried to destroy power loom mills and stoned the workers\r\n\r\n\r\nThe power loom also opened up opportunities for women mill workers.<ref></ref> A darker side of the power loom's impact was the growth of employment of children in power loom mills\r\n\r\nhttp://10.0.0.56:9292/wiki/Roberts%20Loom \u2014 Roberts Loom was a reliable power loom, viable to replace hand looms and (1830) marked the point where power looms overtook hand looms in deployment in UK", 
-            "slug": "power-loom", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Power+loom", 
-            "timeline_date": 1784
-        }
-    }, 
-    {
-        "pk": 27, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "Early 17th Century", 
-            "name": "Upper Hurst mining rig", 
-            "text": "During C17 wooden bracing using branches", 
-            "slug": "upper-hurst-mining-rig", 
-            "reference_url": "http://10.0.0.56:9292/wiki/George+Bruce+of+Carnock", 
-            "timeline_date": 1617
         }
     }, 
     {
@@ -1692,15 +1872,15 @@
         }
     }, 
     {
-        "pk": 2, 
+        "pk": 38, 
         "model": "core.object", 
         "fields": {
-            "display_date": "1801", 
-            "name": "The Jacquard Loom", 
-            "text": "The Jacquard loom is a mechanical loom, invented by Joseph Marie Jacquard in 1801, that simplifies the process of manufacturing textiles with complex patterns such as brocade, damask, and matelasse.\r\n\r\nThe loom is controlled by punched cards with punched holes, each row of which corresponds to one row of the design. Multiple rows of holes are punched on each card and the many cards that compose the design of the textile are strung together in order.\r\n", 
-            "slug": "the-jacquard-loom", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Jacquard%2Bloom", 
-            "timeline_date": 1801
+            "display_date": "18th\u201319th Century", 
+            "name": "Cotton factories", 
+            "text": "Large-scale non-mechanised factories bringing together workers and specialised equipment, intertwined with the rise of the UK cotton industry. The later development of the steam engine and power loom enabled further growth by mechanisation.", 
+            "slug": "cotton-factories", 
+            "reference_url": "http://10.0.0.56:9292/wiki/cotton%20mill", 
+            "timeline_date": 1771
         }
     }, 
     {
@@ -1716,6 +1896,66 @@
         }
     }, 
     {
+        "pk": 27, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "Early 17th Century", 
+            "name": "Upper Hirst mining rig", 
+            "text": "The Upper Hirst mining rig was George Bruce of Carnock's innovative mine sunk into the Upper Hirst coal seam, beneath the Firth of Forth. It was constructed in the 17th Century, using branches for wooden braces.\r\n\r\nAs well as an entrance on land, the mine had a shaft sunk from an artificial island built in the middle of the Firth of Forth, which was used to load coal directly onto ships.", 
+            "slug": "upper-hirst-mining-rig", 
+            "reference_url": "http://10.0.0.56:9292/wiki/George+Bruce+of+Carnock", 
+            "timeline_date": 1617
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1784", 
+            "name": "Power loom", 
+            "text": "The first power loom, a mechanized loom powered by a drive shaft, was designed in 1784 by Edmund Cartwright and first built in 1785. It was refined over the next 47 years until a design by Kenworthy and Bullough made the operation completely automatic (the Lancashire Loom).\r\n\r\nThe power loom reduced demand for skilled handweavers, initially causing reduced wages and unemployment. Protests followed its introduction. For example, in 1816 two thousand rioting Calton weavers tried to destroy power loom mills, and stoned the workers.  A darker side of the power loom's impact was the growth of employment of children in power loom mills.", 
+            "slug": "power-loom", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Power+loom", 
+            "timeline_date": 1784
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1961", 
+            "name": "ANITA", 
+            "text": "The ANITA Mark VII and VIII calculators were launched simultaneously in late 1961 as the world's first all-electronic desktop calculators. Designed and built by the Bell Punch Co. in Britain, and marketed through its Sumlock Comptometer division, they used vacuum tubes and cold-cathode switching tubes in their logic circuits and nixie tubes for their numerical displays.\r\n\r\nThey were the first of a series of desktop and hand-held electronic calculators that the company was to develop and sell under the ANITA name into the mid-1970s.\r\n", 
+            "slug": "anita", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Sumlock%20ANITA%20calculator", 
+            "timeline_date": 1961
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1801", 
+            "name": "The Jacquard Loom", 
+            "text": "The Jacquard loom is a mechanical loom, invented by Joseph Marie Jacquard in 1801, that simplifies the process of manufacturing textiles with complex patterns such as brocade, damask, and matelasse.\r\n\r\nThe loom is controlled by punched cards with punched holes, each row of which corresponds to one row of the design. Multiple rows of holes are punched on each card and the many cards that compose the design of the textile are strung together in order.\r\n", 
+            "slug": "the-jacquard-loom", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Jacquard%2Bloom", 
+            "timeline_date": 1810
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1838", 
+            "name": "The Jacquard Portrait", 
+            "text": "The Jacquard Portrait was a woven portrait of Jacquard (the inventor of the Jacquard Loom, which enabled such a complex pattern), woven using 24000 cards, although it measures only 20 inches by 14 inches. It was later owned by Charles Babbage, who would display it to guests in a manner similar to the proud owners of earlier automata.\r\n\r\n<!-- From the book -->", 
+            "slug": "the-jacquard-portrait", 
+            "reference_url": "", 
+            "timeline_date": 1838
+        }
+    }, 
+    {
         "pk": 5, 
         "model": "core.object", 
         "fields": {
@@ -1728,6 +1968,18 @@
         }
     }, 
     {
+        "pk": 32, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "Early 19th Century", 
+            "name": "Tower Colliery", 
+            "text": "Tower Colliery was the oldest continuously worked deep-coal mine in the United Kingdom, and possibly the world, and the only mine of its kind remaining in the South Wales Valleys. It is located near the villages of Hirwaun and Rhigos, north of the town of Aberdare in the Cynon Valley, in south Wales.\r\n\r\nBritish Coal closed Tower Colliery on 22 April 1994 on the grounds that it would be uneconomic in current market conditions to continue production.\r\n", 
+            "slug": "tower-colliery", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Tower+Colliery", 
+            "timeline_date": 1825
+        }
+    }, 
+    {
         "pk": 23, 
         "model": "core.object", 
         "fields": {
@@ -1737,30 +1989,6 @@
             "slug": "water-powered-puppet-theatre", 
             "reference_url": "http://10.0.0.56:9292/wiki/Ma+Jun", 
             "timeline_date": 240
-        }
-    }, 
-    {
-        "pk": 32, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1864", 
-            "name": "Tower Colliery", 
-            "text": "Tower Colliery was the oldest continuously worked deep-coal mine in the United Kingdom, and possibly the world, and the only mine of its kind remaining in the South Wales Valleys. It is located near the villages of Hirwaun and Rhigos, north of the town of Aberdare in the Cynon Valley, in south Wales.\r\n\r\nBritish Coal closed Tower Colliery on 22 April 1994 on the grounds that it would be uneconomic in current market conditions to continue production.\r\n", 
-            "slug": "tower-colliery", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Tower+Colliery", 
-            "timeline_date": 1864
-        }
-    }, 
-    {
-        "pk": 29, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1837", 
-            "name": "The Analytical Engine", 
-            "text": "The analytical engine, an important step in the history of computers, was the design of a mechanical general-purpose computer by English mathematician Charles Babbage. In its logical design the machine was essentially modern, anticipating the first completed general-purpose computers by about 100 years.\r\n\r\nIt was first described in 1837. Babbage continued to refine the design until his death in 1871. Because of the complexity of the machine, the lack of project management science, the expense of its construction, and the difficulty of assessing its value by Parliament relative to other projects being lobbied for, the engine was never built.", 
-            "slug": "analytical-engine", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Analytical+engine", 
-            "timeline_date": 1837
         }
     }, 
     {
@@ -1824,6 +2052,18 @@
         }
     }, 
     {
+        "pk": 29, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "Mid 19th Century", 
+            "name": "The Analytical Engine", 
+            "text": "The analytical engine, an important step in the history of computers, was the design of a mechanical general-purpose computer by English mathematician Charles Babbage. In its logical design the machine was essentially modern, anticipating the first completed general-purpose computers by about 100 years.\r\n\r\nIt was first described in 1837. Babbage continued to refine the design until his death in 1871. Because of the complexity of the machine, the lack of project management science, the expense of its construction, and the difficulty of assessing its value by Parliament relative to other projects being lobbied for, the engine was never built.", 
+            "slug": "analytical-engine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Analytical+engine", 
+            "timeline_date": 1845
+        }
+    }, 
+    {
         "pk": 21, 
         "model": "core.object", 
         "fields": {
@@ -1836,18 +2076,6 @@
         }
     }, 
     {
-        "pk": 26, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "2nd Century BC", 
-            "name": "Antikythera mechanism", 
-            "text": "The Antikythera mechanism, is conjectured to be an ancient mechanical computer dedicated to astronomical phenomena. It operates as a complex mechanical \"computer\" which tracks the cycles of the Solar System.\r\n\r\nThe remains of the device is displayed in the Bronze Collection of the National Archaeological Museum of Athens, accompanied by a reconstruction made and donated to the museum by Derek de Solla Price. Other reconstructions are on display at the American Computer Museum in Bozeman, Montana, the Children's Museum of Manhattan in New York, and in Kassel, Germany.", 
-            "slug": "antikythera-mechanism", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Antikythera%20mechanism", 
-            "timeline_date": -100
-        }
-    }, 
-    {
         "pk": 20, 
         "model": "core.object", 
         "fields": {
@@ -1857,18 +2085,6 @@
             "slug": "abacus", 
             "reference_url": "http://10.0.0.56:9292/wiki/Abacus", 
             "timeline_date": -2400
-        }
-    }, 
-    {
-        "pk": 37, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1620's", 
-            "name": "Slide rule", 
-            "text": "The slide rule, also known colloquially as a slipstick is a mechanical analog computer, used primarily for multiplication and division, and also for functions such as roots, logarithms and trigonometry. It is not normally used for addition or subtraction (compare with some abaci designs, where operations more complex than addition and subtraction were not always possible).\r\n\r\nWilliam Oughtred and others developed the slide rule based on the emerging work on logarithms by John Napier. Before the advent of the pocket calculator, it was the most commonly used calculation tool in science and engineering, and use continued to grow through the 1950s despite analog and later digital computation devices being introduced. It was ultimately replaced by the electronic computer in the 1970s.", 
-            "slug": "slide-rule", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Slide+rule", 
-            "timeline_date": 1620
         }
     }, 
     {
@@ -1932,6 +2148,18 @@
         }
     }, 
     {
+        "pk": 26, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "2nd Century BC", 
+            "name": "Antikythera mechanism", 
+            "text": "The Antikythera mechanism is conjectured to be an ancient mechanical computer dedicated to astronomical phenomena. It operates as a complex mechanical \"computer\" which tracks the cycles of the Solar System.\r\n\r\nThe remains of the device is displayed in the Bronze Collection of the National Archaeological Museum of Athens, accompanied by a reconstruction made and donated to the museum by Derek de Solla Price. Other reconstructions are on display at the American Computer Museum in Bozeman, Montana, the Children's Museum of Manhattan in New York, and in Kassel, Germany.", 
+            "slug": "antikythera-mechanism", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Antikythera%20mechanism", 
+            "timeline_date": -100
+        }
+    }, 
+    {
         "pk": 10, 
         "model": "core.object", 
         "fields": {
@@ -1989,6 +2217,90 @@
             "slug": "brick-lined-mine-shafts", 
             "reference_url": "", 
             "timeline_date": 1750
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "12th Century", 
+            "name": "Crankshaft", 
+            "text": "The crankshaft, sometimes casually abbreviated to crank, is the part of an engine which translates reciprocating linear piston motion into rotation.\r\n\r\nThe first known use of a crankshaft in a chain pump was in one of al-Jazari's saqiya machines. The concept of minimizing intermittent working is also first implied in one of al-Jazari's saqiya chain pumps, which was for the purpose of maximising the efficiency of the saqiya chain pump.", 
+            "slug": "crankshaft", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Crankshaft", 
+            "timeline_date": 1180
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1620's", 
+            "name": "Slide rule", 
+            "text": "The slide rule, also known colloquially as a slipstick, is a mechanical analog computer, used primarily for multiplication and division, and also for functions such as roots, logarithms and trigonometry. It is not normally used for addition or subtraction (compare with some abaci designs, where operations more complex than addition and subtraction were not always possible).\r\n\r\nWilliam Oughtred and others developed the slide rule based on the emerging work on logarithms by John Napier. Before the advent of the pocket calculator, it was the most commonly used calculation tool in science and engineering, and use continued to grow through the 1950s despite analog and later digital computation devices being introduced. It was ultimately replaced by the electronic computer in the 1970s.", 
+            "slug": "slide-rule", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Slide+rule", 
+            "timeline_date": 1620
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1092", 
+            "name": "Chain drive", 
+            "text": "A chain drive is a way of transmitting mechanical power from one place to another. It is often used to convey power to the wheels of a vehicle, particularly bicycles and motorcycles. It is also used in a wide variety of machines besides vehicles.\r\n\r\nThe oldest known example of a chain drive is the \"celestial ladder\", part of Su Song's water-driven astronomical clock tower.\r\n\r\n<!-- 1770 Vaucanson -->", 
+            "slug": "chain-drive", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Chain%20drive", 
+            "timeline_date": 1092
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "Steam engine", 
+            "text": "A steam engine is a heat engine that performs mechanical work using steam as its working fluid.\r\n\r\nThe idea of using boiling water to produce mechanical motion has a long history, going back about 2,000 years. Early devices were not practical power producers, but more advanced designs (by people such as Savery, Newcommen, Watt and Trevithnick) producing usable power have become a major source of mechanical power over the last 300 years.", 
+            "slug": "steam-engine", 
+            "reference_url": "", 
+            "timeline_date": 1770
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1779", 
+            "name": "Spinning Mule", 
+            "text": "The spinning mule was invented in 1779 by Samuel Crompton; it spins textile fibres into yarn. The self-acting (automatic) spinning mule was developed in the 1830s. The mule was the most common spinning machine from 1790 until about 1900 and was still used for fine yarns until the early 1980s.\r\n\r\nHome spinning was the occupation of women and girls, but the strength needed to operate a mule caused it to be the activity of men. Hand loom weaving, however, had been a man's occupation; in the mill it could (and was) done by girls and women.", 
+            "slug": "spinning-mule", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Spinning%20mule", 
+            "timeline_date": 1779
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1768-74", 
+            "name": "Jacquet-Droz automata", 
+            "text": "The Jaquet-Droz automata, among all the numerous automata built by the Jaquet-Droz family, refer to three doll automata built between 1768 and 1774 by Pierre Jaquet-Droz, his son Henri-Louis and Jean-Fr\u00e9d\u00e9ric Leschot: the musician, the draughtsman and the writer.\r\n\r\nThe dolls are still functional, and can be seen at the Mus\u00e9e d'Art et d'Histoire of Neuch\u00e2tel, in Switzerland. They are considered to be among the remote ancestors of modern computers. \r\n", 
+            "slug": "jacquet-droz-automata", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Jaquet-Droz%20automata", 
+            "timeline_date": 1768
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "The Silver Swan", 
+            "text": "The Silver Swan is an automaton dating from the 18th Century and is housed in the Bowes Museum, Barnard Castle, Teesdale, County Durham, England.\r\n\r\nThe swan, which is life size, is a clockwork driven device that includes a music box. The swan sits in a \"stream\" that is made of glass rods and is surrounded by silver leaves. Small silver fish can be seen \"swimming\" in the stream. \r\n\r\nIt is believed that the mechanism was designed by John Joseph Merlin and the first recorded owner of the swan was James Cox.", 
+            "slug": "the-silver-swan", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Silver%20Swan%20(automaton)", 
+            "timeline_date": 1773
         }
     }, 
     {
@@ -2110,6 +2422,34 @@
         "model": "core.storycontent", 
         "fields": {
             "text": "The Second World War resulted in a intense period of scientific discovery and invention, including considerable steps forward in the development of modern computation, often building on earlier work by those enrolled in the war effort. The work done by Allied cryptanalysts in creating early computers to decode German and Japanese coded messages would set the stage for general purpose electrical and later electronic computers, and those who worked through the war would continue to play significant roles in their development. Alan Turing in particular developed various concepts which provide theoretical support for modern computer science, as well as some early electronic computers after the war."
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Imagine the wonder of first seeing the Banu Musa's musical instruments, perhaps their flautist that could play different tunes \u2014 and which could be taught new tunes that were written specially for it. Or maybe after dinner with a leading patron of the mechanical arts you'd be entertained by their organ, its complex polyphony rising above the susurration of the water that powered it."
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The Ancient Greeks' interest in automata is well documented, with Hero's creations including an entirely mechanical play, theatre being another fascination. He also invented the world's first vending machine, where putting a coin in the top would dispense a set amount of holy water.\r\n\r\nIn the ancient world, the island of Rhodes had a particularly strong tradition of mechanical engineering, and the island was renowned for its automata:\r\n\r\nbq. The animated figures stand\r\nAdorning every public street\r\nAnd seem to breathe in stone, or\r\nmove their marble feet.\r\n"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "If you went to a royal party at the Artuklu Palace in the early 12th century, you might hope to see a performance by Al-Jazari's musical robot band, which floated in a small boat on the lake for the amusement of guests \u2014 perhaps while drinking tea served by a robotic waitress, although you'd have to wait seven minutes between each cup served."
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "bq. Have you seen M. Vaucanson's duck? They say it eats grains and\u2026well, let's say that it clearly enjoys them! M. Arouet believes it to be one of the finest creations in France!"
         }
     }
 ]
