@@ -11,6 +11,6 @@ DATABASES = {
 }
 
 RESTPOSE_CONFIG = {
-    'uri': 'http://127.0.0.1:7777/',
+    'uri': 'http://10.0.0.52:7777/',
     'collection': 'antler',
 }
