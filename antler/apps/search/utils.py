@@ -1,9 +1,23 @@
 from django.conf import settings
+from core.models import Edge
 from restpose import Server
+
+def realise_objects(wanted, needed):
+    to_get = {}
+    for item in needed:
+        to_get.setdefault(item.data['type'][0], []).append(item)
+              
+    for model, items in to_get.iteritems():
+        model = Edge._model_from_type_string('core.' + model)
+
+        objs = model.objects.in_bulk([int(item.data['id'][0]) for item in items])
+        for item in items:
+            item.object = objs[int(item.data['id'][0])]
 
 collection = (
     Server(settings.RESTPOSE_CONFIG['uri'])
     .collection(settings.RESTPOSE_CONFIG['collection'])
+    .set_realiser(realise_objects)
 )
 
 def set_schema():

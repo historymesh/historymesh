@@ -28,7 +28,7 @@ jQuery(function($) {
         };
 
         var goIn = function(data) {
-            $(document).trigger('node:navigate', {slug: data.objectId});
+            $(document).trigger('node:transition', {slug: data.objectId});
 
             // Don't transition in if we're still transitioning out
             // By setting inWaiting we instruct out to call in when it finishes
@@ -85,10 +85,13 @@ jQuery(function($) {
     }());
 
     // Enhance the previous and next links to transition
-    $('a[rel=next], a[rel=prev]').live('click', function() {
-        var url = $(this).attr('href');
-        transition(url, true);
+    $('a[rel=next], a[rel=prev], .node-preview a').live('click', function() {
+        $(document).trigger('node:navigate', {url: $(this).attr('href')});
         return false;
+    });
+
+    $(document).bind('node:navigate', function(event, data) {
+        transition(data.url, true);
     });
 
     // Handle history events

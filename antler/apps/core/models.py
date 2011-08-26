@@ -349,6 +349,8 @@ class Node(BaseNode):
     def reference_name(self):
         if self.reference_url:
             host = urlparse.urlsplit( self.reference_url ).netloc
+            if host.find('10.0.0.') >= 0:
+                return 'Weaver'     # in-fort links
             if host.find('wikipedia.org') >= 0:
                 return 'Wikipedia'
             else:

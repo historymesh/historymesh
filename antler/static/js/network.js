@@ -252,9 +252,8 @@ $.extend(Network.Node.prototype, {
 
   _renderPreview: function() {
     var preview = $('<div>' +
-                      '<a class="node-preview" href="' +
-                       this._data.url + '">' +
-                        '<h4>' + this._data.name + '</h4>' +
+                      '<div class="node-preview">' +
+                        '<h4><a href="' + this._data.url + '">' + this._data.name + '</a></h4>' +
                       '</div>' +
                     '</div>');
 

@@ -627,7 +627,8 @@ h1 .meta {
 		margin: 0;
 		float: left;
 	}
-	.storynav li.prev {
+	.storynav li.prev,
+	.storynav li.prev-disabled {
 		width: 36px;
 	}
 	.storynav li.next a, .storynav li.next a:focus {
@@ -648,7 +649,7 @@ h1 .meta {
 		background: #eee url(/static/img/arrow-nav.png);
 	}
 	.storynav ol li.next-disabled {
-		background: #eee url(/static/img/arrow-nav.png) -44px 0;
+		background: #eee url(/static/img/arrow-nav.png) -48px 0;
 	}
 	.storynav .story-line {
 		position: absolute;
