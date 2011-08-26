@@ -423,9 +423,9 @@ div.home {
 
 
 
-/* =========================================== */
-/* ! Shared About, Search & Error Page style	 */
-/* =========================================== */
+/* ========================================================= */
+/* ! Common style shared between About, Search & Error Page  */
+/* ========================================================= */
 body.about, body.error, body.search {
 	background: #fff;
 }
@@ -574,6 +574,17 @@ h1 .meta {
 			text-decoration: none;
 		}
 
+
+/* ============================= */
+/* ! Search Results Page			   */
+/* ============================= */
+.search h1 {
+	margin-bottom: 0;
+}
+.search .matches {
+	display: block;
+	margin-bottom: 2em;
+}
 
 
 /* ================= */

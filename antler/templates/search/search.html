@@ -7,7 +7,7 @@
 
 	<div class="body">
 		<h1>Results for &#8220;{{ query_string }}&#8221;</h1>
-		<strong>{{ results|length }} matches</strong>
+		<strong class="matches">{{ results|length }} matches</strong>
 
 		<ol>
 		{% for item in results %}
