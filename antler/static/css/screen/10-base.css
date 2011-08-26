@@ -175,7 +175,7 @@ header nav {
 		line-height: 1;
 		margin: 0;
 	}
-	header nav a, header nav a:visited {
+	header nav a, header nav em, header nav a:visited {
 		color: #fff;
 		padding: 2px 12px 4px 12px;
 		margin: 0;
@@ -187,7 +187,7 @@ header nav {
 		-cp-border-radius: 24px;
 		text-decoration: none;
 	}
-	header nav li.current a, header nav li.current a:visited {
+	header nav li.current em, header nav li.current a:visited {
 		background: #a3a3a3;
 		-cp-border-radius: 24px;
 		-webkit-box-shadow: #000 inset 0 1px 0;
@@ -201,7 +201,7 @@ header nav a, header nav a:visited {
 header nav a:hover, header nav a:focus {
 	-webkit-box-shadow: #bbb 0 1px 0, inset #d3d3d3 0 1px 0;
 }
-header nav li.current a, header nav li.current a:visited {
+header nav li.current em, header nav li.current a:visited {
 	-webkit-box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
 	-moz-box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
 	box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;

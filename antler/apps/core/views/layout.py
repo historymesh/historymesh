@@ -16,6 +16,8 @@ class MapView(TemplateView):
         engine = NodeLayoutEngine()
         engine.lay_out()
         return {
+            "next":  self.request.GET.get('next'),
+            "story": self.request.GET.get('story'),
             "nodes": list(engine.annotated_nodes()),
             "edges": list(engine.visible_edges()),
         }
