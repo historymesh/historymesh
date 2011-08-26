@@ -496,7 +496,7 @@ h1 .meta {
 		width: 36px;
 	}
 	.storynav li.next a, .storynav li.next a:focus {
-		background-position: -44px 0;
+		background-position: -48px 0;
 	}
 	.storynav li a, .storynav li a:visited {
 		display: block;
@@ -564,7 +564,7 @@ h1 .meta {
 	content: " ";
 	display: block;
 	width: 44px;
-	height: 44px;
+	height: 41px;
 	position: absolute;
 	z-index: 1;
 	top: 1.1em;
