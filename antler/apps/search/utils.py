@@ -29,8 +29,8 @@ def index(obj):
 
 def build_query(querystr):
     q = (
-        collection.field.name.text(querystr) * 5 |
-        collection.field.text.text(querystr) * 1.5 |
-        collection.field.display_date.text(querystr) * 0.5
+        collection.field.name.text(querystr, op="or") * 5 |
+        collection.field.text.text(querystr, op="or") * 1.5 |
+        collection.field.display_date.text(querystr, op="or") * 0.5
     )
     return q
