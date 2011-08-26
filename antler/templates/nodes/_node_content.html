@@ -87,7 +87,7 @@
   {% if other_story != story %}
     {# only show a story if there is actual content, or we are admin #}
     {% if other_story.story_content or user.is_staff %}
-    <div class="story-{{ other_story.slug }}">
+    <div class="tertiary story-{{ other_story.slug }}">
       <h2>Relation to <span class="story-name">{{ other_story.name }}</span>:</h2>
       {% if other_story.story_content %}
         {{other_story.story_content.text|textile}}
