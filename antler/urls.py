@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^overview/$', nodes.NodeIndexView.as_view()),
     url(r'^map/$', layout.MapView.as_view(), name="map"),
     url(r'^search/$', SearchView.as_view(), name="search"),
-    
+    url(r'^about$', TemplateView.as_view(template_name="about.html"), name="about-page"),
 )
 
 if settings.DEBUG:
