@@ -33,6 +33,4 @@ def build_query(querystr):
         collection.field.text.text(querystr) * 1.5 |
         collection.field.display_date.text(querystr) * 0.5
     )
-    print repr(querystr), q._build_search()
-
     return q
