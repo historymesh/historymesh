@@ -48,7 +48,7 @@
 {% endif %}
 
 {% if story %}
-{% if story.story_content %}
+{% if story.story_content or user.is_staff %}
   <div class="story-{{ story.slug }}">
     <h2>Relation to <span class="story-name">{{ story.name }}</span>:</h2>
 
@@ -118,3 +118,5 @@
 
 </div>
 </div>
+
+{% include "nodes/links.html" %}
