@@ -315,6 +315,9 @@ class Node(BaseNode):
 
     named_url = None
 
+    def name_possibly_lowercased(self):
+        return self.name
+
     class Meta:
         abstract = True
 
@@ -399,6 +402,12 @@ class Object(Node):
     """
 
     named_url = 'object'
+
+    def name_possibly_lowercased(self):
+        if self.name.startswith(u'The '):
+            return u'the %s' % self.name[4:]
+        else:
+            return self.name.lower()
 
 
 class ExternalLink(BaseNode):

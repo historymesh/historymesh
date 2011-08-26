@@ -44,11 +44,6 @@
 {% if user.is_staff %}
 <div class="admin">
   <a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit Node</a>
-  {% if story.story_content %}
-    <span class="sep">|</span> <a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
-  {% else %}
-    <span class="sep">|</span> <a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content for {{ story.name }}</a>
-  {% endif %}
 </div>
 {% endif %}
 
@@ -118,7 +113,7 @@
 {% endfor %}
 
 {% if subject.reference_url %}
-<p class='read-more'>Read more about <a href="{{subject.reference_url}}">{{subject.name}} on {{subject.reference_name}}</a></p>
+<p class='read-more'>Read more about <a href="{{subject.reference_url}}">{{subject.name}} on {{subject.reference_name}}</a>.</p>
 {% endif %}
 
 </div>
