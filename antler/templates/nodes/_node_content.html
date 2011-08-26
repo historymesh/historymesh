@@ -46,12 +46,12 @@
   {% if story.story_content %}
     <span class="sep">|</span> <a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
   {% else %}
-    <span class="sep">|</span> <a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
+    <span class="sep">|</span> <a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content for {{ story.name }}</a>
   {% endif %}
 </div>
 {% endif %}
 
-{% if story.story_content or user.is_staff %}
+{% if story.story_content %}
   <h2>{{ story.name }}</h2>
   {{story.story_content.text|textile}}
 {% endif %}
