@@ -38,7 +38,9 @@
 		{% block view_toggle %}
 	  {% endblock %}
 
-		<input type="search" placeholder="Search" />
+		<form action="{% url search %}" method="GET">
+		<input type="search" name="q" placeholder="Search" />
+		</form>
   </header>
   {% endblock %}
   
