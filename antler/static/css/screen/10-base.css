@@ -587,10 +587,10 @@ h1 .meta {
 	z-index: 9;
 }
 .storynav-lg .prev dd {
-	padding-left: 55px;
+	padding-left: 50px;
 }
 .storynav-lg .next dl {
-	padding-right: 55px;
+	padding-right: 50px;
 }
 	.storynav-lg dt {
 		margin: 0;
