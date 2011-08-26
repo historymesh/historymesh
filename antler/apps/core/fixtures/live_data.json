@@ -1464,6 +1464,102 @@
         }
     }, 
     {
+        "pk": 133, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 42, 
+            "object_type": "core.storycontent", 
+            "object_id": 35, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 134, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 1, 
+            "object_type": "core.storycontent", 
+            "object_id": 36, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 135, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.event", 
+            "subject_id": 9, 
+            "object_type": "core.storycontent", 
+            "object_id": 37, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 136, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 2, 
+            "object_type": "core.storycontent", 
+            "object_id": 38, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 137, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.event", 
+            "subject_id": 17, 
+            "object_type": "core.storycontent", 
+            "object_id": 39, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 138, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.event", 
+            "subject_id": 15, 
+            "object_type": "core.person", 
+            "object_id": 25, 
+            "verb": "affected"
+        }
+    }, 
+    {
+        "pk": 139, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.event", 
+            "subject_id": 7, 
+            "object_type": "core.storycontent", 
+            "object_id": 40, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 140, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.event", 
+            "subject_id": 1, 
+            "object_type": "core.storycontent", 
+            "object_id": 41, 
+            "verb": "described_by"
+        }
+    }, 
+    {
         "pk": 24, 
         "model": "core.person", 
         "fields": {
@@ -2232,18 +2328,6 @@
         }
     }, 
     {
-        "pk": 42, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1784", 
-            "name": "Power loom", 
-            "text": "The first power loom, a mechanized loom powered by a drive shaft, was designed in 1784 by Edmund Cartwright and first built in 1785. It was refined over the next 47 years until a design by Kenworthy and Bullough made the operation completely automatic (the Lancashire Loom).\r\n\r\nThe power loom reduced demand for skilled handweavers, initially causing reduced wages and unemployment. Protests followed its introduction. For example, in 1816 two thousand rioting Calton weavers tried to destroy power loom mills, and stoned the workers.  A darker side of the power loom's impact was the growth of employment of children in power loom mills.", 
-            "slug": "power-loom", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Power+loom", 
-            "timeline_date": 1784
-        }
-    }, 
-    {
         "pk": 35, 
         "model": "core.object", 
         "fields": {
@@ -2289,6 +2373,18 @@
             "slug": "upper-hirst-mining-rig", 
             "reference_url": "", 
             "timeline_date": 1617
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1784", 
+            "name": "The power loom", 
+            "text": "The first power loom, a mechanized loom powered by a drive shaft, was designed in 1784 by Edmund Cartwright and first built in 1785. It was refined over the next 47 years until a design by Kenworthy and Bullough made the operation completely automatic (the Lancashire Loom).\r\n\r\nThe power loom reduced demand for skilled handweavers, initially causing reduced wages and unemployment. Protests followed its introduction. For example, in 1816 two thousand rioting Calton weavers tried to destroy power loom mills, and stoned the workers.  A darker side of the power loom's impact was the growth of employment of children in power loom mills.", 
+            "slug": "power-loom", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Power+loom", 
+            "timeline_date": 1784
         }
     }, 
     {
@@ -2472,18 +2568,6 @@
         }
     }, 
     {
-        "pk": 30, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1884", 
-            "name": "Steam turbine", 
-            "text": "A steam turbine is a mechanical device that extracts thermal energy from pressurized steam, and converts it into rotary motion.\r\n\r\nIt has almost completely replaced the reciprocating piston steam engine primarily because of its greater thermal efficiency and higher power-to-weight ratio. Because the turbine generates rotary motion, it is particularly suited to be used to drive an electrical generator \u2013 about 80% of all electricity generation in the world is by use of steam turbines.\r\n", 
-            "slug": "steam-turbine", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Steam+turbine", 
-            "timeline_date": 1884
-        }
-    }, 
-    {
         "pk": 26, 
         "model": "core.object", 
         "fields": {
@@ -2493,6 +2577,18 @@
             "slug": "antikythera-mechanism", 
             "reference_url": "http://10.0.0.56:9292/wiki/Antikythera%20mechanism", 
             "timeline_date": -100
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1884", 
+            "name": "The steam turbine", 
+            "text": "A steam turbine is a mechanical device that converts heat from pressurised steam into a rotary motion. Iinvented in 1884 by the Englishman Sir Charles Parsons, it has a greater thermal efficiency and higher power-to-weight ratio than the piston-based steam engine that it has almost completely replaced. About 80% of all electricity generation in the world today uses steam turbines.\r\n\r\nA very early steam turbine was the aeolipile described in the 1st century by Hero of Alexandria; in 1551 AD the Turkish polymath _Taqi al-Din_ described the workings of a rudimentary steam turbine in _The Sublime Methods of Spiritual Machines_.", 
+            "slug": "steam-turbine", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Steam+turbine", 
+            "timeline_date": 1884
         }
     }, 
     {
@@ -2726,13 +2822,6 @@
         }
     }, 
     {
-        "pk": 7, 
-        "model": "core.storycontent", 
-        "fields": {
-            "text": "A steam turbine is a mechanical device that converts heat from pressurised steam into a rotary motion. It has a greater thermal efficiency and higher power-to-weight ratio than the piston-based steam engine that is has almost completely replaced.\r\n\r\nThe first such device was a toy; the aeolipile described in the 1st century by Hero of Alexandria. In 1551 AD the Turkish polymath _Taqi al-Din_ described the workings of a rudimentary steam turbine in _The Sublime Methods of Spiritual Machines_.\r\n\r\nThe modern steam turbine was invented in 1884 by the Englishman Sir Charles Parsons. The first model generated 7.5 kilowatts of electricity. The turbine was scaled up by the American George Westinghouse, to units of up to 50,000 kilowatts.\r\n"
-        }
-    }, 
-    {
         "pk": 8, 
         "model": "core.storycontent", 
         "fields": {
@@ -2765,6 +2854,13 @@
         "model": "core.storycontent", 
         "fields": {
             "text": "Imagine the wonder of first seeing the Banu Musa's musical instruments, perhaps their flautist that could play different tunes \u2014 and which could be taught new tunes that were written specially for it. Or maybe after dinner with a leading patron of the mechanical arts you'd be entertained by their organ, its complex polyphony rising above the susurration of the water that powered it.\r\n\r\nNot content with just the automatic flute, they also created automatic fountains, hurricane lamps, mechanical grabs, and an automatic dispenser that alternated between hot and cold water - inventions that wouldn't be out of place in a modern home."
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The creation of the modern steam turbine opened the way to electricity as a practical power source. With cheap power easily available in more places than was possible even with the steam engine, dramatic changes throughout the whole of society became possible including longer working hours thanks to relatively safe electric lighting, the introduction of automation to the home, and ultimately electric and later electronic computers that would drive yet further changes in the way we live, think and work."
         }
     }, 
     {
@@ -2908,6 +3004,13 @@
         }
     }, 
     {
+        "pk": 36, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "By the middle of the 19th Century, with a significant number of the working class in industrial jobs rather than agricultural or in cottage industries, issues affecting workers, particularly wage cuts in response to a depression in the early 1840s, could now be stoked to incite protest and riots. Although movements such as Chartism failed in their immediate political goals, they laid the groundwork for future social changes, and it was in any case clear that political power for the as-yet voiceless was on the horizon.\r\n\r\nThe general strike was known as the Plug Plot Riots because mills were stopped from working by removing plugs or bolts from steam engines so that pressure could not be raised and hence no power was available to drive the machinery."
+        }
+    }, 
+    {
         "pk": 34, 
         "model": "core.storycontent", 
         "fields": {
@@ -2919,6 +3022,48 @@
         "model": "core.storycontent", 
         "fields": {
             "text": "One of the main demands for coal was to power steam engines; although much of the early Industrial Revolution was achieved without mechanisation, or using water power, steam power when it became practical allowed factories to be built away from water, thus allowing for considerably more of the country to become industrialised.\r\n\r\nHowever this further accelerated the movement of people into cities to take up semi-skilled labour, and other results of industrial growth on British society. This was already causing protests and riots, and things would only get worse."
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Much like the water frame did for spinning, the power loom started automating the process of weaving, though it was a long time until the power loom was fully automatic.\r\n\r\nCartwright's initial version of the loom was not very commercially successful, but by the 1850s, there were a quarter of a million looms operating in the UK, compared to the 240 that were operating in 1803.\r\n\r\nOf course, the power loom, like many of the innovations in weaving, caused a number of riots, and several machines were smashed by workers; eventually, however, the growth in weaving caused a growth in exports and thus a growth in industrial employment, albeit lower-paid employment."
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "People had been destroying mechanised looms and spinning devices long before the Luddite riots, but in 1811 the Luddite movement started spreading through England. The Luddites met at night on the moors surrounding the industrial towns, practising drills and maneuvers, and often enjoyed local support.\r\n\r\nThere were battles between the military and the Luddites, and many people were the object of death threats and attacks by the anonymous King Ludd and his supporters. Some industrialists even had secret chambers constructed in their buildings as hiding places, in case the Luddites came looking for them.\r\n\r\nThe riots eventually came to an end after the murder of William Horsfall by three Luddites, and their subsequent convictions and hanging, though working-class discontent continued throughout the 19th century."
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The Jacquard loom was the next big step in weaving technology; previously, only simple designs had been possible, but the introduction of punched cards to store the patterns meant that new, complex designs were now possible with only a single warp (the lengthwise threads through which the weft is woven).\r\n\r\nThe Jacquard loom is not actually a separate loom type; instead, it was a new type of head that was put onto existing looms, meaning that installing them in factories was not as expensive as it could otherwise have been. Jacquard heads are still in use today, though they are now controlled by computer rather than by punched cards.\r\n"
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The passing of this act was the first in a series of acts (the Factory Acts), which were aimed at improving the working conditions in factories, especially for chidren.\r\n\r\nBefore these acts, children were often forced to work entire days and nights on the factory floor, from ages as young as 5 or 6, and would often not have any education. Further acts reduced the amount of time children could work even more, placed maximum time limits on women, and required some education for children workers, investigation into accidental death, and fencing off of machinery.\r\n\r\nIn many ways, they were the precursor of modern Health and Safety laws, but were also designed to prevent the workforce being exploited by the factory owners."
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "In many ways, the Tolpuddle Martyrs were one of the first trade unions; they were formed to protest against the reduction of wages, and while they were entirely non-violent, a local landowner wrote to the Prime Minister to complain about them and to invoke an obscure law that prohibited people from swearing oaths to each other.\r\n\r\nTheir protest reflected the situation at the time; large factories were encroaching on smaller industries and forcing lower wages, due to the unskilled nature of the work. The Martyrs themselves weren't factory workers - they were agricultural labourers - but there was a general sense of discontent among the working class, as industrialisation and low wages started spreading from textiles into other industries."
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The General Strike was the culmination of earlier discontent among the working class with wage reductions in the mills; starting in the Bayley's cotton mill in Stalybridge, it spread around the mills, with almost half a million workers involved at the peak, marching on factories and disabling the boilers by force if it was necessary.\r\n\r\nThe rioters generally called for higher wages, a shorter working day, or lower rents (most workers lived in housing built and owned by the mills themselves) - a reflection of the popular view among the working classes that conditions had worsened over the years - indeed, the wage increase they were calling for was merely a restoration of the wages of 24 years before."
         }
     }
 ]
