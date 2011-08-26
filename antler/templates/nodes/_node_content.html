@@ -1,25 +1,27 @@
 {% load markup %}
 {% if story %}
-	<ol class="prev-next">
-		{% if story.previous %}
-		<li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
-		{% else %}
-		<li class="prev-disabled"></li>
-		{% endif %}
-		
-		{% if story.next %}
-		<li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
-		{% else %}
-		<li class="next-disabled"></li>
-		{% endif %}
-	</ol>
+	<div class="prev-next">
+		<ol>
+			{% if story.previous %}
+			<li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
+			{% else %}
+			<li class="prev-disabled"></li>
+			{% endif %}
+			
+			{% if story.next %}
+			<li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
+			{% else %}
+			<li class="next-disabled"></li>
+			{% endif %}
+		</ol>
+		{% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}
+	</div>
 {% endif %}
 		
 	<h1>
-		{{subject.name}}
+		<span class="name">{{subject.name}}</span>
 		{% if story or subject.display_date %}
 		<span class="meta">(
-			{% if story %}<span class="story-line">in <span class="story-name">&ldquo;{{story}}&rdquo;</span></span>{% endif %}{% if story and subject.display_date %},{% endif %}
 			{% if subject.display_date %}<span class="date">{{subject.display_date}}</span>{% endif %}
 		)</span>
 		{% endif %}

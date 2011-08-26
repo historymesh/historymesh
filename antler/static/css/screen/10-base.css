@@ -79,8 +79,8 @@ blockquote p:after {
 }	
 cite {
 	font-style: normal;
-	text-align: right;
-	display: block;
+	text-transform: uppercase;
+	font-size: 0.9em;
 }
 fieldset { 
 	border: 0;
@@ -250,11 +250,16 @@ header input {
 /* ==================== */
 
 .admin {
-	background: #eee url(../img/admin.png) 7px 12px no-repeat;
+	background: #eee url(../img/admin.png) 8px 0.8em no-repeat;
 	display: inline-block;
 	-cp-border-radius: 3px;
-	padding: 5px 5px 5px 65px;
+	padding: 3px 8px 5px 65px;
 }
+	.admin a {
+		text-decoration: none;
+		color: #666;
+		line-height: 1;
+	}
 
 figure {
 	display: block;
@@ -395,10 +400,21 @@ div.home {
 }
 */
 
+h1 .name {
+	float: left;
+	margin-right: 0.5em;
+}
 h1 .meta {
 	color: #ccc;
 	font-size: 0.7em;
-	display: block;
+/* 	line-height: 2; */
+	padding-top: 0.4em;
+	float: left;
+}
+
+.body {
+	clear: both;
+	padding-top: 2em;
 }
 
 .view-node article {
@@ -411,7 +427,6 @@ h1 .meta {
 }
 
 .prev-next {
-	width: 88px;
 	height: 44px;
 	margin: 0 0 0 -9px;
 	position: absolute;
@@ -442,13 +457,20 @@ h1 .meta {
 	.prev-next li a:hover, .prev-next li a:focus {
 		background-color: #666;
 	}
-	
-	ol.prev-next li.prev-disabled {
+	.prev-next ol li.prev-disabled {
 		background: #eee url(/static/img/arrow-nav.png);
 	}
-	ol.prev-next li.next-disabled {
+	.prev-next ol li.next-disabled {
 		background: #eee url(/static/img/arrow-nav.png) -44px 0;
 	}
+	.prev-next .story-line {
+		position: absolute;
+		left: 80px;
+		top: 0;
+		line-height: 44px;
+		white-space: nowrap;
+	}
+
 .thread {
 	line-height: 30px;
 }
