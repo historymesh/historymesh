@@ -20,7 +20,7 @@
 
 	<noscript>
 	<ol class="timeline">
-	{% for year,group in century_grouped_nodes.items %}
+	{% for year,group in map.century_grouped_nodes.items %}
 		{% if group.nodes %}
 			<li>{{ group.label|default:year }}
 				<ul>
@@ -48,7 +48,7 @@
 	network.forceVertical = true;
 	var nodes = {};
 
-  {% for node in map_nodes %}
+  {% for node in map.nodes %}
     nodes["{{ node|slugify }}"] = network.addNode({
       name: '{{ node.name }}',
       url: '{{ node.url }}?story={{ story.slug }}',
@@ -59,12 +59,12 @@
     });
   {% endfor %}
 
-  {% for edge in map_edges %}
+  {% for edge in map.edges %}
     nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], "{% if edge.story.colour %}#{{edge.story.colour}}{% else %}#273924{% endif %}"{% if edge.verb == "secondary" %}, true{% endif %});
   {% endfor %}
 
 
-  {% for mark in map_marks %}
+  {% for mark in map.marks %}
 	  network.addCentruryMark("{{mark.label}}", {{mark.position}}, {{mark.position}});
   {% endfor %}
 
@@ -73,7 +73,7 @@
   network.snapNode( nodes['{{ subject|slugify }}'], 200, $(".tail").offset().top - 30);
 
   $(window).resize(function() {
-  	network.snapNode( nodes['brick-lined-mine-shafts-object43'], 200, $(".tail").offset().top - 30);
+  	network.snapNode( nodes['{{ subject|slugify }}'], 200, $(".tail").offset().top - 30);
   })
 	</script>
 
