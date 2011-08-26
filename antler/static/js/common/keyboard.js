@@ -1,21 +1,25 @@
 jQuery(function($) {
     $('body').keyup(function(event) {
-        var url;
+        var link;
         if (event.ctrlKey || event.altKey || event.shiftKey) {
             return true;
         }
         switch(event.keyCode) {
             case 37: // left
             case 75: // k
-                url = $('a[rel=prev]').attr('href');
+                link = $('a[rel=prev]:first');
                 break;
             case 39: // right
             case 74: // j
-                url = $('a[rel=next]').attr('href');
+                link = $('a[rel=next]:first');
                 break;
         }
-        if(url) {
-            window.location.href = url;
+        if(link) {
+            if(history.pushState) {
+                link.click();
+            } else {
+                window.location.href = link.attr('href');
+            }
         }
     });
     var sequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
@@ -39,7 +43,7 @@ jQuery(function($) {
                 poop.css('border-radius', '3px');
                 poop.css('background-color', '#E03C31');
                 p.append(poop);
-                
+
                 function scooper() { $(this).remove(); }
                 /* Animate it to disappear approximately behind the icon below */
                 poop.animate({'top': 280}, {'duration': 750, 'complete': scooper});

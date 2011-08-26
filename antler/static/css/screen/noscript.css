@@ -1,0 +1,39 @@
+/* ================== */
+/* ! Javascript off   */
+/* ================== */
+noscript {
+	display: inline;
+	margin: 0;
+}
+.noscript article {
+	margin: 0 0 0 200px;	
+}
+
+.timeline {
+	position: absolute;
+	z-index: 0;
+	left: 0;
+	bottom: 0;
+	top: 120px;
+	width:196px;
+	font-size: 11px;
+	color: #aaa;
+	border-right: 4px solid #999;
+}
+
+	.timeline li {
+		padding: 0 0 0 13px;
+		border-bottom: 1px solid #e2e2e2;
+		margin: 10px 0;
+	}
+
+	.timeline li li {
+		border-bottom: 0;
+		text-align: right;
+		padding: 0 40px;
+		line-height: 1.2;
+	}
+	
+	.timeline li li a {
+		text-decoration: none;
+	}
