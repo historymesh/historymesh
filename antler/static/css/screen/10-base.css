@@ -40,7 +40,7 @@ body {
 body {
 	text-rendering: optimizeLegibility;
 /* 	-webkit-user-select: none; */
-}	
+}
 /* -- */
 a {
 	font-weight: bold;
@@ -56,7 +56,7 @@ a {
 		 -webkit-transition-duration: 0.2s;
 		 -moz-transition-duration: 0.2s;
 		 transition-duration: 0.2s;
-	}	
+	}
 	/* -- */
 	a:hover, a:focus {
 		color: #000;
@@ -76,13 +76,13 @@ blockquote p:before {
 }
 blockquote p:after {
 	content: '”';
-}	
+}
 cite {
 	font-style: normal;
 	text-transform: uppercase;
 	font-size: 0.9em;
 }
-fieldset { 
+fieldset {
 	border: 0;
 }
 footer {
@@ -150,7 +150,7 @@ header {
 /*! verbatim */
 header {
 	background: rgba(187,187,187,0.95);
-}	
+}
 /* -- */
 
 
@@ -163,7 +163,7 @@ header .site-name {
 }
 	header .site-name a, header .site-name a:visited {
 		color: #fff;
-		text-decoration: none;		
+		text-decoration: none;
 	}
 
 header nav {
@@ -215,7 +215,7 @@ header nav li.current em, header nav li.current a:visited {
 	-webkit-box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
 	-moz-box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
 	box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
-}	
+}
 /* -- */
 
 header input {
@@ -449,17 +449,13 @@ div.home {
 	margin: 1.5em 0;
 }
 
-/*
-	killing the background image for now, style may have to change when finalized
 .view-node .map {
-	position: fixed;
-	left: 100px;
-	top: 45px;
-	width: 270px;
-	bottom: 0;
-	background: url(/static/img/temp-sidebar-map.png) no-repeat right 50%;
+  position: fixed;
+  left: 0;
+  top: 45px;
+  width: 400px;
+  bottom: 0;
 }
-*/
 
 h1 .name {
 	float: left;
@@ -633,7 +629,7 @@ h1 .meta {
 		margin: 0 auto;
 	}
 
-}	
+}
 /* -- */
 
 .view-node footer {
