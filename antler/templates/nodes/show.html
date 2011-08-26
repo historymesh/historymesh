@@ -17,14 +17,14 @@
 {% endblock %}
 
 {% block timeline %}
-	<noscript>
-	<ol class="timeline">
+	<noscript class="timeline">
+	<ol>
 	{% for year,group in map.century_grouped_nodes.items %}
 		{% if group.nodes %}
 			<li>{{ group.label|default:year }}
 				<ul>
 				{% for node in group.nodes %}
-				  <li class='story'> <a href='{{node.url}}'>{{node.name}}</a>
+				  <li class='story'> <a href='{{node.url}}'><span class="fakenode"></span>{{node.name}} </a>
 				  </li>
 				{% endfor %}
 				</ul>

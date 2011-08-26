@@ -1,6 +1,5 @@
 from django.views.generic import TemplateView
 import core.models
-from search.utils import build_query
 from django.shortcuts import get_object_or_404
 
 # Lookup for object classes based on their types, done explicitly to ensure
@@ -19,6 +18,8 @@ class SearchView(TemplateView):
     template_name = 'search/search.html'
     
     def get_context_data(self):
+        # This sometimes explodes, so moved in here.
+        from search.utils import build_query
         query_string = self.request.GET.get('q')
         query = build_query(query_string)
         return {
