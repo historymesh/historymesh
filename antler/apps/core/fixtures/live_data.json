@@ -252,66 +252,6 @@
         }
     }, 
     {
-        "pk": 33, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.object", 
-            "subject_id": 27, 
-            "object_type": "core.object", 
-            "object_id": 43, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 27, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.object", 
-            "subject_id": 41, 
-            "object_type": "core.object", 
-            "object_id": 32, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 35, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.object", 
-            "subject_id": 32, 
-            "object_type": "core.event", 
-            "object_id": 1, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 36, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.event", 
-            "subject_id": 8, 
-            "object_type": "core.event", 
-            "object_id": 5, 
-            "verb": "primary"
-        }
-    }, 
-    {
-        "pk": 26, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.object", 
-            "subject_id": 43, 
-            "object_type": "core.object", 
-            "object_id": 41, 
-            "verb": "primary"
-        }
-    }, 
-    {
         "pk": 42, 
         "model": "core.edge", 
         "fields": {
@@ -1092,18 +1032,6 @@
         }
     }, 
     {
-        "pk": 101, 
-        "model": "core.edge", 
-        "fields": {
-            "story": 4, 
-            "subject_type": "core.event", 
-            "subject_id": 6, 
-            "object_type": "core.event", 
-            "object_id": 8, 
-            "verb": "primary"
-        }
-    }, 
-    {
         "pk": 102, 
         "model": "core.edge", 
         "fields": {
@@ -1200,6 +1128,66 @@
         }
     }, 
     {
+        "pk": 26, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 27, 
+            "object_type": "core.object", 
+            "object_id": 41, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 41, 
+            "object_type": "core.object", 
+            "object_id": 32, 
+            "verb": "secondary"
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 32, 
+            "object_type": "core.event", 
+            "object_id": 8, 
+            "verb": "secondary"
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 8, 
+            "object_type": "core.event", 
+            "object_id": 5, 
+            "verb": "secondary"
+        }
+    }, 
+    {
+        "pk": 101, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 6, 
+            "object_type": "core.event", 
+            "object_id": 8, 
+            "verb": "secondary"
+        }
+    }, 
+    {
         "pk": 110, 
         "model": "core.edge", 
         "fields": {
@@ -1236,6 +1224,246 @@
         }
     }, 
     {
+        "pk": 113, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 5, 
+            "object_type": "core.storycontent", 
+            "object_id": 24, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 114, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 18, 
+            "object_type": "core.storycontent", 
+            "object_id": 25, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 115, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 29, 
+            "object_type": "core.storycontent", 
+            "object_id": 26, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 116, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 27, 
+            "object_type": "core.storycontent", 
+            "object_id": 27, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 117, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.event", 
+            "subject_id": 20, 
+            "object_type": "core.storycontent", 
+            "object_id": 28, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 119, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 28, 
+            "object_type": "core.storycontent", 
+            "object_id": 29, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 118, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 20, 
+            "object_type": "core.object", 
+            "object_id": 9, 
+            "verb": "created"
+        }
+    }, 
+    {
+        "pk": 120, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 12, 
+            "object_type": "core.object", 
+            "object_id": 8, 
+            "verb": "created"
+        }
+    }, 
+    {
+        "pk": 121, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 19, 
+            "object_type": "core.object", 
+            "object_id": 7, 
+            "verb": "created"
+        }
+    }, 
+    {
+        "pk": 122, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 28, 
+            "object_type": "core.object", 
+            "object_id": 42, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 123, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 4, 
+            "object_type": "core.object", 
+            "object_id": 41, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 124, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 13, 
+            "object_type": "core.object", 
+            "object_id": 41, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 125, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 22, 
+            "object_type": "core.object", 
+            "object_id": 41, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 126, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 9, 
+            "object_type": "core.object", 
+            "object_id": 41, 
+            "verb": "invented"
+        }
+    }, 
+    {
+        "pk": 127, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 4, 
+            "object_type": "core.storycontent", 
+            "object_id": 30, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 128, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 5, 
+            "object_type": "core.storycontent", 
+            "object_id": 31, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 129, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 41, 
+            "object_type": "core.storycontent", 
+            "object_id": 32, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 130, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 38, 
+            "object_type": "core.storycontent", 
+            "object_id": 33, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 131, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 6, 
+            "subject_type": "core.object", 
+            "subject_id": 6, 
+            "object_type": "core.storycontent", 
+            "object_id": 34, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 132, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.object", 
+            "subject_id": 41, 
+            "object_type": "core.event", 
+            "object_id": 1, 
+            "verb": "primary"
+        }
+    }, 
+    {
         "pk": 24, 
         "model": "core.person", 
         "fields": {
@@ -1264,9 +1492,9 @@
         "model": "core.person", 
         "fields": {
             "display_date": "21st Century", 
-            "name": "Cabaret Mechanical Theatre", 
-            "text": "Cabaret Mechanical Theatre is an organisation that mounts exhibitions around the world of contemporary automata by a collective of artists based in the United Kingdom.", 
-            "slug": "cabaret-mechanical-theatre", 
+            "name": "Modern use of Automata", 
+            "text": "Modern-day automata can be found in many places; digital art exhibitions and groups such as Cabaret Mechanical Theatre regularly show off mechanical, electronic and digital devices designed to entertain, please and provoke.", 
+            "slug": "modern-automata", 
             "reference_url": "http://10.0.0.56:9292/wiki/Cabaret+Mechanical+Theatre", 
             "timeline_date": 2000
         }
@@ -2004,18 +2232,6 @@
         }
     }, 
     {
-        "pk": 27, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "Early 17th Century", 
-            "name": "Upper Hirst mining rig", 
-            "text": "The Upper Hirst mining rig was George Bruce of Carnock's innovative mine sunk into the Upper Hirst coal seam, beneath the Firth of Forth. It was constructed in the 17th Century, using branches for wooden braces.\r\n\r\nAs well as an entrance on land, the mine had a shaft sunk from an artificial island built in the middle of the Firth of Forth, which was used to load coal directly onto ships.", 
-            "slug": "upper-hirst-mining-rig", 
-            "reference_url": "http://10.0.0.56:9292/wiki/George+Bruce+of+Carnock", 
-            "timeline_date": 1617
-        }
-    }, 
-    {
         "pk": 42, 
         "model": "core.object", 
         "fields": {
@@ -2061,6 +2277,18 @@
             "slug": "the-jacquard-portrait", 
             "reference_url": "", 
             "timeline_date": 1838
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "Early 17th Century", 
+            "name": "The Upper Hirst mining rig", 
+            "text": "The Upper Hirst mining rig was George Bruce of Carnock's innovative mine sunk into the Upper Hirst coal seam, beneath the Firth of Forth. As well as an entrance on land, the mine had a shaft sunk from an artificial island built in the middle of the Firth of Forth, which was used to load coal directly onto ships.", 
+            "slug": "upper-hirst-mining-rig", 
+            "reference_url": "", 
+            "timeline_date": 1617
         }
     }, 
     {
@@ -2328,18 +2556,6 @@
         }
     }, 
     {
-        "pk": 16, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "12th Century", 
-            "name": "Crankshaft", 
-            "text": "The crankshaft, sometimes casually abbreviated to crank, is the part of an engine which translates reciprocating linear piston motion into rotation.\r\n\r\nThe first known use of a crankshaft in a chain pump was in one of al-Jazari's saqiya machines. The concept of minimizing intermittent working is also first implied in one of al-Jazari's saqiya chain pumps, which was for the purpose of maximising the efficiency of the saqiya chain pump.", 
-            "slug": "crankshaft", 
-            "reference_url": "http://10.0.0.56:9292/wiki/Crankshaft", 
-            "timeline_date": 1180
-        }
-    }, 
-    {
         "pk": 37, 
         "model": "core.object", 
         "fields": {
@@ -2361,18 +2577,6 @@
             "slug": "chain-drive", 
             "reference_url": "http://10.0.0.56:9292/wiki/Chain%20drive", 
             "timeline_date": 1092
-        }
-    }, 
-    {
-        "pk": 41, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "18th Century", 
-            "name": "Steam engine", 
-            "text": "A steam engine is a heat engine that performs mechanical work using steam as its working fluid.\r\n\r\nThe idea of using boiling water to produce mechanical motion has a long history, going back about 2,000 years. Early devices were not practical power producers, but more advanced designs (by people such as Savery, Newcommen, Watt and Trevithnick) producing usable power have become a major source of mechanical power over the last 300 years.", 
-            "slug": "steam-engine", 
-            "reference_url": "", 
-            "timeline_date": 1770
         }
     }, 
     {
@@ -2409,6 +2613,30 @@
             "slug": "the-silver-swan", 
             "reference_url": "http://10.0.0.56:9292/wiki/Silver%20Swan%20(automaton)", 
             "timeline_date": 1773
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "18th Century", 
+            "name": "The steam engine", 
+            "text": "A steam engine is a heat engine that performs mechanical work using steam as its working fluid.\r\n\r\nThe idea of using boiling water to produce mechanical motion has a long history, going back about 2,000 years. Early devices were not practical power producers, but more advanced designs (by people such as Savery, Newcommen, Watt and Trevithnick) producing usable power have become a major source of mechanical power over the last 300 years.", 
+            "slug": "steam-engine", 
+            "reference_url": "", 
+            "timeline_date": 1770
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "12th Century", 
+            "name": "The crankshaft", 
+            "text": "The crankshaft, sometimes casually abbreviated to crank, is the part of an engine which translates reciprocating linear piston motion into rotation.\r\n\r\nThe first known use of a crankshaft in a chain pump was in one of al-Jazari's saqiya machines. The concept of minimizing intermittent working is also first implied in one of al-Jazari's saqiya chain pumps, which was for the purpose of maximising the efficiency of the saqiya chain pump.", 
+            "slug": "crankshaft", 
+            "reference_url": "http://10.0.0.56:9292/wiki/Crankshaft", 
+            "timeline_date": 1180
         }
     }, 
     {
@@ -2614,6 +2842,83 @@
         "model": "core.storycontent", 
         "fields": {
             "text": "While it was not an automaton - the Difference Engine was intended for serious calculations - it shares many of the same characteristics; it had many moving parts, required very fine tolerances for the machining, and, of course, was very expensive.\r\n\r\nStill, it illustrates how the automata of the past laid the groundwork for the machines of the future - after all, the Difference Engine was part of the chain that leads to the development of the modern computer."
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Joe Jones provides a good example of what automata look like in the modern day; his inventions were primarily for entertainment and the delight of onlookers.\r\n\r\nWhile his inventions did not necessarily push the boundaries in terms of technology, several of them were still quite advanced for the time, including his continued use of solar power - something that is only becoming more widespread today."
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "While automata over the last couple of millennia have always been about entertainment and pushing the boundaries of technology, modern automata is increasingly becoming an artform - be it musical, like Joe Jones' musical instruments, or as a visual art piece.\r\n\r\nThese modern devices often stray away from using cutting-edge technology and instead use purely mechanical technology, though often with modern manufacturing refinements to enable cheap but precise components. They are also not just the domain of the rich, though places like theme parks still spend millions on complex systems designed purely to entertain, and which can push the boundaries of large-scale engineering - perhaps not the classical type of automata, but still interesting nonetheless."
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "With the fall of the Roman Empire, much they had created decayed over time until it was unusable. In Spain, the Moorish state created many new devices, such as a giant waterwheel in Toledo that took over the role of a Roman aqueduct in supplying water to the city. However by the early 16th century that had been destroyed, leaving the city to haul water by ass from the river.\r\n\r\nAlthough political will and financial support were at times thin, Turriano's machines were eventually completed and operated for over fifty years after his death, the first transporting thousands of gallons a day.\r\n\r\nEventually however they fell into disrepair, and were disassembled or scavenged, leaving the city once more dependent on manual labour to satisfy its water needs."
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "As demand for coal increased, surface mining was no longer sufficient. Underground mines, with tunnels braced using tree branches, were already common when George Bruce took the perhaps natural step forward of mining under the sea. Using new drainage technologies (since water constantly dripping into the tunnels), and using established Scottish techniques for building his artificial island, the mine at Upper Hirst became a wonder of early industrial Britain.\r\n\r\nIt aroused such interest that James VI visited in 1617, although when he reached the island at the end of the tunnel and saw only water around him, he panicked and accused Bruce of plotting to kill him."
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "While today textiles may seem like a relatively boring industry, they were one of the main driving forces behind the Industrial Revolution, pushing the economies of the UK and other industrialised countries through the 18th, 19th and early 20th centuries.\r\n\r\nIt was the first industry to experience massive industrialisation, but certainly not the last. The story of the textiles industry also reflects the huge social changes of the era, as well as the shift in power from rich landowners to the great industrialists."
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The flying shuttle was the first in a series of innovations which helped drive the textile industry's modernisation. In particular, it sped up the process of weaving but not spinning, which helped drive innovation in the spinning process.\r\n\r\nLike many of the inventions around weaving, the introduction of the flying shuttle was controversial; it allowed a single operator to produce much larger quantities of cloth, as well as simplifying the work required. It was also occasionally quite dangerous; the shuttle occasionally decided to take the \"flying\" part of its name literally and shoot off of the loom and through the air, maiming workers."
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Much like the flying shuttle, the spinning jenny was an innovation that allowed a single worker to be significantly more productive than before; it allowed the output of the spinning industry to catch up with the growing demands of the weaving industry.\r\n\r\nMuch like Kay and the shuttle, Hargreaves' patent for the machine was largely ignored; this wasn't helped by the fact that he produced (and sold) the machines in secret for a number of years before before other manufacturers made their own copies, making his case against them very weak."
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The advances in spinning and weaving technology and the need for large custom-built buildings to house the new machines (such as the water frame) led to the cotton industry moving away from cottages and towards new purpose-built factories, often next to a water source to provide the power for the new machines.\r\n\r\nThese cotton mills also pioneered many aspects of modern industrial operation; many employees had only a single job, they were employed rather than just contracted, and their schedule was decided by a clock rather than daylight hours. In addition, most mills built large estates to house all the new workers, building up new communities.\r\n\r\nThe darker side was that the number of children employed (and injured) in the factories was substantial; children were often the right size to work in amongst the machines, right next to all the moving parts."
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The water frame represented the other branch of innovation in the textiles industry; while the spinning jenny and the flying shuttle increased the productivity of a single worker, the water frame used an external power source to eliminate the need for an operator to power a machine, using far less people to produce significantly more output than before.\r\n\r\nIn 1771 Arkwright installed the water frame in his cotton mill at Cromford; it was one of the first factories built to specifically house machines rather than to just bring workers together. Combined with a working day based on the clock rather than daylight hours, it resulted in a continuous process that was able to supply huge amounts of thread to the new thread-hungry looms."
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The spinning mule was the second advance in the spinning industry, and flipped the gender balance of spinning twice; the manual mule made spinning a mostly male operation, while the automatic mule once again made spinning a mostly female operation.\r\n\r\nThe spinning mule was a direct combination of the spinning jenny and the water frame, but Crompton, the inventor, never patented it - he instead sold the rights to Dale, a Scottish businessman, who patented it and profited from it."
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "One of the main demands for coal was to power steam engines; although much of the early Industrial Revolution was achieved without mechanisation, or using water power, steam power when it became practical allowed factories to be built away from water, thus allowing for considerably more of the country to become industrialised.\r\n\r\nHowever this further accelerated the movement of people into cities to take up semi-skilled labour, and other results of industrial growth on British society. This was already causing protests and riots, and things would only get worse."
         }
     }
 ]
