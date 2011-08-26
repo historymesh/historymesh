@@ -1,49 +1,49 @@
 {% load markup %}
 {% if story %}
   {% if not under_map %}
-	<div class="storynav">
-		<ol>
-			{% if story.previous %}
-			<li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
-			{% else %}
-			<li class="prev-disabled"></li>
-			{% endif %}
-			
-			{% if story.next %}
-			<li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
-			{% else %}
-			<li class="next-disabled"></li>
-			{% endif %}
-		</ol>
-		{% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}
-		{% if not story.next %}
-			<span class="return"><a href="/">Return to Story List</a></span>
-		{% endif %}
-	</div>
+  <div class="storynav">
+    <ol>
+      {% if story.previous %}
+      <li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
+      {% else %}
+      <li class="prev-disabled"></li>
+      {% endif %}
+      
+      {% if story.next %}
+      <li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
+      {% else %}
+      <li class="next-disabled"></li>
+      {% endif %}
+    </ol>
+    {% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}
+    {% if not story.next %}
+      <span class="return"><a href="/">Return to Story List</a></span>
+    {% endif %}
+  </div>
   {% endif %}
 {% endif %}
-		
-	<h1>
-		<span class="name">{{subject.name}}</span>
-		{% if subject.display_date %}
-		  <span class="meta">({{subject.display_date}})</span>
-		{% endif %}
-	</h1>
+    
+  <h1>
+    <span class="name">{{subject.name}}</span>
+    {% if subject.display_date %}
+      <span class="meta">({{subject.display_date}})</span>
+    {% endif %}
+  </h1>
 
-	
-	<div class="body">
-	
-	<div class="main">
-	<figure class="portrait">
-		<img src="/static/img/placeholder.png" alt="" class="fr" width="249" height="333">
-		<figcaption>Close up view of comber board, harness, malls, weights, (Lingoes) and warp with 1040 ends</figcaption>
-	</figure>
+  
+  <div class="body">
+  
+  <div class="main">
+  <figure class="portrait">
+    <img src="/static/img/placeholder.png" alt="" class="fr" width="249" height="333">
+    <figcaption>Close up view of comber board, harness, malls, weights, (Lingoes) and warp with 1040 ends</figcaption>
+  </figure>
 
   {{ subject.text|textile }}
 
 {% if user.is_staff %}
 <div class="admin">
-	<a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit Node</a>
+  <a href="/admin/core/{{ subject.object_name }}/{{ subject.pk }}/">Edit Node</a>
   {% if story.story_content %}
     <span class="sep">|</span> <a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
   {% else %}
@@ -54,8 +54,8 @@
 
 {% if story %}
 {% if story.story_content %}
-	<div class="story-{{ story.slug }}">
-	  <h2>Relation to <span class="story-name">{{ story.name }}</span>:</h2>
+  <div class="story-{{ story.slug }}">
+    <h2>Relation to <span class="story-name">{{ story.name }}</span>:</h2>
 
     {% if story.story_content %}
       {{story.story_content.text|textile}}
@@ -72,7 +72,7 @@
       {% endif %}
     {% endif %}
 
-	</div>
+  </div>
 {% endif %}
   <div class="secondary storynav-lg">
     <ol>
@@ -87,8 +87,8 @@
   {% if other_story != story %}
     {# only show a story if there is actual content, or we are admin #}
     {% if other_story.story_content or user.is_staff %}
-		<div class="story-{{ other_story.slug }}">
-		  <h2>Relation to <span class="story-name">{{ other_story.name }}</span>:</h2>
+    <div class="story-{{ other_story.slug }}">
+      <h2>Relation to <span class="story-name">{{ other_story.name }}</span>:</h2>
       {% if other_story.story_content %}
         {{other_story.story_content.text|textile}}
         {% if user.is_staff %}
@@ -103,16 +103,16 @@
           </div>
         {% endif %}
       {% endif %}
-		</div>
-		<div class="secondary storynav-lg">
-  		<div class="tertiary story-{{ other_story.slug }}">
+    </div>
+    <div class="secondary storynav-lg">
+      <div class="tertiary story-{{ other_story.slug }}">
       {% with other_story as story %}
-  	    <ol>
+        <ol>
         {% include "nodes/_full_story_nav.html" %}
-  	    </ol>
+        </ol>
       {% endwith %}
-     	</div>
-   	</div>
+      </div>
+    </div>
     {% endif %}
   {% endif %}
 {% endfor %}
