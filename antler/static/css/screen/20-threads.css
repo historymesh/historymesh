@@ -11,7 +11,7 @@
 	{color: #1945ec;}
 .story-power .story-name, .tertiary.story-power .story-name, .story-power .story-name a, 
 .tertiary.story-power .story-name a 
-	{color: #f5b133;}
+	{color: #ef9d09;}
 .story-textiles .story-name, .tertiary.story-textiles .story-name, 
 .story-textiles .story-name a, .tertiary.story-textiles .story-name a 
 	{color: #309e1d;}
@@ -31,8 +31,8 @@ li.story-computing h3:before, .story-computing .storynav li, .story-computing .s
 	{background-color: #1945ec;}
 li.story-power h3:before, .story-power .storynav li, .story-power .storynav-lg a.arrow,
 .storynav-lg .tertiary.story-power a.arrow 
-	{background-color: #f5b133;}
+	{background-color: #ef9d09;}
 li.story-textiles h3:before, .story-textiles .storynav li, .story-textiles .storynav-lg a.arrow,
 .storynav-lg .tertiary.story-textiles a.arrow 
-	{background-color: #f5b133;}
+	{background-color: #309e1d;}
 /* -- */
