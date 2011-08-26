@@ -34,13 +34,15 @@ jQuery(function($) {
                 poop.css('position', 'absolute');
                 poop.css('top', 70);
                 poop.css('left', 65);
-                poop.css('width', '3px');
-                poop.css('height', '3px');
+                poop.css('width', '6px');
+                poop.css('height', '6px');
+                poop.css('border-radius', '3px');
                 poop.css('background-color', '#E03C31');
                 p.append(poop);
                 
                 function scooper() { $(this).remove(); }
-                poop.animate({'top': 300}, {'duration': 500, 'complete': scooper});
+                /* Animate it to disappear approximately behind the icon below */
+                poop.animate({'top': 280}, {'duration': 750, 'complete': scooper});
             }
         } else {
             post = 0;
