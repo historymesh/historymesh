@@ -32,15 +32,15 @@
 
   {% block masthead %}
   <header id="masthead">
-		<div class="site-name">
-			<a href="/">The Mothers of Invention</a>
-		</div>
-		{% block view_toggle %}
-	  {% endblock %}
+    <div class="site-name">
+      <a href="/">The Mothers of Invention</a>
+    </div>
+    {% block view_toggle %}
+    {% endblock %}
 
-		<form action="{% url search %}" method="GET">
-		<input type="search" name="q" placeholder="Search" />
-		</form>
+    <form action="{% url search %}" method="GET">
+      <input type="search" name="q" placeholder="Search">
+    </form>
   </header>
   {% endblock %}
   
