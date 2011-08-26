@@ -66,7 +66,6 @@ class NodeView(TemplateView):
         group = groups[keys[0]]
         marks = []
         i = 0
-        node_separation = 45
         last_node = None
         for node in nodes:
             while len(keys) and node.timeline_date > keys[0]:
@@ -168,14 +167,14 @@ class NodeView(TemplateView):
 
         for edge in outgoing:
             node = edge.object
-            node.horizontal_position = -self.node_separation
+            node.horizontal_position = -self.node_separation * 0.7
             node.story = edge.story
             nodes.add(node)
             edges.add(edge)
 
         for edge in incoming:
             node = edge.subject
-            node.horizontal_position = self.node_separation
+            node.horizontal_position = self.node_separation * 0.7
             node.story = edge.story
 
             # The incoming links often draw wrong, inverting the direction of the link fixes this.
