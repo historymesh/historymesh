@@ -347,7 +347,7 @@ class Node(BaseNode):
     def link_url(self):
         # just used in links; something that has no text and isn't
         # in any stories should use its reference_url instead.
-        if self.text and not self.reference_url and len(self.stories())==0:
+        if not self.text and self.reference_url and len(self.stories())==0:
             return self.reference_url
         else:
             return self.url()
