@@ -159,10 +159,11 @@ class NodeView(TemplateView):
     def other_story_links(self, instance, story):
         edges = set()
         nodes = set()
-        outgoing = Edge.objects.filter(verb="primary", subject_id=instance.id, subject_type=instance.object_name()).exclude(story=story)
-        second_out = Edge.objects.filter(verb="secondary", subject_id=instance.id, subject_type=instance.object_name(), story=story)
-        incoming = Edge.objects.filter(verb="primary", object_id=instance.id, object_type=instance.object_name()).exclude(story=story)
-        second_in = Edge.objects.filter(verb="secondary", object_id=instance.id, object_type=instance.object_name(), story=story)
+        type_str = Edge._type_string_from_model(instance)
+        outgoing = Edge.objects.filter(verb="primary", subject_id=instance.id, subject_type=type_str).exclude(story=story)
+        second_out = Edge.objects.filter(verb="secondary", subject_id=instance.id, subject_type=type_str, story=story)
+        incoming = Edge.objects.filter(verb="primary", object_id=instance.id, object_type=type_str).exclude(story=story)
+        second_in = Edge.objects.filter(verb="secondary", object_id=instance.id, object_type=type_str, story=story)
 
         outgoing = outgoing or second_out
         incoming = incoming or second_in
