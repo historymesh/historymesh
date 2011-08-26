@@ -421,6 +421,9 @@ div.home {
 	border-width: 1px 0;
 }
 /* -- */
+.storynav ol {
+    -cp-contain:            easy;
+}
 .storynav h3 {
 	margin: 0;
 }
