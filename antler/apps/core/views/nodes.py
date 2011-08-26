@@ -273,6 +273,7 @@ class NodeJsonView(NodeView):
             "nodeSlug": slug,
             "objectId": slugify(instance),
             "title": title,
+            "map_node": instance.select_tuple[0],
             "html": render_to_string(
                 'nodes/_node_content.html',
                 RequestContext(request, self.get_context_data(slug)),

@@ -49,6 +49,14 @@ jQuery(function($) {
         return function(targetURL, push) {
             goOut();
             load(targetURL, function(data) {
+                var $map_link = $('#map-link a');
+                var href      = $map_link.attr('href');
+                var new_href  = href.replace(
+                    /current_node=([^&]+)/g,
+                    'current_node=' + data['map_node']
+                );
+                $map_link.attr('href', new_href);
+
                 $('title').html(data.title);
                 var state = {
                     'url': targetURL
