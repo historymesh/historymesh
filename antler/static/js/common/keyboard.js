@@ -13,5 +13,10 @@ jQuery(function($) {
             window.location.href = url;
         }
     });
+    $('input').keyup(function(event) {
+        // Stop keyboard events in form inputs triggering page changes
+        event.stopPropagation();
+        return true;
+    })
 });
 
