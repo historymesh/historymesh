@@ -1,5 +1,5 @@
 jQuery(function($) {
-    $('body').keydown(function(event) {
+    $('body').keyup(function(event) {
         var url;
         switch(event.keyCode) {
             case 37: // left
