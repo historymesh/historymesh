@@ -52,6 +52,7 @@
 </div>
 {% endif %}
 
+{% if story %}
 {% if story.story_content %}
 	<div class="story-{{ story.slug }}">
 	  <h2>Relation to <span class="story-name">{{ story.name }}</span>:</h2>
@@ -73,6 +74,14 @@
 
 	</div>
 {% endif %}
+  <div class="secondary storynav-lg">
+    <ol>
+    {% include "nodes/_full_story_nav.html" %}
+    </ol>
+  </div>
+{% endif %}
+
+
 
 {% for other_story in subject.stories %}
   {% if other_story != story %}
@@ -95,6 +104,15 @@
         {% endif %}
       {% endif %}
 		</div>
+		<div class="secondary storynav-lg">
+  		<div class="tertiary story-{{ other_story.slug }}">
+      {% with other_story as story %}
+  	    <ol>
+        {% include "nodes/_full_story_nav.html" %}
+  	    </ol>
+      {% endwith %}
+     	</div>
+   	</div>
     {% endif %}
   {% endif %}
 {% endfor %}
@@ -104,24 +122,3 @@
 {% endif %}
 
 </div>
-
-{% if subject.stories %}
-<div class="secondary storynav-lg">
-  {% if story %}
-  <ol>
-  {% include "nodes/_full_story_nav.html" %}
-  </ol>
-  {% endif %}
-  {% for other_story in subject.stories %}
-    {% if story != other_story %}
-			<div class="tertiary story-{{ other_story.slug }}">
-      {% with other_story as story %}
-		    <ol>
-        {% include "nodes/_full_story_nav.html" %}
-		    </ol>
-      {% endwith %}
-     	</div>
-    {% endif %}
-  {% endfor %}
-</div>
-{% endif %}
