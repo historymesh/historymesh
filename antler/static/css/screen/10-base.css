@@ -454,9 +454,9 @@ body.about, body.error {
 
 
 
-/* =========================================== */
-/* ! Shared between Map and Nodes Page			   */
-/* =========================================== */
+/* ======================================================= */
+/* ! Common style shared between Map and Nodes Page			   */
+/* ======================================================= */
 .secondary {
 	margin: 1.5em 0;
 	clear: both;
@@ -479,6 +479,10 @@ h1 .meta {
 	clear: both;
 	padding-top: 2em;
 }
+	.body h2 {
+		font-size: 1.5em;
+		margin-bottom: 0.5em;
+	}
 .view-node article {
 	position: relative;
 	z-index: 1;
