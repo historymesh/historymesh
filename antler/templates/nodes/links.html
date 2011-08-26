@@ -10,7 +10,7 @@
 {% for verb, links in outgoing.items %}
 {% if verb != "primary" and verb != "secondary" and verb != "described_by" %}
     {% for link in links %}
-        <li>{{ subject.name }} {{ verb }} <a href="{{link.link_url}}">{{link.name}}</a>.</li>
+        <li>{{ subject.name }} {{ verb }} <a href="{{link.link_url}}">{{link.name_possibly_lowercased}}</a>.</li>
     {% endfor %}
 {% endif %}
 {% endfor %}
