@@ -15,11 +15,16 @@ noscript {
 	left: 0;
 	bottom: 0;
 	top: 120px;
-	width:196px;
+	width:200px;
 	font-size: 11px;
 	color: #aaa;
-	border-right: 4px solid #999;
 }
+
+	.timeline ol {
+		border-right-width: 4px;
+		border-right-style: solid;
+		margin: 0 8px 0 0;
+	}
 
 	.timeline li {
 		padding: 0 0 0 13px;
@@ -30,10 +35,37 @@ noscript {
 	.timeline li li {
 		border-bottom: 0;
 		text-align: right;
-		padding: 0 40px;
+		margin: 15px 0;
+		padding: 0 20px 0 30px;
 		line-height: 1.2;
+		position: relative;
 	}
 	
 	.timeline li li a {
 		text-decoration: none;
 	}
+	
+	.fakenode {
+		display: block;
+		z-index: 10;
+		width: 8px;
+		height: 8px;
+		-cp-border-radius: 8px;
+		border-width: 4px;
+		border-style: solid;
+		background: #f1f1f1;
+		position: absolute;
+		right: -10px;
+		top:0;
+	}
+	
+.story-automatons .timeline ol  {border-color: #e03c31;}
+.story-computing .timeline ol	{border-color: #1945ec;}
+.story-power ..timeline ol		{border-color: #ef9d09;}
+.story-textiles	.timeline ol 	{border-color: #309e1d;}
+
+	
+.story-automatons .fakenode	{border-color: #e03c31;}
+.story-computing .fakenode 	{border-color: #1945ec;}
+.story-power .fakenode 		{border-color: #ef9d09;}
+.story-textiles	.fakenode 	{border-color: #309e1d;}
