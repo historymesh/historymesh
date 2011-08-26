@@ -55,7 +55,22 @@
 {% if story.story_content %}
 	<div class="story-{{ story.slug }}">
 	  <h2>Relation to <span class="story-name">{{ story.name }}</span>:</h2>
-	  {{story.story_content.text|textile}}
+
+    {% if story.story_content %}
+      {{story.story_content.text|textile}}
+      {% if user.is_staff %}
+        <div class="admin">
+          <a href="/admin/core/storycontent/{{ story.story_content.pk }}/">Edit Story Content</a>
+        </div>
+      {% endif %}
+    {% else %}
+      {% if user.is_staff %}
+        <div class="admin">
+          <a href="/admin/core/storycontent/add/?story={{ story.pk }}&amp;subject={{ subject.select_tuple.0}}">Add Story Content</a>
+        </div>
+      {% endif %}
+    {% endif %}
+
 	</div>
 {% endif %}
 
