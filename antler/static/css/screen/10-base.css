@@ -255,6 +255,7 @@ header input {
 	display: inline-block;
 	-cp-border-radius: 3px;
 	padding: 3px 8px 5px 65px;
+	margin: 0 auto 1em auto;
 }
 .admin .sep {
 	margin: 0 5px;
@@ -566,7 +567,7 @@ h1 .meta {
 		}
 
 
-<<<<<<< HEAD
+
 /* ================= */
 /* ! Map Page			   */
 /* ================= */
@@ -658,16 +659,12 @@ h1 .meta {
 
 
 
-=======
 /* ================== */
 /* ! Javascript off   */
 /* ================== */
->>>>>>> ecbabfd24117c4a9dd44d4c404bc13eb01e025ab
-
 noscript {
 
 }
-
 .noscript article {
 	margin: 0 0 0 200px;	
 }
