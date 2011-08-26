@@ -193,6 +193,7 @@ header nav {
   }
   /* -- */
 	header nav a:hover, header nav a:focus {
+		color: #fff;
 		background: #cccccc;
 		-cp-border-radius: 24px;
 		text-decoration: none;
@@ -219,11 +220,18 @@ header nav li.current em, header nav li.current a:visited {
 /* -- */
 
 header input {
+	font-size: 12px;
 	float: right;
 	width: 14em;
-	padding: 2px 0;
-	border: 1px solid #ccc;
+	padding: 2px 10px;
+	border: 2px solid #bbb;
+	-cp-border-radius: 24px;
 }
+/*! verbatim */
+header input {
+	-moz-box-shadow: inset #ccc 0 1px 2px;
+}
+/* -- */
 
 .timeline {
 	position: fixed;
