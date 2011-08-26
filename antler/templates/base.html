@@ -39,7 +39,7 @@
     {% endblock %}
 
     <form action="{% url search %}" method="GET">
-      <input type="search" name="q" placeholder="Search">
+      <input type="search" name="q" placeholder="Search" value="{{ query_string }}"{% if query_string %}autofocus{% endif %}>
     </form>
   </header>
   {% endblock %}
