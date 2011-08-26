@@ -80,17 +80,20 @@ Content</a>
 	
 	
 	
-	<div class="secondary">
-	<ol class="storynav">
-{% if story %}
-{% include "nodes/_full_story_nav.html" %}
-{% endif %}
-{% for other_story in subject.stories %}
-{% if story != other_story %}
-{% with other_story as story %}
-{% include "nodes/_full_story_nav.html" %}
-{% endwith %}
-{% endif %}
-{% endfor %}
-	</ol>
-	</div>
+  <div class="secondary storynav">
+    {% if story %}
+      <ol>
+      {% include "nodes/_full_story_nav.html" %}
+      </ol>
+    {% endif %}
+    
+    <ol>
+    {% for other_story in subject.stories %}
+      {% if story != other_story %}
+        {% with other_story as story %}
+          {% include "nodes/_full_story_nav.html" %}
+        {% endwith %}
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </div>
