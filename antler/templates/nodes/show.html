@@ -4,12 +4,12 @@
 {% block body-class %}view-node story-{{ story.slug }}{% endblock %}
 
 {% block view_toggle %}
-		<nav>
-			<ul>
-				<li class="current"><a href="/object/jacquard-loom">Story</a></li>
-				<li><a href="/map">Map</a></li>
-			</ul>
-		</nav>
+  <nav>
+    <ul>
+      <li class="current"><em>Story</em></li>
+      <li><a href="/map/?next={{subject.url}}{% if story %}&amp;story={{story.slug}}{% endif %}">Map</a></li>
+    </ul>
+  </nav>
 {% endblock %}
 
 {% block content %}

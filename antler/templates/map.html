@@ -4,12 +4,14 @@
 {% block body-class %}view-map{% endblock %}
 
 {% block view_toggle %}
-    <nav>
-        <ul>
-            <li><a href="/">Story</a></li>
-            <li class="current"><a href="/map">Map</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <ul>
+      {% if next %}
+      <li><a href="{{next}}{% if story %}?story={{story}}{% endif %}">Story</a></li>
+      {% endif %}
+      <li class="current"><em>Map</em></li>
+    </ul>
+  </nav>
 {% endblock %}
 
 {% block head-js %}
