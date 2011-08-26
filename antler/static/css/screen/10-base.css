@@ -232,22 +232,6 @@ header input {
 }
 /* -- */
 
-.timeline {
-	position: fixed;
-	z-index: 0;
-	left: 0;
-	bottom: 0;
-	top: 120px;
-	width: 400px;
-	font-size: 11px;
-	color: #aaa;
-}
-
-.timeline li {
-	padding: 0 0 0 13px;
-	border-bottom: 1px solid #e2e2e2;
-	margin: 20px 0 150px 0;
-}
 
 .tail {
 	position: fixed;
@@ -525,15 +509,11 @@ h1 .meta {
 	-cp-contain: easy;
 }
 .storynav-lg li {
-	width: 46%;
+	width: 50%;
 	float: left;
-	margin: 0 2% 0 0;
 	min-height: 2em;
 	position: relative;
 }
-	.storynav-lg li+li {
-		margin: 0 0 0 2%;
-	}
 .storynav-lg a.arrow {
 	content: " ";
 	display: block;
@@ -556,16 +536,20 @@ h1 .meta {
 	div.storynav-lg .tertiary a.arrow:hover, div.storynav-lg .tertiary a.arrow:focus {
 		background-color: #666;
 	}
-.storynav-lg .prev dt {
+.storynav-lg .prev dt, .storynav-lg .next dt {
 	position: relative;
 	z-index: 9;
 }
-.storynav-lg .prev dd {
+.storynav-lg .prev dd, .storynav-lg .prev dt {
 	padding-left: 50px;
 }
 .storynav-lg .next dl {
+	text-align: right;
+}
+.storynav-lg .next dd,.storynav-lg .next dt {
 	padding-right: 50px;
 }
+
 	.storynav-lg dt {
 		margin: 0;
 		font-size: 0.9em;
@@ -582,6 +566,7 @@ h1 .meta {
 		}
 
 
+<<<<<<< HEAD
 /* ================= */
 /* ! Map Page			   */
 /* ================= */
@@ -673,9 +658,37 @@ h1 .meta {
 
 
 
+=======
+/* ================== */
+/* ! Javascript off   */
+/* ================== */
+>>>>>>> ecbabfd24117c4a9dd44d4c404bc13eb01e025ab
+
+noscript {
+
+}
+
+.noscript article {
+	margin: 0 0 0 200px;	
+}
 
 
+.timeline {
+	position: absolute;
+	z-index: 0;
+	left: 0;
+	bottom: 0;
+	top: 120px;
+	width:200px;
+	font-size: 11px;
+	color: #aaa;
+}
 
+.timeline li {
+	padding: 0 0 0 13px;
+	border-bottom: 1px solid #e2e2e2;
+	margin: 10px 0;
+}
 
 
 /*! verbatim */
