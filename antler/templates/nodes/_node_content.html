@@ -51,7 +51,7 @@
 
 {% if story.story_content %}
 	<div class="story-{{ story.slug }}">
-	  <h2>Relevant to <span class="story-name">{{ story.name }}</span></h2>
+	  <h2>Relation to <span class="story-name">{{ story.name }}</span>:</h2>
 	  {{story.story_content.text|textile}}
 	</div>
 {% endif %}
@@ -61,7 +61,7 @@
     {# only show a story if there is actual content, or we are admin #}
     {% if other_story.story_content or user.is_staff %}
 		<div class="story-{{ other_story.slug }}">
-		  <h2>Relevant to <span class="story-name">{{ other_story.name }}</span></h2>
+		  <h2>Relation to <span class="story-name">{{ other_story.name }}</span>:</h2>
       {% if other_story.story_content %}
         {{other_story.story_content.text|textile}}
         {% if user.is_staff %}
