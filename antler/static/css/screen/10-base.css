@@ -546,9 +546,6 @@ h1 .meta {
 	.storynav li.prev {
 		width: 36px;
 	}
-	.storynav li.next {
-		text-align: right;
-	}
 	.storynav li.next a, .storynav li.next a:focus {
 		background-position: -48px 0;
 	}
@@ -605,15 +602,11 @@ h1 .meta {
 	-cp-contain: easy;
 }
 .storynav-lg li {
-	width: 46%;
+	width: 50%;
 	float: left;
-	margin: 0 2% 0 0;
 	min-height: 2em;
 	position: relative;
 }
-	.storynav-lg li+li {
-		margin: 0 0 0 2%;
-	}
 .storynav-lg a.arrow {
 	content: " ";
 	display: block;
@@ -636,19 +629,20 @@ h1 .meta {
 	div.storynav-lg .tertiary a.arrow:hover, div.storynav-lg .tertiary a.arrow:focus {
 		background-color: #666;
 	}
-.storynav-lg .prev dt {
+.storynav-lg .prev dt, .storynav-lg .next dt {
 	position: relative;
 	z-index: 9;
 }
-.storynav-lg .prev dd {
+.storynav-lg .prev dd, .storynav-lg .prev dt {
 	padding-left: 50px;
 }
 .storynav-lg .next dl {
 	text-align: right;
 }
-.storynav-lg .next dd {
+.storynav-lg .next dd,.storynav-lg .next dt {
 	padding-right: 50px;
 }
+
 	.storynav-lg dt {
 		margin: 0;
 		font-size: 0.9em;
