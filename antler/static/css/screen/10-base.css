@@ -367,6 +367,8 @@ div.home {
 	border-width: 1px 0;
 	padding: 1em 0;
 	margin: 0 -2em;
+	-webkit-user-select: none;
+	cursor: move;
 }
 /*! verbatim */
 	/* pre-parser don't do border-width */
@@ -413,6 +415,7 @@ div.home {
 	background: #f1f1f1;
 	border-bottom: solid 1px #ccc;
 	-webkit-user-select: none;
+	cursor: move;
 }
 	.view-map .map img {
 		line-height: 1;
