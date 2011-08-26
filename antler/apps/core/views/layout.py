@@ -478,7 +478,7 @@ class String(object):
             sorted(nodes, key=lambda node: engine.node_horizontal_position(node))
         )
         # seed random generator based on number of strings so far
-        gen = random.Random(x=len(engine.strings))
+        gen = random.Random(x=len(engine.strings)+2)
         self.position = gen.random() * 70
         print "Initialpos %s for %r" % (self.position, self)
     

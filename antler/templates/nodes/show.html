@@ -11,7 +11,7 @@
   <nav>
     <ul>
       <li class="current"><em>Story</em></li>
-      <li><a href="/map/?current_node={{subject.select_tuple.0}}{% if story %}&amp;story={{story.slug}}{% endif %}">Map</a></li>
+      <li id='map-link'><a href="/map/?current_node={{subject.select_tuple.0}}{% if story %}&amp;story={{story.slug}}{% endif %}">Map</a></li>
     </ul>
   </nav>
 {% endblock %}
