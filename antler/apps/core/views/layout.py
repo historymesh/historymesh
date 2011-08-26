@@ -28,8 +28,17 @@ class MapView(TemplateView):
 
     def get_context_data(self):
         context = get_layout_data()
-        context["next"] = self.request.GET.get('next')
         context["story"] = self.request.GET.get('story')
+        # See if there's currently a node
+        current_node = self.request.GET.get("current_node")
+        if current_node:
+            type_string, pk = current_node.split(":")
+            model_class = Edge._model_from_type_string(type_string)
+            instance = model_class.objects.get(pk=pk)
+            context["current_node"] = instance
+            node_story_names = [s.name.lower() for s in instance.stories()]
+            if context["story"] not in node_story_names:
+                context["story"] = node_story_names[0]
         return context
 
 

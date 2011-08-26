@@ -2,7 +2,7 @@
       {% for node in nodes %}
         nodes["{{ node|slugify }}"] = network.addNode({
           name: '{{ node.name }}{% if node.display_date %} ({{ node.display_date }}){% endif %}',
-          url: '{{ node.url }}',
+          url: '/map/?current_node={{ node.select_tuple.0 }}{% if story %}&story={{story}}{% endif %}',
           position: [
             {{ node.horizontal_position }},
             {{ node.position }}
