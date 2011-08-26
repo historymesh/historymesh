@@ -329,6 +329,9 @@ div.home {
 	.home #stories a {
 		text-decoration: none;
 	}
+	.home #stories a:hover h3, .home #stories a:focus h3 {
+		text-decoration: underline;
+	}
 .home ul {
 	width: 100%;
 	margin: 0;
