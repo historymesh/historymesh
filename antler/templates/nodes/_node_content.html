@@ -89,13 +89,13 @@
 
 	</div>
 	
-	
-	
-  {% if story %}
+	{% if subject.stories %}
   <div class="secondary storynav-lg">
+    {% if story %}
     <ol>
     {% include "nodes/_full_story_nav.html" %}
     </ol>
+    {% endif %}
     {% for other_story in subject.stories %}
       {% if story != other_story %}
 				<div class="tertiary story-{{ other_story.slug }}">
