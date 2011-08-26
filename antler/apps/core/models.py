@@ -34,7 +34,7 @@ class Edge(models.Model):
         "was parent to",
         "was described by",
         "was married to",
-        "dined_with",
+        "dined with",
         "inspired",
         "enabled",
         "depicted",
