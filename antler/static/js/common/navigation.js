@@ -28,14 +28,17 @@ jQuery(function($) {
         };
 
         var goIn = function(data) {
-            $(document).trigger('node:transition', {slug: data.objectId});
-
             // Don't transition in if we're still transitioning out
             // By setting inWaiting we instruct out to call in when it finishes
             if(outInProgress) {
                 inWaiting = data;
                 return;
             }
+            $(document).trigger('node:transition', {slug: data.objectId});
+
+            var body = document.body;
+            body.className = body.className.replace(/\bstory-\S+/g, '');
+            body.className += ' story-' + data.storySlug;
 
             // Transition in
             var newContent = $(data.html).hide();
