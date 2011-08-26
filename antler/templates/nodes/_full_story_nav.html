@@ -22,3 +22,23 @@
   {% endif %}
 </li>
 
+<li class="prev alternate">
+  {% if story.prev_secondary and story.prev_primary %}
+  <dl class="secondary">
+    <dt>Also in <span class="story-name">{{ story.name }}</span></dt>
+    <dd class="thread story-name"><a href="{{ story.prev_secondary.url }}?story={{ story.slug }}">{{ story.prev_secondary.name }}</a></dd>
+  </dl>
+  {% else %}
+  <div class="next-disabled"></div>
+  {% endif %}
+</li>
+<li class="next alternate">
+  {% if story.next_secondary and story.next_primary %}
+  <dl class="secondary">
+    <dt>Also in <span class="story-name">{{ story.name }}</span></dt>
+    <dd class="thread story-name"><a href="{{ story.next_secondary.url }}?story={{ story.slug }}">{{ story.next_secondary.name }}</a></dd>
+  </dl>
+  {% else %}
+  <div class="next-disabled"></div>
+  {% endif %}
+</li>
