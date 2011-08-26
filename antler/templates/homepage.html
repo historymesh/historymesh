@@ -7,17 +7,24 @@
 
 <div class="home">
 
+	<div class="about">
+	  <h1>Wibbly Wobbly Timey Wimey</h1>
+	  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. <a href="#">Read More &rsaquo;</a></p>
+	</div>
+
   {% if stories %}
-  <h2>Suggested Stories</h2>
-  <ul id="stories" class="stories">
-    {% for story in stories %}
-    <li class="story-{{story.slug}}">
-      <h3 class="story-name"><a href="{{story.start.url}}?story={{story.slug}}">{{story.name}}</a></h3>
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-      {{story.text|linebreaks}}
-    </li>
-    {% endfor %}
-  </ul>
+	<div class="stories">
+	  <h2>Suggested Stories</h2>
+	  <ul id="stories">
+	    {% for story in stories %}
+	    <li class="story-{{story.slug}}">
+	      <h3 class="story-name"><a href="{{story.start.url}}?story={{story.slug}}">{{story.name}}</a></h3>
+	      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
+	      {{story.text|linebreaks}}
+	    </li>
+	    {% endfor %}
+	  </ul>
+	</div>
   {% endif %}
 
   <h2>Timeline Map View</h2>
