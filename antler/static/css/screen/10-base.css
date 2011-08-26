@@ -330,7 +330,7 @@ div.home {
 .home h3 {
 	margin-bottom: 0;
 }
-	.home h3 a {
+	.home #stories a {
 		text-decoration: none;
 	}
 .home ul {
