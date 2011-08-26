@@ -4,20 +4,46 @@
 {% block body-class %}view-map{% endblock %}
 
 {% block view_toggle %}
-		<nav>
-			<ul>
-				<li><a href="/object/jacquard-loom">Story</a></li>
-				<li class="current"><a href="/map">Map</a></li>
-			</ul>
-		</nav>
+    <nav>
+        <ul>
+            <li><a href="/">Story</a></li>
+            <li class="current"><a href="/map">Map</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block head-js %}
+    <script src="/static/js/network.js"></script>
 {% endblock %}
 
 {% block content %}
 
-	<div class="map">
-		<img src="/static/img/temp-homepage.png" style="width: 100%">
-	</div>
+    <div class="map">
+      <div id="container"></div>
+    </div>
 
-	{% include "nodes/_node_content.html" %}
+    <script type="text/javascript">
+
+      var network = new Network('container', document.width, 400);
+
+      var nodes = {};
+      {% for node in nodes %}
+        nodes["{{ node|slugify }}"] = network.addNode({
+          name: '{{ node.name }}{% if node.display_date %} ({{ node.display_date }}){% endif %}',
+          url: '{{ node.url }}',
+          position: [
+            {{ node.horizontal_position }},
+            {{ node.position }}
+        ]
+        });
+      {% endfor %}
+
+      {% for edge in edges %}
+        nodes["{{ edge.subject|slugify }}"].leadsTo(nodes["{{ edge.object|slugify }}"], "{% if edge.story.colour %}#{{edge.story.colour}}{% else %}#273924{% endif %}"{% if edge.verb == "secondary" %}, true{% endif %});
+      {% endfor %}
+
+      network.draw();
+
+    </script>
 
 {% endblock %}

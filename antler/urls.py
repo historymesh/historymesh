@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     url(r'^layout/$', layout.LayoutView.as_view()),
     url(r'^layout/image/$', layout.LayoutImage.as_view()),
     url(r'^overview/$', nodes.NodeIndexView.as_view()),
-    url(r'^map/$', TemplateView.as_view(template_name="map.html"), name="map"),
+    url(r'^map/$', layout.MapView.as_view(), name="map"),
     url(r'^search/$', SearchView.as_view(), name="search"),
     
 )

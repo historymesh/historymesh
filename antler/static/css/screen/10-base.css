@@ -36,13 +36,12 @@ body {
 	color: #555;
 	background: #f1f1f1;
 }
-
 /*! verbatim */
 body {
 	text-rendering: optimizeLegibility;
+/* 	-webkit-user-select: none; */
 }	
 /* -- */
-
 a {
 	font-weight: bold;
 	color: #164B9E;
@@ -56,19 +55,19 @@ a {
 		 -o-transition-duration: 0.2s;
 		 -webkit-transition-duration: 0.2s;
 		 -moz-transition-duration: 0.2s;
-		 transition-duration: 0.2s;	
+		 transition-duration: 0.2s;
 	}	
 	/* -- */
 	a:hover {
 		color: #000;
+		text-decoration: underline;
 	}
 blockquote {
 	margin: 0 0 1em 0;
 	padding: 0 0 0 2em;
-	border-left: 1px solid #ccc;
 }
 blockquote p {
-	font-size: 1.3em;
+	font-size: 1.1em;
 	text-indent: -0.4em;
 	margin: 0 0 0.5em 0;
 }
@@ -140,11 +139,11 @@ table {
 header {
 	position: fixed;
 	z-index: 10;
-	left:0;
+	left: 0;
 	right: 0;
-	top:0;
+	top: 0;
 	line-height: 1;
-	padding: 13px;
+	padding: 13px 2em;
 }
 
 /*! verbatim */
@@ -178,17 +177,19 @@ header nav {
 		display: inline-block;
 		font-size: 12px;
 		line-height: 1;
-		margin: 0 5px;
+		margin: 0;
 	}
 	header nav a, header nav a:visited {
 		color: #fff;
 		padding: 2px 12px 4px 12px;
 		margin: 0;
 		text-decoration: none;
+		text-shadow: rgba(0,0,0,0.2) 0 1px 1px;
 	}
 	header nav a:hover, header nav a:focus {
 		background: #cccccc;
 		-cp-border-radius: 24px;
+		text-decoration: none;
 	}
 	header nav li.current a, header nav li.current a:visited {
 		background: #a3a3a3;
@@ -196,8 +197,18 @@ header nav {
 		-webkit-box-shadow: #000 inset 0 1px 0;
 	}
 /*! verbatim */
+header nav a, header nav a:visited {
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+header nav a:hover, header nav a:focus {
+	-webkit-box-shadow: #bbb 0 1px 0, inset #d3d3d3 0 1px 0;
+}
 header nav li.current a, header nav li.current a:visited {
 	-webkit-box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
+	-moz-box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
+	box-shadow: inset #999 0 1px 0, #c6c6c6 0 1px 0;
 }	
 /* -- */
 
@@ -282,28 +293,47 @@ figure {
 /* ! Home Page		   */
 /* ================= */
 div.home {
-	padding: 5em 2em 1px 2em;
+	padding: 6em 2em 1px 2em;
 	background: #fff;
 }
 .home h3 {
-	font-size: 1.2em;
+	margin-bottom: 0;
 }
 .home ul {
-	width: 90%;
+	width: 100%;
+	margin: 0;
+	padding: 0 0 2em 0;
+	overflow: hidden;
 }
 .home li {
-	width: 39%;
-	margin-left: 11%;
+	width: 44.9%;
+	margin: 0 5% 1em 0;
 	float: left;
+	position: relative;
 }
+	.home li h3, .home li p {
+		padding-left: 95px;
+	}
 .home .map {
 	background: #fff;
 	border: solid 1px #ccc;
 	border-width: 1px 0;
 	padding: 1em 0;
+	margin: 0 -2em;
 }
+.home li h3:before {
+	content: url(/static/img/temp-icon-placeholder.png);
+	background: #666;
+	display: block;
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: 0.25em;
+	left: 0;
+}
+
 /*! verbatim */
-	/* Norm, add border-width to this thing maybe? */
+	/* pre-parser don't do border-width */
 .home .map {
 	border-width: 1px 0;
 }
@@ -339,6 +369,8 @@ div.home {
 	margin: 1.5em 0;
 }
 
+/*
+	killing the background image for now, style may have to change when finalized
 .view-node .map {
 	position: fixed;
 	left: 100px;
@@ -347,6 +379,7 @@ div.home {
 	bottom: 0;
 	background: url(/static/img/temp-sidebar-map.png) no-repeat right 50%;
 }
+*/
 
 .view-node article {
 	position: relative;
@@ -389,6 +422,13 @@ div.home {
 	.prev-next li a:hover, .prev-next li a:focus {
 		background-color: #666;
 	}
+	
+	ol.prev-next li.prev-disabled {
+		background: #eee url(/static/img/arrow-nav.png);
+	}
+	ol.prev-next li.next-disabled {
+		background: #eee url(/static/img/arrow-nav.png) -44px 0;
+	}
 
 
 
@@ -416,26 +456,35 @@ div.home {
 	padding: 7px 0;
 }
 /*! verbatim */
-	/* Norm, add border-width to this thing maybe? */
+	/* pre-parser don't do border-width */
 .storynav {
 	border-width: 1px 0;
 }
 /* -- */
-.storynav ol {
-    -cp-contain:            easy;
-}
+	.storynav .tertiary {
+		border-top: solid 1px #ccc;
+		padding-top: 7px;
+		margin-top: 7px;
+	}
+
 .storynav h3 {
 	margin: 0;
 }
+	.storynav h3 a {
+		text-decoration: none;
+	}
+.storynav ol {
+	-cp-contain: easy;
+}
 .storynav li {
-	width:46%;
+	width: 46%;
 	float: left;
 	margin: 0 2% 0 0;
+	min-height: 2em;
 }
-
-.storynav li+li {
-	margin: 0 0 0 2%;
-}
+	.storynav li+li {
+		margin: 0 0 0 2%;
+	}
 
 /*! verbatim */
 /* Viewport of 800px and above */

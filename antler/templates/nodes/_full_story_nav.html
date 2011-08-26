@@ -1,15 +1,12 @@
+		<li>
 {% if story.previous %}
-		<li>
-			<h4>Previously in <span class="auto">{{ story.name }}</span></h4>
-			<h3 class="thread auto"><a rel='prev' href='{{ story.previous.url }}?story={{ story.slug }}'>{{ story.previous.name }}</a></h3>
-
-			<!-- <p class="trunc">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In lectus nisl, porttitor eget, fermentum.</p> -->
-		</li>
+			<h4>Previously in <span class="story-name">{{ story.name }}</span></h4>
+			<h3 class="thread story-name"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">{{ story.previous.name }}</a></h3>
 {% endif %}
+		</li>
+		<li>
 {% if story.next %}
-		<li>
-			<h4>Next in <span class="auto">{{ story.name }}</span></h4>
-			<h3 class="thread auto"><a rel='next' href='{{ story.next.url }}?story={{ story.slug }}'>{{ story.next.name }}</a></h3>
-
-		</li>
+			<h4>Next in <span class="story-name">{{ story.name }}</span></h4>
+			<h3 class="thread story-name"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">{{ story.next.name }}</a></h3>
 {% endif %}
+		</li>

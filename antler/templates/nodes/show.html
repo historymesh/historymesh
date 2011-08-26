@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% load markup %}
 
 {% block pagetitle %}{{ subject.name }}{% if story %} in {{ story.slug }}{% endif %}{% endblock %}
-{% block body-class %}view-node{% endblock %}
+{% block body-class %}view-node story-{{ story.slug }}{% endblock %}
 
 {% block view_toggle %}
 		<nav>
