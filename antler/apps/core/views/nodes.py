@@ -118,13 +118,11 @@ class NodeView(TemplateView):
 
     # TODO: hadle cases where target is outside the range in nodes
     def _get_bracketing_nodes(self, target, nodes):
-        print "looking for %d" % target.timeline_date
         prev = None
         for node in nodes:
             if not prev:
                 prev = node
                 continue
-            print "prev: %d, next, %d" % (prev.timeline_date, target.timeline_date)
             if prev.timeline_date <= target.timeline_date and target.timeline_date <= node.timeline_date:
                 return prev,node
             prev = node
@@ -174,10 +172,15 @@ class NodeView(TemplateView):
             node.story = edge.story
             nodes.add(node)
             edges.add(edge)
+
         for edge in incoming:
             node = edge.subject
             node.horizontal_position = self.node_separation
             node.story = edge.story
+
+            # The incoming links often draw wrong, inverting the direction of the link fixes this.
+            edge.subject,edge.object = (edge.object,edge.subject)
+
             nodes.add(node)
             edges.add(edge)
         return nodes,edges
