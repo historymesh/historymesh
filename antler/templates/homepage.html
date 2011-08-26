@@ -30,39 +30,24 @@
   </ol>
 -->
 
-	<h2>Suggested Stories</h2>
-	<ul>
-	
-		<li>
-			<h3><a href="/object/the-jacquard-loom/">The Jacquard Loom</a></h3>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-		</li>
+  {% if stories %}
+  <h2>Suggested Stories</h2>
+  <ul id='stories'>
+    {% for story in stories %}
+    <li>
+      <h3><a href="{{story.start.url}}?story={{story.slug}}">{{story.name}}</a></h3>
+      {{story.text|linebreaks}}
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
 
-		<li>
-			<h3><a href="/person/charles-babbage/">Charles Babbage</a></h3>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-		</li>
-
-		<li>
-			<h3><a href="/object/difference-engine/">Difference Engine</a></h3>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-		</li>
-
-		<li>
-			<h3><a href="/person/ada-lovelace/">Ada Lovelace</a></h3>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-		</li>
-
-	</dl>
-
-
-
-	<h2>Timeline Map View</h2>
+  <h2>Timeline Map View</h2>
+  <div class="map">
+    <img src="/static/img/temp-homepage.png" style="width: 100%">
+  </div>
 </div>
-
-	<div class="map">
-		<img src="/static/img/temp-homepage.png" style="width: 100%">
-	</div>
 
 {% endblock %}
 
