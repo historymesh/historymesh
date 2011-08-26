@@ -377,7 +377,7 @@ div.home {
 		font-family: NuvoMediumWOFF, "Lucida Grande", Calibri, Helvetica, Arial, sans-serif;
 	}
 	.home .about .more:after {
-	    content:               ' ›';
+	    content: " ›";
 	}
 .home .stories {
 	width: 60%;
@@ -409,6 +409,12 @@ div.home {
 	top: 0.25em;
 	left: 0;
 }
+/*! verbatim */
+	.home li.story-automatons h3:before {content: url(/static/img/ico-automatons.png);}
+	.home li.story-computing h3:before {content: url(/static/img/ico-computing.png);}
+	.home li.story-power h3:before {content: url(/static/img/ico-power.png);}
+	.home li.story-textiles h3:before {content: url(/static/img/ico-textiles.png);}
+/* -- */
 .home footer {
 	background: #fff;
 	margin: 0;
