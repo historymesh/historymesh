@@ -109,6 +109,12 @@
   })
 
   $(document).bind('node:transition', function(event, data) {
+    for (var slug in forks) {
+      meth = (slug == data.slug) ? "show" : "hide";
+      for (var i in forks[slug]) {
+        forks[slug][i][meth]();
+      }
+    }
     network.scrollToNode(nodes[data.slug], markerPosition());
   });
 	</script>
