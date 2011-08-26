@@ -4,8 +4,22 @@ import random
 from cStringIO import StringIO
 from collections import deque
 from django.http import HttpResponse
+from django.core.cache import cache
 from django.views.generic import TemplateView, View
 from core.models import Edge, Node
+
+
+def get_layout_data():
+    engine = cache.get("layout-engine")
+    if not engine:
+        engine = NodeLayoutEngine()
+        engine.lay_out()
+        cache.set("layout-engine", engine, 300)
+    return {
+        "strings": list(engine.strings),
+        "nodes": list(engine.annotated_nodes()),
+        "edges": list(engine.visible_edges()),
+    }
 
 
 class MapView(TemplateView):
@@ -13,14 +27,10 @@ class MapView(TemplateView):
     template_name = "map.html"
 
     def get_context_data(self):
-        engine = NodeLayoutEngine()
-        engine.lay_out()
-        return {
-            "next":  self.request.GET.get('next'),
-            "story": self.request.GET.get('story'),
-            "nodes": list(engine.annotated_nodes()),
-            "edges": list(engine.visible_edges()),
-        }
+        context = get_layout_data()
+        context["next"] = self.request.GET.get('next')
+        context["story"] = self.request.GET.get('story')
+        return context
 
 
 class LayoutView(TemplateView):
@@ -28,13 +38,8 @@ class LayoutView(TemplateView):
     template_name = "layout_test.html"
 
     def get_context_data(self):
-        engine = NodeLayoutEngine()
-        engine.lay_out()
-        return {
-            "strings": list(engine.strings),
-            "nodes": list(engine.annotated_nodes()),
-            "edges": list(engine.visible_edges()),
-        }
+        context = get_layout_data()
+        return context
 
 
 class LayoutImage(View):
