@@ -3,9 +3,11 @@ jQuery(function($) {
         var url;
         switch(event.keyCode) {
             case 37: // left
+            case 75: // k
                 url = $('a[rel=prev]').attr('href');
                 break;
             case 39: // right
+            case 74: // j
                 url = $('a[rel=next]').attr('href');
                 break;
         }
