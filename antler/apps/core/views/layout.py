@@ -71,10 +71,10 @@ class NodeLayoutEngine(object):
     """
 
     iterations_crossover_only = 20
-    iterations_both = 30
+    iterations_both = 100
     iterations_repulsion = 100
 
-    repulsion_factor = 0.2 # Range 0..1
+    repulsion_factor = 0.1 # Range 0..1
     repulsion_min_distance = 3
     repulsion_max_distance = 100
 
@@ -87,7 +87,9 @@ class NodeLayoutEngine(object):
     vertical_separation = 60
 
     # How strong the push to get even angles should be; range 0..1
-    angle_factor = 0.1
+    # Hint; it seems to be a good idea for this to be at least as strong as the
+    # repulsion factor, or it gets overpowered in awkward situations.
+    angle_factor = 0.2
 
     # How strong a push to make to fix crossovers
     crossover_factor = 0.5
@@ -443,7 +445,8 @@ class String(object):
         self.nodes = tuple(
             sorted(nodes, key=lambda node: engine.node_horizontal_position(node))
         )
-        gen = random.Random(x=hash(self.nodes))
+        # seed random generator based on number of strings so far
+        gen = random.Random(x=len(engine.strings))
         self.position = gen.random() * 70
         print "Initialpos %s for %r" % (self.position, self)
     
