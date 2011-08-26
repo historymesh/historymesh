@@ -415,7 +415,6 @@ $.extend(Network.Scale.prototype, {
         el     = this._network._container,
         self   = this;
 
-    console.log(pos);
     div.css({
       position:   'absolute',
       left:       (pos[0] + 8) + 'px',

@@ -10,7 +10,7 @@ class NodeView(TemplateView):
 
     def model_name(self):
         return self.model._meta.object_name.lower()
-    
+
     def get_context_data(self, slug):
         instance = get_object_or_404(self.model, slug=slug)
 
@@ -91,7 +91,7 @@ class NodeView(TemplateView):
     def story_node_map(self, story):
         nodes = set()
         edges = set()
-        for edge in Edge.objects.filter(story=story):
+        for edge in Edge.objects.filter(story=story, verb__in=("primary", "secondary")):
             nodes.add(edge.subject)
             nodes.add(edge.object)
             edges.add(edge)
@@ -104,11 +104,11 @@ class NodeView(TemplateView):
 class PersonView(NodeView):
     model = Person
 
-        
+
 class EventView(NodeView):
     model = Event
 
-        
+
 class ConceptView(NodeView):
     model = Concept
 
@@ -129,7 +129,7 @@ class NodeIndexView(TemplateView):
         }
 
 class RandomNodeView(View):
-    
+
     def get(self, request):
         # Pick a node type from those available
         node_classes = [model for model in [Person, Concept, Event, Object]
@@ -137,6 +137,6 @@ class RandomNodeView(View):
         if not node_classes:
             raise Http404
         node_class = random.choice(node_classes)
-        
+
         node = node_class.objects.order_by("?")[0]
         return Redirect( node.url() )
