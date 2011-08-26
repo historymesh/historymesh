@@ -15,7 +15,15 @@
 	</ol>
 {% endif %}
 		
-	<h1>{{subject.name}}{% if story %} (in &ldquo;{{story}}&rdquo;){% endif %}{% if subject.display_date %} <span>({{subject.display_date}})</span>{% endif %}</h1>
+	<h1>
+		{{subject.name}}
+		{% if story or subject.display_date %}
+		<span class="meta">(
+			{% if story %}<span class="story-line">in <span class="story-name">&ldquo;{{story}}&rdquo;</span></span>{% endif %}{% if story and subject.display_date %},{% endif %}
+			{% if subject.display_date %}<span class="date">{{subject.display_date}}</span>{% endif %}
+		)</span>
+		{% endif %}
+	</h1>
 
 	
 	<div class="body">
@@ -80,13 +88,11 @@ Content</a>
 	
 	
 	
+  {% if story %}
   <div class="secondary storynav">
-    {% if story %}
-      <ol>
-      {% include "nodes/_full_story_nav.html" %}
-      </ol>
-    {% endif %}
-    
+    <ol>
+    {% include "nodes/_full_story_nav.html" %}
+    </ol>
     {% for other_story in subject.stories %}
       {% if story != other_story %}
 				<div class="tertiary story-{{ other_story.slug }}">
@@ -99,3 +105,4 @@ Content</a>
       {% endif %}
     {% endfor %}
   </div>
+  {% endif %}
