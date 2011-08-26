@@ -423,24 +423,24 @@ div.home {
 
 
 
-/* =================================== */
-/* ! Common About & Error Page style	 */
-/* =================================== */
-body.about, body.error {
+/* =========================================== */
+/* ! Shared About, Search & Error Page style	 */
+/* =========================================== */
+body.about, body.error, body.search {
 	background: #fff;
 }
-.about h1, .error h1 {
+.about h1, .error h1, .search h1 {
 	color: #555;
 }
-.about article, .error article {
+.about article, .error article, .search article {
 	background: #fff;
 	padding: 6em 2em 0 0;
 	margin: 0;
 }
-.about .body, .error .body {
+.about .body, .error .body, .search .body {
 	padding: 0 2em 0 400px;
 }
-.about footer, .error footer {
+.about footer, .error footer, .search footer {
 	border-top: solid 1px #ccc;
 	padding-top: 2em;
 }
@@ -489,7 +489,7 @@ h1 .meta {
 	position: relative;
 	z-index: 1;
 	margin: 0 0 0 400px;
-	padding: 6em 3em;
+	padding: 6em 3em 0 3em;
 	overflow: auto;
 	background: #fff;
 }
@@ -556,7 +556,6 @@ h1 .meta {
 .storynav-lg .next dd,.storynav-lg .next dt {
 	padding-right: 50px;
 }
-
 	.storynav-lg dt {
 		margin: 0;
 		font-size: 0.9em;
@@ -683,7 +682,6 @@ noscript {
 .noscript article {
 	margin: 0 0 0 200px;	
 }
-
 
 .timeline {
 	position: absolute;

@@ -5,12 +5,15 @@
 
 {% block content %}
 
-	<h2>Results</h2>
-	{{ results|length }} matches
-	<ol>
-	{% for item in results %}
-	{% include "search/_item_in_list.html" %}
-	{% endfor %}
-	</ol>
+	<div class="body">
+		<h1>Results for &#8220;{{ query_string }}&#8221;</h1>
+		<strong>{{ results|length }} matches</strong>
+
+		<ol>
+		{% for item in results %}
+		{% include "search/_item_in_list.html" %}
+		{% endfor %}
+		</ol>
+	</div>
 
 {% endblock %}
