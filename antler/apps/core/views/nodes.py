@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.views.generic.base import TemplateView, View
 from core.models import Person, Concept, Event, Object, Story
 from django.shortcuts import HttpResponseRedirect as Redirect, get_object_or_404
@@ -66,17 +67,14 @@ class NodeIndexView(TemplateView):
         }
 
 class RandomNodeView(View):
+    
     def get(self, request):
-        # there are five types of node, pick one first
-        node_class = random.randint(0, 3)
-        if node_class == 0:
-            node = Person.objects.order_by("?")[0]
-        elif node_class == 1:
-            node = Concept.objects.order_by("?")[0]
-        elif node_class == 2:
-            node = Event.objects.order_by("?")[0]
-        elif node_class == 3:
-            node = Object.objects.order_by("?")[0]
+        # Pick a node type from those available
+        node_classes = [model for model in [Person, Concept, Event, Object]
+                        if model.objects.exists()]
+        if not node_classes:
+            raise Http404
+        node_class = random.choice(node_classes)
         
-        print node
+        node = node_class.objects.order_by("?")[0]
         return Redirect( node.url() )
