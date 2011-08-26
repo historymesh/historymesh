@@ -361,6 +361,9 @@ div.home {
 		font-style: normal;
 		font-family: NuvoMediumWOFF, "Lucida Grande", Calibri, Helvetica, Arial, sans-serif;
 	}
+	.home .about .more:after {
+	    content:               ' ›';
+	}
 .home .stories {
 	width: 60%;
 	float: right;
