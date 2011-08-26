@@ -1,5 +1,6 @@
 {% load markup %}
 {% if story %}
+  {% if not under_map %}
 	<div class="storynav">
 		<ol>
 			{% if story.previous %}
@@ -16,6 +17,7 @@
 		</ol>
 		{% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}
 	</div>
+  {% endif %}
 {% endif %}
 		
 	<h1>

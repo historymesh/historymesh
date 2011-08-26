@@ -39,6 +39,7 @@ class MapView(TemplateView):
             node_story_names = [s.name.lower() for s in instance.stories()]
             if context["story"] not in node_story_names:
                 context["story"] = node_story_names[0]
+        context['under_map'] = True
         return context
 
 
