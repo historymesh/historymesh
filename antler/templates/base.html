@@ -28,7 +28,13 @@
   {% block head-meta %}
   {% endblock %}
 </head>
-<body class='{% block body-class %}{% endblock %}'>
+<body class='{% block body-class %}{% endblock %} noscript'>
+<script>
+	(function(){
+	var body = document.getElementsByTagName('BODY')[0];
+	body.className = body.className.replace(' noscript', '');
+	}());
+</script>
 
   {% block masthead %}
   <header id="masthead">

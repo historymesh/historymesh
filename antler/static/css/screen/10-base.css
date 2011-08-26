@@ -233,22 +233,6 @@ header input {
 }
 /* -- */
 
-.timeline {
-	position: fixed;
-	z-index: 0;
-	left: 0;
-	bottom: 0;
-	top: 120px;
-	width: 400px;
-	font-size: 11px;
-	color: #aaa;
-}
-
-.timeline li {
-	padding: 0 0 0 13px;
-	border-bottom: 1px solid #e2e2e2;
-	margin: 20px 0 150px 0;
-}
 
 .tail {
 	position: fixed;
@@ -659,9 +643,35 @@ h1 .meta {
 		}
 
 
+/* ================== */
+/* ! Javascript off   */
+/* ================== */
+
+noscript {
+
+}
+
+.noscript article {
+	margin: 0 0 0 200px;	
+}
 
 
+.timeline {
+	position: absolute;
+	z-index: 0;
+	left: 0;
+	bottom: 0;
+	top: 120px;
+	width:200px;
+	font-size: 11px;
+	color: #aaa;
+}
 
+.timeline li {
+	padding: 0 0 0 13px;
+	border-bottom: 1px solid #e2e2e2;
+	margin: 10px 0;
+}
 
 
 /*! verbatim */
