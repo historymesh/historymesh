@@ -1128,6 +1128,114 @@
         }
     }, 
     {
+        "pk": 104, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 23, 
+            "object_type": "core.storycontent", 
+            "object_id": 16, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 105, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 21, 
+            "object_type": "core.person", 
+            "object_id": 7, 
+            "verb": "was described by"
+        }
+    }, 
+    {
+        "pk": 106, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 15, 
+            "object_type": "core.storycontent", 
+            "object_id": 17, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 107, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.person", 
+            "subject_id": 7, 
+            "object_type": "core.storycontent", 
+            "object_id": 18, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 108, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 17, 
+            "object_type": "core.storycontent", 
+            "object_id": 19, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 109, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.person", 
+            "subject_id": 6, 
+            "object_type": "core.storycontent", 
+            "object_id": 20, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 110, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 39, 
+            "object_type": "core.storycontent", 
+            "object_id": 21, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 111, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 4, 
+            "subject_type": "core.event", 
+            "subject_id": 14, 
+            "object_type": "core.storycontent", 
+            "object_id": 22, 
+            "verb": "described_by"
+        }
+    }, 
+    {
+        "pk": 112, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 2, 
+            "subject_type": "core.object", 
+            "subject_id": 29, 
+            "object_type": "core.storycontent", 
+            "object_id": 23, 
+            "verb": "described_by"
+        }
+    }, 
+    {
         "pk": 24, 
         "model": "core.person", 
         "fields": {
@@ -1668,18 +1776,6 @@
         }
     }, 
     {
-        "pk": 19, 
-        "model": "core.event", 
-        "fields": {
-            "display_date": "From 3rd Century BC", 
-            "name": "Early coal mining", 
-            "text": "One of the earliest descriptions of (surface) coal mining is contained in Theophrastus' On Stones; the Romans also surface mined coal to power their smelting.\r\n\r\nCoal mining disappeared during the romano-british period, but then re-emerged by around 1200.", 
-            "slug": "early-coal-mining", 
-            "reference_url": "", 
-            "timeline_date": -300
-        }
-    }, 
-    {
         "pk": 14, 
         "model": "core.event", 
         "fields": {
@@ -1687,7 +1783,7 @@
             "name": "Ban on Coal Burning in London", 
             "text": "In 1306 a city ordinance was passed, decreeing that heating with coal was forbidden when Parliament was in session. The ordinance was not particularly effective.", 
             "slug": "ban-on-coal-burning-in-london", 
-            "reference_url": "http://10.0.0.56:9292/wiki/1306", 
+            "reference_url": "", 
             "timeline_date": 1306
         }
     }, 
@@ -1701,6 +1797,18 @@
             "slug": "cotton-mills-and-factories-act", 
             "reference_url": "http://10.0.0.56:9292/wiki/Factory+Acts#Cotton_Mills_etc_Act_1819", 
             "timeline_date": 1819
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "core.event", 
+        "fields": {
+            "display_date": "From 3rd Century BC", 
+            "name": "Early coal mining", 
+            "text": "The Ancient Greeks and Romans used surface mining to source coal as fuel; one of the earliest descriptions is contained in Theophrastus' On Stones, and the Romans used the coal to to enable iron smelting.\r\n\r\nIn Britain, coal mining disappeared with the Romans, but had re-emerged by the end of the 12th Century.", 
+            "slug": "early-coal-mining", 
+            "reference_url": "", 
+            "timeline_date": -300
         }
     }, 
     {
@@ -2326,17 +2434,6 @@
         }
     }, 
     {
-        "pk": 4, 
-        "model": "core.story", 
-        "fields": {
-            "text": "", 
-            "colour": "f5b133", 
-            "featured": true, 
-            "name": "Power", 
-            "slug": "power"
-        }
-    }, 
-    {
         "pk": 6, 
         "model": "core.story", 
         "fields": {
@@ -2345,6 +2442,17 @@
             "featured": true, 
             "name": "Textiles", 
             "slug": "textiles"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "core.story", 
+        "fields": {
+            "text": "", 
+            "colour": "ef9d09", 
+            "featured": true, 
+            "name": "Power", 
+            "slug": "power"
         }
     }, 
     {
@@ -2390,13 +2498,6 @@
         }
     }, 
     {
-        "pk": 11, 
-        "model": "core.storycontent", 
-        "fields": {
-            "text": "Antiquity is full of stories of automata, mechanical creatures and figures that by turns entertain, assist or confound the humans around them. Although it is often impossible to be certain which tales have elements of truth and which are purely myth, there are many stories from some parts of the world, in particular around the island of Rhodes where the streets were said to be lined with subtle mechanical statues.\r\n\r\nEven in cases where purported automata are actually frauds, such as The Turk in the 18th century where its chess-playing prowess was actually a small accomplice sitting within the figure, they serve to illustrate the appetite for mechanical contrivances. Although automata were mainly for entertainment (and boasting), the intricate requirements on clockwork, pneumatics, hydraulics and so forth would help drive forward the state of the art, enabling more practical applications \u2014 although it's notable that a recurring type of automata, among the mechanical birds, singing creatures and puppet theatres, is the personal butler, a trend continuing as a major strand of modern robotics research."
-        }
-    }, 
-    {
         "pk": 7, 
         "model": "core.storycontent", 
         "fields": {
@@ -2425,31 +2526,94 @@
         }
     }, 
     {
-        "pk": 13, 
-        "model": "core.storycontent", 
-        "fields": {
-            "text": "Imagine the wonder of first seeing the Banu Musa's musical instruments, perhaps their flautist that could play different tunes \u2014 and which could be taught new tunes that were written specially for it. Or maybe after dinner with a leading patron of the mechanical arts you'd be entertained by their organ, its complex polyphony rising above the susurration of the water that powered it."
-        }
-    }, 
-    {
         "pk": 12, 
         "model": "core.storycontent", 
         "fields": {
-            "text": "The Ancient Greeks' interest in automata is well documented, with Hero's creations including an entirely mechanical play, theatre being another fascination. He also invented the world's first vending machine, where putting a coin in the top would dispense a set amount of holy water.\r\n\r\nIn the ancient world, the island of Rhodes had a particularly strong tradition of mechanical engineering, and the island was renowned for its automata:\r\n\r\nbq. The animated figures stand\r\nAdorning every public street\r\nAnd seem to breathe in stone, or\r\nmove their marble feet.\r\n"
+            "text": "Hero really was one of the great inventors of his age - imagine going to see his entirely mechanical play, which lasted almost ten minutes and included its own thunder sound effect, or seeing the first steam engine - a spinning sphere powered by nozzles on the side.\r\n\r\nHe also pioneered many things that we take for granted; he invented the world's first vending machine, which dispensed holy water when you put a coin in the top, and automatic doors - a steam boiler powered by an altar fire was used to open and close temple doors.\r\n\r\nHero was part of a wider ancient Greek tradition of invention and engineering; the island of Rhodes had a particularly strong tradition of mechanical engineering, and the island was renowned for its automata:\r\n\r\nbq. The animated figures stand\r\nAdorning every public street\r\nAnd seem to breathe in stone, or\r\nmove their marble feet.\r\n"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Imagine the wonder of first seeing the Banu Musa's musical instruments, perhaps their flautist that could play different tunes \u2014 and which could be taught new tunes that were written specially for it. Or maybe after dinner with a leading patron of the mechanical arts you'd be entertained by their organ, its complex polyphony rising above the susurration of the water that powered it.\r\n\r\nNot content with just the automatic flute, they also created automatic fountains, hurricane lamps, mechanical grabs, and an automatic dispenser that alternated between hot and cold water - inventions that wouldn't be out of place in a modern home."
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The Silver Swan is another example of the use of automata by the upper classes for entertainment (and, arguably, to show off), and appeared at the World's Fair, where even Mark Twain saw and wrote about it. The construction is noticeably more difficult than earlier automata - custom-made glass rods formed the water, silver fish \"swam\" in the stream, and silver leaves were placed round the edge.\r\n\r\nThe Swan is also possibly unique among automata in being described in a (UK) Act of Parliament, which describes the swan and gives its dimensions."
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The fact that this automaton, when activated after more than a hundred years of being dormant, managed to clearly write its maker's name, is astonishing - even better, the device was also capable of seven different sketches.\r\n\r\nIt is also interesting to note that Henri was primarily a creator of clocks and other more practical mechanisms, showing that automatons were still being used as a way of trialling new and more complex mechanisms, and paving the way for more and more complex machinery."
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The water-powered puppet theatre continues the trend of using engineering to delight and entertain; much like Hero's earlier example, this mechanical play featured a variety of moving puppets, but unlike Hero's play, it was powered by hydraulics, rather than simple ropes and pulleys.\r\n\r\nThere are other recorded examples of mechanical plays from around this time as well; Qu Zhi made a mechanical dolls' house as well as a mechanical \"rats' market\", with automatic doors. Like many automata, the technology and skills involved in making such delicate devices were sometimes transferred to more practical uses, but several of the technologies involved were not exploited for mass production until much more recently."
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Automatons have long been a fascination of inventors and engineers, and rightly so - even today, we still strive to make realistic androids and other automata - toys are becoming increasingly realistic, and we now have two-legged robots that can climb stairs and play football.\r\n\r\nThe Chinese Android is one of the earliest automata that we know about - though, of course, some claim that it is fiction. Even so, the description of the king's \"astonishment\" still illustrates the accomplishment such a feat would have represented almost three thousand years ago - would you have thought that the people of the time could even have conceived of a humanoid robot, let alone partially built one?\r\n\r\n"
         }
     }, 
     {
         "pk": 14, 
         "model": "core.storycontent", 
         "fields": {
-            "text": "If you went to a royal party at the Artuklu Palace in the early 12th century, you might hope to see a performance by Al-Jazari's musical robot band, which floated in a small boat on the lake for the amusement of guests \u2014 perhaps while drinking tea served by a robotic waitress, although you'd have to wait seven minutes between each cup served."
+            "text": "If you went to a royal party at the Artuklu Palace in the early 12th century, you might hope to see a performance by Al-Jazari's musical robot band, which floated in a small boat on the lake for the amusement of guests \u2014 perhaps while drinking tea served by a robotic waitress, although you'd have to wait seven minutes between each cup served.\r\n\r\nMuch like the inventors before him, al-Jazari had a whole range of inventions and contraptions; as well as some more entertaining inventions, like automated moving peacocks, he also made many practical inventions, such as machines for raising water and a variety of clocks."
         }
     }, 
     {
         "pk": 15, 
         "model": "core.storycontent", 
         "fields": {
-            "text": "bq. Have you seen M. Vaucanson's duck? They say it eats grains and\u2026well, let's say that it clearly enjoys them! M. Arouet believes it to be one of the finest creations in France!"
+            "text": "The Digesting Duck is a great example of technology harnessed for an entirely pointless purpose, although it did elevate the normally unpleasant process of digestion to something that became widely known across France and the western world.\r\n\r\nEven though it may lack a practical purpose at first glance, the Digesting Duck pioneered flexible rubber tubing, something that would quickly become useful for later inventions and industries.\r\n\r\nbq. Have you seen M. Vaucanson's duck? They say it eats grains and\u2026well, let's say that it clearly enjoys them! M. Arouet believes it to be one of the finest creations in France!"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Water-power was already well established by his lifetime, but Hero was probably the first to harness wind power on land, inventing a windwheel to power one of his musical instruments. Beyond entertainment and powering important sacred functions such as opening temple doors, much of his contribution was more theoretical than practical, and from his position as a teacher in Egypt it's unlikely the everyday man or woman would have known his name. We still think he's awesome, though."
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The Jaquet-Droz automata continue the long tradition of human-form automata - in this case as dolls. However, unlike many earlier automata they were used for a semi-practical purpose: as advertisement and entertainment toys designed to improve the sales of watches among the nobility of Europe in the 18th century.\r\n\r\nThe dolls were amazingly detailed; the writer dipped his pen in and inkwell and shook it to remove excess ink, and moved his eyes to follow his pen across the page. Even the musician, arguably the simplest of the dolls, plays a small custom-built musical instrument, and \"breathes\" as she plays. They are a long way from the simple movements of the earliest automata, but still aim for the same thing - realistic human figures.\r\n"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "The Jacquard Portrait is interesting because it is not an automaton in itself; however, the sheer effort involved in its creation, along with the amount of detail it had for something that had been woven, meant that it was still a point of interest - and, of course, expensive to produce, no doubt making it even more of a useful talking point for its owner."
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Although use of coal had disappeared in Britain after the Romans left, it re-emerged at the end of the 12th Century, and was adopted with such enthusiasm that by the beginning of the 14th Century the air conditions in London had deteriorated enough to cause widespread discontent. This didn't put people off coal both for home use and for industry though, and gradually mining became more ambitious, moving on from surface mining as techniques were adopted to keep tunnels intact as coal seams were mined through them."
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "While it was not an automaton - the Difference Engine was intended for serious calculations - it shares many of the same characteristics; it had many moving parts, required very fine tolerances for the machining, and, of course, was very expensive.\r\n\r\nStill, it illustrates how the automata of the past laid the groundwork for the machines of the future - after all, the Difference Engine was part of the chain that leads to the development of the modern computer."
         }
     }
 ]
