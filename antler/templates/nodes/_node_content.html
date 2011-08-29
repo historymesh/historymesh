@@ -107,6 +107,8 @@
         {% endif %}
       {% endif %}
     </div>
+    {% endif %}
+    {% if other_story.previous or other_story.next %}
     <div class="secondary storynav-lg">
       <div class="tertiary story-{{ other_story.slug }}">
       {% with other_story as story %}
