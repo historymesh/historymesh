@@ -75,11 +75,13 @@
 
   </div>
 {% endif %}
+{% if story.previous or story.next %}
   <div class="secondary storynav-lg">
     <ol>
     {% include "nodes/_full_story_nav.html" %}
     </ol>
   </div>
+{% endif %}
 {% endif %}
 
 
