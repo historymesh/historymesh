@@ -1560,6 +1560,18 @@
         }
     }, 
     {
+        "pk": 141, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.person", 
+            "subject_id": 2, 
+            "object_type": "core.object", 
+            "object_id": 1, 
+            "verb": "invented"
+        }
+    }, 
+    {
         "pk": 10, 
         "model": "core.person", 
         "fields": {
@@ -1711,7 +1723,7 @@
             "name": "Modern use of Automata", 
             "text": "Modern-day automata can be found in many places; digital art exhibitions and groups such as Cabaret Mechanical Theatre regularly show off mechanical, electronic and digital devices designed to entertain, please and provoke.", 
             "slug": "modern-automata", 
-            "reference_url": "http://en.wikipedia.org/wiki/Cabaret_Mechanical_Theatre", 
+            "reference_url": "http://www.cabaret.co.uk/", 
             "timeline_date": 2000
         }
     }, 
@@ -2352,6 +2364,18 @@
         }
     }, 
     {
+        "pk": 23, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "3rd Century BC", 
+            "name": "Water-powered Puppet Theatre", 
+            "text": "For the Emperor Ming of Wei, Ma Jun once invented an intricate hydraulic-powered, mechanical-operated puppet theatre. His puppet theatre is similar to that of a Greek model invented by Hero of Alexandria, the difference being that the latter used instead a rotating cylindrical cogwheel with ropes and pulleys to operate his mechanical theatre.", 
+            "slug": "water-powered-puppet-theatre", 
+            "reference_url": "http://en.wikipedia.org/wiki/Ma_Jun", 
+            "timeline_date": 240
+        }
+    }, 
+    {
         "pk": 24, 
         "model": "core.object", 
         "fields": {
@@ -2445,18 +2469,6 @@
             "slug": "tower-colliery", 
             "reference_url": "http://en.wikipedia.org/wiki/Tower_Colliery", 
             "timeline_date": 1825
-        }
-    }, 
-    {
-        "pk": 23, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "3rd Century BC", 
-            "name": "Water-powered Puppet Theatre", 
-            "text": "For the Emperor Ming of Wei, Ma Jun once invented an intricate hydraulic-powered, mechanical-operated puppet theatre (much more complex than the mechanical puppet set discovered by Liu Bang, first Emperor of the Han Dynasty, when he observed the state-absorbed items taken from the old treasury of the deceased Qin Shi Huang). His puppet theatre is similar to that of a Greek model invented by Heron of Alexandria, the difference being that the latter used instead a rotating cylindrical cogwheel with ropes and pulleys to operate his mechanical theatre.", 
-            "slug": "water-powered-puppet-theatre", 
-            "reference_url": "http://en.wikipedia.org/wiki/Ma_Jun", 
-            "timeline_date": 240
         }
     }, 
     {
@@ -2878,13 +2890,6 @@
         }
     }, 
     {
-        "pk": 16, 
-        "model": "core.storycontent", 
-        "fields": {
-            "text": "The water-powered puppet theatre continues the trend of using engineering to delight and entertain; much like Hero's earlier example, this mechanical play featured a variety of moving puppets, but unlike Hero's play, it was powered by hydraulics, rather than simple ropes and pulleys.\r\n\r\nThere are other recorded examples of mechanical plays from around this time as well; Qu Zhi made a mechanical dolls' house as well as a mechanical \"rats' market\", with automatic doors. Like many automata, the technology and skills involved in making such delicate devices were sometimes transferred to more practical uses, but several of the technologies involved were not exploited for mass production until much more recently."
-        }
-    }, 
-    {
         "pk": 14, 
         "model": "core.storycontent", 
         "fields": {
@@ -2952,6 +2957,13 @@
         "model": "core.storycontent", 
         "fields": {
             "text": "With the fall of the Roman Empire, much they had created decayed over time until it was unusable. In Spain, the Moorish state created many new devices, such as a giant waterwheel in Toledo that took over the role of a Roman aqueduct in supplying water to the city. However by the early 16th century that had been destroyed, leaving the city to haul water by ass from the river.\r\n\r\nAlthough political will and financial support were at times thin, Turriano's machines were eventually completed and operated for over fifty years after his death, the first transporting thousands of gallons a day.\r\n\r\nEventually however they fell into disrepair, and were disassembled or scavenged, leaving the city once more dependent on manual labour to satisfy its water needs."
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "A puppet theatre has the power to captivate, to delight and entertain, and the Chinese liked them as much as the Greeks in Hero's Alexandria two hundred years previously. Although one artificer after another might introduce innovative engineering feats to pull off their creations, the real test was in the audience. Did they laugh and cry, applaud and cheer, or did they turn away, uninterested in this new spectacle?\r\n\r\nMechanical plays were long a popular diversion in China, and in a subsequent dynasty Qu Zhi would make not only dolls' houses but a rat market complete with rat attendants. Although some of the delicate intricacy required had more practical uses, that was never the aim, and to those watching an automaton's performance the idea of their being more than distractions for the privileged could not have been further from their minds."
         }
     }, 
     {
