@@ -6,13 +6,13 @@
       {% if story.previous %}
       <li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
       {% else %}
-      <li class="prev-disabled"></li>
+      <li class="prev-disabled"><b>No previous node</b></li>
       {% endif %}
       
       {% if story.next %}
       <li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
       {% else %}
-      <li class="next-disabled"></li>
+      <li class="next-disabled"><b>No next node</b></li>
       {% endif %}
     </ol>
     {% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}

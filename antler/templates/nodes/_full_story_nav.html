@@ -6,7 +6,7 @@
     <dd class="thread story-name"><a href="{{ story.previous.url }}?story={{ story.slug }}">{{ story.previous.name }}</a></dd>
   </dl>
   {% else %}
-  <div class="next-disabled"></div>
+  <div class="next-disabled"><b>Nothing previous in <span class='story-name'>{{ story.name }}</span></b></div>
   {% endif %}
 </li>
 
@@ -18,7 +18,7 @@
     <dd class="thread story-name"><a href="{{ story.next.url }}?story={{ story.slug }}">{{ story.next.name }}</a></dd>
   </dl>
   {% else %}
-  <div class="next-disabled"></div>
+  <div class="next-disabled"><b>Nothing next in <span class='story-name'>{{ story.name }}</span></b></div>
   {% endif %}
 </li>
 
@@ -29,7 +29,7 @@
     <dd class="thread story-name"><a href="{{ story.prev_secondary.url }}?story={{ story.slug }}">{{ story.prev_secondary.name }}</a></dd>
   </dl>
   {% else %}
-  <div class="next-disabled"></div>
+  <div class="next-disabled"><b>Nothing previous in <span class='story-name'>{{ story.name }}</span></b></div>
   {% endif %}
 </li>
 <li class="next alternate">
@@ -39,6 +39,6 @@
     <dd class="thread story-name"><a href="{{ story.next_secondary.url }}?story={{ story.slug }}">{{ story.next_secondary.name }}</a></dd>
   </dl>
   {% else %}
-  <div class="next-disabled"></div>
+  <div class="next-disabled"><b>Nothing next in <span class='story-name'>{{ story.name }}</span></b></div>
   {% endif %}
 </li>
