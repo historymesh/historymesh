@@ -11,9 +11,15 @@ for project_name in $*; do
     env_name="$(basename $project_name)_ve"
 
     if [[ -e $env_name ]]; then
-    echo "Looks like you've already got a ${project_name} virtualenv here."
-    echo "I'm not going to mess with it."
-    exit 1
+        if [[ -e $env_name/.init_ok ]]; then
+            echo "Looks like you've already got a ${project_name} virtualenv here."
+            echo "I'm not going to mess with it."
+            exit 1
+        else
+            echo "Looks like your virtualenv didn't complete last time."
+            echo "Blatting it."
+            rm -rf $env_name
+        fi
     fi
 
     echo "Setting up virtualenv for ${project_name}"
@@ -24,4 +30,6 @@ for project_name in $*; do
     pip install -E $env_name nose
     echo "Installing requirements"
     pip install -E $env_name -r ${project_name}/requirements.txt
+    # Create a file to indicate the environment setup worked
+    touch $env_name/.init_ok
 done
