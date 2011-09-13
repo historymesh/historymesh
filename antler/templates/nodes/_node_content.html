@@ -6,13 +6,13 @@
       {% if story.previous %}
       <li class="prev"><a rel="prev" href="{{ story.previous.url }}?story={{ story.slug }}">Previous: {{ story.previous.name }}</a></li>
       {% else %}
-      <li class="prev-disabled"></li>
+      <li class="prev-disabled"><b>No previous node</b></li>
       {% endif %}
       
       {% if story.next %}
       <li class="next"><a rel="next" href="{{ story.next.url }}?story={{ story.slug }}">Next: {{ story.next.name }}</a></li>
       {% else %}
-      <li class="next-disabled"></li>
+      <li class="next-disabled"><b>No next node</b></li>
       {% endif %}
     </ol>
     {% if story %}<span class="story-line">in <span class="story-name">{{story}}</span></span>{% endif %}
@@ -34,10 +34,16 @@
   <div class="body">
   
   <div class="main">
-  <figure class="portrait">
-    <img src="/static/img/placeholder.png" alt="" class="fr" width="249" height="333">
-    <figcaption>Close up view of comber board, harness, malls, weights, (Lingoes) and warp with 1040 ends</figcaption>
-  </figure>
+  {% for image in incoming.image_of %}
+    <figure class="{{ image.orientation }}">
+      <img src="{{ image.url }}" alt="" class="fr"
+           width="{{ image.image.width }}"
+           height="{{ image.image.height }}">
+      {% if image.caption %}
+        <figcaption>{{ image.caption }}</figcaption>
+      {% endif %}
+    </figure>
+  {% endfor %}
 
   {{ subject.text|textile }}
 
@@ -69,11 +75,13 @@
 
   </div>
 {% endif %}
+{% if story.previous or story.next %}
   <div class="secondary storynav-lg">
     <ol>
     {% include "nodes/_full_story_nav.html" %}
     </ol>
   </div>
+{% endif %}
 {% endif %}
 
 
@@ -99,6 +107,8 @@
         {% endif %}
       {% endif %}
     </div>
+    {% endif %}
+    {% if other_story.previous or other_story.next %}
     <div class="secondary storynav-lg">
       <div class="tertiary story-{{ other_story.slug }}">
       {% with other_story as story %}
@@ -113,7 +123,7 @@
 {% endfor %}
 
 {% if subject.reference_url %}
-<p class='read-more'>Read more about <a href="{{subject.reference_url}}">{{subject.name}} on {{subject.reference_name}}</a>.</p>
+<p class='read-more'>Read more about <a href="{{subject.reference_url}}">{{subject.name_possibly_lowercased}} on {{subject.reference_name}}</a>.</p>
 {% endif %}
 
 </div>

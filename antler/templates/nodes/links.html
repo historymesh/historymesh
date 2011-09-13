@@ -1,6 +1,9 @@
+{% if incoming.items or outgoing.items %}
+
+<h4>Footnotes</h4>
 <ul>
 {% for verb, links in incoming.items %}
-{% if verb != "primary" and verb != "secondary" and verb != "described_by" %}
+{% if verb != "primary" and verb != "secondary" and verb != "described_by" and verb != "image_of" %}
     {% for link in links %}
         <li><a href="{{link.link_url}}">{{link.name}}</a> {{ verb }} {{ subject.name_possibly_lowercased }}.</li>
     {% endfor %}
@@ -8,10 +11,13 @@
 {% endfor %}
 
 {% for verb, links in outgoing.items %}
-{% if verb != "primary" and verb != "secondary" and verb != "described_by" %}
+{% if verb != "primary" and verb != "secondary" and verb != "described_by" and verb != "image_of" %}
     {% for link in links %}
         <li>{{ subject.name }} {{ verb }} <a href="{{link.link_url}}">{{link.name_possibly_lowercased}}</a>.</li>
     {% endfor %}
 {% endif %}
 {% endfor %}
 </ul>
+
+{% endif %}
+

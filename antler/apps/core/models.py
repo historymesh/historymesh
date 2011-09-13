@@ -42,9 +42,10 @@ class Edge(models.Model):
         "affected",
         "owned",
         "created",
-        "primary",
-        "secondary",
+        "primary", # For primary narrative threads
+        "secondary", # For secondary narrative threads
         "described_by", # For linking to StoryContent nodes
+        "image_of", # For linking from Image nodes to their subjects
     ]
 
     subject_type = models.CharField(max_length=255)
@@ -441,7 +442,17 @@ class Image(BaseNode):
     @property
     def name(self):
         return str(self.image)
-    
+
+    def orientation(self):
+        """
+        Returns 'landscape' or 'portrait'.
+        Square images are considered portrait.
+        """
+        if self.image.width > self.image.height:
+            return "landscape"
+        else:
+            return "portrait"
+
     def url(self):
         return self.image.url
 
@@ -478,38 +489,48 @@ class Story(models.Model):
         self.current_node = node
 
     def next(self):
+        """Return the next node in this story.
+        
+        Return the next node in the primary thread if on the primary thread for
+        this story; fall back to a secondary thread if off the primary.
+        
         """
-        Returns the next node in this story's primary thread, call
-        set_current_node so that this makes sense.
-        """
-        try:
-            nodes = self.current_node.outgoing('primary').filter(story=self).follow()
-        except AttributeError:
-            return
-
-        if len(nodes) > 0:
-            return nodes[0]
-        else:
-            nodes = self.current_node.outgoing('secondary').filter(story=self).follow()
-            if len(nodes) > 0:
-                return nodes[0]
-
+        return self._successor('primary') or self._successor('secondary')
+    
+    def next_primary(self):
+        """Return the next node in this story's primary thread."""
+        return self._successor('primary')
+    
+    def next_secondary(self):
+        """Return the next node in this story's secondary thread."""
+        return self._successor('secondary')
+    
+    def _successor(self, verb):
+        if not getattr(self, 'current_node'):
+            return None
+        nodes = self.current_node.outgoing(verb).filter(story=self).follow()
+        return nodes[0] if nodes else None
+    
     def previous(self):
+        """Return the previous node in this story.
+        
+        Return the previous node in the primary thread if on the primary thread
+        for this story; fall back to a secondary thread if off the primary.
+        
         """
-        Returns the previous node in this story's primary thread, call
-        set_current_node first so that this make sense.
-        """
-        try:
-            nodes = self.current_node.incoming('primary').filter(story=self).follow()
-        except AttributeError:
-            return
-
-        if len(nodes) > 0:
-            return nodes[0]
-        else:
-            nodes = self.current_node.incoming('secondary').filter(story=self).follow()
-            if len(nodes) > 0:
-                return nodes[0]
+        return self._predecessor('primary') or self._predecessor('secondary')
+    
+    def previous_primary(self):
+        return self._predecessor('primary')
+    
+    def previous_secondary(self):
+        return self._predecessor('secondary')
+    
+    def _predecessor(self, verb):
+        if not getattr(self, 'current_node'):
+            return None
+        nodes = self.current_node.incoming(verb).filter(story=self).follow()
+        return nodes[0] if nodes else None
 
     def story_content(self):
         """
