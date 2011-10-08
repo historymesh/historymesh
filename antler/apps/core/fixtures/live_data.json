@@ -1572,6 +1572,30 @@
         }
     }, 
     {
+        "pk": 142, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.person", 
+            "subject_id": 26, 
+            "object_type": "core.object", 
+            "object_id": 44, 
+            "verb": "primary"
+        }
+    }, 
+    {
+        "pk": 143, 
+        "model": "core.edge", 
+        "fields": {
+            "story": 3, 
+            "subject_type": "core.object", 
+            "subject_id": 44, 
+            "object_type": "core.storycontent", 
+            "object_id": 42, 
+            "verb": "described_by"
+        }
+    }, 
+    {
         "pk": 10, 
         "model": "core.person", 
         "fields": {
@@ -1860,6 +1884,18 @@
         }
     }, 
     {
+        "pk": 3, 
+        "model": "core.person", 
+        "fields": {
+            "display_date": "19th Century", 
+            "name": "Nagai Nagayoshi", 
+            "text": "Nagai Nagayoshi was a notable Japanese organic chemist and pharmacologist, best known for his study of ephedrine.\r\n\r\nHe studied at Tokyo Imperial University, and became the first doctor of pharmacy in Japan. He was sent under government sponsorship to Prussia in 1871 to study at the University of Berlin. In 1923, Nagai and his wife hosted Albert Einstein and his wife during their visit to Japan.", 
+            "slug": "nagai-nagayoshi", 
+            "reference_url": "http://en.wikipedia.org/wiki/Nagai_Nagayoshi", 
+            "timeline_date": 1893
+        }
+    }, 
+    {
         "pk": 37, 
         "model": "core.person", 
         "fields": {
@@ -1965,18 +2001,6 @@
             "slug": "edmund-cartwright", 
             "reference_url": "http://en.wikipedia.org/wiki/Edmund_Cartwright", 
             "timeline_date": 1785
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "core.person", 
-        "fields": {
-            "display_date": "19th Century", 
-            "name": "Nagai Nagayoshi", 
-            "text": "Nagai Nagayoshi was a notable Japanese organic chemist and pharmacologist, best known for his study of ephedrine.\r\n\r\nHe studied at Tokyo Imperial University, and became the first doctor of pharmacy in Japan. He was sent under government sponsorship to Prussia in 1871 to study at the University of Berlin. In 1923, Nagai and his wife hosted Albert Einstein and his wife during their visit to Japan.", 
-            "slug": "nagai-nagayoshi", 
-            "reference_url": "http://en.wikipedia.org/wiki/Nagai_Nagayoshi", 
-            "timeline_date": 1893
         }
     }, 
     {
@@ -2241,18 +2265,6 @@
             "slug": "elephant-clock", 
             "reference_url": "http://en.wikipedia.org/wiki/Elephant_clock", 
             "timeline_date": 1206
-        }
-    }, 
-    {
-        "pk": 1, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1739", 
-            "name": "The Digesting Duck", 
-            "text": "A mechanical duck, created by Jacques de Vaucanson, which gave the impression of eating kernels of grain, digesting and then defecating them. Vaucanson hoped that it would be possible to create a future automaton that actually performed these actions rather than the sleight of hand he used.\r\n\r\nYou can see a replica of the duck in the Museum of Automatons in Grenoble, France.", 
-            "slug": "the-digesting-duck", 
-            "reference_url": "http://en.wikipedia.org/wiki/Digesting_Duck", 
-            "timeline_date": 1739
         }
     }, 
     {
@@ -2544,6 +2556,18 @@
         }
     }, 
     {
+        "pk": 19, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1000BC", 
+            "name": "Chinese Android", 
+            "text": "bq. The king stared at the figure in astonishment. It walked with rapid strides, moving its head up and down, so that anyone would have taken it for a live human being.\r\n\r\nA tale in the Lie Zi, from the 3rd century BC, tells of an encounter between the 10th century King Mu of the Zhou Dynasty and a life-sized human automaton made by a mechanical engineer called Yan Shi. Although the story's claims \u2014 that it had mechanical equivalents of all the human organs that controlled its various functions \u2014 seem unbelievable, we cannot be certain whether the entire thing is a fiction or based on an early actual automaton, with lesser functions.", 
+            "slug": "chinese-android", 
+            "reference_url": "http://en.wikipedia.org/wiki/King_Mu_of_Zhou", 
+            "timeline_date": -1000
+        }
+    }, 
+    {
         "pk": 21, 
         "model": "core.object", 
         "fields": {
@@ -2652,18 +2676,6 @@
         }
     }, 
     {
-        "pk": 19, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1000BC", 
-            "name": "Chinese Android", 
-            "text": "bq. The king stared at the figure in astonishment. It walked with rapid strides, moving its head up and down, so that anyone would have taken it for a live human being.\r\n\r\nA tale in the Lie Zi, from the 3rd century BC, tells of an encounter between the 10th century King Mu of the Zhou Dynasty and a life-sized human automaton made by a mechanical engineer called Yan Shi. Although the story's claims \u2014 that it had mechanical equivalents of all the human organs that controlled its various functions \u2014 seem unbelievable, we cannot be certain whether the entire thing is a fiction or based on an early actual automaton, with lesser functions.", 
-            "slug": "chinese-android", 
-            "reference_url": "http://en.wikipedia.org/wiki/King_Mu_of_Zhou", 
-            "timeline_date": -1000
-        }
-    }, 
-    {
         "pk": 37, 
         "model": "core.object", 
         "fields": {
@@ -2700,18 +2712,6 @@
         }
     }, 
     {
-        "pk": 15, 
-        "model": "core.object", 
-        "fields": {
-            "display_date": "1768-74", 
-            "name": "Jacquet-Droz automata", 
-            "text": "The Jaquet-Droz automata, among all the numerous automata built by the Jaquet-Droz family, refer to three doll automata built between 1768 and 1774 by Pierre Jaquet-Droz, his son Henri-Louis and Jean-Fr\u00e9d\u00e9ric Leschot: the musician, the draughtsman and the writer.\r\n\r\nThe dolls are still functional, and can be seen at the Mus\u00e9e d'Art et d'Histoire of Neuch\u00e2tel, in Switzerland. They are considered to be among the remote ancestors of modern computers. \r\n", 
-            "slug": "jacquet-droz-automata", 
-            "reference_url": "http://en.wikipedia.org/wiki/Jaquet-Droz_automata", 
-            "timeline_date": 1768
-        }
-    }, 
-    {
         "pk": 17, 
         "model": "core.object", 
         "fields": {
@@ -2745,6 +2745,42 @@
             "slug": "crankshaft", 
             "reference_url": "http://en.wikipedia.org/wiki/Crankshaft", 
             "timeline_date": 1180
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1739", 
+            "name": "The Digesting Duck", 
+            "text": "A mechanical duck, created by Jacques de Vaucanson, which gave the impression of eating kernels of grain, digesting and then defecating them. Vaucanson hoped that it would be possible to create a future automaton that actually performed these actions rather than the sleight of hand he used.\r\n\r\nThe Digesting Duck is a great example of technology harnessed for an entirely pointless purpose, although it did elevate the normally unpleasant process of digestion to something that became widely known across France and the western world.\r\n\r\nEven though it may lack a practical purpose at first glance, the Digesting Duck pioneered flexible rubber tubing, something that would quickly become useful for later inventions and industries.\r\n\r\nYou can see a replica of the duck in the Museum of Automatons in Grenoble, France.", 
+            "slug": "the-digesting-duck", 
+            "reference_url": "http://en.wikipedia.org/wiki/Digesting_Duck", 
+            "timeline_date": 1739
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "1768-74", 
+            "name": "Jacquet-Droz automata", 
+            "text": "Perhaps the best of many automata built by the Jaquet-Droz family are these three dolls built between 1768 and 1774 by Pierre Jaquet-Droz, his son Henri-Louis and Jean-Fr\u00e9d\u00e9ric Leschot: the musician, the draughtsman and the writer. Unlike many earlier automata, as well as being intended for entertainment they were also advertisements for the Jaquet-Droz watch business. The dolls were amazingly detailed, and even the musician, arguably the simplest, plays a small custom-built musical instrument, and \u201cbreathes\u201d as she plays. They are a long way from the simple movements of the earliest automata, but still aim for the same thing \u2013 realistic human figures.\r\n\r\nThe dolls are still functional, and can be seen at the Mus\u00e9e d\u2019Art et d\u2019Histoire of Neuch\u00e2tel, in Switzerland. They are considered to be among the remote ancestors of modern computers.", 
+            "slug": "jacquet-droz-automata", 
+            "reference_url": "http://en.wikipedia.org/wiki/Jaquet-Droz_automata", 
+            "timeline_date": 1768
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "core.object", 
+        "fields": {
+            "display_date": "Today", 
+            "name": "Modern computing", 
+            "text": "In the early 21st century, computing devices have become ingrained in almost every part of life in the Western world \u2014 including the pursuits of music and theatre, both of which had featured early in the development of automata. Car engines are computer-regulated to improve fuel efficiency, modern power stations and turbines feature computer control, and Jacquard Looms are now controlled electronically by computers that can scan designs and create punched cards from them.", 
+            "slug": "modern-computing", 
+            "reference_url": "", 
+            "timeline_date": 2000
         }
     }, 
     {
@@ -2897,24 +2933,10 @@
         }
     }, 
     {
-        "pk": 15, 
-        "model": "core.storycontent", 
-        "fields": {
-            "text": "The Digesting Duck is a great example of technology harnessed for an entirely pointless purpose, although it did elevate the normally unpleasant process of digestion to something that became widely known across France and the western world.\r\n\r\nEven though it may lack a practical purpose at first glance, the Digesting Duck pioneered flexible rubber tubing, something that would quickly become useful for later inventions and industries.\r\n\r\nbq. Have you seen M. Vaucanson's duck? They say it eats grains and\u2026well, let's say that it clearly enjoys them! M. Arouet believes it to be one of the finest creations in France!"
-        }
-    }, 
-    {
         "pk": 18, 
         "model": "core.storycontent", 
         "fields": {
             "text": "Water-power was already well established by his lifetime, but Hero was probably the first to harness wind power on land, inventing a windwheel to power one of his musical instruments. Beyond entertainment and powering important sacred functions such as opening temple doors, much of his contribution was more theoretical than practical, and from his position as a teacher in Egypt it's unlikely the everyday man or woman would have known his name. We still think he's awesome, though."
-        }
-    }, 
-    {
-        "pk": 17, 
-        "model": "core.storycontent", 
-        "fields": {
-            "text": "The Jaquet-Droz automata continue the long tradition of human-form automata - in this case as dolls. However, unlike many earlier automata they were used for a semi-practical purpose: as advertisement and entertainment toys designed to improve the sales of watches among the nobility of Europe in the 18th century.\r\n\r\nThe dolls were amazingly detailed; the writer dipped his pen in and inkwell and shook it to remove excess ink, and moved his eyes to follow his pen across the page. Even the musician, arguably the simplest of the dolls, plays a small custom-built musical instrument, and \"breathes\" as she plays. They are a long way from the simple movements of the earliest automata, but still aim for the same thing - realistic human figures.\r\n"
         }
     }, 
     {
@@ -2971,6 +2993,20 @@
         "model": "core.storycontent", 
         "fields": {
             "text": "As demand for coal increased, surface mining was no longer sufficient. Underground mines, with tunnels braced using tree branches, were already common when George Bruce took the perhaps natural step forward of mining under the sea. Using new drainage technologies (since water constantly dripping into the tunnels), and using established Scottish techniques for building his artificial island, the mine at Upper Hirst became a wonder of early industrial Britain.\r\n\r\nIt aroused such interest that James VI visited in 1617, although when he reached the island at the end of the tunnel and saw only water around him, he panicked and accused Bruce of plotting to kill him."
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "bq. Have you seen M. Vaucanson's duck? They say it eats grains and\u2026well, let's say that it clearly enjoys them! M. Arouet believes it to be one of the finest creations in France!"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Admitted to the presence of the Writer, you watch in amazement as he dips his pen into the inkwell at the edge of the desk and proceeds to write in a delicate hand. When done, you lift the paper to inspect his work. It seems impossible that he is not actually a talented child, or perhaps a contraption with a small woman inside, as it is rumoured may be true of the Turk."
         }
     }, 
     {
@@ -3076,6 +3112,13 @@
         "model": "core.storycontent", 
         "fields": {
             "text": "Automatons have long been a fascination of inventors and engineers \u2014 even today, we continue to strive to make realistic androids and other automata, toys are becoming increasingly realistic, and we now have two-legged robots that can climb stairs, pick up and serve drinks and play football.\r\n\r\nThe Chinese Android is one of the earliest automata that we know about, although some will claim that it is simply fiction. But the king's astonishment illustrates the accomplishment such a feat would have represented almost three thousand years ago \u2014 would you have thought that the people of the time could even have conceived of a humanoid robot, let alone built one?"
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "core.storycontent", 
+        "fields": {
+            "text": "Walk into the Apple Store on Regent's Street in London, and think back for a moment on what was needed to reach here. Electricity, created around the country and even abroad is routed to the shop to power the lights and displays; the computers on display are the heritage of Jacquard, Babbage, Turing and Hollerith, manufactured and sold using techniques developed or refined in the Industrial Revolution.\r\n\r\nStanding there you might also wonder what the next years will bring us. Power, computing, manufacturing and automation together define our modern world, but what of a thousand years from now, or two thousand, or three? Will there even be a human automaton by then, a true android, that can itself reflect on the development of our modern world \u2014 and will it approve?"
         }
     }
 ]
