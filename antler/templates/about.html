@@ -4,12 +4,48 @@
 {% block body-class %}about{% endblock %}
 
 {% block content %}
-	<div class="body">
-	  <h1>Once upon a time&hellip;</h1>
-    <p>Lorem ipsum solo!!! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
-	</div>
+<div class="body">
+  <h1>Once upon a time&hellip;</h1>
+
+  <p>
+    &hellip;there was a man called <a href='{% url person "joseph-marie-jacquard" %}'>Joseph Marie Jacquard</a>. Soldier, chancer, not particularly good father, and opportunistic inventor, his dogged persistence in the textile industry finally gave the world the <a href='{% url object "the-jacquard-loom" %}'>Jacquard loom</a>, the first successful introduction of programming to the textile industry.
+  </p>
+  <p>
+    But Jacquard's story is not one of isolation: set against the backdrop of the Industrial Revolution, it is naturally caught up in the drive of increasing automation which stemmed both from inventions such as the <a href='{% url object "flying-shuttle" %}'>Flying Shuttle</a> and the <a href='{% url object "spinning-jenny" %}'>Spinning Jenny</a>. The evolution of textiles throughout the 18th and 19th centuries is itself caught up with the development of water and steam power at the same time.
+  </p>
+  <p>
+    Looking forward, Jacquard's use of <a href='{% url object "punch-cards" %}'>punch cards</a> inspired <a href='{% url person "charles-babbage" %}'>Charles Babbage</a> in his own attempts to revolutionise another industry which inspired later innovators in computing such as <a href='{% url person "herman-hollerith" %}'>Herman Hollerith</a> and <a href='{% url person "alan-turing" %}'>Alan Turing</a>, while the punch cards themselves were part of the ancient history of automatons, which started &mdash; according to rumour &mdash; with a three thousand year old <a href='{% url object "chinese-android" %}'>Chinese Android</a>&hellip;
+  </p>
+
+  <p>
+    We first found out about many of these interlinked people, inventions and ideas while looking for something to build at the sixth <a href='http://devfort.com/'>/dev/fort</a>, in August 2011. We've tried out best to turn what we found out into a coherent story &mdash; or at least four coherent stories which overlap and combine in interesting ways. But really we just wanted to communicate the excitement we felt while exploring, and to inject a little bit of technological whimsy into your life.
+  </p>
+  <p>
+    Sadly in the process we've had to lose many details. There's almost nothing here about <a href='{% url person "albert-einstein" %}'>Albert Einstein's</a> history of intellectual dinners, only the fuzziest mention of how the rising history of strike action almost derailed Turing's early education, and we have yet to find a way of incorporating Louise's considerable research into the engineering accomplishments of George Bruce's <a href='{% url object "upper-hirst-mining-rig" %}'>Upper Hirst mining rig</a>.
+  </p>
+  <p>
+    We have however found a little place for the development of <a href='{% url object "methamphetamine" %}'>methamphetamine</a>, squeezed in <a href='{% url object "chequered-cloths" %}'>chequered cloths</a> (which may have provided inspiration in the development of punch cards), and even worked in links between Chinese polymath <a href='{% url person "su-song" %}'>Su Song</a>, prolific Mesopotamian inventor <a href='{% url person "al-jazari" %}'>al-Jazari</a> and railway forefather (and inventor of the high pressure <a href='{% url object "steam-engine" %}'>steam engine</a>) <a href='{% url person "richard-trevithick" %}'>Richard Trevithick</a>.
+  </p>
+  <p>
+    You can read the four stories from beginning to end, each in isolation, but really we hope you will jump between them, both in the places where they naturally overlap and by following links in the footnotes that jump you between different stories through the interesting characters, discoveries and events that are scattered through the landscape of our stories. We've provided a map, but don't let that stop you from drawing your own.
+  </p>
+  <p>Have fun &mdash; cohort 6.</p>
+  <ul>
+    <li>James A</li>
+    <li>Ryan A</li>
+    <li>Ash B</li>
+    <li>Andy B</li>
+    <li>George B</li>
+    <li>Richard B</li>
+    <li>Louise B</li>
+    <li>Blaine C</li>
+    <li>James C</li>
+    <li>Maureen E</li>
+    <li>Norm F</li>
+    <li>Andrew G</li>
+    <li>Jon H</li>
+    <li>Dave S</li>
+    <li>David T</li>
+  </ul>
+</div>
 {% endblock %}

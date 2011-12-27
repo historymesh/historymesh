@@ -1,0 +1,23 @@
+.about .body ul {
+    width: 50%;
+    text-align: right;
+    float: right;
+    min-height: 2em;
+    margin-bottom: 10px;
+}
+
+.about .body ul li {
+    display: inline;
+}
+
+.about .body ul li:after {
+    content: ", ";
+}
+
+.about .body ul li:last-child:after {
+    content: none;
+}
+
+.about .body ul li:last-child:before {
+    content: "and ";
+}
