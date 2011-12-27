@@ -1596,6 +1596,18 @@
         }
     }, 
     {
+        "pk": 144, 
+        "model": "core.edge", 
+        "fields": {
+            "story": null, 
+            "subject_type": "core.object", 
+            "subject_id": 2, 
+            "object_type": "core.person", 
+            "object_id": 30, 
+            "verb": "inspired"
+        }
+    }, 
+    {
         "pk": 10, 
         "model": "core.person", 
         "fields": {
