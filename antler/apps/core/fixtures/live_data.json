@@ -2799,7 +2799,7 @@
         "pk": 2, 
         "model": "core.story", 
         "fields": {
-            "text": "", 
+            "text": "From the earliest ideas of mechanical creatures to the latest advances in modern technology, automatons have sparked the imagination through the ages.", 
             "colour": "e03c31", 
             "featured": true, 
             "name": "Automatons", 
@@ -2810,7 +2810,7 @@
         "pk": 3, 
         "model": "core.story", 
         "fields": {
-            "text": "", 
+            "text": "Some of the earliest machines we know of were to help perform computations \u2014 from keeping track of the value of stock to calculating the movement of the suns and stars.", 
             "colour": "1945ec", 
             "featured": true, 
             "name": "Computing", 
@@ -2818,25 +2818,25 @@
         }
     }, 
     {
-        "pk": 6, 
-        "model": "core.story", 
-        "fields": {
-            "text": "", 
-            "colour": "309e1d", 
-            "featured": true, 
-            "name": "Textiles", 
-            "slug": "textiles"
-        }
-    }, 
-    {
         "pk": 4, 
         "model": "core.story", 
         "fields": {
-            "text": "", 
+            "text": "Since the earliest days, the ability to harness the power of everything from other animals to the sun, wind and tide has freed up people's time for the things that only humans can do.", 
             "colour": "ef9d09", 
             "featured": true, 
             "name": "Power", 
             "slug": "power"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "core.story", 
+        "fields": {
+            "text": "The ingenuity and effort applied to the textile industry had as much impact on 18th and 19th Century England as the development of computers in the second half of the 20th.", 
+            "colour": "309e1d", 
+            "featured": true, 
+            "name": "Textiles", 
+            "slug": "textiles"
         }
     }, 
     {
