@@ -20,8 +20,9 @@
       {% for story in stories %}
       <li class="story-{{story.slug}}">
 	<h3 class="story-name"><a href="{{story.start.url}}?story={{story.slug}}">{{story.name}}</a></h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit.</p>
+	{% if story.text %}
         {{story.text|linebreaks}}
+	{% endif %}
       </li>
       {% endfor %}
     </ul>
