@@ -1,0 +1,5 @@
+#!/usr/bin/env screen -r antler -X source 
+screen -t pipe_runner 1 pipe_runner
+screen -t website 2 make devserver
+screen -t restpose 3 restpose
+select 0
