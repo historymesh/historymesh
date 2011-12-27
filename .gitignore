@@ -18,3 +18,4 @@ ENV
 *.json
 .DS_Store
 restpose.db
+rspdbs
