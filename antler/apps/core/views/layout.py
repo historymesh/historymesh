@@ -14,7 +14,7 @@ def get_layout_data():
     if not engine:
         engine = NodeLayoutEngine()
         engine.lay_out()
-        cache.set("layout-engine", engine, 300)
+        cache.set("layout-engine", engine, 86400)
     return {
         "strings": list(engine.strings),
         "nodes": list(engine.annotated_nodes()),
