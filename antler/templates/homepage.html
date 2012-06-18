@@ -35,7 +35,11 @@
   </div>
 
   <script type="text/javascript">
-    var network = new Network('container', document.width, 400);
+    var width = document.width;
+    if (width == undefined) {
+      width = document.body.clientWidth;
+    }
+    var network = new Network('container', width, 400);
     {% include "map/_node_js.html" %}
     network.draw();
 
