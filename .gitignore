@@ -19,3 +19,4 @@ ENV
 .DS_Store
 restpose.db
 rspdbs
+local_settings.py

@@ -14,3 +14,8 @@ RESTPOSE_CONFIG = {
     'uri': 'http://127.0.0.1:7777/',
     'collection': 'antler',
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
